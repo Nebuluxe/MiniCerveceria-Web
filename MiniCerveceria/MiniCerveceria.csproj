@@ -240,7 +240,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Mantenedores\" />
+    <Folder Include="Login\" />
+    <Folder Include="Mantenedores\CompetenciasTorneos\" />
+    <Folder Include="Mantenedores\Cursos\" />
+    <Folder Include="Mantenedores\Empresas Asociadas\" />
+    <Folder Include="Mantenedores\FichaTecnica\" />
+    <Folder Include="Mantenedores\Novedades\" />
+    <Folder Include="Mantenedores\Productos\" />
+    <Folder Include="Mantenedores\Recetas\" />
+    <Folder Include="Mantenedores\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
