@@ -7,14 +7,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Mi aplicación ASP.NET</title>
+    <title><%: Page.Title %> - Mini Cerveceria</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
 
 </head>
 <body>
@@ -28,57 +28,10 @@
             #offcanvasExample{
                 background: rgba(0,0,0,.8)
             }
-            #CloseMenuLateral{
-                color: #ffffff 
-            }
-            #btn_menu,
-            .btn_menu {
-	            position: fixed;
-	            top: 20px;
-	            left: 20px;
-	            z-index: 3;
+            .list-group-item{
+                background: rgba(0,0,0,.8)
             }
 
-            #btn_menu {
-		            display: none;
-            }
-
-            .btn_menu {
-	            width: 40px;
-	            height: 40px;
-	            color: red;
-            }
-
-
-            .btn_span {
-	            position: absolute;
-	            top:0;
-	            width: 30px;
-	            height: 5px;
-	            background: #eabb48;
-	            transition: all .3s ease;
-            }
-            #btn_menu:hover{
-                  background: #07d544;
-                  cursor: pointer;
-            }
-            .btn_span:nth-child(2) {
-	            top: 10px
-            }
-            .btn_span:nth-child(3) {
-	            top: 20px
-            }
-            #btn_menu:checked ~ .btn_menu #btn_span_1 {
-	            top: 10px;
-	            transform: rotate(50deg);
-            }
-            #btn_menu:checked ~ .btn_menu #btn_span_2{
-	            opacity: 0;
-            }
-            #btn_menu:checked ~ .btn_menu #btn_span_3{
-	            top:10px;
-	            transform: rotate(-50deg);
-            }
     </style>
     <form runat="server">
         <asp:ScriptManager runat="server">
@@ -99,53 +52,168 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-		<nav class="navbar navbar-expand-sm navbar-toggleable-sm ">
+		<nav class="navbar navbar-expand navbar-toggleable-sm ">
             <div class="container">
-<%--                <label for="btn_menu" class="btn_menu flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-			        <span id="btn_span_1" class="btn_span"></span>
-			        <span id="btn_span_2" class="btn_span"></span>
-			        <span id="btn_span_3" class="btn_span"></span>
-		        </label>--%>
-
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1" style="align-items:center">
+                    <div class="navbar-brand">
+                        <label class="flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            <img src="/Imagenes/Iconos/MenuHamburguesa.png" height="30"> 
+		                </label>
+                    </div>
+
+                    <a id="HomeNavPequeño" class="nav-link visually-hidden" runat="server" href="~/Default">
+                        <span class="optionNav">
+                            <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
+                        MiniCerveceria</span>
+                    </a>
+
+                    <ul id="OpcionesNav" class="navbar-nav justify-content-center flex-grow-1" style="align-items:center">
                         <li class="nav-item">
-                            <label for="btn_menu" class="btn_menu flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-			                    <span id="btn_span_1" class="btn_span"></span>
-			                    <span id="btn_span_2" class="btn_span"></span>
-			                    <span id="btn_span_3" class="btn_span"></span>
-		                    </label>
+                            <a class="nav-link" runat="server" href="~/Default">
+                                <span class="optionNav">
+                                    <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
+                                MiniCerveceria</span>
+                            </a>
                         </li>
-                        <li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/Default">Home</a></li>
-                        <li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/About">Acerca de</a></li>
-                        <li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/Contact">Contacto</a></li>
-						<li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/Contact">Productos</a></li>
-						<li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/Contact">Cursos</a></li>
-						<li class="nav-item"><a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/About">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Contacto</a>
+                        </li>
+						<li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Productos</a>
+						</li>
+						<li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Cursos</a>
+						</li>
+						<li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a>
+						</li>
                     </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">
+                               <img src="/Imagenes/Iconos/carrito-de-compras.png" height="35"> 
+                            </a>                   
+                    </form>
                 </div>
             </div>
         </nav>
 	    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		  <div class="offcanvas-header">
-			<h5 class="offcanvas-title optionNav" id="offcanvasExampleLabel">Offcanvas</h5>
-			<button type="button" id="CloseMenuLateral" class="btn-close optionNav" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <h3 class="optionNav">Menu</h3>
+            <a type="button" data-bs-dismiss="offcanvas">
+               <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
+            </a>
 		  </div>
 		  <div class="offcanvas-body">
-			<div class="optionNav">
-			  Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
-			</div>
+            <ul class="list-group">
+                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Favoritos</a>
+                <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lista de deseados</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Historial de compras</a>
+                <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Mantenedores</a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cuenta</a>
+            </ul>
+              <br />
+            <ul class="list-group">
+              <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Iniciar sesion</a>
+            </ul>
+            <div align="center">
+                <br />
+                <br />
+                <img src="/Imagenes/Iconos/logoCerveza8.png" height="160">
+                <br />
+                <br />
+                <h2 class="optionNav">MiniCerveceria</h2>
+            </div>
 		  </div>
 		</div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mini Cerveceria</p>
-            </footer>
         </div>
     </form>
+    <footer class="bg-dark text-center text-white">
+        <div style="background-color: rgb(0, 0, 0, .6);">
+            <div class="container p-4 pb-0">
+                <section class="mb-4">
+                    <a class="btn-floating m-1" href="#ig!" role="button"
+                    ><i class="fab"><img src="/Imagenes/Iconos/instagram.png" height="35"></i
+                    ></a>
+
+                    <a class="btn-floating m-1" href="#tw!" role="button"
+                    ><i class="fab"><img src="/Imagenes/Iconos/twiter.png" height="35"></i
+                    ></a>
+
+                    <a class="btn-floating m-1" href="#fb!" role="button"
+                    ><i class="fab"><img src="/Imagenes/Iconos/facebook.png" height="35"></i
+                    ></a>
+                </section>
+                <section class="">
+                  <div class="container text-center text-md-start mt-5">
+                    <div class="row mt-3">
+                      <div class="col-md-3 col-lg-4 col-xl-4 mx-auto mb-4">
+                        <img src="/Imagenes/MiniCerveceriaLogoOrigina.png" height="200">
+                      </div>
+
+                      <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold">Horaio</h6>
+                        <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                            />
+                        <p><i class="fas fa-envelope mr-3"></i> Lunes a viernes <br /> 10:00 a 18:30 hrs. </p>
+                        <p><i class="fas fa-phone mr-3"></i> Sábados <br /> 10:30 a 13:00 hrs</p>
+                      </div>
+
+                      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold">Contacto</h6>
+                        <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                            />
+                        <p><i class="fas fa-home mr-3"></i> Calle La Comuna 5253, Lo Prado. <br /> (Metro: Blanqueado o Las Rejas) </p>
+                        <p><i class="fas fa-envelope mr-3"></i> MiniCerveceriaAs@gmail.com</p>
+                        <p><i class="fas fa-phone mr-3"></i> + 56 2 2633 4998</p>
+                      </div>
+
+                      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold">Mini Cerveceria</h6>
+                        <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                            />
+                        <p>
+                          <a href="#!" class="text-white">Nosotros</a>
+                        </p>
+                        <p>
+                          <a href="#!" class="text-white">Estado del pedido</a>
+                        </p>
+                        <p>
+                          <a href="#!" class="text-white">Por que hacer cerveza</a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+                <section class="mb-4">
+                    <div>
+                        <h6 class="text-uppercase fw-bold">Medios de Pago</h6>
+                        <hr
+                            class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; background-color: #7c4dff; height: 2px"
+                            />
+                    </div>
+                    <img src="/Imagenes/Banner-WebPay.png" height="80">
+                </section>
+            </div>
+
+            <div class="text-center p-3" style="background-color: rgba(0,0,0,.8);">
+            © <%: DateTime.Now.Year %> Copyright © MiniCerveceria
+            </div>
+        </div>
+    </footer>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
@@ -153,6 +221,21 @@
 </html>
 <script>
     $(document).ready(function () {
+        $(window).resize(function () {
+            cambio();
+        });
 
+        cambio();
+
+        function cambio() {
+            if ($(window).width() >= 700) {
+                $('#OpcionesNav').removeClass('visually-hidden'); 
+                $('#HomeNavPequeño').addClass('visually-hidden');
+
+            } else {
+                $('#OpcionesNav').addClass('visually-hidden');
+                $('#HomeNavPequeño').removeClass('visually-hidden');
+            }
+        }
     });
 </script>

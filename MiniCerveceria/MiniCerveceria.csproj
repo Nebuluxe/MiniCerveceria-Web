@@ -124,9 +124,29 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Imagenes\f.elconfidencial.com_original_cbe_7a6_03a_cbe7a603a178438d236336676c457cc2.jpg" />
+    <Content Include="Imagenes\Banner-WebPay.png" />
+    <Content Include="Imagenes\CarrouselHome1.jpg" />
+    <Content Include="Imagenes\CarrouselHome3.jpg" />
+    <Content Include="Imagenes\HomePage.jpg" />
+    <Content Include="Imagenes\Iconos\carrito-de-compras.png" />
+    <Content Include="Imagenes\CarrouselHome2.jpg" />
     <Content Include="Imagenes\Iconos\CervezaIcono.png" />
-    <Content Include="Imagenes\images.jpg" />
+    <Content Include="Imagenes\Iconos\CloseButton.png" />
+    <Content Include="Imagenes\Iconos\facebook.png" />
+    <Content Include="Imagenes\Iconos\instagram.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza1.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza2.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza3.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza4.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza5.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza6.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza7.png" />
+    <Content Include="Imagenes\Iconos\logoCerveza8.png" />
+    <Content Include="Imagenes\Iconos\MenuHamburguesa.png" />
+    <Content Include="Imagenes\Iconos\twiter.png" />
+    <Content Include="Imagenes\MiniCerveceriaLogoOrigina.png" />
+    <Content Include="Imagenes\MiniCerveceriaLogoOriginaSolo.png" />
+    <Content Include="Mantenedores\Default.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -214,6 +234,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
