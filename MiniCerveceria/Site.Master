@@ -76,18 +76,21 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/About">Acerca de</a>
+                            <a class="nav-link optionNav" runat="server" href="~/About">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Contacto</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Maltas</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Productos</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Lupulos</a>
 						</li>
 						<li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Cursos</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Levaduras</a>
 						</li>
 						<li class="nav-item">
+                            <a class="nav-link optionNav" runat="server" href="~/Contact">Equipamiento</a>
+						</li>
+                        <li class="nav-item">
                             <a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a>
 						</li>
                     </ul>
@@ -107,6 +110,18 @@
             </a>
 		  </div>
 		  <div class="offcanvas-body">
+            <div class="visually-hidden" id="OpcionesNavSideMenu">
+                <br />
+                <ul class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cursos</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Maltas</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lupulos</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Levaduras</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Equipamiento</a>
+                    <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Recetas</a>
+                </ul>
+            </div>
+            <br />
             <ul class="list-group">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Favoritos</a>
                 <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lista de deseados</a>
@@ -114,7 +129,7 @@
                 <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Mantenedores</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cuenta</a>
             </ul>
-              <br />
+            <br />
             <ul class="list-group">
               <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Iniciar sesion</a>
             </ul>
@@ -230,11 +245,12 @@
         function cambio() {
             if ($(window).width() >= 700) {
                 $('#OpcionesNav').removeClass('visually-hidden'); 
-                $('#HomeNavPequeño').addClass('visually-hidden');
-
+                $('#HomeNavPequeño').addClass('visually-hidden'); 
+                $('#OpcionesNavSideMenu').addClass('visually-hidden'); 
             } else {
                 $('#OpcionesNav').addClass('visually-hidden');
                 $('#HomeNavPequeño').removeClass('visually-hidden');
+                $('#OpcionesNavSideMenu').removeClass('visually-hidden'); 
             }
         }
     });
