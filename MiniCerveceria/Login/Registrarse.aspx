@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MiniCerveceria.Login.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrarse.aspx.cs" Inherits="MiniCerveceria.Login.Registrarse" %>
 
 <!DOCTYPE html>
 
@@ -31,8 +31,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 420px;
-            height: 520px;
+            width: 450px;
+            height: 550px;
             background: transparent;
             border: 5px solid #333;
             border-radius: 10px;
@@ -161,22 +161,27 @@
 <body>
 
     <div class="wrapper">
-        <form id="inicioSesion" runat="server">
-            <h2>Iniciar Sesión</h2>
+        <form id="registro" runat="server">
+            <h2>Registrarse</h2>
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
-                <asp:TextBox id="txtUsuario" ClientIDMode="Static" placeholder="Usuario" required="required" runat="server" />
+                <asp:TextBox id="txtUsuario" ClientIDMode="Static" placeholder="Ingrese Usuario" required="required" runat="server" />
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <asp:TextBox id="txtCorreo" ClientIDMode="Static" placeholder="Ingrese Correo Electrónico" required="required" runat="server" />
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                <asp:TextBox id="txtContrasena" ClientIDMode="Static" placeholder="Contraseña" required="required" runat="server" />
+                <asp:TextBox id="txtContrasena" ClientIDMode="Static" placeholder="Ingrese Contraseña" type="password" required="required" runat="server" />
             </div>
-            <div class="forgot-pass">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <asp:TextBox id="txtConfirmarContrasena" ClientIDMode="Static" type="password" placeholder="Confirme Contraseña" required="required" runat="server" />
             </div>
-            <button type="submit">Iniciar Sesión</button>
+            <button type="submit">Registrarse</button>
             <div class="register-link">
-                <p>No tienes una cuenta registrada?<a href="/Login/Registrarse.aspx">Registrate Ahora!</a></p>
+                <p>Ya tienes una cuenta registrada?<a href="/Login/Login.aspx">Inicia Sesión Ahora!</a></p>
             </div>
         </form>
     </div>
@@ -185,3 +190,16 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
+<script type="text/javascript" src="../Scripts/jquery-3.4.1.min.js">
+    $(document).ready(function(){
+        $("txtConfirmarContrasena").blur(function () {
+            var confirmarContrasena = $(this).val().trim();
+            var contrasena = $("txtContrasena").val().trim();
+
+            if (contrasena != confirmarContrasena) {
+                $(this).val("");
+                alert("Las contraseñas no coinciden ingrese nuevamente");
+            };
+        });
+    });
+</script>

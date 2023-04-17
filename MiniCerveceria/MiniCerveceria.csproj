@@ -145,6 +145,7 @@
     <Content Include="Imagenes\MiniCerveceriaLogoOrigina.png" />
     <Content Include="Imagenes\MiniCerveceriaLogoOriginaSolo.png" />
     <Content Include="Login\Login.aspx" />
+    <Content Include="Login\Registrarse.aspx" />
     <Content Include="Mantenedores\Default.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -240,6 +241,13 @@
     </Compile>
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Registrarse.aspx.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\Registrarse.aspx.designer.cs">
+      <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
