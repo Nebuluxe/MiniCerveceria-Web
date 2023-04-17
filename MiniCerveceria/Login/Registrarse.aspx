@@ -156,10 +156,18 @@
         .register-link p a:hover {
             text-decoration: underline;
         }
+
+        #btnBackButton{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
     </style>
 </head>
 <body>
-
+    <a id="btnBackButton" href="/Default"> 
+        <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="45"> 
+    </a>
     <div class="wrapper">
         <form id="registro" runat="server">
             <h2>Registrarse</h2>
@@ -179,7 +187,7 @@
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
                 <asp:TextBox id="txtConfirmarContrasena" ClientIDMode="Static" type="password" placeholder="Confirme Contraseña" required="required" runat="server" />
             </div>
-            <button type="submit">Registrarse</button>
+            <button id="btnRegistrar" type="submit">Registrarse</button>
             <div class="register-link">
                 <p>Ya tienes una cuenta registrada?<a href="/Login/Login.aspx">Inicia Sesión Ahora!</a></p>
             </div>
@@ -190,9 +198,9 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
-<script type="text/javascript" src="../Scripts/jquery-3.4.1.min.js">
+<script>
     $(document).ready(function(){
-        $("txtConfirmarContrasena").blur(function () {
+        $("#btnRegistrar").on('click', function () {
             var confirmarContrasena = $(this).val().trim();
             var contrasena = $("txtContrasena").val().trim();
 

@@ -156,10 +156,18 @@
         .register-link p a:hover {
             text-decoration: underline;
         }
+
+        #btnBackButton{
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
     </style>
 </head>
 <body>
-
+    <a id="btnBackButton" href="/Default"> 
+        <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="45"> 
+    </a>
     <div class="wrapper">
         <form id="inicioSesion" runat="server">
             <h2>Iniciar Sesión</h2>

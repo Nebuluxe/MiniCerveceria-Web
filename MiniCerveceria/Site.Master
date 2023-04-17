@@ -96,7 +96,7 @@
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
                             <a class="nav-link optionNav" runat="server" href="~/Contact">
-                               <img src="/Imagenes/Iconos/carrito-de-compras.png" height="35"> 
+                               <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40"> 
                             </a>                   
                     </form>
                 </div>
@@ -131,7 +131,7 @@
             </ul>
             <br />
             <ul class="list-group">
-              <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Iniciar sesion</a>
+              <a href="/Login/Login.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Iniciar sesion</a>
             </ul>
             <div align="center">
                 <br />

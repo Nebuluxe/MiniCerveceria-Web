@@ -126,13 +126,19 @@
     <Content Include="Imagenes\CarrouselHome1.jpg" />
     <Content Include="Imagenes\CarrouselHome3.jpg" />
     <Content Include="Imagenes\HomePage.jpg" />
+    <Content Include="Imagenes\Iconos\BackButtonBlack.png" />
+    <Content Include="Imagenes\Iconos\BackButtonWithe.png" />
+    <Content Include="Imagenes\Iconos\btnAgregar.png" />
     <Content Include="Imagenes\Iconos\carrito-de-compras.png" />
     <Content Include="Imagenes\CarrouselHome2.jpg" />
     <Content Include="Imagenes\Iconos\CervezaIcono.png" />
     <Content Include="Imagenes\Iconos\CloseButton.png" />
+    <Content Include="Imagenes\Iconos\CursosBlack.png" />
+    <Content Include="Imagenes\Iconos\CursosWithe.png" />
+    <Content Include="Imagenes\Iconos\EmpresasAsociadasBlack.png" />
+    <Content Include="Imagenes\Iconos\EmpresasAsociadasWithe.png" />
     <Content Include="Imagenes\Iconos\facebook.png" />
     <Content Include="Imagenes\Iconos\instagram.png" />
-    <Content Include="Imagenes\Iconos\logoCerveza1.png" />
     <Content Include="Imagenes\Iconos\logoCerveza2.png" />
     <Content Include="Imagenes\Iconos\logoCerveza3.png" />
     <Content Include="Imagenes\Iconos\logoCerveza4.png" />
@@ -140,13 +146,29 @@
     <Content Include="Imagenes\Iconos\logoCerveza6.png" />
     <Content Include="Imagenes\Iconos\logoCerveza7.png" />
     <Content Include="Imagenes\Iconos\logoCerveza8.png" />
+    <Content Include="Imagenes\Iconos\MantenedoresLogo.png" />
     <Content Include="Imagenes\Iconos\MenuHamburguesa.png" />
+    <Content Include="Imagenes\Iconos\NoImage.png" />
+    <Content Include="Imagenes\Iconos\NovedadesBlack.png" />
+    <Content Include="Imagenes\Iconos\NovedadesWithe.png" />
+    <Content Include="Imagenes\Iconos\ProductosBlack.png" />
+    <Content Include="Imagenes\Iconos\ProductosWithe.png" />
+    <Content Include="Imagenes\Iconos\RecetasBlack.png" />
+    <Content Include="Imagenes\Iconos\RecetasWithe.png" />
     <Content Include="Imagenes\Iconos\twiter.png" />
+    <Content Include="Imagenes\Iconos\UsuariosBlack.png" />
+    <Content Include="Imagenes\Iconos\UsuariosWithe.png" />
     <Content Include="Imagenes\MiniCerveceriaLogoOrigina.png" />
     <Content Include="Imagenes\MiniCerveceriaLogoOriginaSolo.png" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\Registrarse.aspx" />
+    <Content Include="Mantenedores\Cursos\DefaultCursos.aspx" />
     <Content Include="Mantenedores\Default.aspx" />
+    <Content Include="Mantenedores\Empresas\DefaultEmpresas.aspx" />
+    <Content Include="Mantenedores\Novedades\DefaultNovedades.aspx" />
+    <Content Include="Mantenedores\Productos\DefaultProductos.aspx" />
+    <Content Include="Mantenedores\Recetas\DefaultRecetas.aspx" />
+    <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -203,10 +225,8 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -249,12 +269,54 @@
     <Compile Include="Login\Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Cursos\DefaultCursos.aspx.cs">
+      <DependentUpon>DefaultCursos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Cursos\DefaultCursos.aspx.designer.cs">
+      <DependentUpon>DefaultCursos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.cs">
+      <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.designer.cs">
+      <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.cs">
+      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
+      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\DefaultProductos.aspx.cs">
+      <DependentUpon>DefaultProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\DefaultProductos.aspx.designer.cs">
+      <DependentUpon>DefaultProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Recetas\DefaultRecetas.aspx.cs">
+      <DependentUpon>DefaultRecetas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Recetas\DefaultRecetas.aspx.designer.cs">
+      <DependentUpon>DefaultRecetas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.cs">
+      <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.designer.cs">
+      <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -264,31 +326,9 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
-      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Mantenedores\CompetenciasTorneos\" />
-    <Folder Include="Mantenedores\Cursos\" />
-    <Folder Include="Mantenedores\Empresas Asociadas\" />
-    <Folder Include="Mantenedores\FichaTecnica\" />
-    <Folder Include="Mantenedores\Novedades\" />
-    <Folder Include="Mantenedores\Productos\" />
-    <Folder Include="Mantenedores\Recetas\" />
-    <Folder Include="Mantenedores\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
