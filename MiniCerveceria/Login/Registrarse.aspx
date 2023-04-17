@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>MiniCerveceria</title>
+    <link href="~/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -196,17 +197,21 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
 </body>
 </html>
-<script>
+<script type="text/javascript">
     $(document).ready(function(){
-        $("#btnRegistrar").on('click', function () {
-            var confirmarContrasena = $(this).val().trim();
-            var contrasena = $("txtContrasena").val().trim();
+        $("#btnRegistrar").on('click', function (e) {
+            var confirmarContrasena = $('#txtConfirmarContrasena').val().trim();
+            var contrasena = $("#txtContrasena").val().trim();
 
             if (contrasena != confirmarContrasena) {
-                $(this).val("");
+                $('#txtConfirmarContrasena').val("");
+                $("#txtContrasena").val("");
                 alert("Las contraseñas no coinciden ingrese nuevamente");
+                return false;
+                e.preventDefault();
             };
         });
     });
