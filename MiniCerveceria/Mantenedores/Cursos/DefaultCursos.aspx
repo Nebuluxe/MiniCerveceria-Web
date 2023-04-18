@@ -27,10 +27,10 @@
 	  </div>
 	</nav>
 	<br />
-	<div id="TablaProductos" class="container">
+	<div id="TablaProductos" class="container" align="center">
 		<div class="row">
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -47,7 +47,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -81,7 +81,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -101,7 +101,7 @@
 		<br />
 		<div class="row">
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -118,7 +118,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -135,7 +135,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
@@ -152,7 +152,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3">
-				<div class="card" height="250" width="250">
+				<div class="card" style="width: 90%;">
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>

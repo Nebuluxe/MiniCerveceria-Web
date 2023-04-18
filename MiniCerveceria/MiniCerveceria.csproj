@@ -162,13 +162,25 @@
     <Content Include="Imagenes\MiniCerveceriaLogoOriginaSolo.png" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Login\Registrarse.aspx" />
+    <Content Include="Mantenedores\Cursos\CrearCurso.aspx" />
     <Content Include="Mantenedores\Cursos\DefaultCursos.aspx" />
+    <Content Include="Mantenedores\Cursos\VerCurso.aspx" />
     <Content Include="Mantenedores\Default.aspx" />
+    <Content Include="Mantenedores\Empresas\CrearEmpresa.aspx" />
     <Content Include="Mantenedores\Empresas\DefaultEmpresas.aspx" />
+    <Content Include="Mantenedores\Empresas\VerEmpresa.aspx" />
+    <Content Include="Mantenedores\Novedades\CrearNovedades.aspx" />
     <Content Include="Mantenedores\Novedades\DefaultNovedades.aspx" />
+    <Content Include="Mantenedores\Novedades\VerNovedades.aspx" />
+    <Content Include="Mantenedores\Productos\CrearProducto.aspx" />
     <Content Include="Mantenedores\Productos\DefaultProductos.aspx" />
+    <Content Include="Mantenedores\Productos\VerProducto.aspx" />
+    <Content Include="Mantenedores\Recetas\CrearReceta.aspx" />
     <Content Include="Mantenedores\Recetas\DefaultRecetas.aspx" />
+    <Content Include="Mantenedores\Recetas\VerReceta.aspx" />
+    <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
+    <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -269,12 +281,26 @@
     <Compile Include="Login\Registrarse.aspx.designer.cs">
       <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Cursos\CrearCurso.aspx.cs">
+      <DependentUpon>CrearCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Cursos\CrearCurso.aspx.designer.cs">
+      <DependentUpon>CrearCurso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\Cursos\DefaultCursos.aspx.cs">
       <DependentUpon>DefaultCursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Cursos\DefaultCursos.aspx.designer.cs">
       <DependentUpon>DefaultCursos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Cursos\VerCurso.aspx.cs">
+      <DependentUpon>VerCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Cursos\VerCurso.aspx.designer.cs">
+      <DependentUpon>VerCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -283,12 +309,33 @@
     <Compile Include="Mantenedores\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Empresas\CrearEmpresa.aspx.cs">
+      <DependentUpon>CrearEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Empresas\CrearEmpresa.aspx.designer.cs">
+      <DependentUpon>CrearEmpresa.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.cs">
       <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.designer.cs">
       <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Empresas\VerEmpresa.aspx.cs">
+      <DependentUpon>VerEmpresa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Empresas\VerEmpresa.aspx.designer.cs">
+      <DependentUpon>VerEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\CrearNovedades.aspx.cs">
+      <DependentUpon>CrearNovedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\CrearNovedades.aspx.designer.cs">
+      <DependentUpon>CrearNovedades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.cs">
       <DependentUpon>DefaultNovedades.aspx</DependentUpon>
@@ -297,12 +344,40 @@
     <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
       <DependentUpon>DefaultNovedades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Novedades\VerNovedades.aspx.cs">
+      <DependentUpon>VerNovedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\VerNovedades.aspx.designer.cs">
+      <DependentUpon>VerNovedades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\CrearProducto.aspx.cs">
+      <DependentUpon>CrearProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\CrearProducto.aspx.designer.cs">
+      <DependentUpon>CrearProducto.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\Productos\DefaultProductos.aspx.cs">
       <DependentUpon>DefaultProductos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Productos\DefaultProductos.aspx.designer.cs">
       <DependentUpon>DefaultProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\VerProducto.aspx.cs">
+      <DependentUpon>VerProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Productos\VerProducto.aspx.designer.cs">
+      <DependentUpon>VerProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Recetas\CrearReceta.aspx.cs">
+      <DependentUpon>CrearReceta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Recetas\CrearReceta.aspx.designer.cs">
+      <DependentUpon>CrearReceta.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Recetas\DefaultRecetas.aspx.cs">
       <DependentUpon>DefaultRecetas.aspx</DependentUpon>
@@ -311,12 +386,33 @@
     <Compile Include="Mantenedores\Recetas\DefaultRecetas.aspx.designer.cs">
       <DependentUpon>DefaultRecetas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Recetas\VerReceta.aspx.cs">
+      <DependentUpon>VerReceta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Recetas\VerReceta.aspx.designer.cs">
+      <DependentUpon>VerReceta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\CrearUsuario.aspx.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\CrearUsuario.aspx.designer.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.cs">
       <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.designer.cs">
       <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.cs">
+      <DependentUpon>VerUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
+      <DependentUpon>VerUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
