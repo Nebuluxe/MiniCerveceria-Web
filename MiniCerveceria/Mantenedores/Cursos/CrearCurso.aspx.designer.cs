@@ -15,12 +15,21 @@ namespace MiniCerveceria.Mantenedores.Cursos
     {
 
         /// <summary>
-        /// Control lblNombreProducto.
+        /// Control CambioNomVentana.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombreProducto;
+        protected global::System.Web.UI.WebControls.Label CambioNomVentana;
+
+        /// <summary>
+        /// Control lblNombreItem.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNombreItem;
     }
 }
