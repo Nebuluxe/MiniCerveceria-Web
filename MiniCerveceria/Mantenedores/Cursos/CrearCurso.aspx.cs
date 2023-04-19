@@ -14,7 +14,16 @@ namespace MiniCerveceria.Mantenedores.Cursos
         {
             string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
 
-            lblNombreProducto.Text = uid == "" ? "Curso xxxxxx" : uid;
+            lblNombreItem.Text = uid == "" ? "Nuevo Curso" : uid;
+
+            if (uid != "")
+            {
+                CambioNomVentana.Text = "Editar";
+            }
+            else
+            {
+                CambioNomVentana.Text = "Crear";
+            }
         }
     }
 }

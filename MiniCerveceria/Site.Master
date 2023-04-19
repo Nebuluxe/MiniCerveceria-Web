@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Mini Cerveceria</title>
-
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -25,6 +24,9 @@
 			.optionNav{
 				color: #ffffff 
 			}
+            .optionNavMaestro{
+    			color: #ffffff 
+            }
             #offcanvasExample{
                 background: rgba(0,0,0,.8)
             }
@@ -52,7 +54,8 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-		<nav class="navbar navbar-expand navbar-toggleable-sm ">
+        <a class="visually-hidden" id="pagetitle"><%: Page.Title %></a>
+		<nav class="navbar navbar-expand navbar-toggleable-sm " id="DefaultNav">
             <div class="container">
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-brand">
@@ -71,7 +74,7 @@
                         <li class="nav-item">
                             <a class="nav-link" runat="server" href="~/Default">
                                 <span class="optionNav">
-                                    <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
+                                    <img src="/Imagenes/Iconos/logoCerveza8.png" height="40" class="imgDefault"> 
                                 MiniCerveceria</span>
                             </a>
                         </li>
@@ -94,11 +97,41 @@
                             <a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a>
 						</li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">
-                               <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40"> 
-                            </a>                   
-                    </form>
+                    <a class="nav-link optionNav" runat="server" href="~/Contact">
+                        <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault"> 
+                    </a>                   
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand navbar-toggleable-sm visually-hidden" id="MantenedorNav">
+            <div class="container">
+                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                    <div class="navbar-brand">
+                        <label class="flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            <img src="/Imagenes/Iconos/MenuHamburguesa.png" height="30"> 
+		                </label>
+                    </div>
+
+                    <a id="A1" class="nav-link visually-hidden" runat="server" href="~/Default">
+                        <span class="optionNav">
+                            <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
+                        MiniCerveceria</span>
+                    </a>
+
+                    <ul class="navbar-nav justify-content-center flex-grow-1" style="align-items:center">
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <img src="/Imagenes/Iconos/logoCerveza4.png" height="40">
+                                <span> </span>
+                                <span class="optionNavMaestro">
+                                    <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
+                                    Administracion
+                                </span>
+                                <span> </span>
+                                <img src="/Imagenes/Iconos/logoCerveza2.png" height="40">
+                            </a>
+                        </li>
+                    </ul>                 
                 </div>
             </div>
         </nav>
@@ -111,7 +144,9 @@
 		  </div>
 		  <div class="offcanvas-body">
             <div class="visually-hidden" id="OpcionesNavSideMenu">
+
                 <br />
+
                 <ul class="list-group">
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cursos</a>
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Maltas</a>
@@ -121,18 +156,21 @@
                     <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Recetas</a>
                 </ul>
             </div>
+
             <br />
-            <ul class="list-group">
+
+            <ul class="list-group" id="OpcionesSideDefault">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Favoritos</a>
                 <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lista de deseados</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Historial de compras</a>
-                <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Mantenedores</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cuenta</a>
             </ul>
-            <br />
-            <ul class="list-group">
-              <a href="/Login/Login.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Iniciar sesion</a>
+            <ul class="list-group visually-hidden" id="OpcionesSideMantenedor">
+                <a href="~/Default" runat="server" class="btn btn-outline-light">Volver a la Web</a>
             </ul>
+
+            <br /><br /><br />
+
             <div align="center">
                 <br />
                 <br />
@@ -141,6 +179,18 @@
                 <br />
                 <h2 class="optionNav">MiniCerveceria</h2>
             </div>
+
+            <br /><br /><br /><br /><br /><br /><br />
+
+            <ul class="list-group" style="text-align: center">
+              <a href="/Login/Login.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav" style="color: #ffffff">Iniciar sesion</a>
+            </ul>
+
+            <br /><br />
+
+            <ul class="list-group" style="text-align: center" id="AdminOption">
+                <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Administracion de la Web</a>
+            </ul>
 		  </div>
 		</div>
         <div class="container body-content">
@@ -149,7 +199,7 @@
             <hr />
         </div>
     </form>
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white" id="footerDefault">
         <div style="background-color: rgb(0, 0, 0, .6);">
             <div class="container p-4 pb-0">
                 <section class="mb-4">
@@ -223,9 +273,18 @@
                     <img src="/Imagenes/Banner-WebPay.png" height="80">
                 </section>
             </div>
-
             <div class="text-center p-3" style="background-color: rgba(0,0,0,.8);">
             © <%: DateTime.Now.Year %> Copyright © MiniCerveceria
+            </div>
+        </div>
+    </footer>
+    <footer class="bg-dark text-center text-white visually-hidden" id="footerMantenedor">
+        <div style="background-color: rgb(0, 0, 0, .6);">
+            <div class="container p-4 pb-0">
+                <br /><br /><br /><br /><br /><br /><br />
+            </div>
+            <div class="text-center p-3" style="background-color: rgba(0,0,0,.8);">
+                <br /><br />
             </div>
         </div>
     </footer>
@@ -236,14 +295,52 @@
 </html>
 <script>
     $(document).ready(function () {
+        var page = $('#pagetitle').text();
+
+        if (page != "Mantenedores") {
+            $('#MantenedorNav').addClass('visually-hidden');
+            $('#DefaultNav').removeClass('visually-hidden');
+
+            $('#OpcionesSideMantenedor').addClass('visually-hidden'); 
+            $('#OpcionesSideDefault').removeClass('visually-hidden'); 
+
+            $('#footerMantenedor').addClass('visually-hidden');
+            $('#footerDefault').removeClass('visually-hidden'); 
+
+            $('#AdminOption').removeClass('visually-hidden'); 
+        }
+
+        if (page == "Mantenedores") {
+            $('#MantenedorNav').removeClass('visually-hidden');
+            $('#DefaultNav').addClass('visually-hidden');
+
+            $('#OpcionesSideMantenedor').removeClass('visually-hidden');
+            $('#OpcionesSideDefault').addClass('visually-hidden'); 
+
+            $('#footerMantenedor').removeClass('visually-hidden');
+            $('#footerDefault').addClass('visually-hidden'); 
+
+            $('#AdminOption').addClass('visually-hidden'); 
+        }
+
+        if ($(window).width() >= 1000) {
+            $('#OpcionesNav').removeClass('visually-hidden');
+            $('#HomeNavPequeño').addClass('visually-hidden');
+            $('#OpcionesNavSideMenu').addClass('visually-hidden');
+        } else {
+            $('#OpcionesNav').addClass('visually-hidden');
+            $('#HomeNavPequeño').removeClass('visually-hidden');
+            $('#OpcionesNavSideMenu').removeClass('visually-hidden');
+        }
+
         $(window).resize(function () {
-            cambio();
+            if (page != "Mantenedores") {
+                cambio();
+            }
         });
-
-        cambio();
-
+        
         function cambio() {
-            if ($(window).width() >= 700) {
+            if ($(window).width() >= 1000) {
                 $('#OpcionesNav').removeClass('visually-hidden'); 
                 $('#HomeNavPequeño').addClass('visually-hidden'); 
                 $('#OpcionesNavSideMenu').addClass('visually-hidden'); 

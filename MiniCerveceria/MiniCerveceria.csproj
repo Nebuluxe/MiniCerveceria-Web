@@ -128,6 +128,8 @@
     <Content Include="Imagenes\HomePage.jpg" />
     <Content Include="Imagenes\Iconos\BackButtonBlack.png" />
     <Content Include="Imagenes\Iconos\BackButtonWithe.png" />
+    <Content Include="Imagenes\Iconos\BotonGuardarBlack.png" />
+    <Content Include="Imagenes\Iconos\BotonGuardarWithe.png" />
     <Content Include="Imagenes\Iconos\btnAgregar.png" />
     <Content Include="Imagenes\Iconos\carrito-de-compras.png" />
     <Content Include="Imagenes\CarrouselHome2.jpg" />
