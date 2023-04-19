@@ -5,6 +5,14 @@
 		hover.HoverLetra{
 			color: #ffd800
 		}
+
+		.imgDefault{
+            visibility: hidden;
+        }
+
+		#footerDefault{
+			color:#ffffff
+		}
 	</style>
 	
 	<div class="row p-4">

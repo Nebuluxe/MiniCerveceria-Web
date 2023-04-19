@@ -32,6 +32,9 @@
 			font-size: 22px
 		}
 
+		#footerDefault{
+			color:#ffffff
+		}
 	</style>
     <nav id="barraNav" class="navbar bg-body-tertiary">
 	  <div class="container-fluid">
