@@ -9,13 +9,14 @@
     <meta name="generator" content="Hugo 0.104.2">
     <title>Carousel Template · Bootstrap v5.2</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/carousel/"/>
 
     
 
-    
+    <link rel="stylesheet" href="Scripts/home.css" />
 
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"/>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -70,27 +71,17 @@
     </style>
 
     
-    <!-- Custom styles for this template -->
-    <div id="carouselExample" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="Imagenes/CarrouselHome1.jpg" class="d-block w-100" alt="..." style="height: 700px">
+    <div class="contenedor">
+        <i class="fa-solid fa-angle-left"></i>
+        <div class="carrusel">
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
+            <asp:Image ImageUrl="#" ClientIDMode="Static" runat="server" />
         </div>
-        <div class="carousel-item">
-          <img src="Imagenes/CarrouselHome2.jpg" class="d-block w-100" alt="..." style="height: 700px">
-        </div>
-        <div class="carousel-item">
-          <img src="Imagenes/CarrouselHome3.jpg" class="d-block w-100" alt="..." style="height: 700px">
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+        <i class="fa-solid fa-angle-right"></i>
     </div>
     <br />
 

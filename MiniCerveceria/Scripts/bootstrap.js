@@ -8,7 +8,6 @@
   typeof define === 'function' && define.amd ? define(['@popperjs/core'], factory) :
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.bootstrap = factory(global.Popper));
 })(this, (function (Popper) { 'use strict';
-  window.Noty = require('noty');
   function _interopNamespace(e) {
     if (e && e.__esModule) return e;
     const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
