@@ -12,29 +12,6 @@
     <link href="/Scripts/noty.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-        .noty_effects_open {
-          opacity: 0;
-          transform: translate(50%);
-          animation: noty_anim_in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .noty_effects_close {
-          animation: noty_anim_out 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes noty_anim_in {
-          100% {
-            transform: translate(0);
-            opacity: 1;
-          }
-        }
-
-        @keyframes noty_anim_out {
-          100% {
-            transform: translate(50%);
-            opacity: 0;
-          }
-        }
         * {
             margin: 0;
             padding: 0;
@@ -221,7 +198,6 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
-    <script src="/Scripts/noty.js" type="text/javascript"></script>
 </body>
 </html>
 <script type="text/javascript">

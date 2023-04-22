@@ -13,12 +13,12 @@
 
     
 
-    <link rel="stylesheet" href="Scripts/home.css" />
+<%--    <link rel="stylesheet" href="Scripts/home.css" />--%>
 
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet"/>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
     <style>
-      .bd-placeholder-img {
+/*      .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
         -webkit-user-select: none;
@@ -67,7 +67,7 @@
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
-      }
+      }*/
     </style>
 
     
