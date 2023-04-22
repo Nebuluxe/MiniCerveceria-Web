@@ -186,7 +186,7 @@
               <a href="/Login/Login.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav" style="color: #ffffff">Iniciar sesion</a>
             </ul>
 
-            <br /><br />
+            <br />
 
             <ul class="list-group" style="text-align: center" id="AdminOption">
                 <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Administracion de la Web</a>

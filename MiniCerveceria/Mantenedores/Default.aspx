@@ -13,6 +13,18 @@
 		#footerDefault{
 			color:#ffffff
 		}
+
+		.optionNav{
+			color: #000000 
+		}
+
+        .imgDefault{
+            visibility: hidden;
+        }
+
+		#footerDefault{
+			color:#ffffff
+		}
 	</style>
 	
 	<div class="row p-4">
