@@ -124,6 +124,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="GlobalCss\Mantenedores.css" />
+    <Content Include="GlobalCss\PisaBootstrap.css" />
     <Content Include="Imagenes\Banner-WebPay.png" />
     <Content Include="Imagenes\CarrouselHome1.jpg" />
     <Content Include="Imagenes\CarrouselHome3.jpg" />

@@ -11,7 +11,7 @@
 
         <link rel="stylesheet" href="Scripts/home.css" />
 
-        <link href="" rel="stylesheet" />
+        <link href="GlobalCss/PisaBootstrap.css" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
         <style>
