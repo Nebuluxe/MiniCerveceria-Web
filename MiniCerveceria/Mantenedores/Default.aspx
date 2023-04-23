@@ -1,30 +1,11 @@
 ﻿<%@ Page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">	
+
+	<link href="/GlobalCss/Mantenedores.css" rel="stylesheet" type="text/css">
+	
 	<style>
-		hover.HoverLetra{
-			color: #ffd800
-		}
 
-		.imgDefault{
-            visibility: hidden;
-        }
-
-		#footerDefault{
-			color:#ffffff
-		}
-
-		.optionNav{
-			color: #000000 
-		}
-
-        .imgDefault{
-            visibility: hidden;
-        }
-
-		#footerDefault{
-			color:#ffffff
-		}
 	</style>
 	
 	<div class="row p-4">
@@ -39,56 +20,98 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-lg-4">
+		    <div class="card">
+				<div class="card-body">
+				<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 300px" class="btn btn-dark" >Cursos</a><span> </span>
+				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosBlack.png" height="45" width="45">
+				</div>
+			</div>
+			<br />
+			<div class="card">
+				<div class="card-body">
+				<a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark" >Productos</a><span> </span>
+				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosBlack.png" height="45" width="45">
+				</div>
+			</div>
+			<br />
+			<div class="card">
+				<div class="card-body">
+				<a runat="server" href="~/Mantenedores/Empresas/DefaultEmpresas.aspx" style="width: 300px" class="btn btn-dark" >Empresas Asociadas</a><span> </span>
+				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/EmpresasAsociadasBlack.png" height="45" width="45">
+				</div>
+			</div>
+			<br />
+			<div class="card">
+				<div class="card-body">
+				<a runat="server" href="~/Mantenedores/Novedades/DefaultNovedades.aspx" style="width: 300px" class="btn btn-dark" >Novedades</a><span> </span>
+				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/NovedadesBlack.png" height="45" width="45">
+				</div>
+			</div>
+			<br />
+			<div class="card">
+				<div class="card-body">
+					<a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 300px" class="btn btn-dark" >Recetas</a><span> </span>
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasBlack.png" height="45" width="45">
+				</div>
+			</div>
+			<br />
+			<div class="card">
+				<div class="card-body">
+					<a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark" >Usuarios</a><span> </span>
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosBlack.png" height="45" width="45">
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8">
+			<br />
+			<br />
+			<br />
+			<canvas id="grafico"> </canvas>
+		</div>
+	</div>
 
 
-	<div class="card">
-		<div class="card-body">
-		<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 300px" class="btn btn-dark HoverLetra" >Cursos</a><span> </span>
-		<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosBlack.png" height="45" width="45">
-		</div>
-	</div>
-	<br />
-	<div class="card">
-		<div class="card-body">
-		<a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark" >Productos</a><span> </span>
-		<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosBlack.png" height="45" width="45">
-		</div>
-	</div>
-	<br />
-	<div class="card">
-		<div class="card-body">
-		<a runat="server" href="~/Mantenedores/Empresas/DefaultEmpresas.aspx" style="width: 300px" class="btn btn-dark" >Empresas Asociadas</a><span> </span>
-		<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/EmpresasAsociadasBlack.png" height="45" width="45">
-		</div>
-	</div>
-	<br />
-	<div class="card">
-		<div class="card-body">
-		<a runat="server" href="~/Mantenedores/Novedades/DefaultNovedades.aspx" style="width: 300px" class="btn btn-dark" >Novedades</a><span> </span>
-		<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/NovedadesBlack.png" height="45" width="45">
-		</div>
-	</div>
-	<br />
-	<div class="card">
-		<div class="card-body">
-			<a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 300px" class="btn btn-dark" >Recetas</a><span> </span>
-			<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasBlack.png" height="45" width="45">
-		</div>
-	</div>
-	<br />
-	<div class="card">
-		<div class="card-body">
-			<a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark" >Usuarios</a><span> </span>
-			<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosBlack.png" height="45" width="45">
-		</div>
-	</div>
+	<script src="/Scripts/chart.js"></script>
 	<script>
         $(document).ready(function () {
             $(window).resize(function () {
                 cambio();
             });
 
-            cambio();
+			cambio();
+
+
+            // Datos para el gráfico
+            var datos = {
+                labels: ['Cursos', 'Productos'],
+                datasets: [{
+                    label: 'Ventas Totales ',
+                    data: [1500000, 2000000],
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo de las barras
+                    borderColor: 'rgba(75, 192, 192, 1)', // Color del borde de las barras
+                    borderWidth: 1 // Ancho del borde de las barras
+                }]
+            };
+
+            // Configuración del gráfico
+            var configuracion = {
+                type: 'bar', // Tipo de gráfico de barras
+				data: datos,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true // Empezar en el eje Y desde cero
+                        }
+                    }
+                }
+            };
+
+            // Crear el gráfico con jQuery
+			var ctx = document.getElementById('grafico').getContext('2d');
+
+            var grafico = new Chart(ctx, configuracion);
 
             function cambio() {
                 if ($(window).width() >= 450) {

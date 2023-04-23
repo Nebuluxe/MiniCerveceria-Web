@@ -11,7 +11,18 @@ namespace MiniCerveceria.Mantenedores.Recetas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string uid = Request.QueryString["ui"] != null ? Request.QueryString["uid"] : "";
 
+            lblNombreItem.Text = uid == "" ? "Nueva Receta" : uid;
+
+            if (uid != "")
+            {
+                CambioNomVentana.Text = "Editar";
+            }
+            else 
+            {
+                CambioNomVentana.Text = "Crear";
+            }
         }
     }
 }

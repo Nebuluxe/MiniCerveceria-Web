@@ -135,9 +135,10 @@
                 </div>
             </div>
         </nav>
+
 	    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		  <div class="offcanvas-header">
-            <h3 class="optionNav">Menu</h3>
+            <h3 style="color: #ffffff">Menu</h3>
             <a type="button" data-bs-dismiss="offcanvas">
                <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
             </a>
@@ -173,7 +174,7 @@
 
             <div align="center">
                 <br />
-                <br />
+                <br />             
                 <img src="/Imagenes/Iconos/logoCerveza8.png" height="160">
                 <br />
                 <br />
@@ -195,6 +196,7 @@
 		</div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
+
             </asp:ContentPlaceHolder>
             <hr />
         </div>

@@ -122,6 +122,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="GlobalCss\Mantenedores.css" />
     <Content Include="Imagenes\Banner-WebPay.png" />
     <Content Include="Imagenes\CarrouselHome1.jpg" />
     <Content Include="Imagenes\CarrouselHome3.jpg" />
@@ -212,6 +213,8 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\noty.css.map" />
     <None Include="Scripts\noty.js.map" />
     <Content Include="Scripts\jquery-3.4.1.js" />
