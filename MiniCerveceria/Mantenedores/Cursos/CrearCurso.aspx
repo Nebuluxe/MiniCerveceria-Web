@@ -1,13 +1,10 @@
-﻿<%@ Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearCurso.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Cursos.CrearCurso" %>
+﻿<%@page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearCurso.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Cursos.CrearCurso" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <style>
-		#barraNav{
-			background: #000000;
-			color: #ffffff;
-			border-radius: 15px;
-		}
-
+	
+	<link href="/GlobalCss/Mantenedores.css" rel="stylesheet" type="text/css">
+    
+	<style>
 		.FormCursoExterno{
 			background:#000000;
 			color: #ffffff;
@@ -23,19 +20,8 @@
 		.CardItem{
 			border-radius: 15px;
 		}
-
-		.optionNav{
-			color: #000000 
-		}
-
-        .imgDefault{
-            visibility: hidden;
-        }
-
-		#footerDefault{
-			color:#ffffff
-		}
 	</style>
+
 	<nav id="barraNav" class="navbar bg-body-tertiary">
 	  <div class="container-fluid">
 			<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx"> 
