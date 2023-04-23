@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="CarritoCompras\CarritoCompras.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -132,6 +133,10 @@
     <Content Include="Imagenes\Iconos\BotonGuardarBlack.png" />
     <Content Include="Imagenes\Iconos\BotonGuardarWithe.png" />
     <Content Include="Imagenes\Iconos\btnAgregar.png" />
+    <Content Include="Imagenes\Iconos\btnRestBlack.png" />
+    <Content Include="Imagenes\Iconos\btnRestWithe.png" />
+    <Content Include="Imagenes\Iconos\btnSumBlack.png" />
+    <Content Include="Imagenes\Iconos\btnSumWithe.png" />
     <Content Include="Imagenes\Iconos\carrito-de-compras.png" />
     <Content Include="Imagenes\CarrouselHome2.jpg" />
     <Content Include="Imagenes\Iconos\CervezaIcono.png" />
@@ -260,6 +265,13 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CarritoCompras\CarritoCompras.aspx.cs">
+      <DependentUpon>CarritoCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarritoCompras\CarritoCompras.aspx.designer.cs">
+      <DependentUpon>CarritoCompras.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

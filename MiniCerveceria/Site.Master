@@ -97,8 +97,8 @@
                             <a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a>
 						</li>
                     </ul>
-                    <a class="nav-link optionNav" runat="server" href="~/Contact">
-                        <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault"> 
+                    <a class="nav-link optionNav" runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
+                        <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault carritoImg"> 
                     </a>                   
                 </div>
             </div>
@@ -139,7 +139,7 @@
 	    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		  <div class="offcanvas-header">
             <h3 style="color: #ffffff">Menu</h3>
-            <a type="button" data-bs-dismiss="offcanvas">
+            <a href="#" data-bs-dismiss="offcanvas">
                <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
             </a>
 		  </div>
@@ -148,27 +148,27 @@
 
                 <br />
 
-                <ul class="list-group">
+                <div class="list-group">
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cursos</a>
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Maltas</a>
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lupulos</a>
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Levaduras</a>
                     <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Equipamiento</a>
                     <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Recetas</a>
-                </ul>
+                </div>
             </div>
 
             <br />
 
-            <ul class="list-group" id="OpcionesSideDefault">
+            <div class="list-group" id="OpcionesSideDefault">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Favoritos</a>
                 <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lista de deseados</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Historial de compras</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cuenta</a>
-            </ul>
-            <ul class="list-group visually-hidden" id="OpcionesSideMantenedor">
-                <a href="~/Default" runat="server" class="btn btn-outline-light">Volver a la Web</a>
-            </ul>
+            </div>
+            <div class="list-group visually-hidden" id="OpcionesSideMantenedor">
+                <a href="~/Default" runat="server" class="list-group-item list-group-item-action list-group-item-secondary volverHome" style="color: #ffffff;">Volver a la Web</a>
+            </div>
 
             <br /><br /><br />
 
@@ -181,17 +181,17 @@
                 <h2 style="color: #ffffff">MiniCerveceria</h2>
             </div>
 
-            <br /><br /><br /><br /><br /><br /><br />
+            <br /><br /><br />
 
-            <ul class="list-group" style="text-align: center">
-              <a href="/Login/Login.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav" style="color: #ffffff">Iniciar sesion</a>
-            </ul>
+            <div class="list-group" style="text-align: center">
+              <a href="/Login/Login.aspx" class="btn btn-outline-light">Iniciar sesion</a>
+            </div>
 
             <br />
 
-            <ul class="list-group" style="text-align: center" id="AdminOption">
-                <a runat="server" href="~/Mantenedores/Default.aspx" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Administracion de la Web</a>
-            </ul>
+            <div class="list-group" style="text-align: center" id="AdminOption">
+                <a runat="server" href="~/Mantenedores/Default.aspx" class="btn btn-outline-light">Administracion de la Web</a>
+            </div>
 		  </div>
 		</div>
         <div class="container body-content">
@@ -299,19 +299,6 @@
     $(document).ready(function () {
         var page = $('#pagetitle').text();
 
-        if (page != "Mantenedores") {
-            $('#MantenedorNav').addClass('visually-hidden');
-            $('#DefaultNav').removeClass('visually-hidden');
-
-            $('#OpcionesSideMantenedor').addClass('visually-hidden'); 
-            $('#OpcionesSideDefault').removeClass('visually-hidden'); 
-
-            $('#footerMantenedor').addClass('visually-hidden');
-            $('#footerDefault').removeClass('visually-hidden'); 
-
-            $('#AdminOption').removeClass('visually-hidden'); 
-        }
-
         if (page == "Mantenedores") {
             $('#MantenedorNav').removeClass('visually-hidden');
             $('#DefaultNav').addClass('visually-hidden');
@@ -323,6 +310,22 @@
             $('#footerDefault').addClass('visually-hidden'); 
 
             $('#AdminOption').addClass('visually-hidden'); 
+
+        } else {
+            $('#MantenedorNav').addClass('visually-hidden');
+            $('#DefaultNav').removeClass('visually-hidden');
+
+            $('#OpcionesSideMantenedor').addClass('visually-hidden');
+            $('#OpcionesSideDefault').removeClass('visually-hidden');
+
+            $('#footerMantenedor').addClass('visually-hidden');
+            $('#footerDefault').removeClass('visually-hidden');
+
+            $('#AdminOption').removeClass('visually-hidden');
+        }
+
+        if (page == "Carrito") {
+            $('.carritoImg').addClass('visually-hidden');
         }
 
         if ($(window).width() >= 1000) {
