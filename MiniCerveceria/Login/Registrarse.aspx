@@ -205,32 +205,6 @@
         $("#btnRegistrar").on('click', function (e) {
             var confirmarContrasena = $('#txtConfirmarContrasena').val().trim();
             var contrasena = $("#txtContrasena").val().trim();
-            var n = new Noty({
-                text: "Website under construction",
-                type: 'alert',
-                layout: 'center',
-                theme: 'bootstrap-v4',
-                modal: 'true',
-                buttons: [
-                    Noty.button("Probar notificación", "btn btn-primary", function () {
-                        noti.show();
-                        location.reload();
-                    }),
-                    Noty.button("No", "btn btn-primary ml-3", function () {
-                        checkAvailability = true;
-                        n.close();
-                    })],
-                animation: {
-                    open: 'animated fadeIn faster',
-                    close: 'animated fadeOut faster'
-                }
-            });
-            new Noty({
-                text: "Website under construction"
-            }).show();
-            var noti = new Noty({
-                text: 'Some notification text'
-            });
 
             if (contrasena != confirmarContrasena) {
                 $('#txtConfirmarContrasena').val("");
