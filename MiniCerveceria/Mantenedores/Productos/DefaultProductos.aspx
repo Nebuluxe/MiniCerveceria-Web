@@ -30,15 +30,15 @@
 				  <div >
 					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
 				  </div>
-					<div  align="center">
+					<div align="center">
 						<div class="card-body">
 						<h5 class="card-title">Card title</h5>
 						<div class="btn-group" role="group" >
-						  <a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=ItemPrueba1">Editar</a>
-						  <a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=ItemPrueba1">Ver</a>
-						  <button type="button" class="btn btn-outline-danger">Eliminar -</button>
+							<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=ItemPrueba1">Editar</a>
+							<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=ItemPrueba1">Ver</a>
+							<button type="button" class="btn btn-outline-danger">Eliminar -</button>
 						</div>
-					  </div>
+						</div>
 					</div>
 				</div>
 			</div>
