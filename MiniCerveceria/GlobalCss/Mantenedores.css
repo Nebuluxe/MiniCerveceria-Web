@@ -1,0 +1,17 @@
+﻿.optionNav {
+    color: #000000
+}
+
+.imgDefault {
+    visibility: hidden;
+}
+
+#footerDefault {
+    color: #ffffff
+}
+
+#barraNav {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 15px;
+}
