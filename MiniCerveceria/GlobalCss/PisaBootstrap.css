@@ -29,45 +29,45 @@
     transition: 0.2s;
 }
 
-    .card:hover {
-        background-color: #ffc107;
-        box-shadow: 0 0 5px rgb(255, 216, 0), 0 0 10px rgb(255, 216, 0), 0 0 15px rgb(255, 216, 0), 0 0 20px rgb(255, 216, 0);
-        transition-delay: 1s;
-        transition: 3s;
-    }
+.card:hover {
+    background-color: #ffc107;
+    box-shadow: 0 0 5px rgb(255, 216, 0), 0 0 10px rgb(255, 216, 0), 0 0 15px rgb(255, 216, 0), 0 0 20px rgb(255, 216, 0);
+    transition-delay: 1s;
+    transition: 3s;
+}
 
-        .card:hover .card-body {
-            transition-delay: 1s;
-            transition: 3s;
-        }
+.card:hover .card-body {
+    transition-delay: 1s;
+    transition: 3s;
+}
 
-        .card:hover h5 {
-            color: #000000;
-            transition-delay: 1s;
-            transition: 3s;
-            transform: translateY(-450%);
-        }
+.card:hover h5 {
+    color: #000000;
+    transition-delay: 1s;
+    transition: 3s;
+    transform: translateY(-450%);
+}
 
-        .card:hover p {
-            color: #000000;
-            transition-delay: 1s;
-            transition: 3s;
-            transform: translateY(-220%);
-        }
+.card:hover p {
+    color: #000000;
+    transition-delay: 1s;
+    transition: 3s;
+    transform: translateY(-220%);
+}
 
-        .card:hover .btn-neon {
-            color: #000000;
-            background: rgb(255, 216, 0);
-            box-shadow: 0 0 5px rgb(255, 216, 0), 0 0 10px rgb(255, 216, 0), 0 0 20px rgb(255, 216, 0), 0 0 30px rgb(255, 216, 0);
-            transition-delay: 1s;
-            transition: 3s;
-            transform: translateY(200%) scale( .9);
-        }
+.card:hover .btn-neon {
+    color: #000000;
+    background: rgb(255, 216, 0);
+    box-shadow: 0 0 5px rgb(255, 216, 0), 0 0 10px rgb(255, 216, 0), 0 0 20px rgb(255, 216, 0), 0 0 30px rgb(255, 216, 0);
+    transition-delay: 1s;
+    transition: 3s;
+    transform: translateY(200%) scale( .9);
+}
 
-            .card:hover .btn-neon span {
-                position: absolute;
-                display: block;
-            }
+.card:hover .btn-neon span {
+    position: absolute;
+    display: block;
+}
 
 .span1 {
     top: 0;

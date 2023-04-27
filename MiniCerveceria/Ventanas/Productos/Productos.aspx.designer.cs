@@ -11,7 +11,7 @@ namespace MiniCerveceria
 {
 
 
-    public partial class Contact
-    {
-    }
+	public partial class Productos
+	{
+	}
 }

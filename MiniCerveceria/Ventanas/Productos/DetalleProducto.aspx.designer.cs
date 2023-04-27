@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace MiniCerveceria
+namespace MiniCerveceria.Ventanas.Productos
 {
 
 
-	public partial class _Default
+	public partial class DetalleProducto
 	{
 	}
 }

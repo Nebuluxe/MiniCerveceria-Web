@@ -20,6 +20,7 @@
     <style>
 			.navbar{
 				background: rgba(0,0,0)
+                
 			}
 			.optionNav{
 				color: #ffffff 
@@ -32,6 +33,10 @@
             }
             .list-group-item{
                 background: rgba(0,0,0,.8)
+            }
+
+            *{
+                font-family: sans-serif
             }
 
     </style>
@@ -64,7 +69,7 @@
 		                </label>
                     </div>
 
-                    <a id="HomeNavPequeño" class="nav-link visually-hidden" runat="server" href="~/Default">
+                    <a id="HomeNavPequeño" class="nav-link visually-hidden" runat="server" href="~/Default.aspx">
                         <span class="optionNav">
                             <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
                         MiniCerveceria</span>
@@ -72,29 +77,29 @@
 
                     <ul id="OpcionesNav" class="navbar-nav justify-content-center flex-grow-1" style="align-items:center">
                         <li class="nav-item">
-                            <a class="nav-link" runat="server" href="~/Default">
+                            <a class="nav-link" runat="server" href="~/Default.aspx">
                                 <span class="optionNav">
                                     <img src="/Imagenes/Iconos/logoCerveza8.png" height="40" class="imgDefault"> 
                                 MiniCerveceria</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/About">Cursos</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Cursos/Cursos.aspx">Cursos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Maltas</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Productos/Productos.aspx">Maltas</a>
                         </li>
 						<li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Lupulos</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Productos/Productos.aspx">Lupulos</a>
 						</li>
 						<li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Levaduras</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Productos/Productos.aspx">Levaduras</a>
 						</li>
 						<li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Equipamiento</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Productos/Productos.aspx">Equipamiento</a>
 						</li>
                         <li class="nav-item">
-                            <a class="nav-link optionNav" runat="server" href="~/Contact">Recetas</a>
+                            <a class="nav-link optionNav" runat="server" href="~/Ventanas/Recetas/Recetas.aspx">Recetas</a>
 						</li>
                     </ul>
                     <a class="nav-link optionNav" runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
@@ -107,12 +112,10 @@
             <div class="container">
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-brand">
-                        <label class="flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                            <img src="/Imagenes/Iconos/MenuHamburguesa.png" height="30"> 
-		                </label>
+                         <a runat="server" href="~/Default.aspx" title="Salir de Administracion"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="40"></a> 
                     </div>
 
-                    <a id="A1" class="nav-link visually-hidden" runat="server" href="~/Default">
+                    <a id="A1" class="nav-link visually-hidden" runat="server" href="~/Default.aspx">
                         <span class="optionNav">
                             <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
                         MiniCerveceria</span>
@@ -138,7 +141,7 @@
 
 	    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 		  <div class="offcanvas-header">
-            <h3 class="optionNav">Menu</h3>
+            <h3 style="color: #ffffff">Menu</h3>
             <a href="#" type="button" data-bs-dismiss="offcanvas">
                <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
             </a>
@@ -160,14 +163,11 @@
 
             <br />
 
-            <div class="list-group" id="OpcionesSideDefault">
+            <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Favoritos</a>
                 <a runat="server" href="~/Contact" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Lista de deseados</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Historial de compras</a>
                 <a href="#" class="list-group-item list-group-item-action list-group-item-secondary optionNav">Cuenta</a>
-            </div>
-            <div class="list-group visually-hidden" id="OpcionesSideMantenedor">
-                <a href="~/Default" runat="server" class="list-group-item list-group-item-action list-group-item-secondary volverHome" style="color: #ffffff;">Volver a la Web</a>
             </div>
 
             <br /><br /><br />
@@ -201,7 +201,7 @@
             <hr />
         </div>
     </form>
-    <footer class="bg-dark text-center text-white" id="footerDefault">
+    <footer class="bg-dark text-center text-white border-top footer" id="footerDefault">
         <div style="background-color: rgb(0, 0, 0, .6)">
             <div class="container p-4 pb-0">
                 <section class="mb-4">
@@ -280,7 +280,7 @@
             </div>
         </div>
     </footer>
-    <footer class="bg-dark text-center text-white visually-hidden" id="footerMantenedor">
+    <footer class="bg-dark text-center text-white visually-hidden border-top footer" id="footerMantenedor">
         <div style="background-color: rgb(0, 0, 0, .6);">
             <div class="container p-4 pb-0">
                 <br /><br /><br /><br /><br /><br /><br />
@@ -303,9 +303,6 @@
             $('#MantenedorNav').removeClass('visually-hidden');
             $('#DefaultNav').addClass('visually-hidden');
 
-            $('#OpcionesSideMantenedor').removeClass('visually-hidden');
-            $('#OpcionesSideDefault').addClass('visually-hidden'); 
-
             $('#footerMantenedor').removeClass('visually-hidden');
             $('#footerDefault').addClass('visually-hidden'); 
 
@@ -314,9 +311,6 @@
         } else {
             $('#MantenedorNav').addClass('visually-hidden');
             $('#DefaultNav').removeClass('visually-hidden');
-
-            $('#OpcionesSideMantenedor').addClass('visually-hidden');
-            $('#OpcionesSideDefault').removeClass('visually-hidden');
 
             $('#footerMantenedor').addClass('visually-hidden');
             $('#footerDefault').removeClass('visually-hidden');

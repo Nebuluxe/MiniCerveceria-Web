@@ -100,9 +100,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
     <Content Include="CarritoCompras\CarritoCompras.aspx" />
-    <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -120,6 +118,11 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
+    <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
+    <Content Include="Imagenes\Iconos\UserIconBlack.png" />
+    <Content Include="Imagenes\Iconos\UserIconWithe.png" />
+    <Content Include="Ventanas\Cursos\Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -190,6 +193,10 @@
     <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
+    <Content Include="Ventanas\Perfil\PerfilUser.aspx" />
+    <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
+    <Content Include="Ventanas\Productos\Productos.aspx" />
+    <Content Include="Ventanas\Recetas\Recetas.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -221,8 +228,6 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
-    <Content Include="Scripts\noty.css.map" />
-    <None Include="Scripts\noty.js.map" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -258,13 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CarritoCompras\CarritoCompras.aspx.cs">
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
@@ -273,12 +271,12 @@
     <Compile Include="CarritoCompras\CarritoCompras.aspx.designer.cs">
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Ventanas\Cursos\Cursos.aspx.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Ventanas\Cursos\Cursos.aspx.designer.cs">
+      <DependentUpon>Cursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -437,7 +435,35 @@
     <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
       <DependentUpon>VerUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Perfil\PerfilUser.aspx.cs">
+      <DependentUpon>PerfilUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Perfil\PerfilUser.aspx.designer.cs">
+      <DependentUpon>PerfilUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Productos\DetalleProducto.aspx.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Productos\DetalleProducto.aspx.designer.cs">
+      <DependentUpon>DetalleProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Productos\Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Productos\Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Ventanas\Recetas\Recetas.aspx.cs">
+      <DependentUpon>Recetas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Recetas\Recetas.aspx.designer.cs">
+      <DependentUpon>Recetas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

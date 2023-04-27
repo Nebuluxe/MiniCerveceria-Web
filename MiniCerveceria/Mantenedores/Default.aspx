@@ -57,12 +57,29 @@
 				</div>
 			</div>
 			<br />
+			<br />
+			<div class="row p-4">
+				<div class="col-12 text-center  animated infinite pulse">
+					<div class="row">
+						<div class="col-lg-3">
+							<img src="/Imagenes/Iconos/UserIconBlack.png" height="50" width="50">
+						</div>
+						<div class="col-lg-1">
+							<strong class="titulo" style="font-size:1.9em; color: #000000;">Usuarios</strong>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="card">
 				<div class="card-body">
 					<a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark" >Usuarios</a><span> </span>
 					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosBlack.png" height="45" width="45">
 				</div>
 			</div>
+			<br />
+			<br />
+			<br />
+			<br />
 		</div>
 		<div class="col-lg-8">
 			<br />
@@ -71,7 +88,6 @@
 			<canvas id="grafico"> </canvas>
 		</div>
 	</div>
-
 
 	<script src="/Scripts/chart.js"></script>
 	<script>
