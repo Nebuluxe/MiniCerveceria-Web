@@ -22,6 +22,9 @@
 				background: rgba(0,0,0)
                 
 			}
+            .optionNav:hover{
+                color:#ffd800
+            }
 			.optionNav{
 				color: #ffffff 
 			}
@@ -60,12 +63,12 @@
             </Scripts>
         </asp:ScriptManager>
         <a class="visually-hidden" id="pagetitle"><%: Page.Title %></a>
-		<nav class="navbar navbar-expand navbar-toggleable-sm " id="DefaultNav">
+		<nav class="navbar navbar-expand navbar-toggleable-sm"  id="DefaultNav">
             <div class="container">
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-brand">
                         <label class="flex_column" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                            <img src="/Imagenes/Iconos/MenuHamburguesa.png" height="30"> 
+                            <img class="imgDefault" src="/Imagenes/Iconos/MenuHamburguesa.png" height="30"> 
 		                </label>
                     </div>
 

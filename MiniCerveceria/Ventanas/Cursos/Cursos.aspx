@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Cursos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Cursos.aspx.cs" Inherits="MiniCerveceria.Cursos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+        <br /><br /><br />
 
         <hr class="featurette-divider">
 
@@ -41,5 +42,7 @@
                 </div>
             </div>
         </div>
+
+        <br /><br /><br />
 
 </asp:Content>

@@ -45,6 +45,7 @@
 								<th scope="row">Cantiddad</th>
 								<th scope="row">Precio Unitario</th>
 								<th scope="row">Precio Total</th>
+								<th scope="row"><span></span></th>
 							</tr>
 							</thead>
 							<tbody>
@@ -53,24 +54,28 @@
 								<td scope="row">1 <a href="#"><img src="/Imagenes/Iconos/btnSumWithe.png" height="20" width="20"/></a><span> </span><a href="#"><img src="/Imagenes/Iconos/btnRestWithe.png" height="20" width="20"/></a></td>
 								<td scope="row">$10.000</td>
 								<td>$10.000</td>
+								<td scope="row"><a href="#"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="20" width="20"/></a></td>
 							</tr>
 							<tr>
 								<td colspan="2">Producto xx x x</td>
 								<td scope="row">1 <a href="#"><img src="/Imagenes/Iconos/btnSumWithe.png" height="20" width="20"/></a><span> </span><a href="#"><img src="/Imagenes/Iconos/btnRestWithe.png" height="20" width="20"/></a></td>
 								<td scope="row">$9.000</td>
 								<td>$9.000</td>
+								<td scope="row"><a href="#"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="20" width="20"/></a></td>
 							</tr>
 							<tr>
 								<td colspan="2">Producto xx x x</td>
 								<td scope="row">1 <a href="#"><img src="/Imagenes/Iconos/btnSumWithe.png" height="20" width="20"/></a><span> </span><a href="#"><img src="/Imagenes/Iconos/btnRestWithe.png" height="20" width="20"/></a></td>
 								<td scope="row">$9.000</td>
 								<td>$9.000</td>
+								<td scope="row"><a href="#"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="20" width="20"/></a></td>
 							</tr>
 							<tr>
 								<td colspan="2">Producto xx x x</td>
 								<td scope="row">1 <a href="#"><img src="/Imagenes/Iconos/btnSumWithe.png" height="20" width="20"/></a><span> </span><a href="#"><img src="/Imagenes/Iconos/btnRestWithe.png" height="20" width="20"/></a></td>
 								<td scope="row">$9.000</td>
 								<td>$9.000</td>
+								<td scope="row"><a href="#"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="20" width="20"/></a></td>
 							</tr>
 							</tbody>
 						</table>

@@ -118,8 +118,10 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
+    <Content Include="Imagenes\Iconos\Lupa.png" />
     <Content Include="Imagenes\Iconos\UserIconBlack.png" />
     <Content Include="Imagenes\Iconos\UserIconWithe.png" />
     <Content Include="Ventanas\Cursos\Cursos.aspx" />
