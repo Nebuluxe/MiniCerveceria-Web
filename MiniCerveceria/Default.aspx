@@ -14,18 +14,11 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="GlobalCss/PisaBootstrap.css" rel="stylesheet" />
         <style>
         </style>
     </head>
     <!-- Masthead-->
-    <header class="masthead">
-        <div class="container">
-            <div class="masthead-subheading">Bienvenidos a MiniCerveria!</div>
-            <div class="masthead-heading text-uppercase">Si quieres revisar nuestro catálogo</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#services">¡Presiona Aquí!</a>
-        </div>
-    </header>
+
     <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container">
