@@ -31,6 +31,14 @@
             
         }
 
+        #headMaster{
+            height: 350px;
+        }
+
+        .headContent{
+            display: none
+        }
+
     </style>
     <br /><br /><br />
 

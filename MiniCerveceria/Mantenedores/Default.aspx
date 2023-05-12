@@ -38,13 +38,6 @@
 			<br />
 			<div class="card">
 				<div class="card-body">
-				<a runat="server" href="~/Mantenedores/Empresas/DefaultEmpresas.aspx" style="width: 300px" class="btn btn-dark" >Empresas Asociadas</a><span> </span>
-				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/EmpresasAsociadasBlack.png" height="45" width="45">
-				</div>
-			</div>
-			<br />
-			<div class="card">
-				<div class="card-body">
 				<a runat="server" href="~/Mantenedores/Novedades/DefaultNovedades.aspx" style="width: 300px" class="btn btn-dark" >Novedades</a><span> </span>
 				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/NovedadesBlack.png" height="45" width="45">
 				</div>
