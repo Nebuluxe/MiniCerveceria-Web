@@ -109,7 +109,7 @@
 			<div class="col-lg-4">
 				<br />
 				<div class="card FormCursoExterno" id="ItemImagen" style="width: 100%;">
-					<img src="/Imagenes/Iconos/NoImage.png" class="CardItem">
+					<img src="/Imagenes/Iconos/NoImage.png" class="CardItem anodizado">
 				</div>
 				<div class="input-group visually-hidden">
 					<input type="file" class="form-control" id="imputFotoItem" aria-describedby="inputGroupFileAddon04" aria-label="Upload">

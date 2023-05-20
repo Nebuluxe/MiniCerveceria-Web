@@ -49,6 +49,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <br />
+                    <div class="card optionItem" style="font-size: 20px">
+                        <strong>Novedades</strong>
+                    </div>  
+                    <br />
                     <div class="card optionItem">
                         <strong>Ingredientes</strong>
                     </div>   

@@ -1,9 +1,12 @@
-﻿header.masthead {
+﻿
+/**************************************************IconoHamburgesaDelMenúResponsive**************************************************/
+
+header.masthead {
     padding-top: 10.5rem;
     padding-bottom: 6rem;
     text-align: center;
     color: #fff;
-    background-image: url("/Imagenes/CarrouselHome2.jpg");
+    background-image: url("/Imagenes/background.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
@@ -280,20 +283,6 @@ sub {
 sup {
     top: -0.5em;
 }
-
-a {
-    color: var(--bs-link-color);
-    text-decoration: underline;
-}
-
-    a:hover {
-        color: var(--bs-link-hover-color);
-    }
-
-    a:not([href]):not([class]), a:not([href]):not([class]):hover {
-        color: inherit;
-        text-decoration: none;
-    }
 
 pre,
 code,
@@ -12516,10 +12505,6 @@ p {
         color: #fff;
         letter-spacing: 0.0625em;
     }
-
-        #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-            color: #ffc800;
-        }
 
 @media (min-width: 992px) {
     #mainNav {

@@ -21,6 +21,14 @@
 	.carritoImg{
 		visibility: hidden;
 	}
+
+	#headMaster{
+        height: 350px;
+    }
+
+    .headContent{
+        display: none
+    }
 </style>
 		<br /><br /><br />
 		<div class="card FormCursoExterno">
