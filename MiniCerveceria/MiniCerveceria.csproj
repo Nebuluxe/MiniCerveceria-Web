@@ -206,9 +206,6 @@
     <Content Include="Mantenedores\Empresas\CrearEmpresa.aspx" />
     <Content Include="Mantenedores\Empresas\DefaultEmpresas.aspx" />
     <Content Include="Mantenedores\Empresas\VerEmpresa.aspx" />
-    <Content Include="Mantenedores\Novedades\CrearNovedades.aspx" />
-    <Content Include="Mantenedores\Novedades\DefaultNovedades.aspx" />
-    <Content Include="Mantenedores\Novedades\VerNovedades.aspx" />
     <Content Include="Mantenedores\Productos\CrearProducto.aspx" />
     <Content Include="Mantenedores\Productos\DefaultProductos.aspx" />
     <Content Include="Mantenedores\Productos\VerProducto.aspx" />
@@ -218,7 +215,6 @@
     <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
-    <Content Include="Ventanas\Novedades\Novedades.aspx" />
     <Content Include="Ventanas\Perfil\PerfilUser.aspx" />
     <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
     <Content Include="Ventanas\Productos\Productos.aspx" />
@@ -376,27 +372,6 @@
     <Compile Include="Mantenedores\Empresas\VerEmpresa.aspx.designer.cs">
       <DependentUpon>VerEmpresa.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\Novedades\CrearNovedades.aspx.cs">
-      <DependentUpon>CrearNovedades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Novedades\CrearNovedades.aspx.designer.cs">
-      <DependentUpon>CrearNovedades.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.cs">
-      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
-      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Novedades\VerNovedades.aspx.cs">
-      <DependentUpon>VerNovedades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Novedades\VerNovedades.aspx.designer.cs">
-      <DependentUpon>VerNovedades.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Mantenedores\Productos\CrearProducto.aspx.cs">
       <DependentUpon>CrearProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -459,13 +434,6 @@
     </Compile>
     <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
       <DependentUpon>VerUsuario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ventanas\Novedades\Novedades.aspx.cs">
-      <DependentUpon>Novedades.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ventanas\Novedades\Novedades.aspx.designer.cs">
-      <DependentUpon>Novedades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Perfil\PerfilUser.aspx.cs">
       <DependentUpon>PerfilUser.aspx</DependentUpon>
