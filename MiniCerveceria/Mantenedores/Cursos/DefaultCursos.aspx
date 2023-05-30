@@ -10,7 +10,6 @@
 			color: #ffffff;
 		}
 	</style>
-    <br />
 	<nav id="barraNav" class="navbar bg-body-tertiary">
 	  <div class="container-fluid">
 			<a runat="server" href="~/Mantenedores/Default.aspx"> 

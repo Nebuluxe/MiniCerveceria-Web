@@ -164,7 +164,7 @@
     <Content Include="Imagenes\about\2.jpg" />
     <Content Include="Imagenes\about\3.jpg" />
     <Content Include="Imagenes\about\4.jpg" />
-    <Content Include="Imagenes\close-icon.svg" />
+    <Content Include="Imagenes\ChileBannerRecetas.png" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
@@ -181,7 +181,6 @@
     <Content Include="Imagenes\logos\microsoft.svg" />
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
-    <Content Include="Imagenes\navbar-logo.svg" />
     <Content Include="Imagenes\background.jpg" />
     <Content Include="Imagenes\portfolio\1.jpg" />
     <Content Include="Imagenes\portfolio\2.jpg" />
@@ -247,9 +246,6 @@
     <Content Include="Mantenedores\Cursos\DefaultCursos.aspx" />
     <Content Include="Mantenedores\Cursos\VerCurso.aspx" />
     <Content Include="Mantenedores\Default.aspx" />
-    <Content Include="Mantenedores\Empresas\CrearEmpresa.aspx" />
-    <Content Include="Mantenedores\Empresas\DefaultEmpresas.aspx" />
-    <Content Include="Mantenedores\Empresas\VerEmpresa.aspx" />
     <Content Include="Mantenedores\Productos\CrearProducto.aspx" />
     <Content Include="Mantenedores\Productos\DefaultProductos.aspx" />
     <Content Include="Mantenedores\Productos\VerProducto.aspx" />
@@ -400,27 +396,6 @@
     </Compile>
     <Compile Include="Mantenedores\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\CrearEmpresa.aspx.cs">
-      <DependentUpon>CrearEmpresa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\CrearEmpresa.aspx.designer.cs">
-      <DependentUpon>CrearEmpresa.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.cs">
-      <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\DefaultEmpresas.aspx.designer.cs">
-      <DependentUpon>DefaultEmpresas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\VerEmpresa.aspx.cs">
-      <DependentUpon>VerEmpresa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Empresas\VerEmpresa.aspx.designer.cs">
-      <DependentUpon>VerEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Productos\CrearProducto.aspx.cs">
       <DependentUpon>CrearProducto.aspx</DependentUpon>

@@ -22,16 +22,6 @@ header.masthead {
     color: #fff !important
 }
 
-.sideItem {
-    padding: 5px;
-    color: #000;
-    font-family: Montserrat;
-    font-size: 17px;
-}
-
-    .sideItem:hover {
-        background-color: #ffc800
-    }
 
 @charset "UTF-8";
 /*!

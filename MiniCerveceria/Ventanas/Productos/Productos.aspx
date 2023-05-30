@@ -5,6 +5,7 @@
     <style>
         .optionItem:hover{
             background: #ffd800;
+            transition: 1s;
         }
 
         .optionItem{
@@ -30,6 +31,11 @@
             color: #000000;
             
         }
+
+/*        .ProductosNav{
+            text-shadow: 0 0 5px #fff, 0 0 5px #fff;
+            transition: 1s;
+        }*/
 
         #headMaster{
             height: 350px;
