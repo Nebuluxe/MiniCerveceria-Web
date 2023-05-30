@@ -69,39 +69,8 @@
                         <li class="nav-item equipamientoNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Equipamiento</a></li>
                     </ul>
                 </div>
-                <a runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
-                    <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault carritoImg"> 
-                </a>
             </div>
         </nav>
-
-        <nav class="navbar navbar-expand navbar-toggleable-sm visually-hidden cursor-scale" style="background-color: rgba(0,0,0);" id="MantenedorNav">
-            <div class="container cursor-scale">
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <div class="navbar-brand">
-                        <label class="flex_column" role="button">
-                            <a runat="server" href="~/Default"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="30"></a> 
-		                </label>
-                    </div>
-
-                    <ul class="navbar-nav justify-content-center flex-grow-1" style="align-items:center">
-                        <li class="nav-item">
-                            <a class="nav-link">
-                                <img src="/Imagenes/Iconos/logoCerveza4.png" height="40">
-                                <span> </span>
-                                <span class="optionNavMaestro" style="color: #ffffff">
-                                    <img src="/Imagenes/Iconos/logoCerveza8.png" height="40"> 
-                                    Administracion
-                                </span>
-                                <span> </span>
-                                <img src="/Imagenes/Iconos/logoCerveza2.png" height="40">
-                            </a>
-                        </li>
-                    </ul>                 
-                </div>
-            </div>
-        </nav>
-
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 		  <div class="offcanvas-header">
             <h3>Menu</h3>
@@ -353,72 +322,6 @@
 
     });
     $(document).ready(function () {
-        var page = $('#pagetitle').text();
-
-        if (page == "Mantenedores") {
-            
-            $('#MantenedorNav').removeClass('visually-hidden');
-            $('#mainNav').addClass('visually-hidden');
-
-            $('#headMaster').addClass('visually-hidden');
-
-            $('#OpcionesSideMantenedor').removeClass('visually-hidden');
-            $('#OpcionesSideDefault').addClass('visually-hidden');
-
-            $('#footerMantenedor').removeClass('visually-hidden');
-            $('#footerDefault').addClass('visually-hidden');
-
-            $('#AdminOption').addClass('visually-hidden');
-
-        } else {
-            $('#MantenedorNav').addClass('visually-hidden');
-            $('#mainNav').removeClass('visually-hidden');
-
-            $('#headMaster').removeClass('visually-hidden');
-
-            $('#OpcionesSideMantenedor').addClass('visually-hidden');
-            $('#OpcionesSideDefault').removeClass('visually-hidden');
-
-            $('#footerMantenedor').addClass('visually-hidden');
-            $('#footerDefault').removeClass('visually-hidden');
-
-            $('#AdminOption').removeClass('visually-hidden');
-        }
-
-        if (page == "Carrito") {
-            $('.carritoImg').addClass('visually-hidden');
-        }
-
-        if ($(window).width() >= 1000) {
-            $('#OpcionesNav').removeClass('visually-hidden');
-            $('#HomeNavPequeño').addClass('visually-hidden');
-            $('#OpcionesNavSideMenu').addClass('visually-hidden');
-        } else {
-            $('#OpcionesNav').addClass('visually-hidden');
-            $('#HomeNavPequeño').removeClass('visually-hidden');
-            $('#OpcionesNavSideMenu').removeClass('visually-hidden');
-        }
-
-        $(window).resize(function () {
-            if (page != "Mantenedores") {
-                cambio();
-            }
-        });
-
-        function cambio() {
-            if ($(window).width() >= 1000) {
-                $('#OpcionesNav').removeClass('visually-hidden');
-                $('#HomeNavPequeño').addClass('visually-hidden');
-                $('#OpcionesNavSideMenu').addClass('visually-hidden');
-            } else {
-                $('#OpcionesNav').addClass('visually-hidden');
-                $('#HomeNavPequeño').removeClass('visually-hidden');
-                $('#OpcionesNavSideMenu').removeClass('visually-hidden');
-            }
-        }
-
-        $('.clickMenu').click(function () {
-            $(this).toggleClass('open');
-        });
+        
     });
 </script>
