@@ -338,6 +338,8 @@
     <Compile Include="CarritoCompras\CarritoCompras.aspx.designer.cs">
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Ventanas\Cursos\Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -499,6 +501,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Modelos\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

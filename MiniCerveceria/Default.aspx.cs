@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Windows;
 using Oracle.ManagedDataAccess.Client;
+using MiniCerveceria.Modelos;
 
 namespace MiniCerveceria
 {   
