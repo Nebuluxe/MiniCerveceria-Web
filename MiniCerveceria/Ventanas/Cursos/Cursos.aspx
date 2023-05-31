@@ -90,11 +90,4 @@
         </div>
 
         <br /><br /><br />
-
-    <style>
-        .cursosNav{
-            text-shadow: 0 0 5px #fff, 0 0 5px #fff;
-            transition: 1s;
-        }
-    </style>
 </asp:Content>

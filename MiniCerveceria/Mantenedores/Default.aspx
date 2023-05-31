@@ -5,7 +5,17 @@
 	<link href="/GlobalCss/Mantenedores.css" rel="stylesheet" type="text/css">
 	
 	<style>
+		#mainNav {
+			display: none;
+		}
 
+		#headMaster {
+			display: none;
+		}
+
+		#footerDefault{
+			display:none;
+		}
 	</style>
 	
 	<div class="row p-4">

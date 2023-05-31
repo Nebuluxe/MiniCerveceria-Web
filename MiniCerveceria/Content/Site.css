@@ -106,7 +106,7 @@
     transition: .5s ease-in-out;
     cursor: pointer;
     border-radius: 20px;
-    margin: 90px auto;
+    margin: auto;
     width: 40px;
 }
 .menu-toggle:hover {
