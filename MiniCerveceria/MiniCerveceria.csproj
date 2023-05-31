@@ -255,6 +255,7 @@
     <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
+    <Content Include="Ventanas\Nosotros\Nosotros.aspx" />
     <Content Include="Ventanas\Perfil\PerfilUser.aspx" />
     <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
     <Content Include="Ventanas\Productos\Productos.aspx" />
@@ -325,6 +326,11 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="Ventanas\Usuario\Compras.aspx" />
+    <Content Include="Ventanas\Usuario\Cuenta.aspx" />
+    <Content Include="Ventanas\Usuario\Datos.aspx" />
+    <Content Include="Ventanas\Usuario\Favoritos.aspx" />
+    <Content Include="Ventanas\Usuario\Pedidos.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
@@ -462,6 +468,13 @@
     <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
       <DependentUpon>VerUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Nosotros\Nosotros.aspx.cs">
+      <DependentUpon>Nosotros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Nosotros\Nosotros.aspx.designer.cs">
+      <DependentUpon>Nosotros.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Perfil\PerfilUser.aspx.cs">
       <DependentUpon>PerfilUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -497,6 +510,41 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Compras.aspx.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Compras.aspx.designer.cs">
+      <DependentUpon>Compras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Cuenta.aspx.cs">
+      <DependentUpon>Cuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Cuenta.aspx.designer.cs">
+      <DependentUpon>Cuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Datos.aspx.cs">
+      <DependentUpon>Datos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Datos.aspx.designer.cs">
+      <DependentUpon>Datos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Favoritos.aspx.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Favoritos.aspx.designer.cs">
+      <DependentUpon>Favoritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Pedidos.aspx.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Usuario\Pedidos.aspx.designer.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

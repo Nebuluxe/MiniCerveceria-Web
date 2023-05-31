@@ -24,13 +24,14 @@
     <link href="GlobalCss/SiteMaster.css" rel="stylesheet" />
     
     <link href="/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
-</head>
-<body>
     <style>
         .menu-toggle i{
             background-color: #ffffff !important;
-            margin-right: 5px
+            margin: auto !important;
+        }
 
+        .menu-toggle {
+            margin: auto !important;
         }
         
         .OcultarElemento{
@@ -38,6 +39,8 @@
         }
 
     </style>
+</head>
+<body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -69,7 +72,7 @@
                 <a class="link" href="/Default.aspx"><h1 class="TituloNav">MiniCerveceria</h1></a>
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 btn-group-vertical">
                         <li class="nav-item cursosNav"><a class="nav-link" runat="server" href="Ventanas/Cursos/Cursos.aspx">Cursos</a></li>
                         <li class="nav-item recetasNav"><a class="nav-link" runat="server" href="Ventanas/Recetas/Recetas.aspx">Recetas</a></li>
                         <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Novedades</a></li>
@@ -124,23 +127,24 @@
 
                 <br />
 
-                <div class="list-group">
-                    <a href="#" class="btn btn-outline-light optionNav">Cursos</a>
-                    <a href="#" class="btn btn-outline-light optionNav">Maltas</a>
-                    <a href="#" class="btn btn-outline-light optionNav">Lupulos</a>
-                    <a href="#" class="btn btn-outline-light optionNav">Levaduras</a>
-                    <a href="#" class="btn btn-outline-light optionNav">Equipamiento</a>
-                    <a runat="server" href="~/Contacto" class="btn btn-outline-light optionNav">Recetas</a>
+                <div class="btn-group-vertical list-group" role="group" >
+                    <a runat="server" href="Ventanas/Cursos/Cursos.aspx" class="btn btn-outline-light optionNav">Cursos</a>
+                    <a runat="server" href="Ventanas/Recetas/Recetas.aspx" class="btn btn-outline-light optionNav">Recetas</a>
+                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Novedades</a>
+                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Ingredientes</a>
+                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Accesorios</a>
+                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Cristaleria</a>
+                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Equipamiento</a>
                 </div>
             </div>
 
             <br />
 
-            <div class="list-group" id="OpcionesSideDefault">
-                <a href="#" class="btn btn-outline-light optionNav">Favoritos</a>
-                <a runat="server" href="~/Contact" class="btn btn-outline-light optionNav">Lista de deseados</a>
-                <a href="#" class="btn btn-outline-light optionNav">Historial de compras</a>
-                <a href="#" class="btn btn-outline-light optionNav">Cuenta</a>
+            <div class="btn-group-vertical list-group" role="group" id="OpcionesSideDefault">
+                <a runat="server" href="~/Ventanas/Usuario/Compras" class="btn btn-outline-light optionNav">Historial de compras</a>
+                <a runat="server" href="~/Ventanas/Usuario/Favoritos" class="btn btn-outline-light optionNav">Favoritos</a>
+                <a runat="server" href="~/Ventanas/Usuario/Pedidos" class="btn btn-outline-light optionNav">Pedidos</a>
+                <a runat="server" href="~/Ventanas/Usuario/Cuenta" class="btn btn-outline-light optionNav">Cuenta</a>
             </div>
 
             <br /><br /><br />
@@ -157,7 +161,7 @@
             <br /><br /><br />
 
             <div class="list-group" style="text-align: center">
-              <a href="/Login/Login.aspx" class="btn btn-outline-light">Iniciar sesion</a>
+              <a href="/Login/Login.aspx" class="btn btn-outline-light">Cerrar sesion</a>
             </div>
 
             <br />
@@ -172,6 +176,8 @@
                 <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Productos</div>
                 <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Recetas</div>
                 <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Cursos</div>
+                <div id="HeadCarrito" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/carrito-de-compras.png" height="80"/> Carrito</div>
+
 
                 <div class="masthead-subheading cursor-scale headContent">Bienvenidos a MiniCerveria!</div>
                 <div class="masthead-heading text-uppercase headContent cursor-scale">Si quieres revisar nuestro catálogo</div>
@@ -181,6 +187,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
         <div class="container body-content">
+            <br /><br />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
 
             </asp:ContentPlaceHolder>
@@ -225,13 +232,7 @@
                             style="width: 60px; background-color: #7c4dff; height: 2px"
                             />
                         <p>
-                          <a href="#!" style="color:#ffffff">Nosotros</a>
-                        </p>
-                        <p>
-                          <a href="#!" style="color:#ffffff">Estado del pedido</a>
-                        </p>
-                        <p>
-                          <a href="#!" style="color:#ffffff">Por que hacer cerveza</a>
+                          <a runat="server" href="~/Ventanas/Nosotros/Nosotros" style="color:#ffffff">Nosotros</a>
                         </p>
                       </div>
                     </div>
@@ -376,6 +377,10 @@
 
         if (page == "Cursos") {
             $('#HeadCursos').removeClass('OcultarElemento');
+        }
+
+        if (page == "Carrito") {
+            $('#HeadCarrito').removeClass('OcultarElemento');
         }
 
         if (page == "Mantenedores") {

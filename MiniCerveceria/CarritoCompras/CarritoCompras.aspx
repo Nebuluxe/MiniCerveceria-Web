@@ -42,7 +42,7 @@
 								</a>
 							</div>
 							<div class="col-lg-8">
-								<img src="/Imagenes/Iconos/carrito-de-compras.png" height="40"/><span> </span><strong class="titulo" style="font-size:1.9em; color: #ffffff; text-align:center">Carrito</strong>
+
 							</div>
 						</div>
 						<br />
