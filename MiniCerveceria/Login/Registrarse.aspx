@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>MiniCerveceria</title>
     <link href="~/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
-    <link href="/Scripts/noty.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
         * {
@@ -32,8 +31,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 450px;
-            height: 550px;
+            width: 50vh;
+            height: 80vh;
             background: transparent;
             border: 5px solid #333;
             border-radius: 10px;
@@ -41,8 +40,8 @@
         }
 
         .wrapper:hover {
-            border: 5px solid rgb(255, 216, 0);
-            box-shadow: 0 0 20px rgb(255, 216, 0), inset 0 0 20px rgb(255, 216, 0);
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px #fff, inset 0 0 20px #fff
         }
 
         h2 {
@@ -53,12 +52,12 @@
         }
 
         .wrapper:hover h2 {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .input-box {
             position: relative;
-            width: 320px;
+            width: 40vh;
             margin: 30px 0;
         }
 
@@ -77,12 +76,12 @@
         }
 
         .wrapper:hover .input-box input {
-            border: 2px solid rgb(255, 216, 0);
-            box-shadow: 0 0 10px rgb(255, 216, 0), inset 0 0 10px rgb(255, 216, 0);
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px #fff, inset 0 0 10px #fff;
         }
 
         .input-box input::placeholder {
-            color: rgba(255, 255, 255, .3);
+            color: #fff;
         }
 
         .input-box .icon {
@@ -95,7 +94,7 @@
         }
 
         .wrapper:hover .input-box .icon {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .forgot-pass {
@@ -128,9 +127,9 @@
         }
 
         .wrapper:hover button {
-            background: rgb(255, 216, 0);
-            color: #000;
-            box-shadow: 0 0 10px rgb(255, 216, 0);
+            background: #fff;
+            color: #000000;
+            box-shadow: 0 0 10px #fff;
         }
 
         .register-link {
@@ -144,14 +143,14 @@
         }
 
         .register-link p a {
-            color: #333;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
             transition: .5s;
         }
 
         .wrapper:hover .register-link p a {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .register-link p a:hover {
@@ -174,11 +173,27 @@
             <h2>Registrarse</h2>
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
-                <asp:TextBox id="txtUsuario" ClientIDMode="Static" placeholder="Ingrese Usuario" required="required" runat="server" />
+                <asp:TextBox id="txtNombre" ClientIDMode="Static" placeholder="Ingrese Nombre" required="required" runat="server" />
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="person"></ion-icon></span>
+                <asp:TextBox id="txtApellido" ClientIDMode="Static" placeholder="Ingrese Apellido" required="required" runat="server" />
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                <asp:TextBox id="txtCorreo" ClientIDMode="Static" placeholder="Ingrese Correo Electrónico" required="required" runat="server" />
+                <asp:TextBox id="txtDireccion" ClientIDMode="Static" placeholder="Ingrese Dirección" required="required" runat="server" />
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <asp:TextBox id="txtTelefono" ClientIDMode="Static" placeholder="Ingrese Número Teléfono (ej:912345678)" required="required" runat="server" />
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <asp:TextBox id="txtFechaNacimiento" ClientIDMode="Static" placeholder="Ingrese Fecha Nacimiento (ej: 27-05-2001)" required="required" runat="server" />
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <asp:TextBox id="txtEmail" ClientIDMode="Static" placeholder="Ingrese Correo Electrónico" required="required" runat="server" />
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
@@ -190,7 +205,7 @@
             </div>
             <button id="btnRegistrar" type="submit">Registrarse</button>
             <div class="register-link">
-                <p>Ya tienes una cuenta registrada?<a href="/Login/Login.aspx">Inicia Sesión Ahora!</a></p>
+                <p>Ya tienes una cuenta registrada? <a href="/Login/Login.aspx">Inicia Sesión Ahora!</a></p>
             </div>
         </form>
     </div>
@@ -202,16 +217,29 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
-        $("#btnRegistrar").on('click', function (e) {
+        $("#btnRegistrar").click(function () {
             var confirmarContrasena = $('#txtConfirmarContrasena').val().trim();
             var contrasena = $("#txtContrasena").val().trim();
 
-            if (contrasena != confirmarContrasena) {
+            if (contrasena == confirmarContrasena) {
+                $.ajax({
+                    url: "Registrarse.aspx/GuardarUsuario",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    //data: JSON.stringify(parametros),
+                    success: function (response) {
+                        console.log("Tu usuario ha sido creado de pana po hrmn mio uwu"+" "+responde.d);
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("Error en la petición Ajax: " + error);
+                    }
+                });
+            }
+            else {
                 $('#txtConfirmarContrasena').val("");
                 $("#txtContrasena").val("");
-                n.show();
-                return false;
-                e.preventDefault();
+                console.log("ingresa una wea que coincida po perkin");
             };
         });
     });
