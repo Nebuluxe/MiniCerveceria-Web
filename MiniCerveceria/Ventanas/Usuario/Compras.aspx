@@ -82,7 +82,8 @@
       <div class="card-body">
         <div class="row">
             <div class="col-lg-4">
-                <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="row" id="Compra">
+                <br />
+                <div class="row" id="Compra">
                     <div class="col-lg-12">
                         <div class="card">
                           <div class="card-body">
@@ -168,8 +169,10 @@
                         </div>
                     </div>
                 </div>
+                <br />
             </div>
             <div class="col-lg-8">
+                <br />
                 <div class="card" id="compraDetalle">
                   <div class="card-body">
                     <div class="row">
@@ -177,6 +180,7 @@
                     </div>
                   </div>
                 </div>
+                <br />
             </div>
         </div>
       </div>
