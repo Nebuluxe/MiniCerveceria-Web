@@ -118,7 +118,7 @@
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 		  <div class="offcanvas-header">
             <h3>Menu</h3>
-            <a href="#" type="button" class="closeButton">
+            <a type="button" class="closeButton">
                <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
             </a>
 		  </div>

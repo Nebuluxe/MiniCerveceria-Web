@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Favoritos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="MiniCerveceria.Ventanas.Usuario.Favoritos" %>
+﻿<%@ Page Title="Cuenta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Favoritos.aspx.cs" Inherits="MiniCerveceria.Ventanas.Usuario.Favoritos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">	
       <style>
@@ -18,6 +18,13 @@
         .OptionSelected{
             background-color: rgb(  0, 0, 0);
         }
+        
+        #Favoritos {
+	        height: 550px;
+	        width: 100%;
+	        overflow-y: scroll;
+        }
+
     </style>
     <div class="card">
       <div class="card-body">
@@ -63,6 +70,171 @@
                 </div>
             </div>
         </div>
+      </div>
+    </div>
+    <br />
+    <div class="card" id="Favoritos">
+      <div class="card-body">
+          <br />
+          <div class="row">
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-3 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+            </div>
+          <br />
       </div>
     </div>
 </asp:Content>

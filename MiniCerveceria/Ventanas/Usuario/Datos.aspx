@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Datos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" Inherits="MiniCerveceria.Ventanas.Usuario.Datos" %>
+﻿<%@ Page Title="Cuenta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" Inherits="MiniCerveceria.Ventanas.Usuario.Datos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
@@ -65,6 +65,7 @@
     <br />
     <div class="card">
         <div class="card-body">
+            <br />
             <div class="row">
                 <div class="col-lg-4">
                     <label for="Nombre" class="form-label">Nombre</label>
@@ -117,6 +118,7 @@
             <div class="col-12">
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </div>
+            <br />
         </div>
     </div>
 </asp:Content>
