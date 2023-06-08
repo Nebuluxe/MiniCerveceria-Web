@@ -160,12 +160,10 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="GlobalCss\SiteMaster.css" />
-    <Content Include="Imagenes\about\1.jpg" />
-    <Content Include="Imagenes\about\2.jpg" />
-    <Content Include="Imagenes\about\3.jpg" />
-    <Content Include="Imagenes\about\4.jpg" />
     <Content Include="Imagenes\ChileBannerRecetas.png" />
     <Content Include="Imagenes\favicon.ico" />
+    <Content Include="Imagenes\FondoWeb.jpg" />
+    <Content Include="Imagenes\FondoWebNew.jpg" />
     <Content Include="Imagenes\header-bg.jpg" />
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
@@ -173,24 +171,9 @@
     <Content Include="Imagenes\Iconos\Lupa.png" />
     <Content Include="Imagenes\Iconos\UserIconBlack.png" />
     <Content Include="Imagenes\Iconos\UserIconWithe.png" />
-    <Content Include="Imagenes\brillo\brillo.png" />
-    <Content Include="Imagenes\brillo\brillog.png" />
-    <Content Include="Imagenes\logos\facebook.svg" />
-    <Content Include="Imagenes\logos\google.svg" />
-    <Content Include="Imagenes\logos\ibm.svg" />
-    <Content Include="Imagenes\logos\microsoft.svg" />
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
     <Content Include="Imagenes\background.jpg" />
-    <Content Include="Imagenes\portfolio\1.jpg" />
-    <Content Include="Imagenes\portfolio\2.jpg" />
-    <Content Include="Imagenes\portfolio\3.jpg" />
-    <Content Include="Imagenes\portfolio\4.jpg" />
-    <Content Include="Imagenes\portfolio\5.jpg" />
-    <Content Include="Imagenes\portfolio\6.jpg" />
-    <Content Include="Imagenes\team\1.jpg" />
-    <Content Include="Imagenes\team\2.jpg" />
-    <Content Include="Imagenes\team\3.jpg" />
     <Content Include="Ventanas\Cursos\Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -255,6 +238,7 @@
     <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
+    <Content Include="Ventanas\Cursos\DetalleCurso.aspx" />
     <Content Include="Ventanas\Nosotros\Nosotros.aspx" />
     <Content Include="Ventanas\Perfil\PerfilUser.aspx" />
     <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
@@ -467,6 +451,13 @@
     </Compile>
     <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
       <DependentUpon>VerUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Cursos\DetalleCurso.aspx.cs">
+      <DependentUpon>DetalleCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Cursos\DetalleCurso.aspx.designer.cs">
+      <DependentUpon>DetalleCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Nosotros\Nosotros.aspx.cs">
       <DependentUpon>Nosotros.aspx</DependentUpon>

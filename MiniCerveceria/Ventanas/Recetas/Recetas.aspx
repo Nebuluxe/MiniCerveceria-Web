@@ -2,13 +2,10 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-/*        .recetasNav{
-            text-shadow: 0 0 5px #fff, 0 0 5px #fff;
-            transition: 1s;
-        }*/
 
-        #headMaster{
+        header.masthead{
             height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/Imagenes/CarrouselHome1.jpg");
         }
 
         .headContent{

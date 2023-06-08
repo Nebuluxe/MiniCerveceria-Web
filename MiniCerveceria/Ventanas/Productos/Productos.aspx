@@ -37,13 +37,15 @@
             transition: 1s;
         }*/
 
-        #headMaster{
+        header.masthead{
             height: 350px;
+            background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/Imagenes/CarrouselHome3.jpg");
         }
 
         .headContent{
             display: none
         }
+
 
     </style>
     <br /><br /><br />

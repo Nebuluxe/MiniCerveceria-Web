@@ -1,97 +1,381 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="MiniCerveceria._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container marketing">
+    <style>
+        .TitlePage{
+            font-size: 3.25rem;
+            font-weight: 700;
+            line-height: 3.25rem;
+            margin-bottom: 2rem;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .SubTitlePage{
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.5rem;
+            margin-bottom: 25px;
+            font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        @media (max-width: 767px) {
+            .carousel-inner .carousel-item > div {
+                display: none;
+            }
+            .carousel-inner .carousel-item > div:first-child {
+                display: block;
+            }
+        }
+
+        .carousel-inner .carousel-item.active,
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+
+        /* medium and up screens */
+        @media (min-width: 768px) {
+    
+            .carousel-inner .carousel-item-end.active,
+            .carousel-inner .carousel-item-next {
+              transform: translateX(25%);
+            }
+    
+            .carousel-inner .carousel-item-start.active, 
+            .carousel-inner .carousel-item-prev {
+              transform: translateX(-25%);
+            }
+        }
+
+        .carousel-inner .carousel-item-end,
+        .carousel-inner .carousel-item-start { 
+          transform: translateX(0);
+        }
+
+
+    </style>
+    <section id="CursosHome">
+        <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
+            <a class="masthead-heading text-uppercase cursor-scale" style="color:#000000" href="Ventanas/Cursos/Cursos.aspx"><img src="/Imagenes/Iconos/CursosBlack.png" height="80"/> Cursos</a>
+        </div>
+
         <div class="row">
-            <div class="col-lg-4">
-                <img src="https://cervezartesana.es/pub/media/wysiwyg-m1/manual-lupulo-cerveza.jpg" style="width:200px;" class="rounded-circle" alt="Alternate Text" />
-                    <title>Lúpulo</title>
-                    <rect width="100%" height="100%" fill="#777" />
-                    <text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+            <div class="col-lg-6">
+                <hr class="featurette-divider">
 
-                <h2 class="fw-normal">Lúpulo Especial</h2>
-                <p>Este lúpulo es uno de los especiales que quedan en el mundo.</p>
-                <p><a class="btn btn-secondary" href="#">Ver más detalles &raquo;</a></p>
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
+                        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <figure class="containerz">
+                            <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
+                            <figcaption>
+                                <h3>Inscribirse</h3>
+                            </figcaption>
+                            <a href="#"></a>
+                        </figure>
+                    </div>
+                </div>
             </div>
-            <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="https://cibart.com.ar/wp-content/uploads/2023/02/Maltas-Bestmalz-un-salto-de-calidad-para-tu-Cerveza.png" style="width:200px;top: 150px !important;" class="rounded-circle" alt="Alternate Text" />
-                    <title>Malta</title>
-                    <rect width="100%" height="100%" fill="#777" />
-                    <text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
+            <div class="col-lg-6">
+                <hr class="featurette-divider">
 
-                <h2 class="fw-normal">Malta Especial</h2>
-                <p>Esta malta es una de las especiales que quedan en el mundo.</p>
-                <p><a class="btn btn-secondary" href="#">Ver más detalles &raquo;</a></p>
-            </div>
-            <!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img src="https://www.cocinista.es/download/bancorecursos/ingredientes/ingrediente-levaduras-eleccion-cuidados.jpg" style="width:200px;" class="rounded-circle" alt="Alternate Text" />
-                    <title>Levadura</title>
-                    <rect width="100%" height="100%" fill="#777" />
-                    <text x="50%" y="50%" fill="#777" dy=".3em"></text></svg>
-
-                <h2 class="fw-normal">Levadura Especial</h2>
-                <p>Esta levadura es una de las especiales que quedan en el mundo.</p>
-                <p><a class="btn btn-secondary" href="#">Ver más detalles &raquo;</a></p>
-            </div>
-            <!-- /.col-lg-4 -->
-        </div>
-        <!-- /.row -->
-
-
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee" />
-                    <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
+                        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <figure class="containerz">
+                            <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
+                            <figcaption>
+                                <h3>Inscribirse</h3>
+                            </figcaption>
+                            <a href="#"></a>
+                        </figure>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+    </section>
+    <section id="ProductosHome">
+        <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
+            <a class="masthead-heading text-uppercase cursor-scale" style="color:#000000" href="Ventanas/Productos/Productos.aspx"><img src="/Imagenes/Iconos/ProductosBlack.png" height="80"/> Productos</a>
+        </div>
+<div class="row">
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
+              <div class="col-sm-4 mb-3 mb-sm-0">
+                <br />
+				<div class="card" style="width: 100%;">
+				  <div >
+					  <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				  </div>
+					<div  align="center">
+						<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+					  </div>
+					</div>
+				</div>
+              </div>
             </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee" />
-                    <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-
+    </section>
+    <section id="ProductosMasVendidosHome">
+        <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
+            <a class="masthead-heading text-uppercase cursor-scale" style="color:#000000">Productos Populares</a>
+        </div>
+        <div class="container text-center my-3">
+            <div class="row mx-auto my-auto justify-content-center">
+                <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                        <div class="carousel-item">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                        <div class="carousel-item">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                        <div class="carousel-item">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                        <div class="carousel-item">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                        <div class="carousel-item">
+				            <div class="card">
+				                <div >
+					                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
+				                </div>
+					            <div  align="center">
+						            <div class="card-body">
+						            <h5 class="card-title">Card title</h5>
+					                </div>
+					            </div>
+				            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
             </div>
         </div>
+    </section>
 
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#eee" />
-                    <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
-        </div>
-       </div>
     <script type="text/javascript">
         $(document).ready(() => {
-            
+            let items = document.querySelectorAll('.carousel .carousel-item')
+
+            items.forEach((el) => {
+                const minPerSlide = 4
+                let next = el.nextElementSibling
+                for (var i = 1; i < minPerSlide; i++) {
+                    if (!next) {
+                        // wrap carousel by using first child
+                        next = items[0]
+                    }
+                    let cloneChild = next.cloneNode(true)
+                    el.appendChild(cloneChild.children[0])
+                    next = next.nextElementSibling
+                }
+            })
         });
     </script>
 </asp:Content>

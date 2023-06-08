@@ -38,6 +38,11 @@
             display: none;
         }
 
+        body {
+          background-image: url("/Imagenes/FondoWeb.jpg");
+          background-size: 15rem;
+        }
+
     </style>
 </head>
 <body>
@@ -173,9 +178,9 @@
         </div>
         <header class="masthead" id="headMaster">
             <div class="container" >
-                <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Productos</div>
-                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Recetas</div>
-                <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Cursos</div>
+                <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/ProductosWithe.png" height="100"/> Productos</div>
+                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/RecetasWithe.png" height="100"/> Recetas</div>
+                <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/CursosWithe.png" height="100"/> Cursos</div>
                 <div id="HeadCarrito" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/carrito-de-compras.png" height="80"/> Carrito</div>
 
 
@@ -255,12 +260,15 @@
         </div>
     </footer>
     <footer class="bg-dark text-center text-white visually-hidden border-top footer" id="footerMantenedor">
+        <br /><br /><br />
+        <br /><br /><br />
         <div style="background-color: rgb(0, 0, 0, .6);">
             <div class="container p-4 pb-0">
-                <br /><br /><br /><br /><br /><br /><br />
+                <br /><br /><br />
+                <br /><br /><br />
             </div>
             <div class="text-center p-3" style="background-color: rgba(0,0,0,.8);">
-                <br /><br />
+                <br /><br /><br />
             </div>
         </div>
     </footer>
