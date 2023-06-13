@@ -227,7 +227,6 @@
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    //data: JSON.stringify(parametros),
                     success: function (response) {
                         console.log("Tu usuario ha sido creado de pana po hrmn mio uwu"+" "+responde.d);
                     },

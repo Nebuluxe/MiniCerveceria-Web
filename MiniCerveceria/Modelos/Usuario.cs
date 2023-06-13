@@ -23,9 +23,4 @@ namespace MiniCerveceria.Modelos
         public int en_linea { get; set; }
         public string fecha_creacion { get; set; }
     }
-
-    //public static void GuardarUsuario()
-    //{
-
-    //}
 }
