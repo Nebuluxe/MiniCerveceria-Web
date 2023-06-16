@@ -9,6 +9,16 @@
 			background:#000000;
 			color: #ffffff;
 		}
+		#headMaster {
+			display: none;
+		}
+        #mainNav{
+            display: none;
+        }
+
+        #footerDefault{
+            display: none;
+        }
 	</style>
 
 	<nav id="barraNav" class="navbar bg-body-tertiary">

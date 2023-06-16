@@ -1,7 +1,8 @@
 ﻿
 /**************************************************IconoHamburgesaDelMenúResponsive**************************************************/
 
-header.masthead {
+
+/*header.masthead {
     padding-top: 10.5rem;
     padding-bottom: 6rem;
     text-align: center;
@@ -12,7 +13,7 @@ header.masthead {
     background-position: center center;
     background-size: cover;
 }
-
+*/
 #mainNav.navbar.navbar-expand-lg.fixed-top.navbar-shrink {
     background-color: rgb(0, 0, 0, .6) !important
 }

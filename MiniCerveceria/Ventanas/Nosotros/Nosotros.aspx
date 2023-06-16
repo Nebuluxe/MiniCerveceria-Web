@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="Nosotors" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Nosotros.aspx.cs" Inherits="MiniCerveceria.Ventanas.Nosotros.Nosotros" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">	
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <style>
+        #SideMenuMantenedor {
+            display: none;
+        }
+
+        #MantenedorNav{
+            display: none;
+        }
+    </style>
     <div style="text-align:center;">
          <img src="/Imagenes/MiniCerveceriaLogoOrigina.png" height="400">
         <h1>

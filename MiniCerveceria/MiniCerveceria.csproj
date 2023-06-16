@@ -171,6 +171,8 @@
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
     <Content Include="Imagenes\Iconos\Lupa.png" />
+    <Content Include="Imagenes\Iconos\MantenedoresLogoBlack.png" />
+    <Content Include="Imagenes\Iconos\MantenedoresLogoWithe.png" />
     <Content Include="Imagenes\Iconos\UserIconBlack.png" />
     <Content Include="Imagenes\Iconos\UserIconWithe.png" />
     <Content Include="Imagenes\brillo\brillo.png" />
@@ -191,6 +193,8 @@
     <Content Include="Imagenes\team\1.jpg" />
     <Content Include="Imagenes\team\2.jpg" />
     <Content Include="Imagenes\team\3.jpg" />
+    <Content Include="Mantenedores\Novedades\CrearNovedad.aspx" />
+    <Content Include="Mantenedores\Novedades\DefaultNovedades.aspx" />
     <Content Include="Ventanas\Cursos\Cursos.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -255,6 +259,7 @@
     <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
     <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
+    <Content Include="Ventanas\Cursos\DetalleCurso.aspx" />
     <Content Include="Ventanas\Nosotros\Nosotros.aspx" />
     <Content Include="Ventanas\Perfil\PerfilUser.aspx" />
     <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
@@ -346,6 +351,18 @@
     </Compile>
     <Compile Include="Controladores\UsuarioAplicacionServicios.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Mantenedores\Novedades\CrearNovedad.aspx.cs">
+      <DependentUpon>CrearNovedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\CrearNovedad.aspx.designer.cs">
+      <DependentUpon>CrearNovedad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.cs">
+      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
+      <DependentUpon>DefaultNovedades.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Servicios\IUsuarioAplicacionServicios.cs" />
     <Compile Include="Ventanas\Cursos\Cursos.aspx.cs">

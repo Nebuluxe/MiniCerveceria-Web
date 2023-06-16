@@ -9,101 +9,57 @@
 			display: none;
 		}
 
-		#headMaster {
-			display: none;
-		}
-
 		#footerDefault{
 			display:none;
 		}
+
+        /* esta css es para ocultar el head de el site.master se debe poner en cada pagina del mantenedor se intento poner en el Manetenedores.css pero no lo tomaba */
+        #headMaster {
+            display: none;
+        }
+
+        #mainNav{
+            display: none;
+        }
+
+        #footerDefault{
+            display: none;
+        }
 	</style>
 	
-	<div class="row p-4">
-		<div class="col-12 text-center  animated infinite pulse">
-			<div class="row">
-				<div class="col-lg-1">
-					<img src="/Imagenes/Iconos/MantenedoresLogo.png" height="50" width="50">
-				</div>
-				<div class="col-lg-1">
-					<strong class="titulo" style="font-size:1.9em; color: #000000;">Mantenedores</strong>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="col-lg-4">
-		    <div class="card">
-				<div class="card-body">
-				<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 300px" class="btn btn-dark" >Cursos</a><span> </span>
-				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosBlack.png" height="45" width="45">
-				</div>
-			</div>
-			<br />
-			<div class="card">
-				<div class="card-body">
-				<a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark" >Productos</a><span> </span>
-				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosBlack.png" height="45" width="45">
-				</div>
-			</div>
-			<br />
-			<div class="card">
-				<div class="card-body">
-				<a runat="server" href="~/Mantenedores/Novedades/DefaultNovedades.aspx" style="width: 300px" class="btn btn-dark" >Novedades</a><span> </span>
-				<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/NovedadesBlack.png" height="45" width="45">
-				</div>
-			</div>
-			<br />
-			<div class="card">
-				<div class="card-body">
-					<a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 300px" class="btn btn-dark" >Recetas</a><span> </span>
-					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasBlack.png" height="45" width="45">
-				</div>
-			</div>
+		<div class="col-lg-6">
+            <br />
 			<br />
 			<br />
-			<div class="row p-4">
-				<div class="col-12 text-center  animated infinite pulse">
-					<div class="row">
-						<div class="col-lg-3">
-							<img src="/Imagenes/Iconos/UserIconBlack.png" height="50" width="50">
-						</div>
-						<div class="col-lg-1">
-							<strong class="titulo" style="font-size:1.9em; color: #000000;">Usuarios</strong>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card">
-				<div class="card-body">
-					<a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark" >Usuarios</a><span> </span>
-					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosBlack.png" height="45" width="45">
-				</div>
-			</div>
-			<br />
-			<br />
-			<br />
-			<br />
+			<canvas id="grafico1"> </canvas>
 		</div>
-		<div class="col-lg-8">
+		<div class="col-lg-6">
 			<br />
 			<br />
 			<br />
-			<canvas id="grafico"> </canvas>
+			<canvas id="grafico2"> </canvas>
+		</div>
+		<div class="col-lg-6">
+            <br />
+			<br />
+			<br />
+			<canvas id="grafico3"> </canvas>
+		</div>
+		<div class="col-lg-6">
+			<br />
+			<br />
+			<br />
+			<canvas id="grafico4"> </canvas>
 		</div>
 	</div>
 
 	<script src="/Scripts/chart.js"></script>
 	<script>
         $(document).ready(function () {
-            $(window).resize(function () {
-                cambio();
-            });
 
-			cambio();
-
-
-            // Datos para el gráfico
-            var datos = {
+            // Datos para los graficos
+            var datos1 = {
                 labels: ['Cursos', 'Productos'],
                 datasets: [{
                     label: 'Ventas Totales ',
@@ -114,23 +70,111 @@
                 }]
             };
 
-            // Configuración del gráfico
-            var configuracion = {
-                type: 'bar', // Tipo de gráfico de barras
-				data: datos,
+            /*const labels = Utils.months({ count: 7 });*/
+            const datos2 = {
+                labels: "Enero",
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            };
+
+            const datos3 = {
+                labels: [
+                    'Red',
+                    'Green',
+                    'Yellow',
+                    'Grey',
+                    'Blue'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [11, 16, 7, 3, 14],
+                    backgroundColor: [
+                        'rgb(255, 99, 132, 0.2)',
+                        'rgb(75, 192, 192, 0.2)',
+                        'rgb(255, 205, 86, 0.2)',
+                        'rgb(201, 203, 207, 0.2)',
+                        'rgb(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132, 1)',
+                        'rgb(75, 192, 192, 1)',
+                        'rgb(255, 205, 86, 1)',
+                        'rgb(201, 203, 207, 1)',
+                        'rgb(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            const datos4 = {
+                labels: [
+                    'Red',
+                    'Blue',
+                    'Yellow'
+                ],
+                datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                        'rgb(255, 99, 132, 0.2)',
+                        'rgb(54, 162, 235, 0.2)',
+                        'rgb(255, 205, 86, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132, 1)',
+                        'rgb(54, 162, 235, 1)',
+                        'rgb(255, 205, 86, 1)'
+                    ],
+                    borderWidth: 1,
+                    hoverOffset: 4
+                }]
+            };
+
+            //configuracion de los graficos
+
+            var configuracion1 = {
+                type: 'bar', 
+                data: datos1,
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true // Empezar en el eje Y desde cero
+                            beginAtZero: true 
                         }
                     }
                 }
             };
 
-            // Crear el gráfico con jQuery
-			var ctx = document.getElementById('grafico').getContext('2d');
+            const configuracion2 = {
+                type: 'line',
+                data: datos2,
+            };
 
-            var grafico = new Chart(ctx, configuracion);
+            const configuracion3 = {
+                type: 'polarArea',
+                data: datos3,
+                options: {}
+            };
+
+            const configuracion4 = {
+                type: 'doughnut',
+                data: datos4,
+            };
+
+            // Crear el gráfico con jQuery
+            var ctx1 = document.getElementById('grafico1').getContext('2d');
+            var ctx2 = document.getElementById('grafico2').getContext('2d');
+            var ctx3 = document.getElementById('grafico3').getContext('2d');
+            var ctx4 = document.getElementById('grafico4').getContext('2d');
+
+            var grafico1 = new Chart(ctx1, configuracion1);
+            var grafico2 = new Chart(ctx2, configuracion2);
+            var grafico3 = new Chart(ctx3, configuracion3);
+            var grafico2 = new Chart(ctx4, configuracion4);
 
             function cambio() {
                 if ($(window).width() >= 450) {

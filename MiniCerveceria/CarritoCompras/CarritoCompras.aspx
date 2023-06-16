@@ -1,35 +1,44 @@
 ﻿<%@ page Title="Carrito" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CarritoCompras.aspx.cs" Inherits="MiniCerveceria.CarritoCompras.CarritoCompras" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-<style>
-	.FormCursoExterno{
-		background:#000000;
-		color: #ffffff;
-		border-radius: 15px;
-	}
+		<style>
+			.FormCursoExterno{
+				background:#000000;
+				color: #ffffff;
+				border-radius: 15px;
+			}
 
-	.FormCursoInterno{
-		background:#ffffff;
-		color: #000000;
-		border-radius: 15px;
-	}
+			.FormCursoInterno{
+				background:#ffffff;
+				color: #000000;
+				border-radius: 15px;
+			}
 
-	.CompraDetalle{
-		color:#ffffff
-	}
+			.CompraDetalle{
+				color:#ffffff
+			}
 
-	.carritoImg{
-		visibility: hidden;
-	}
+			.carritoImg{
+				visibility: hidden;
+			}
 
-	#headMaster{
-        height: 350px;
-    }
+			header.masthead{
+				height: 350px;
+				background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url("/Imagenes/CarrouselHome1.jpg");
+			}
 
-    .headContent{
-        display: none
-    }
-</style>
+			.headContent{
+				display: none
+			}
+
+			#SideMenuMantenedor {
+				display: none;
+			}
+
+			#MantenedorNav{
+				display: none;
+			}
+		</style>
 		<br /><br /><br />
 		<div class="card FormCursoExterno">
 			<div class="card-body">

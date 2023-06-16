@@ -14,6 +14,14 @@
             text-decoration:none;
             color: #000000;
         }
+
+        #SideMenuMantenedor {
+            display: none;
+        }
+
+        #MantenedorNav{
+            display: none;
+        }
     </style>
     <div class="card">
       <div class="card-body">

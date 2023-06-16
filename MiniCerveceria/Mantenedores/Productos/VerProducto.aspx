@@ -20,6 +20,18 @@
 		.lblDetalle{
 			font-size: 22px
 		}
+
+		#headMaster {
+			display: none;
+		}
+	
+        #mainNav{
+            display: none;
+        }
+
+        #footerDefault{
+            display: none;
+        }
 	</style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">

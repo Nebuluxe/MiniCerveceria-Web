@@ -30,6 +30,14 @@
             margin-bottom: 25px;
             font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
+
+        #SideMenuMantenedor {
+            display: none;
+        }
+
+        #MantenedorNav{
+            display: none;
+        }
     </style>
     <br /><br />
     <div>
