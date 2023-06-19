@@ -13,5 +13,23 @@ namespace MiniCerveceria.Ventanas.Productos
 
 	public partial class DetalleProducto
 	{
+
+		/// <summary>
+		/// Control NameCategoria.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label NameCategoria;
+
+		/// <summary>
+		/// Control NomProducto.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label NomProducto;
 	}
 }

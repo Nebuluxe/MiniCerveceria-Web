@@ -37,22 +37,6 @@
             transform: translateX(0);
         }
 
-        .TitlePage {
-            font-size: 3.25rem;
-            font-weight: 700;
-            line-height: 3.25rem;
-            margin-bottom: 2rem;
-            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
-
-        .SubTitlePage {
-            font-size: 1.5rem;
-            font-style: italic;
-            line-height: 1.5rem;
-            margin-bottom: 25px;
-            font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        }
-
         #SideMenuMantenedor {
             display: none;
         }
@@ -88,7 +72,7 @@
                             <figcaption>
                                 <h3>Inscribirse</h3>
                             </figcaption>
-                            <a href="#"></a>
+                            <a runat="server" href="/Ventanas/Cursos/DetalleCurso.aspx"></a>
                         </figure>
                     </div>
                 </div>
@@ -107,7 +91,7 @@
                             <figcaption>
                                 <h3>Inscribirse</h3>
                             </figcaption>
-                            <a href="#"></a>
+                            <a runat="server" href="/Ventanas/Cursos/DetalleCurso.aspx"></a>
                         </figure>
                     </div>
                 </div>
@@ -220,7 +204,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -250,7 +234,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -280,7 +264,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -310,7 +294,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -340,7 +324,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -370,7 +354,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -400,7 +384,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -430,7 +414,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -460,7 +444,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -490,7 +474,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -520,7 +504,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">
@@ -550,7 +534,7 @@
                         <figcaption>
                             <h3>Ver</h3>
                         </figcaption>
-                        <a href="#"></a>
+                        <a href="/Ventanas/Productos/DetalleProducto"></a>
                     </figure>
                     <div class="card">
                         <div align="center">

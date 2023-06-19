@@ -73,7 +73,7 @@
             background-color: #333;
             color: #fff;
             font-size: 14px;
-            font-family: Raleway;
+            font-family: Montserrat;
             position: absolute;
             padding: 3px 20px;
             bottom: -1.6em;
@@ -101,11 +101,32 @@
 
         
         .animationImg:hover{
-            -webkit-transform: scale(1.5);
-            -moz-transform: scale(1.5);
-            -o-transform: scale(1.5);
-            -ms-transform: scale(1.5);
-            transform: scale(1.5)
+            -webkit-transform: scale(1.3);
+            -moz-transform: scale(1.3);
+            -o-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            transform: scale(1.3)
+        }
+
+        .TitlePage {
+            font-size: 3.25rem;
+            font-weight: 700;
+            line-height: 3.25rem;
+            margin-bottom: 2rem;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        .SubTitlePage {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.5rem;
+            margin-bottom: 25px;
+            font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        *{
+            text-decoration: none;
+            font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
         }
     </style>
 </head>
@@ -144,11 +165,11 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 btn-group-vertical">
                         <li class="nav-item cursosNav"><a class="nav-link" runat="server" href="Ventanas/Cursos/Cursos.aspx">Cursos</a></li>
                         <li class="nav-item recetasNav"><a class="nav-link" runat="server" href="Ventanas/Recetas/Recetas.aspx">Recetas</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Novedades</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Ingredientes</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Accesorios</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Cristaleria</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx">Equipamiento</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Novedades">Novedades</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Ingredientes">Ingredientes</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Accesorios">Accesorios</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Cristaleria">Cristaleria</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Equipamiento">Equipamiento</a></li>
                     </ul>
                 </div>
                 <a runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
@@ -196,13 +217,13 @@
                 <br />
 
                 <div class="btn-group-vertical list-group" role="group" >
-                    <a runat="server" href="Ventanas/Cursos/Cursos.aspx" class="btn btn-outline-light optionNav">Cursos</a>
-                    <a runat="server" href="Ventanas/Recetas/Recetas.aspx" class="btn btn-outline-light optionNav">Recetas</a>
-                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Novedades</a>
-                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Ingredientes</a>
-                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Accesorios</a>
-                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Cristaleria</a>
-                    <a runat="server" href="Ventanas/Productos/Productos.aspx" class="btn btn-outline-light optionNav">Equipamiento</a>
+                    <a runat="server" href="Ventanas/Cursos/Cursos" class="btn btn-outline-light optionNav">Cursos</a>
+                    <a runat="server" href="Ventanas/Recetas/Recetas" class="btn btn-outline-light optionNav">Recetas</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=Novedades" class="btn btn-outline-light optionNav">Novedades</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=Ingredientes" class="btn btn-outline-light optionNav">Ingredientes</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=Accesorios" class="btn btn-outline-light optionNav">Accesorios</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=Cristaleria" class="btn btn-outline-light optionNav">Cristaleria</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=Equipamiento" class="btn btn-outline-light optionNav">Equipamiento</a>
                 </div>
             </div>
 
@@ -241,15 +262,29 @@
         </div>
         <header class="masthead" id="headMaster" style="padding-top: 10.5rem;padding-bottom: 6rem; text-align: center;color: #fff; background-image: url('/Imagenes/background.jpg');background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover;">
             <div class="container" >
-                <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Productos</div>
-                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Recetas</div>
-                <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale">Cursos</div>
+                <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/ProductosWithe.png" height="80" /> <span id="nombreCategoridaHeader"></span> </div>
+                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/RecetasWithe.png" height="80" /> Recetas</div>
+                <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/CursosWithe.png" height="80" /> Cursos</div>
                 <div id="HeadCarrito" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/carrito-de-compras.png" height="80"/> Carrito</div>
 
 
                 <div class="masthead-subheading cursor-scale headContent">Bienvenidos a MiniCerveria!</div>
                 <div class="masthead-heading text-uppercase headContent cursor-scale">Si quieres revisar nuestro catálogo</div>
                 <a class="btnKImPresiona imagenCursor btn-xl text-uppercase headContent" runat="server" href="Ventanas/Productos/Productos.aspx">¡Presiona Aquí!</a>
+
+                <div id="Breadcrum" class="OcultarElemento">
+                    <tr>
+                        <td>
+                            <a style="font-size: 25px; color: #ffffff" runat="server" href="~/Default" ><span > Home </span></a>
+                        </td>
+                        <td>
+                            <a style="font-size: 25px; color: #ffffff" runat="server" href="#" class="OcultarElemento" id="itemBreadbrum1" >/ <span id="TextBread1"> </span></a>
+                        </td>
+                        <td>
+                            <a style="font-size: 25px; color: #ffffff" runat="server" href="#" class="OcultarElemento" id="itemBreadbrum2" >/ <span id="TextBread2"> </span></a>
+                        </td>
+                    </tr>
+                </div>
             </div>
         </header>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -282,6 +317,16 @@
 					        <a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 300px;" class="btn btn-dark optionSideMantenedor" >Recetas</a><span> </span>
 					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasWithe.png" height="45" width="45">
 			            </div>
+                        <br />
+			            <br />
+                        <br />
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/logoCerveza7.png" height="50" width="50"> Stock</strong>
+                        <br />
+                        <br />
+                        <div>
+				            <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
+			            </div>
 			            <br />
 			            <br />
                         <br />
@@ -296,7 +341,6 @@
                 </div>
                 <div class="col py-3">
                     <div class="container body-content">
-                        <br /><br />
                         <asp:ContentPlaceHolder ID="MainContent" runat="server">
 
                         </asp:ContentPlaceHolder>
@@ -470,18 +514,22 @@
 
         if (page == "Productos") {
             $('#HeadProductos').removeClass('OcultarElemento');
+            $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
         if (page == "Recetas") {
             $('#HeadRcetas').removeClass('OcultarElemento');
+            $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
         if (page == "Cursos") {
             $('#HeadCursos').removeClass('OcultarElemento');
+            $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
         if (page == "Carrito") {
             $('#HeadCarrito').removeClass('OcultarElemento');
+            $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
         if (page == "Carrito") {

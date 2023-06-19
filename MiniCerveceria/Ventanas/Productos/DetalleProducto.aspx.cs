@@ -11,7 +11,13 @@ namespace MiniCerveceria.Ventanas.Productos
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			string uid = Request.QueryString["prod"] != null ? Request.QueryString["prod"] : "";
 
+			NomProducto.Text = uid == "" ? "Producto xxxxxx" : uid;
+
+			string nameCate = Request.QueryString["cate"] != null ? Request.QueryString["cate"] : "";
+
+			NameCategoria.Text = nameCate != "" ? nameCate : "Categoria";
 		}
 	}
 }

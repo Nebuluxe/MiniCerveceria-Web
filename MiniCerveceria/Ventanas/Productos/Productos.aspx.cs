@@ -11,7 +11,9 @@ namespace MiniCerveceria
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			string nameCate = Request.QueryString["cate"] != null ? Request.QueryString["cate"] : "";
 
+			NameCategoria.Text = nameCate != "" ? nameCate : "Productos";
 		}
 	}
 }
