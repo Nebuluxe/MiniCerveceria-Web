@@ -212,7 +212,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -242,7 +242,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a  class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -272,7 +272,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a  class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -302,7 +302,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -332,7 +332,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -362,7 +362,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -392,7 +392,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -422,7 +422,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -452,7 +452,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -482,7 +482,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -512,7 +512,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -542,7 +542,7 @@
                                 <div align="center">
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
+                                            <a class="favorito" data-title="Añadir a favoritos">
                                                 <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
                                         </div>
                                         <div class="col-lg-6">
@@ -561,6 +561,9 @@
 
     <script type="text/javascript">
         $(document).ready(() => {
+            $(".favorito").on("click", function () {
+                Command: toastr["success"]("mi pana haz agregado a favoritos de pana", "mi loco agregaste a favoritos")
+            });
             let items = document.querySelectorAll('.carousel .carousel-item')
 
             items.forEach((el) => {

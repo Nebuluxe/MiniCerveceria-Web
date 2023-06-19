@@ -24,6 +24,7 @@
     <link href="GlobalCss/SiteMaster.css" rel="stylesheet" />
     
     <link href="/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="Content/toastr.min.css" />
     <style>
         .menu-toggle i{
             background-color: #ffffff !important;
@@ -420,6 +421,7 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="Scripts/toastr.min.js"></script>
         <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--%>
     </form>
     <asp:PlaceHolder runat="server">
@@ -428,6 +430,22 @@
 </body>
 </html>
 <script>
+    toastr.options = {
+        "closeButton": true,
+        "debug": true,
+        "newestOnTop": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
     //var cursor = document.querySelector('.cursor'),
     //    cursorScale = document.querySelectorAll('.cursor-scale'),
     //    mouseX = 0,
