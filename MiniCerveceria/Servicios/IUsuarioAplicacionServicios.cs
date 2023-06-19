@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,8 @@ namespace MiniCerveceria.Servicios
 {
     public interface IUsuarioAplicacionServicios
     {
-        bool InsertUsuario(Usuario usuario);
+        void InsertUsuario(Usuario usuario);
         Usuario GetUsuario(string email, string contrasena);
-        IEnumerable<Usuario> GetUsuarios();
+        int GetIdUsuario();
     }
 }

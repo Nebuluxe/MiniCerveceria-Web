@@ -18,6 +18,9 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        .hide {
+            display: none !important;
+        }
         body {
             display: flex;
             justify-content: center;
@@ -189,7 +192,7 @@
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                <asp:TextBox id="txtFechaNacimiento" ClientIDMode="Static" placeholder="Ingrese Fecha Nacimiento (ej: 27-05-2001)" required="required" runat="server" />
+                <asp:TextBox id="txtFechaNacimiento" type="date" ClientIDMode="Static" placeholder="Ingrese Fecha Nacimiento (ej: 27-05-2001)" required="required" runat="server" />
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="mail"></ion-icon></span>
@@ -203,6 +206,7 @@
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
                 <asp:TextBox id="txtConfirmarContrasena" ClientIDMode="Static" type="password" placeholder="Confirme Contraseña" required="required" runat="server" />
             </div>
+            <asp:Button id="hdnBtnRegistrar" CssClass="hide" ClientIDMode="Static" Text="Registrarse" runat="server" OnClick="GuardarUsuario"/>
             <button id="btnRegistrar" type="submit">Registrarse</button>
             <div class="register-link">
                 <p>Ya tienes una cuenta registrada? <a href="/Login/Login.aspx">Inicia Sesión Ahora!</a></p>
@@ -222,18 +226,7 @@
             var contrasena = $("#txtContrasena").val().trim();
 
             if (contrasena == confirmarContrasena) {
-                $.ajax({
-                    url: "Registrarse.aspx/GuardarUsuario",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        console.log("Tu usuario ha sido creado de pana po hrmn mio uwu"+" "+responde.d);
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error en la petición Ajax: " + error);
-                    }
-                });
+                $("#hdnBtnRegistrar").trigger("click");
             }
             else {
                 $('#txtConfirmarContrasena').val("");

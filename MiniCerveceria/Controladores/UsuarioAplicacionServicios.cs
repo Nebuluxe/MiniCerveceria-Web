@@ -4,161 +4,163 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
+using System.Data;
+using System.Data.Odbc;
+using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MiniCerveceria.Controladores
 {
     public class UsuarioAplicacionServicios : IUsuarioAplicacionServicios
     {
-        private string Wallet = ConfigurationManager.ConnectionStrings["Wallet"].ConnectionString;
-        private string Conexion = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-        OracleConnection con = null;
-        OracleCommand cmd = null;
-        OracleDataReader reader = null;
-        
+        public OracleConnection SqlCon = new OracleConnection();
         public Usuario GetUsuario(string email, string contrasena)
         {
             Usuario oUsuario = new Usuario();
-            try
+            OracleDataReader Resultado = null;
+            try 
             {
-                OracleConfiguration.TnsAdmin = (Wallet);
-                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
-                using (con = new OracleConnection(Conexion))
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                OracleCommand Comando = new OracleCommand("SELECT * FROM usuario WHERE email = '" + email.Trim() + "' AND password = '" + contrasena.Trim() + "'", SqlCon);
+                Comando.CommandType = CommandType.Text;
+                SqlCon.Open();
+                using (Resultado = Comando.ExecuteReader())
                 {
-                    string Query = "SELECT * FROM usuario WHERE email = '" + email.Trim() + "' AND password = '" + contrasena.Trim() + "'";
-                    using (cmd = new OracleCommand(Query, con))
+                    while (Resultado.Read())
                     {
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        con.Open();
-                        using (reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                oUsuario.id_usuario = reader.GetInt32(0);
-                                oUsuario.id_permiso = reader.GetInt32(1);
-                                oUsuario.id_comuna = reader.GetInt32(2);
-                                oUsuario.nombre = reader.GetString(3);
-                                oUsuario.apellido = reader.GetString(4);
-                                oUsuario.direccion = reader.GetString(5);
-                                oUsuario.fecha_nacimiento = Convert.ToString(reader.GetDateTime(6));
-                                oUsuario.email = reader.GetString(7);
-                                oUsuario.password = reader.GetString(8);
-                                oUsuario.tipo_usuario = reader.GetInt32(9);
-                                oUsuario.activo = reader.GetInt32(10);
-                                oUsuario.en_linea = reader.GetInt32(11);
-                                oUsuario.fecha_creacion = Convert.ToString(reader.GetDateTime(12));
-                            }
-                        }
-                        con.Close();
-                        if (oUsuario != null)
-                        {
-                            return oUsuario;
-                        } else { 
-                            return oUsuario = null; 
-                        }
-                        
+                        oUsuario.id_usuario = Resultado.GetInt32(0);
+                        oUsuario.id_permiso = Resultado.GetInt32(1);
+                        oUsuario.id_comuna = Resultado.GetInt32(2);
+                        oUsuario.nombre = Resultado.GetString(3);
+                        oUsuario.apellido = Resultado.GetString(4);
+                        oUsuario.direccion = Resultado.GetString(5);
+                        oUsuario.fecha_nacimiento = Resultado.GetDateTime(6);
+                        oUsuario.email = Resultado.GetString(7);
+                        oUsuario.password = Resultado.GetString(8);
+                        oUsuario.tipo_usuario = Resultado.GetInt32(9);
+                        oUsuario.activo = Resultado.GetInt32(10);
+                        oUsuario.en_linea = Resultado.GetInt32(11);
+                        oUsuario.fecha_creacion = Resultado.GetDateTime(12);
                     }
                 }
-            }
+                if (oUsuario != null)
+                {
+                    return oUsuario;
+                }
+                else
+                {
+                    return oUsuario = null;
+                }
+            } 
             catch (Exception ex)
             {
-                oUsuario = null;
-                return oUsuario;
+                return oUsuario = null;
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    OracleConnection.ClearPool(SqlCon);
+                    SqlCon.Dispose();
+                    SqlCon.Close();
+                }
             }
         }
 
-        public IEnumerable<Usuario> GetUsuarios()
+        public int GetIdUsuario()
         {
-            IEnumerable<Usuario> listUsuario = new List<Usuario>();
-            Usuario oUsuario = new Usuario();
+            int idUsuario = 0;
+            OracleDataReader Resultado = null;
+            DataTable Tabla = new DataTable();
             try
             {
-                OracleConfiguration.TnsAdmin = (Wallet);
-                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
-                using (con = new OracleConnection(Conexion))
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                OracleCommand Comando = new OracleCommand("SELECT COUNT(*) FROM usuario", SqlCon);
+                Comando.CommandType = CommandType.Text;
+                SqlCon.Open();
+                using (Resultado = Comando.ExecuteReader())
                 {
-                    string Query = "SELECT * FROM usuario";
-                    using (cmd = new OracleCommand(Query, con))
+                    while (Resultado.Read())
                     {
-                        cmd.CommandType = System.Data.CommandType.Text;
-                        con.Open();
-                        using (reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                oUsuario.id_usuario = reader.GetInt32(0);
-                                oUsuario.id_permiso = reader.GetInt32(1);
-                                oUsuario.id_comuna = reader.GetInt32(2);
-                                oUsuario.nombre = reader.GetString(3);
-                                oUsuario.apellido = reader.GetString(4);
-                                oUsuario.direccion = reader.GetString(5);
-                                oUsuario.fecha_nacimiento = Convert.ToString(reader.GetDateTime(6));
-                                oUsuario.email = reader.GetString(7);
-                                oUsuario.password = reader.GetString(8);
-                                oUsuario.tipo_usuario = reader.GetInt32(9);
-                                oUsuario.activo = reader.GetInt32(10);
-                                oUsuario.en_linea = reader.GetInt32(11);
-                                oUsuario.fecha_creacion = Convert.ToString(reader.GetDateTime(12));
-                                listUsuario.Append(oUsuario);
-                            }
-                        }
-                        con.Close();
-                        return listUsuario;
+                        idUsuario = Resultado.GetInt32(0);
                     }
+                }
+                if (idUsuario != 0)
+                {
+                    return idUsuario + 1;
+                }
+                else
+                {
+                    return idUsuario = 0;
                 }
             }
             catch (Exception ex)
             {
-                listUsuario = null;
-                return listUsuario;
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    OracleConnection.ClearPool(SqlCon);
+                    SqlCon.Dispose();
+                    SqlCon.Close();
+                }
             }
         }
 
-        public bool InsertUsuario(Usuario usuario)
+        public void InsertUsuario(Usuario usuario)
         {
+            OracleDataReader Resultado = null;
+            DataTable Tabla = new DataTable();
             try
             {
-                OracleConfiguration.TnsAdmin = (Wallet);
-                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
-                using (con = new OracleConnection(Conexion))
+                SqlCon = Conexion.getInstancia().CrearConexion();
+
+                OracleCommand Comando = new OracleCommand("INSERT INTO usuario (id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, tipo_usuario, activo, en_linea, fecha_creacion) " +
+                                "VALUES (:id_usuario, :id_permiso, :id_comuna, :nombre, :apellido, :direccion, :telefono, :fecha_nacimiento, :email, :password, :tipo_usuario, :activo, :en_linea, :fecha_creacion)", SqlCon);
+                Comando.CommandType = CommandType.Text;
+                SqlCon.Open();
+                using (Resultado = Comando.ExecuteReader())
                 {
-                    string Query = "INSERT INTO usuario (id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, tipo_usuario, activo, en_linea, fecha_creacion) " +
-                                   "VALUES (:id_usuario, :id_permiso, :id_comuna, :nombre, :apellido, :direccion, :telefono, :fecha_nacimiento, :email, :password, :tipo_usuario, :activo, :en_linea, :fecha_creacion)";
-                    using (cmd = new OracleCommand(Query, con))
-                    {
-                        cmd.CommandType = System.Data.CommandType.Text;
+                    Comando.Parameters.Add(new OracleParameter("id_usuario", OracleDbType.Int32)).Value = usuario.id_usuario;
+                    Comando.Parameters.Add(new OracleParameter("id_permiso", OracleDbType.Int32)).Value = usuario.id_permiso;
+                    Comando.Parameters.Add(new OracleParameter("id_comuna", OracleDbType.Int32)).Value = usuario.id_comuna;
+                    Comando.Parameters.Add(new OracleParameter("nombre", OracleDbType.Varchar2)).Value = usuario.nombre;
+                    Comando.Parameters.Add(new OracleParameter("apellido", OracleDbType.Varchar2)).Value = usuario.apellido;
+                    Comando.Parameters.Add(new OracleParameter("direccion", OracleDbType.Varchar2)).Value = usuario.direccion;
+                    Comando.Parameters.Add(new OracleParameter("telefono", OracleDbType.Int32)).Value = usuario.telefono;
+                    Comando.Parameters.Add(new OracleParameter("fecha_nacimiento", OracleDbType.Date)).Value = usuario.fecha_nacimiento;
+                    Comando.Parameters.Add(new OracleParameter("email", OracleDbType.Varchar2)).Value = usuario.email;
+                    Comando.Parameters.Add(new OracleParameter("password", OracleDbType.Varchar2)).Value = usuario.password;
+                    Comando.Parameters.Add(new OracleParameter("tipo_usuario", OracleDbType.Int32)).Value = usuario.tipo_usuario;
+                    Comando.Parameters.Add(new OracleParameter("activo", OracleDbType.Int32)).Value = usuario.activo;
+                    Comando.Parameters.Add(new OracleParameter("en_linea", OracleDbType.Int32)).Value = usuario.en_linea;
+                    Comando.Parameters.Add(new OracleParameter("fecha_creacion", OracleDbType.Date)).Value = usuario.fecha_creacion;
 
-                        cmd.Parameters.Add(new OracleParameter("id_usuario", OracleDbType.Int32)).Value = usuario.id_usuario;
-                        cmd.Parameters.Add(new OracleParameter("id_permiso", OracleDbType.Int32)).Value = usuario.id_permiso;
-                        cmd.Parameters.Add(new OracleParameter("id_comuna", OracleDbType.Int32)).Value = usuario.id_comuna;
-                        cmd.Parameters.Add(new OracleParameter("nombre", OracleDbType.Varchar2)).Value = usuario.nombre;
-                        cmd.Parameters.Add(new OracleParameter("apellido", OracleDbType.Varchar2)).Value = usuario.apellido;
-                        cmd.Parameters.Add(new OracleParameter("direccion", OracleDbType.Varchar2)).Value = usuario.direccion;
-                        cmd.Parameters.Add(new OracleParameter("telefono", OracleDbType.Int32)).Value = usuario.telefono;
-                        cmd.Parameters.Add(new OracleParameter("fecha_nacimiento", OracleDbType.Date)).Value = usuario.fecha_nacimiento;
-                        cmd.Parameters.Add(new OracleParameter("email", OracleDbType.Varchar2)).Value = usuario.email;
-                        cmd.Parameters.Add(new OracleParameter("password", OracleDbType.Varchar2)).Value = usuario.password;
-                        cmd.Parameters.Add(new OracleParameter("tipo_usuario", OracleDbType.Int32)).Value = usuario.tipo_usuario;
-                        cmd.Parameters.Add(new OracleParameter("activo", OracleDbType.Int32)).Value = usuario.activo;
-                        cmd.Parameters.Add(new OracleParameter("en_linea", OracleDbType.Int32)).Value = usuario.en_linea;
-                        cmd.Parameters.Add(new OracleParameter("fecha_creacion", OracleDbType.Date)).Value = usuario.fecha_creacion;
-
-                        con.Open();
-                        
-                        int filasAfectadas = cmd.ExecuteNonQuery();
-
-                        con.Close();
-                        return filasAfectadas > 0 ? (true) : (false);
-                    }
+                    Comando.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
             {
-                //MessageBox.Show("Mano mio te me le caiste:c, tiro este error wom ----> " + ex);
-                return (false);
+                throw ex;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    OracleConnection.ClearPool(SqlCon);
+                    SqlCon.Dispose();
+                    SqlCon.Close();
+                }
             }
         }
     }

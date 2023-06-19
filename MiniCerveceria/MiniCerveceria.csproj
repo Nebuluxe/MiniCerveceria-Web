@@ -160,10 +160,6 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="GlobalCss\SiteMaster.css" />
-    <Content Include="Imagenes\about\1.jpg" />
-    <Content Include="Imagenes\about\2.jpg" />
-    <Content Include="Imagenes\about\3.jpg" />
-    <Content Include="Imagenes\about\4.jpg" />
     <Content Include="Imagenes\ChileBannerRecetas.png" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
@@ -175,24 +171,9 @@
     <Content Include="Imagenes\Iconos\MantenedoresLogoWithe.png" />
     <Content Include="Imagenes\Iconos\UserIconBlack.png" />
     <Content Include="Imagenes\Iconos\UserIconWithe.png" />
-    <Content Include="Imagenes\brillo\brillo.png" />
-    <Content Include="Imagenes\brillo\brillog.png" />
-    <Content Include="Imagenes\logos\facebook.svg" />
-    <Content Include="Imagenes\logos\google.svg" />
-    <Content Include="Imagenes\logos\ibm.svg" />
-    <Content Include="Imagenes\logos\microsoft.svg" />
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
     <Content Include="Imagenes\background.jpg" />
-    <Content Include="Imagenes\portfolio\1.jpg" />
-    <Content Include="Imagenes\portfolio\2.jpg" />
-    <Content Include="Imagenes\portfolio\3.jpg" />
-    <Content Include="Imagenes\portfolio\4.jpg" />
-    <Content Include="Imagenes\portfolio\5.jpg" />
-    <Content Include="Imagenes\portfolio\6.jpg" />
-    <Content Include="Imagenes\team\1.jpg" />
-    <Content Include="Imagenes\team\2.jpg" />
-    <Content Include="Imagenes\team\3.jpg" />
     <Content Include="Mantenedores\Novedades\CrearNovedad.aspx" />
     <Content Include="Mantenedores\Novedades\DefaultNovedades.aspx" />
     <Content Include="Ventanas\Cursos\Cursos.aspx" />
@@ -349,16 +330,19 @@
     <Compile Include="CarritoCompras\CarritoCompras.aspx.designer.cs">
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\Conexion.cs" />
     <Compile Include="Controladores\UsuarioAplicacionServicios.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Mantenedores\Novedades\CrearNovedad.aspx.cs">
       <DependentUpon>CrearNovedad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Novedades\CrearNovedad.aspx.designer.cs">
       <DependentUpon>CrearNovedad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.cs">
       <DependentUpon>DefaultNovedades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
       <DependentUpon>DefaultNovedades.aspx</DependentUpon>
