@@ -163,9 +163,13 @@
     <Content Include="Imagenes\ChileBannerRecetas.png" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
+    <Content Include="Imagenes\Iconos\Bag.png" />
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
+    <Content Include="Imagenes\Iconos\carousel-control-prev-icon.png" />
+    <Content Include="Imagenes\Iconos\carousel-control-next-icon.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
+    <Content Include="Imagenes\Iconos\Favorito.png" />
     <Content Include="Imagenes\Iconos\Lupa.png" />
     <Content Include="Imagenes\Iconos\MantenedoresLogoBlack.png" />
     <Content Include="Imagenes\Iconos\MantenedoresLogoWithe.png" />
@@ -470,6 +474,13 @@
     </Compile>
     <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
       <DependentUpon>VerUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Cursos\DetalleCurso.aspx.cs">
+      <DependentUpon>DetalleCurso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Cursos\DetalleCurso.aspx.designer.cs">
+      <DependentUpon>DetalleCurso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Nosotros\Nosotros.aspx.cs">
       <DependentUpon>Nosotros.aspx</DependentUpon>
