@@ -3,6 +3,7 @@ using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Windows.Forms;
@@ -11,36 +12,46 @@ namespace MiniCerveceria.Controladores
 {
     public class Conexion
     {
-        private static Conexion Con = null;
-        public Conexion() 
+        string connectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+        public Conexion()
         {
-           
+            OracleConfiguration.TnsAdmin = ConfigurationManager.ConnectionStrings["Wallet"].ConnectionString;
+            OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
         }
 
-        public OracleConnection CrearConexion()
+        public Conexion(string conn)
         {
-            OracleConnection conexion = new OracleConnection();
-            try
-            {
-                conexion.ConnectionString = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-                OracleConfiguration.TnsAdmin = ConfigurationManager.ConnectionStrings["Wallet"].ConnectionString;
-                OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
-            }
-            catch (Exception ex)
-            {
-                conexion = null;
-                throw ex;
-            }
-            return conexion;
+            this.connectionString = conn;
         }
 
-        public static Conexion getInstancia() 
+        public DataTable Execute(string SQL)
         {
-            if (Con == null)
+            using (OracleConnection con = new OracleConnection(this.connectionString))
             {
-                Con = new Conexion();
+                using (OracleCommand cmd = con.CreateCommand())
+                {
+                    try
+                    {
+                        con.Open();
+                        Console.WriteLine("Successfully connected to Oracle Autonomous Database");
+                        Console.WriteLine();
+
+                        cmd.CommandText = SQL;
+                        OracleDataReader reader = cmd.ExecuteReader();
+                        var dt = new DataTable();
+                        dt.Load(reader);
+                        con.Close();
+                        return dt;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    con.Close();
+                    return new DataTable();
+                }
             }
-            return Con;
         }
     }
 }

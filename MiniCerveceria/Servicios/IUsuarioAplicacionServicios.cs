@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MiniCerveceria.Modelos;
 
 namespace MiniCerveceria.Servicios
 {
     public interface IUsuarioAplicacionServicios
     {
-        void InsertUsuario(Usuario usuario);
-        Usuario GetUsuario(string email, string contrasena);
-        int GetIdUsuario();
+        void CrearUsuario(Usuario obj);
+        void EliminarUsuario(int UsuarioID);
+        IList<Usuario> ListarUsuarios();
+        Usuario Usuario(int UsuarioID);
+        void ActualizarUsuario(Usuario obj);
+        int ObtenerIDUsuario();
     }
 }
