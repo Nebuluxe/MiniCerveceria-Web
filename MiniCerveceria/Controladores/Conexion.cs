@@ -34,13 +34,12 @@ namespace MiniCerveceria.Controladores
                     try
                     {
                         con.Open();
-                        Console.WriteLine("Successfully connected to Oracle Autonomous Database");
-                        Console.WriteLine();
 
                         cmd.CommandText = SQL;
                         OracleDataReader reader = cmd.ExecuteReader();
                         var dt = new DataTable();
                         dt.Load(reader);
+
                         con.Close();
                         return dt;
                     }

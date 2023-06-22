@@ -217,10 +217,28 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
+    <%--<script src="/Scripts/toastr.min.js"></script>--%>
 </body>
 </html>
 <script type="text/javascript">
-    $(document).ready(function(){
+    //toastr.options = {
+    //    "closeButton": true,
+    //    "debug": true,
+    //    "newestOnTop": false,
+    //    "progressBar": true,
+    //    "positionClass": "toast-top-right",
+    //    "preventDuplicates": false,
+    //    "showDuration": "300",
+    //    "hideDuration": "1000",
+    //    "timeOut": "5000",
+    //    "extendedTimeOut": "1000",
+    //    "showEasing": "swing",
+    //    "hideEasing": "linear",
+    //    "showMethod": "fadeIn",
+    //    "hideMethod": "fadeOut"
+    //}
+    $(document).ready(function () {
+
         $("#btnRegistrar").click(function () {
             var confirmarContrasena = $('#txtConfirmarContrasena').val().trim();
             var contrasena = $("#txtContrasena").val().trim();
