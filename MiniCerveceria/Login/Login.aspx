@@ -174,7 +174,7 @@
             <h2>Iniciar Sesión</h2>
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
-                <asp:TextBox id="txtUsuario" ClientIDMode="Static" placeholder="Usuario" required="required" runat="server" />
+                <asp:TextBox id="txtEmail" ClientIDMode="Static" placeholder="Email" required="required" runat="server" />
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
@@ -183,7 +183,7 @@
             <div class="forgot-pass">
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
-            <button type="submit">Iniciar Sesión</button>
+            <button id="btnIniciarSesion" type="button">Iniciar Sesión</button>
             <div class="register-link">
                 <p>No tienes una cuenta registrada?<a href="/Login/Registrarse.aspx">Registrate Ahora!</a></p>
             </div>
@@ -192,5 +192,57 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+        //toastr.options = {
+        //    "closeButton": true,
+        //    "debug": true,
+        //    "newestOnTop": false,
+        //    "progressBar": true,
+        //    "positionClass": "toast-top-right",
+        //    "preventDuplicates": false,
+        //    "showDuration": "300",
+        //    "hideDuration": "100",
+        //    "timeOut": "5000",
+        //    "extendedTimeOut": "1000",
+        //    "showEasing": "swing",
+        //    "hideEasing": "linear",
+        //    "showMethod": "fadeIn",
+        //    "hideMethod": "fadeOut"
+        //}
+        $(document).ready(function () {
+            $("#btnIniciarSesion").click(function () {
+                var email = $('#txtEmail').val().trim();
+                var contrasena = $("#txtContrasena").val().trim();
+                console.log(email + " | " + contrasena);
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Login/Login.aspx/IniciarSesion") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ 'email': email, 'password': contrasena }),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.d.en_linea == true) {
+                            
+                            MandarDatos(data.d);
+                            window.location.href = "/Default.aspx";
+
+                        } else {
+                            $('#txtEmail').val("");
+                            $("#txtContrasena").val("");
+                            
+                        }
+                    },
+                    fail: function () {
+                        $('#txtEmail').val("");
+                        $("#txtContrasena").val("");
+                        /*toastr.warning("mi pana no pudiste iniciar sesión");*/
+                    }
+                    
+                });
+            });
+        });
+    </script>
 </body>
 </html>

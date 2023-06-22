@@ -3,39 +3,44 @@ using MiniCerveceria.Modelos;
 using MiniCerveceria.Servicios;
 using MiniCerveceria.Servicios.Implementacion;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Windows.Forms;
 
 namespace MiniCerveceria.Controladores
 {
-    public class UsuarioController
+    public class UsuarioController 
     {
-        static IUsuarioAplicacionServicios UsuarioServicio;
+        static IUsuarioAplicacionServicios UsuarioService;
 
         public UsuarioController(IConfiguration configuration)
         {
-            string conn = configuration.GetConnectionString("con");
-            UsuarioServicio = new UsuarioServicio(conn);
+            string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+            UsuarioService = new UsuarioServicio(conn);
         }
 
         public void CrearUsuario(Usuario usuario)
         {
-            UsuarioServicio.CrearUsuario(usuario);
+            UsuarioService.CrearUsuario(usuario);
         }
         public IList<Usuario> ObtenerUsuarios()
         {
-            return UsuarioServicio.ListarUsuarios();
+            return UsuarioService.ListarUsuarios();
         }
         public Usuario ObtenerUsuario(int UsuarioID)
         {
-            return UsuarioServicio.Usuario(UsuarioID);
+            return UsuarioService.Usuario(UsuarioID);
+        }
+        public Usuario UsuarioEmail(string email, string password)
+        {
+            return UsuarioService.UsuarioEmail(email, password);
         }
         public void ActualizarUsuario(Usuario usuario)
         {
-            UsuarioServicio.ActualizarUsuario(usuario);
+            UsuarioService.ActualizarUsuario(usuario);
         }
         public int ObtenerIDUsuario()
         {
-            return UsuarioServicio.ObtenerIDUsuario();
+            return UsuarioService.ObtenerIDUsuario();
         }
     }
 }

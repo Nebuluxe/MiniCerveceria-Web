@@ -437,6 +437,7 @@
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladores\Conexion.cs" />
+    <Compile Include="Controladores\ProductoController.cs" />
     <Compile Include="Controladores\UsuarioController.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Mantenedores\Novedades\CrearNovedad.aspx.cs">
@@ -453,8 +454,11 @@
     <Compile Include="Mantenedores\Novedades\DefaultNovedades.aspx.designer.cs">
       <DependentUpon>DefaultNovedades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Servicios\Implementacion\ProductoServicio.cs" />
     <Compile Include="Servicios\Implementacion\UsuarioServicio.cs" />
+    <Compile Include="Servicios\IProductoAplicacionServicios.cs" />
     <Compile Include="Servicios\IUsuarioAplicacionServicios.cs" />
     <Compile Include="Ventanas\Cursos\Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>

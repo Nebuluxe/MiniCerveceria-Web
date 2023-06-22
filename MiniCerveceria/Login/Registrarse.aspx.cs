@@ -1,8 +1,10 @@
-﻿using MiniCerveceria.Controladores;
+﻿using Microsoft.Extensions.Configuration;
+using MiniCerveceria.Controladores;
 using MiniCerveceria.Modelos;
 using MiniCerveceria.Servicios;
 using MiniCerveceria.Servicios.Implementacion;
 using System;
+using System.Configuration;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -10,7 +12,8 @@ namespace MiniCerveceria.Login
 {
     public partial class Registrarse : System.Web.UI.Page
     {
-        static IUsuarioAplicacionServicios UsuarioServicio;
+        static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString; 
+        static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +23,8 @@ namespace MiniCerveceria.Login
             try
             {
                 Usuario oUsuario = new Usuario();
-                oUsuario.id_usuario = UsuarioServicio.ObtenerIDUsuario();
+                oUsuario.id_usuario = UsuarioService.ObtenerIDUsuario();
+                oUsuario.id_permiso = 1;
                 oUsuario.id_comuna = 1;
                 oUsuario.nombre = txtNombre.Text.Trim();
                 oUsuario.apellido = txtApellido.Text.Trim();
@@ -34,7 +38,7 @@ namespace MiniCerveceria.Login
                 oUsuario.en_linea = 1;
                 oUsuario.fecha_creacion = DateTime.Now;
 
-                UsuarioServicio.CrearUsuario(oUsuario);
+                UsuarioService.CrearUsuario(oUsuario);
                 MessageBox.Show("Te haz registrado correctamente " + oUsuario.nombre.Trim() + "!");
             }
             catch (Exception ex)
