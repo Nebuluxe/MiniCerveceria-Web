@@ -44,4 +44,12 @@
         <div class="TitlePage"><img src="../../Imagenes/ChileBannerRecetas.png" style="width:260px;" /> Recetas Chilenas</div>
         <div class="SubTitlePage">LAS RECETAS CHILENAS SON CREACIONES HECHAS EN CHILE ACERCANDOSE A LAS RECETAS TRADICIONALES.</div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $("#TextBread1").text("Recetas");
+            $("#itemBreadbrum1").removeClass("OcultarElemento");
+            $("#itemBreadbrum1").removeAttr("href");
+        });
+    </script>
 </asp:Content>

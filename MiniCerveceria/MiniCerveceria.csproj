@@ -264,6 +264,8 @@
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
     <Content Include="Imagenes\Iconos\carousel-control-prev-icon.png" />
     <Content Include="Imagenes\Iconos\carousel-control-next-icon.png" />
+    <Content Include="Imagenes\Iconos\CloseButtonBlack.png" />
+    <Content Include="Imagenes\Iconos\CloseButtonWithe.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
     <Content Include="Imagenes\Iconos\Favorito.png" />
@@ -300,7 +302,6 @@
     <Content Include="Imagenes\Iconos\carrito-de-compras.png" />
     <Content Include="Imagenes\CarrouselHome2.jpg" />
     <Content Include="Imagenes\Iconos\CervezaIcono.png" />
-    <Content Include="Imagenes\Iconos\CloseButton.png" />
     <Content Include="Imagenes\Iconos\CursosBlack.png" />
     <Content Include="Imagenes\Iconos\CursosWithe.png" />
     <Content Include="Imagenes\Iconos\EmpresasAsociadasBlack.png" />

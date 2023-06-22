@@ -37,7 +37,7 @@
                     <div class="card OptionSelected">
                         <a runat="server" href="~/Ventanas/Usuario/Datos">
                             <img src="\Imagenes\Iconos\NovedadesWithe.png" style="width: 40px; top: 40px !important;" class="rounded-circle" alt="Alternate Text" />
-                            <span style="color: #ffffff">Configurar datos personales
+                            <span style="color: #ffffff">Datos personales
                             </span>
                         </a>
                     </div>
@@ -67,38 +67,91 @@
         </div>
     </div>
     <br />
-    <div class="card">
+    <div class="card" id="VerDatos">
         <div class="card-body">
+            <br />
+            <div class="row">
+                <div class="col-lg-3">
+                    <label for="Nombre" class="form-label"><strong>Nombre: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Apellido" class="form-label"><strong>Apellido: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="FechaNac" class="form-label"><strong>Fecha nacimiento: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Direccion" class="form-label"><strong>Direccion: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Region" class="form-label"><strong>Region: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Comuna" class="form-label"><strong>Comuna: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Email" class="form-label"><strong>Email: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+                <div class="col-lg-3">
+                    <label for="Numero" class="form-label"><strong>Numero: </strong></label>
+                    <label class="form-label">xxxxx xx xxxx</label>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-12">
+                    <a class="btn btn-outline-warning" id="btnModificar">Modificar</a>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="card visually-hidden" id="ModificarDatos">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <a type="button" id="CerrarEditar">
+                       <img src="/Imagenes/Iconos/CloseButtonBlack.png" height="35"> 
+                    </a>
+                </div>
+            </div>
             <br />
             <div class="row">
                 <div class="col-lg-4">
                     <label for="Nombre" class="form-label">Nombre</label>
-                    <input class="form-control" id="Nombre" placeholder="Nombre">
+                    <input class="form-control" id="EditarNombre" placeholder="Nombre">
                 </div>
                 <div class="col-lg-4">
                     <label for="Apellido" class="form-label">Apellido</label>
-                    <input class="form-control" id="Apellido" placeholder="Apellido">
+                    <input class="form-control" id="EditarApellido" placeholder="Apellido">
                 </div>
                 <div class="col-lg-4">
                     <label for="FechaNac" class="form-label">Fecha nacimiento</label>
-                    <input class="form-control" id="FechaNac" placeholder="01/01/1999">
+                    <input class="form-control" id="EditarFechaNac" placeholder="01/01/1999">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <label for="Direccion" class="form-label">Direccion</label>
-                    <input class="form-control" id="Direccion" placeholder="1234 Nombre calle">
+                    <input class="form-control" id="EditarDireccion" placeholder="1234 Nombre calle">
                 </div>
                 <div class="col-lg-3">
                     <label for="Region" class="form-label">Region</label>
-                    <select id="Region" class="form-select">
+                    <select id="EditarRegion" class="form-select">
                         <option selected>Seleccione...</option>
                         <option>...</option>
                     </select>
                 </div>
                 <div class="col-lg-3">
                     <label for="Comuna" class="form-label">Comuna</label>
-                    <select id="Comuna" class="form-select">
+                    <select id="EditarComuna" class="form-select">
                         <option selected>Seleccione...</option>
                         <option>...</option>
                     </select>
@@ -107,22 +160,37 @@
             <div class="row">
                 <div class="col-lg-4">
                     <label for="Email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="Email" placeholder="EmailExample@gmail.com">
+                    <input type="email" class="form-control" id="EditarEmail" placeholder="EmailExample@gmail.com">
                 </div>
                 <div class="col-lg-3">
                     <label for="Constrasenia" class="form-label" style="font-size: 16px">***</label>
-                    <button class="form-control" id="Constrasenia">Cambiar Contraseña</button>
+                    <button class="form-control" id="EditarConstrasenia">Cambiar Contraseña</button>
                 </div>
                 <div class="col-lg-5">
                     <label for="Numero" class="form-label">Numero</label>
-                    <input class="form-control" id="Numero" placeholder="+56 9 999 999">
+                    <input class="form-control" id="EditarNumero" placeholder="+56 9 999 999">
                 </div>
             </div>
             <br />
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                <button type="submit" class="btn btn-outline-warning">Guardar Cambios</button>
             </div>
             <br />
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+
+            $('#btnModificar').on('click', function () {
+                $('#ModificarDatos').removeClass('visually-hidden');
+                $('#VerDatos').addClass('visually-hidden');
+            })
+
+            $('#CerrarEditar').on('click', function () {
+                $('#ModificarDatos').addClass('visually-hidden');
+                $('#VerDatos').removeClass('visually-hidden');
+            })
+        });
+    </script>
 </asp:Content>

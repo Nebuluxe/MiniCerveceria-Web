@@ -11,7 +11,9 @@ namespace MiniCerveceria.Ventanas.Cursos
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			string uid = Request.QueryString["Curs"] != null ? Request.QueryString["Curs"] : "";
 
+			NameCurso.Text = uid == "" ? "Curso xxxxxx" : uid;
 		}
 	}
 }

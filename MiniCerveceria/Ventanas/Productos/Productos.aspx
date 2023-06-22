@@ -526,7 +526,7 @@
                 $("#nombreCategoridaHeader").text(NameCateHead);
                 $("#TextBread1").text(NameCateHead);
                 $("#itemBreadbrum1").removeClass("OcultarElemento");
-                $("#itemBreadbrum1").attr("href", "");
+                $("#itemBreadbrum1").removeAttr("href");
             }
             else {
                 $("#nombreCategoridaHeader").text("Productos");

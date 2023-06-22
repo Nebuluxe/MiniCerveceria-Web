@@ -2,10 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">	
     <style>
-        #headMaster{
-            height: 350px;
-        }
-
         .headContent{
             display: none
         }
@@ -52,7 +48,7 @@
                 <a runat="server" href="~/Ventanas/Usuario/Datos">
                     <img src="\Imagenes\Iconos\NovedadesBlack.png" style="width:40px;top: 40px !important;" class="rounded-circle" alt="Alternate Text" />
                     <span>
-                        Configurar datos personales
+                        Datos personales
                     </span>
                 </a>
             </div>

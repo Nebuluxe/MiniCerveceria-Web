@@ -77,4 +77,11 @@
     </div>
 
     <br /><br /><br />
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $("#TextBread1").text("Cursos");
+            $("#itemBreadbrum1").removeClass("OcultarElemento");
+            $("#itemBreadbrum1").removeAttr("href");
+        });
+    </script>
 </asp:Content>

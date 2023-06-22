@@ -54,13 +54,30 @@
             margin: 15px
         }
 
-        @media only screen and  (max-width: 1400px) {
+        @media only screen and  (max-width: 2500px) {
           .optionSideMantenedor {
-            display: none;
+            width: 250px !important
           }
-
           .titulo{
-              display: none;
+              width: 100px
+          }
+        }
+
+        @media only screen and  (max-width: 2250px) {
+          .optionSideMantenedor {
+            width: 200px !important
+          }
+        }
+
+        @media only screen and  (max-width: 2000px) {
+          .optionSideMantenedor {
+            width: 150px !important
+          }
+        }
+
+        @media only screen and  (max-width: 1650px) {
+          .optionSideMantenedor {
+            width: 110px !important
           }
         }
 
@@ -208,8 +225,8 @@
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 		  <div class="offcanvas-header">
             <h3>Menu</h3>
-            <a href="#" type="button" class="closeButton">
-               <img src="/Imagenes/Iconos/CloseButton.png" height="35"> 
+            <a type="button" class="closeButton">
+               <img src="/Imagenes/Iconos/CloseButtonWithe.png" height="35"> 
             </a>
 		  </div>
 		  <div class="offcanvas-body">
