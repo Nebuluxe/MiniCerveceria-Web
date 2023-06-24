@@ -17,10 +17,10 @@ namespace MiniCerveceria.Servicios.Implementacion
             db = new Controladores.Conexion(conn);
         }
 
-        public Producto ObtenerProducto(int id_producto, int estado)
+        public Producto ObtenerProducto(int id_producto)
         {
-            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria " +
-                            "FROM productos WHERE id_producto = {0} AND estado != {1}", id_producto, estado);
+            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria, url_img, sub_categoria " +
+                            "FROM productos WHERE id_producto = {0}", id_producto);
             DataTable dt = db.Execute(query);
 
             Producto obj = new Producto();
@@ -36,8 +36,10 @@ namespace MiniCerveceria.Servicios.Implementacion
                            estado = Convert.ToInt32(rw["estado"]),
                            fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]),
                            fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"]),
-                           categoria = Convert.ToInt32(rw["cbo_categoria"])
-                       }
+                           categoria = Convert.ToInt32(rw["cbo_categoria"]),
+                           URL_img = Convert.ToString(rw["url_img"]),
+						   sub_categoria = Convert.ToInt32(rw["sub_categoria"])
+					   }
                          ).FirstOrDefault();
             }
 
@@ -45,8 +47,8 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public IList<Producto> ListarProductos(int estado)
         {
-            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria " +
-                            "FROM productos WHERE estado != {0}", estado);
+            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria, url_img, sub_categoria " +
+                            "FROM productos WHERE estado = {0}", estado);
             DataTable dt = db.Execute(query);
 
             IList<Producto> lista = new List<Producto>();
@@ -62,8 +64,10 @@ namespace MiniCerveceria.Servicios.Implementacion
                              estado = Convert.ToInt32(rw["estado"]),
                              fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]),
                              fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"]),
-                             categoria = Convert.ToInt32(rw["cbo_categoria"])
-                         }
+                             categoria = Convert.ToInt32(rw["cbo_categoria"]),
+							 URL_img = Convert.ToString(rw["url_img"]),
+							 sub_categoria = Convert.ToInt32(rw["sub_categoria"])
+						 }
                         ).ToList();
                 return lista;
             }
@@ -74,7 +78,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public IList<Producto> ListarProductosCategoria(int estado, int categoria)
         {
-            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria " +
+            string query = string.Format(@"SELECT id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria, url_img, sub_categoria " +
                             "FROM productos WHERE cbo_categoria = {0} AND estado != {1}", categoria, estado);
             DataTable dt = db.Execute(query);
 
@@ -91,8 +95,10 @@ namespace MiniCerveceria.Servicios.Implementacion
                              estado = Convert.ToInt32(rw["estado"]),
                              fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]),
                              fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"]),
-                             categoria = Convert.ToInt32(rw["cbo_categoria"])
-                         }
+                             categoria = Convert.ToInt32(rw["cbo_categoria"]),
+							 URL_img = Convert.ToString(rw["url_img"]),
+							 sub_categoria = Convert.ToInt32(rw["sub_categoria"])
+						 }
                         ).ToList();
                 return lista;
             }
@@ -104,23 +110,23 @@ namespace MiniCerveceria.Servicios.Implementacion
         public void CrearProducto(Producto obj)
         {
             string query = string.Format(@"INSERT INTO productos " +
-                "(id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria) " +
-                "VALUES ({0}, '{1}', '{2}', {3}, {4}, TO_DATE('{5}', 'DD-MM-YYYY HH24:MI:SS'), TO_DATE('{6}', 'DD-MM-YYYY HH24:MI:SS'), {7})",
-                obj.id_producto, obj.nombre_producto, obj.descripcion, obj.precio, obj.estado, obj.fecha_creacion, obj.fecha_modificacion, obj.categoria);
+				"(id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria, url_img, sub_categoria) " +
+				"VALUES ({0}, '{1}', '{2}', {3}, {4}, TO_DATE('{5}', 'DD-MM-YYYY HH24:MI:SS'), TO_DATE('{6}', 'DD-MM-YYYY HH24:MI:SS'), {7}, '{8}', {9})",
+                obj.id_producto, obj.nombre_producto, obj.descripcion, obj.precio, obj.estado, obj.fecha_creacion, obj.fecha_modificacion, obj.categoria, obj.URL_img, obj.sub_categoria);
             DataTable dt = db.Execute(query);
         }
-        public void EliminarProducto(string id_producto, int estado)
+        public void EliminarProducto(string id_producto)
         {
-            string query = string.Format(@"DELETE FROM productos WHERE id_producto = {0} AND estado = {1}", id_producto, estado);
+            string query = string.Format(@"UPDATE productos SET estado = 0 WHERE id_producto = {0}", id_producto);
             DataTable dt = db.Execute(query);
         }
         public void ActualizarProducto(Producto obj)
         {
-            string query = string.Format(@"UPDATE productos SET"+
+            string query = string.Format(@"UPDATE productos SET "+
                                                 "nombre_producto = '{1}', descripcion = '{2}', precio = {3}, " +
-                                                "estado = {4}, fecha_modificacion = TO_DATE('{5}', 'DD-MM-YYYY HH24:MI:SS'), cbo_categoria = {6} " +
+												"estado = {4}, fecha_modificacion = TO_DATE('{5}', 'DD-MM-YYYY HH24:MI:SS'), cbo_categoria = {6}, url_img = '{7}', sub_categoria = {8} " +
                                           "WHERE id_producto = {0}", 
-                                          obj.id_producto, obj.nombre_producto, obj.descripcion, obj.precio, obj.estado, obj.fecha_modificacion, obj.categoria);
+                                          obj.id_producto, obj.nombre_producto, obj.descripcion, obj.precio, obj.estado, obj.fecha_modificacion, obj.categoria, obj.URL_img, obj.sub_categoria);
             DataTable dt = db.Execute(query);
         }
         public int ObtenerIDProducto()

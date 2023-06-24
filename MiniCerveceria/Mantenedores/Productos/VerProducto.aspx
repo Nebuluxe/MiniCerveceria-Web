@@ -5,123 +5,115 @@
     <link href="/GlobalCss/Mantenedores.css" rel="stylesheet" type="text/css">
 
     <style>
-		.FormCursoExterno{
-			background:#000000;
-			color: #ffffff;
-			border-radius: 15px;
-		}
+        .FormCursoExterno {
+            background: #000000;
+            color: #ffffff;
+            border-radius: 15px;
+        }
 
-		.FormCursoInterno{
-			background:#ffffff;
-			color: #000000;
-			border-radius: 15px;
-		}
+        .FormCursoInterno {
+            background: #ffffff;
+            color: #000000;
+            border-radius: 15px;
+        }
 
-		.lblDetalle{
-			font-size: 22px
-		}
+        .lblDetalle {
+            font-size: 22px
+        }
 
-		#headMaster {
-			display: none;
-		}
-	
-        #mainNav{
+        #headMaster {
             display: none;
         }
 
-        #footerDefault{
+        #mainNav {
             display: none;
         }
-	</style>
+
+        #footerDefault {
+            display: none;
+        }
+    </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
-	  <div class="container-fluid">
-			<a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx"> 
-				<img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40"> 
-			</a>
-			<strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/ProductosWithe.png" height="40" width="40"><span> </span> Ver Productos</strong>
-			<span> </span>
-	  </div>
-	</nav>
-	<br/>
-	<div>
-		<div class="container">
-			<div class="card FormCursoExterno">
-				<br />
-				<div class="card-body">
-					<div class="row">
-						<div class="col-lg-8">
-							<strong class="titulo" style="font-size:1.9em; color: #ffffff;"><span> </span><asp:Label id="lblNombreItem" ClientIDMode="Static" runat="server"></asp:Label></strong>
-							<br />
-							<br />
-							<div class="row mb-3">
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xx xxxx xx</asp:Label></strong><br />
-								<label class="form-label">xxxxx xxxx x x</label>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xxx x xxx</asp:Label></strong><br />
-								<label class="form-label">xxxxx xxx xxxxx x</label>
-								</div>
-							</div>
-							</div>
-							<div class="row mb-3">
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xxxxx xx x</asp:Label></strong><br />
-								<label class="form-label">xxxxx xx xxxx</label>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-outline">
-									<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xxx xx x</asp:Label></strong><br />
-									<label class="form-label">xxxxxxxx xx</label>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xxx xx x</asp:Label></strong><br />
-								<label class="form-label">xxxxx xx xxxx</label>
-								</div>
-							</div>
-							</div>
-							<div class="row mb-3">
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xxx x xx</asp:Label></strong><br />
-								<label class="form-label">xxxxx xx xxxx</label>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xx x xx x x</asp:Label></strong><br />
-								<label class="form-label">xxxxxxxx xx</label>
-								</div>
-							</div>
-							<div class="col">
-								<div class="form-outline">
-								<strong><asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static">Xxxx xx x x</asp:Label></strong><br />
-								<label class="form-label">xxxxx xx xxxx</label>
-								</div>
-							</div>
-							</div>
-							<div class="row mb-1">
-								<textarea class="form-control" id="textAreaDescriptio" rows="3" readonly></textarea>
-								<label class="form-label">xxxxx xx xx xxx xx</label>
-							</div>
-						</div>
-						<div class="col-lg-4">
-							<div class="card FormCursoInterno" id="ItemImagen" style="width: 100%;">
-								<img src="/Imagenes/Iconos/NoImage.png" class="CardItem">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br />
+        <div class="container-fluid">
+            <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx">
+                <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40">
+            </a>
+            <div class="row">
+                <div class="col-2">
+                    <img src="/Imagenes/Iconos/ProductosWithe.png" height="40" width="40">
+                </div>
+                <div class="col-10">
+                    <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Ver Productos</asp:Label>
+                </div>
+            </div>
+            <span></span>
+        </div>
+    </nav>
+    <br />
+    <div>
+        <div class="container">
+            <div class="card FormCursoExterno">
+                <br />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <asp:Label class="titulo" Style="font-size: 1.9em; color: #ffffff;" ID="lblNombreItem" ClientIDMode="Static" runat="server"></asp:Label>
+                            <br />
+                            <br />
+                            <div class="row mb-3">
+                                <div class="col-lg-4">
+                                    <div class="form-outline">
+                                        <strong>
+                                            <asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static" ID="lblPrecio"></asp:Label></strong><br />
+                                        <label class="form-label">Precio</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-outline">
+                                        <strong>
+                                            <asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static" ID="lblCategoria"></asp:Label></strong><br />
+                                        <label class="form-label">Categoria</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-outline">
+                                        <strong>
+                                            <asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static" ID="lblSubCategoria"></asp:Label></strong><br />
+                                        <label class="form-label">Sub categoria</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3" align="center">
+                                <div class="col-lg-6">
+                                    <div class="form-outline">
+                                        <strong>
+                                            <asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static" ID="lblFehcaCreacion"></asp:Label></strong><br />
+                                        <label class="form-label">Fecha creacion</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-outline">
+                                        <strong>
+                                            <asp:Label CssClass="lblDetalle" runat="server" ClientIDMode="Static" ID="lblFechaModificacion"></asp:Label></strong><br />
+                                        <label class="form-label">Fecha modificacion</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-1">
+                                <asp:textbox runat="server" ClientIDMode="Static" TextMode="MultiLine" class="form-control" id="txtDescripcion" rows="3" readonly="true"/>
+                                <label class="form-label">Descripcion</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card FormCursoInterno" style="width: 100%;">
+                                <asp:image runat="server" ClientIDMode="Static" class="CardItem" id="ItemImagen" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
 </asp:Content>

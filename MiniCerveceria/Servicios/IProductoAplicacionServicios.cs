@@ -11,7 +11,7 @@ namespace MiniCerveceria.Servicios
     internal interface IProductoAplicacionServicios
     {
         /*ObtenerProducto*/
-        Producto ObtenerProducto(int id_producto, int estado);
+        Producto ObtenerProducto(int id_producto);
         /*ListarProductos*/
         IList<Producto> ListarProductos(int estado);
         /*ListarProductosCategoria*/
@@ -21,7 +21,7 @@ namespace MiniCerveceria.Servicios
         /*ActualizarProducto*/
         void ActualizarProducto(Producto producto);
         /*EliminarProducto*/
-        void EliminarProducto(string id_producto, int estado);
+        void EliminarProducto(string id_producto);
         /*ObtenerIDProducto*/
         int ObtenerIDProducto();
 

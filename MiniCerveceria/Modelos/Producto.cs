@@ -15,5 +15,7 @@ namespace MiniCerveceria.Modelos
         public DateTime fecha_creacion { get; set; }
         public DateTime fecha_modificacion { get; set; }
         public int categoria { get; set; }
+        public string URL_img { get; set; }
+        public int sub_categoria { get; set; }
     }
 }

@@ -20,9 +20,9 @@ namespace MiniCerveceria.Controladores
             ProductoService = new ProductoServicio(conn);
         }
 
-        public Producto ObtenerProducto(int id_producto, int estado)
+        public Producto ObtenerProducto(int id_producto)
         {
-            return ProductoService.ObtenerProducto(id_producto, estado);
+            return ProductoService.ObtenerProducto(id_producto);
         }
         public IList<Producto> ListarProductos(int estado)
         {
@@ -40,7 +40,12 @@ namespace MiniCerveceria.Controladores
         {
             ProductoService.ActualizarProducto(producto);
         }
-        public int ObtenerIDUsuario()
+        public void EliminarProducto(string id)
+        {
+            ProductoService.EliminarProducto(id);
+
+		}
+		public int ObtenerIDProducto()
         {
             return ProductoService.ObtenerIDProducto();
         }

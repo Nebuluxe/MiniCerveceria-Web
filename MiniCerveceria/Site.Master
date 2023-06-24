@@ -39,11 +39,6 @@
             display: none;
         }
 
-        body {
-          background-image: url("/Imagenes/FondoWeb.jpg");
-          background-size: 15rem;
-        }
-
         .optionSideMantenedor{
             color: #ffffff;
             background-color: rgba(0,0,0);
