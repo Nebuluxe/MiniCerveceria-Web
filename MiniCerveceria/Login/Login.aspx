@@ -224,8 +224,7 @@
                     dataType: 'json',
                     success: function (data) {
                         if (data.d.en_linea == true) {
-                            
-                            MandarDatos(data.d);
+                             
                             window.location.href = "/Default.aspx";
 
                         } else {

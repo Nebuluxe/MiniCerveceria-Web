@@ -131,7 +131,7 @@
                                                     '<div class="btn-group" role="group" >' +
                                                         '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +
                                                         '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>' +
-                                                        '<button type="button" class="btn btn-outline-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar -</button>' +
+                                                        '<button type="button" class="btn btn-outline-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button>' +
                                                     '</div>' +
                                                 '</div>' +
                                             '</div>' +
