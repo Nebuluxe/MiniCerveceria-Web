@@ -476,8 +476,11 @@
     <Compile Include="Mantenedores\Productos\StockProducto.aspx.designer.cs">
       <DependentUpon>StockProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\CarritoCompra.cs" />
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
+    <Compile Include="Servicios\ICarritoCompraAplicacionServicios.cs" />
+    <Compile Include="Servicios\Implementacion\CarritoCompraServicio.cs" />
     <Compile Include="Servicios\Implementacion\ProductoServicio.cs" />
     <Compile Include="Servicios\Implementacion\UsuarioServicio.cs" />
     <Compile Include="Servicios\IProductoAplicacionServicios.cs" />
