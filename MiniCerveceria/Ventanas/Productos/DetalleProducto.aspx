@@ -86,13 +86,19 @@
         .carousel-inner .carousel-item-start {
             transform: translateX(0);
         }
+
+        #Contador{
+            font-size: 20px
+        }
     </style>
     <br />
     <asp:Label runat="server" ClientIDMode="Static" ID="NameCategoria" CssClass="visually-hidden"> </asp:Label>
+    <asp:Label runat="server" ClientIDMode="Static" ID="idCate" CssClass="visually-hidden"> </asp:Label>
+    <asp:Label runat="server" ClientIDMode="Static" ID="idProd" CssClass="visually-hidden"> </asp:Label>
     <div class="row">
         <div class="col-lg-6">
             <div>
-                <img src="/Imagenes/Iconos/NoImage.png" class="animationImg" style="width: 100%">
+                <asp:image runat="server" ClientIDMode="Static" class="animationImg" id="ItemImagen" />
             </div>
         </div>
         <div class="col-lg-6">
@@ -100,27 +106,17 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><asp:Label runat="server" ClientIDMode="Static" id="NomProducto">Producto example</asp:Label></h2>
+                            <h2><asp:Label runat="server" ClientIDMode="Static" id="NomProducto"></asp:Label></h2>
                         </div>
                         <div class="col-lg-12">
-                            <h4>$000.000</h4>
+                            <h4><asp:label runat="server" ClientIDMode="Static" ID="lblPecio"></asp:label></h4>
                             <br />
                         </div>
                         <div class="col-lg-12">
-                            <p>
-                                Why do we use it?
-
-                                It is a long established fact that a reader will be distracted by the readable content of a page
-                                when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
-                                distribution of letters, as opposed to using 'Content here, content here', making it look like
-                                readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as
-                                their default model text, and a search for 'lorem ipsum' will uncover many web sites still in 
-                                their infancy. Various versions have evolved over the years, sometimes by accident, sometimes
-                                on purpose (injected humour and the like).
-                            </p>
+                            <p><asp:label runat="server" ClientIDMode="Static" ID="lblDescripcion"></asp:label></p>
                         </div>
                         <div class="col-lg-12">
-                            <h6>Categoria: <span> Categoria example </span></h6>
+                            <h6>Categoria: <asp:label runat="server" ClientIDMode="Static" ID="lblCategoria"></asp:label></h6>
                             <hr class="featurette-divider">
                         </div>
                         <div class="col-lg-4">
@@ -128,13 +124,10 @@
                                 <div class="card-body">
                                     <tr>
                                         <td>
-                                            <strong> 1 </strong>
-                                        </td>
-                                        <td>
-                                            <a href="#"><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25"/></a><span> </span><a href="#"><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25"/></a>
-                                        </td>
-                                        <td>
                                             <a data-title="Añadir al carrito"><img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
+                                        </td>
+                                        <td>
+                                            <a><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25"/></a><span id="Contador"> 0 </span><a><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25"/></a>
                                         </td>
                                     </tr>
                                 </div>
@@ -156,82 +149,11 @@
     <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
         <a class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
     </div>
-    <div class="container text-center my-3">
+    <div class="container text-center my-3" id="carrouselRelacionados">
         <div class="row mx-auto my-auto justify-content-center">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <div>
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                            </div>
-                            <div align="center">
-                                <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="carousel-inner" role="listbox" id="TablaRelacionados">
+                    
                 </div>
                 <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
                     <img src="/Imagenes/Iconos/carousel-control-prev-icon.png" style="width: 35px">
@@ -242,18 +164,26 @@
             </div>
         </div>
     </div>
+    <div id="listRelacionados" class="row">
+
+    </div>
+    <br />
+    <br />
 
     <script type="text/javascript">
         $(document).ready(() => {
             var NameProdHead = $("#NomProducto").text();
             var NameCateHead = $("#NameCategoria").text();
+            var idCate = $("#idCate").text();
+            var idProd = $("#idProd").text();
+
+            cargarProductosRelacionados(idCate, idProd);
 
             if (NameProdHead != "") {
                 $("#TextBread1").text(NameCateHead);
                 $("#itemBreadbrum1").removeClass("OcultarElemento");
-                $("#itemBreadbrum1").attr("href", "/Ventanas/Productos/Productos?cate=" + NameCateHead);
+                $("#itemBreadbrum1").attr("href", "/Ventanas/Productos/Productos?cate=" + idCate);
 
-                $("#nombreCategoridaHeader").text(NameProdHead);
                 $("#TextBread2").text(NameProdHead);
                 $("#itemBreadbrum2").removeClass("OcultarElemento");
                 $("#itemBreadbrum2").removeAttr("href");
@@ -278,5 +208,92 @@
                 }
             })
         });
+
+        function cargarProductosRelacionados(idCate,idProd) {
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Productos/Productos.aspx/ListarProductos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                data: JSON.stringify({ 'idCate': idCate, 'idSubCate': "0", 'novedad': "" }),
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+                        var cont = 1;
+
+                        if (data.d.length  >=  5) {
+                            $.each(data.d, function (i, val) {
+                                if (val.id_producto != idProd) {
+                                    if (cont == 1) {
+                                        html += '<div class="carousel-item  active">' +
+                                            '<div class="card  hoverImg">' +
+                                            '<div>' +
+                                            '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                            '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                            '</div>' +
+                                            '<div align="center">' +
+                                            '<div class="card-body">' +
+                                            '<span class="">' + val.nombre_producto + '</span>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '</div>'
+                                        cont++;
+                                    } else {
+                                        html += '<div class="carousel-item">' +
+                                            '<div class="card  hoverImg">' +
+                                            '<div>' +
+                                            '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                            '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                            '</div>' +
+                                            '<div align="center">' +
+                                            '<div class="card-body">' +
+                                            '<span >' + val.nombre_producto + '</span>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '</div>'
+                                    }
+                                }
+                            });
+
+                            $('#TablaRelacionados').html(html);
+                            $('#listRelacionados').hide();
+                        } else { 
+                            $.each(data.d, function (i, val) {
+                                if (val.id_producto != idProd) {
+                                    html += '<div class="col-lg-3 card  hoverImg  carousel-item>' +
+                                                '<div  class="">' +
+                                                    '<div>' +
+                                                        '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                                        '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                                    '</div>' +
+                                                    '<div align="center">' +
+                                                        '<div class="card-body">' +
+                                                            '<span >' + val.nombre_producto + '</span>' +
+                                                        '</div>' +
+                                                    '</div>' +
+                                                '</div>' +
+                                            '</div>'
+                                }
+                            });
+
+                            $('#listRelacionados').html(html);
+                            $('#carrouselRelacionados').hide();
+                        }
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+
+        }
     </script>
 </asp:Content>

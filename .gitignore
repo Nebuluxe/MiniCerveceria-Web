@@ -361,5 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-#/MiniCerveceria/Web.config
-#/MiniCerveceria/Wallet
+/MiniCerveceria/Web.config
+/MiniCerveceria/Wallet

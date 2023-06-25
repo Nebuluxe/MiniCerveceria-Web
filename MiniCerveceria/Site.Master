@@ -70,9 +70,17 @@
           }
         }
 
-        @media only screen and  (max-width: 1650px) {
-          .optionSideMantenedor {
-            width: 110px !important
+        @media only screen and  (max-width: 1725px) {
+          #SideMenuMantenedor {
+            display: none  !important;
+          }
+
+          .clickMenuManteedor{
+              display: block !important
+          }
+
+          #goHome{
+              display: none !important
           }
         }
 
@@ -141,6 +149,12 @@
             text-decoration: none;
             font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
         }
+
+        .hoverImg:hover {
+            transition: all 0.6s ease;
+            filter: brightness(30%);
+            background: rgba(0, 0, 0, 0.5);  
+         }
     </style>
 </head>
 <body>
@@ -178,11 +192,11 @@
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 btn-group-vertical">
                         <li class="nav-item cursosNav"><a class="nav-link" runat="server" href="Ventanas/Cursos/Cursos.aspx">Cursos</a></li>
                         <li class="nav-item recetasNav"><a class="nav-link" runat="server" href="Ventanas/Recetas/Recetas.aspx">Recetas</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Novedades">Novedades</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Ingredientes">Ingredientes</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Accesorios">Accesorios</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Cristaleria">Cristaleria</a></li>
-                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=Equipamiento">Equipamiento</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=nov">Novedades</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=1">Ingredientes</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=2">Accesorios</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=3">Cristaleria</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=4">Equipamiento</a></li>
                     </ul>
                 </div>
                 <a runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
@@ -195,9 +209,13 @@
             <div class="container cursor-scale">
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-brand">
-                        <label class="flex_column" role="button">
+                        <label class="flex_column" role="button" id="goHome">
                             <a runat="server" href="~/Default" data-title="Volver a la Web"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="40"></a> 
 		                </label>
+                        <div class="clickMenuManteedor menu-toggle second" data-bs-toggle="offcanvas" style="display: none" data-bs-target="#sideMantenedor" aria-controls="sideMantenedor">
+                            <i></i>
+                            <i></i>
+                        </div>
                     </div>
                     <ul class="navbar-nav justify-content-center flex-grow-1" style="align-items:center">
                         <li class="nav-item">
@@ -217,10 +235,10 @@
             </div>
         </nav>
 
-        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas offcanvas-start sideStyle" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
 		  <div class="offcanvas-header">
             <h3>Menu</h3>
-            <a type="button" class="closeButton">
+            <a class="closeButton">
                <img src="/Imagenes/Iconos/CloseButtonWithe.png" height="35"> 
             </a>
 		  </div>
@@ -232,11 +250,11 @@
                 <div class="btn-group-vertical list-group" role="group" >
                     <a runat="server" href="Ventanas/Cursos/Cursos" class="btn btn-outline-light optionNav">Cursos</a>
                     <a runat="server" href="Ventanas/Recetas/Recetas" class="btn btn-outline-light optionNav">Recetas</a>
-                    <a runat="server" href="Ventanas/Productos/Productos?cate=Novedades" class="btn btn-outline-light optionNav">Novedades</a>
-                    <a runat="server" href="Ventanas/Productos/Productos?cate=Ingredientes" class="btn btn-outline-light optionNav">Ingredientes</a>
-                    <a runat="server" href="Ventanas/Productos/Productos?cate=Accesorios" class="btn btn-outline-light optionNav">Accesorios</a>
-                    <a runat="server" href="Ventanas/Productos/Productos?cate=Cristaleria" class="btn btn-outline-light optionNav">Cristaleria</a>
-                    <a runat="server" href="Ventanas/Productos/Productos?cate=Equipamiento" class="btn btn-outline-light optionNav">Equipamiento</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=nov" class="btn btn-outline-light optionNav">Novedades</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=1" class="btn btn-outline-light optionNav">Ingredientes</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=2" class="btn btn-outline-light optionNav">Accesorios</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=3" class="btn btn-outline-light optionNav">Cristaleria</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=4" class="btn btn-outline-light optionNav">Equipamiento</a>
                 </div>
             </div>
 
@@ -300,10 +318,69 @@
                 </div>
             </div>
         </header>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="offcanvas offcanvas-start sideStyle" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="sideMantenedor" aria-labelledby="offcanvasScrollingLabel">
+            <br />
+            <div class="row offcanvas-header">
+                <div class="col-lg-4">
+                    <span> </span><a runat="server" href="~/Default" data-title="Volver a la Web"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="35"></a> 
+                </div>
+                <div class="col-lg-4">
+                    <h3>Menu</h3>
+                </div>
+                <div class="col-lg-4">
+                    <a class="closeSideMantenedor">
+                        <img src="/Imagenes/Iconos/CloseButtonWithe.png" height="35"> 
+                    </a>
+                </div>
+            </div>
+			<div class="offcanvas-body">
+                <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/MantenedoresLogoWithe.png" height="50" width="50"> Mantenedores</strong>
+                <br />
+                <br />
+		        <div>
+				    <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Cursos</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="45" width="45">
+			    </div>
+			    <br />
+			    <div>
+				    <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Productos</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
+			    </div>
+			    <br />
+			    <div>
+				    <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
+			    </div>
+			    <br />
+			    <div>
+				    <a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 250px;" class="btn btn-dark optionSideMantenedor" >Recetas</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasWithe.png" height="45" width="45">
+			    </div>
+                <br />
+			    <br />
+                <br />
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/logoCerveza7.png" height="50" width="50"> Stock</strong>
+                <br />
+                <br />
+                <div>
+				    <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
+			    </div>
+			    <br />
+			    <br />
+                <br />
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/UserIconWithe.png" height="50" width="50"> Usuarios</strong>
+                <br />
+                <br />
+			    <div>
+				    <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Usuarios</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">
+			    </div>
+			</div>
+        </div>
         <div class="container-fluid" >
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark" id="SideMenuMantenedor">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: rgb(0, 0, 0, .6) !important" id="SideMenuMantenedor">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                             <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Menu</strong>
@@ -322,8 +399,8 @@
 			            </div>
 			            <br />
 			            <div>
-				            <a runat="server" href="~/Mantenedores/Novedades/DefaultNovedades.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/NovedadesWithe.png" height="45" width="45">
+				            <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
 			            </div>
 			            <br />
 			            <div>
@@ -337,8 +414,8 @@
                         <br />
                         <br />
                         <div>
-				            <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
+				            <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
 			            </div>
 			            <br />
 			            <br />
@@ -361,7 +438,6 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <footer class="bg-dark text-center text-white border-top footer" id="footerDefault">
             <div style="background-color: rgb(0, 0, 0, 0.8) !important">
                 <div>
@@ -422,19 +498,7 @@
                 </div>
             </div>
         </footer>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio item 1 modal popup-->
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="/js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script src="/Scripts/toastr.min.js"></script>
-        <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" integrity="sha512-cOH8ndwGgPo+K7pTvMrqYbmI8u8k6Sho3js0gOqVWTmQMlLIi6TbqGWRTpf1ga8ci9H3iPsvDLr4X7xwhC/+DQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>--%>
+        <%--<script src="/Scripts/toastr.min.js"></script>--%>
     </form>
     <asp:PlaceHolder runat="server">
         
@@ -442,59 +506,24 @@
     </asp:PlaceHolder>
 </body>
 </html>
-<script>
-    toastr.options = {
-        "closeButton": true,
-        "debug": true,
-        "newestOnTop": false,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "preventDuplicates": false,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
-    }
-    //var cursor = document.querySelector('.cursor'),
-    //    cursorScale = document.querySelectorAll('.cursor-scale'),
-    //    mouseX = 0,
-    //    mouseY = 0
+<script type="text/javascript">
+    //toastr.options = {
+    //    "closeButton": true,
+    //    "debug": true,
+    //    "newestOnTop": false,
+    //    "progressBar": true,
+    //    "positionClass": "toast-top-right",
+    //    "preventDuplicates": false,
+    //    "showDuration": "300",
+    //    "hideDuration": "1000",
+    //    "timeOut": "5000",
+    //    "extendedTimeOut": "1000",
+    //    "showEasing": "swing",
+    //    "hideEasing": "linear",
+    //    "showMethod": "fadeIn",
+    //    "hideMethod": "fadeOut"
+    //}
 
-    //gsap.to({}, 0.016, {
-    //    repeat: -1,
-
-    //    onRepeat: function () {
-    //        gsap.set(cursor, {
-    //            css: {
-    //                left: mouseX,
-    //                top: mouseY
-    //            }
-    //        })
-    //    }
-    //});
-
-    //window.addEventListener("mousemove", function (e) {
-    //    mouseX = e.clientX;
-    //    mouseY = e.clientY
-    //});
-
-    //cursorScale.forEach(link => {
-    //    link.addEventListener('mouseleave', () => {
-    //        cursor.classList.remove('grow');
-    //        cursor.classList.remove('grow-small');
-    //    });
-    //    link.addEventListener('mousemove', () => {
-    //        cursor.classList.add('grow');
-    //        if (link.classList.contains('small')) {
-    //            cursor.classList.remove('grow');
-    //            cursor.classList.add('grow-small');
-    //        }
-    //    });
-    //});
     window.addEventListener('DOMContentLoaded', event => {
 
         // Navbar shrink function
@@ -601,8 +630,45 @@
             $('.clickMenu').trigger('click');
         });
 
+        $('.closeSideMantenedor').on('click', function () {
+            $('.clickMenuManteedor').trigger('click');
+        });
+        
+
         $('.clickMenu').click(function () {
             $(this).toggleClass('open');
+        });
+
+        $('.clickMenuManteedor').click(function () {
+            $(this).toggleClass('open');
+        });
+
+        $(document).on('keydown', '.isNumero', function (e) {
+            // Permitir: backspace, delete, tab, escape, enter and .
+            if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+                // Permitir: Ctrl+A, Command+A
+                (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+                //permitir Ctrl + V
+                (e.keyCode === 86 && (e.ctrlKey === true || e.metaKey === true)) ||
+                // Permitir: home, end, izq., der., abajo, arriba
+                (e.keyCode >= 35 && e.keyCode <= 40)) {
+                if ((e.keyCode === 110 || e.keyCode === 190) && $(this).val().indexOf(".") > -1) {
+                    e.preventDefault();
+                }
+                else if (e.keyCode === 110 || e.keyCode === 190) {
+                    let len = $.trim($(this).val().replace("-", "")).length;
+                    if (len == 0) {
+                        $(this).val("0.");
+                        e.preventDefault();
+                    }
+                }
+                return;
+            }
+            // Ensure that it is a number and stop the keypress
+            if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                e.preventDefault();
+            }
+
         });
     });
 </script>

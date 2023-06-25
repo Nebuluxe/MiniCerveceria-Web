@@ -195,372 +195,15 @@
                 <img src="/Imagenes/Iconos/ProductosBlack.png" height="80" />
                 Productos</a>
         </div>
-        <div class="row" align="center">
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a  class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a  class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4 mb-3 mb-sm-0" align="center">
-                <br />
-                <div class="container">
-                    <figure class="containerz">
-                        <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                        <figcaption>
-                            <h3>Ver</h3>
-                        </figcaption>
-                        <a href="/Ventanas/Productos/DetalleProducto"></a>
-                    </figure>
-                    <div class="card">
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a class="favorito" data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row" align="center" id="TablaProductos">
+
         </div>
     </section>
 
     <script type="text/javascript">
         $(document).ready(() => {
+            cargarProductos()
+
             $(".favorito").on("click", function () {
                 Command: toastr["success"]("mi pana haz agregado a favoritos de pana", "mi loco agregaste a favoritos")
             });
@@ -580,5 +223,63 @@
                 }
             })
         });
+
+        function cargarProductos() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/ListarProductosMuestra") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        $.each(data.d, function (i, val) {
+                            html+= '<div class="col-lg-4" align="center">' +
+                                        '<br />' +
+                                        '<div class="container">' +
+                                            '<figure class="containerz">' +
+                                                '<img src="' + val.URL_img + '" />' +
+                                                '<figcaption>' +
+                                                    '<h3>Ver</h3>' +
+                                                '</figcaption>' +
+                                                '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"></a>' +
+                                            '</figure>' +
+                                            '<div class="card">' +
+                                                '<div align="center">' +
+                                                    '<div class="card-body">' +
+                                                        '<div align="center">'  +
+                                                            '<div class="row">' +
+                                                                '<div class="col-lg-6">' +
+                                                                    '<a class="favorito" data-title="Añadir a favoritos">' +
+                                                                        '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
+                                                                '</div>' +
+                                                                '<div class="col-lg-6">' +
+                                                                    '<a data-title="Añadir al carrito">' +
+                                                                        '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
+                                                                '</div>' +
+                                                            '</div>' +
+                                                        '</div>' +
+                                                    '</div>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>'
+                        });
+
+                        $('#TablaProductos').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+
+                }
     </script>
 </asp:Content>

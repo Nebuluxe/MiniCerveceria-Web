@@ -129,7 +129,7 @@
 							<div class="row">
 								<div class="col-lg-2">
 									<a href="#" id="CloseDirecEnvioYpago"> 
-										<img id="btnContinueCompra" src="/Imagenes/Iconos/CloseButton.png" height="35">
+										<img id="btnContinueCompra" src="/Imagenes/Iconos/CloseButtonWithe.png" height="35">
 									</a>
 								</div>
 							</div>

@@ -7,38 +7,29 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace MiniCerveceria
+namespace MiniCerveceria.Mantenedores.Productos
 {
 
 
-	public partial class Productos
+	public partial class StockProducto
 	{
 
 		/// <summary>
-		/// Control NameCategoria.
+		/// Control txtCantidadAumentar.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label NameCategoria;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtCantidadAumentar;
 
 		/// <summary>
-		/// Control idCategoria.
+		/// Control txtCantidadRebajar.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label idCategoria;
-
-		/// <summary>
-		/// Control idSubCategoria.
-		/// </summary>
-		/// <remarks>
-		/// Campo generado automáticamente.
-		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label idSubCategoria;
+		protected global::System.Web.UI.HtmlControls.HtmlInputText txtCantidadRebajar;
 	}
 }

@@ -21,11 +21,12 @@
     	#footerDefault {
     		display: none;
     	}
+
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
         <div class="container-fluid">
-            <a runat="server" href="~/Mantenedores/Default.aspx">
+            <a runat="server" href="~/Mantenedores/Default.aspx" data-title="Volver">
                 <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40">
             </a>
             <div class="row">
@@ -36,11 +37,18 @@
                     <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Productos</asp:Label>
                 </div>
             </div>
-            <a runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx">
+            <a runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx" data-title="Crear producto">
                 <img src="/Imagenes/Iconos/btnAgregar.png" class="d-flex" height="40" width="40">
             </a>
         </div>
     </nav>
+    <br />
+    <div class="input-group" style="justify-content: center">
+        <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
+        <span class="input-group-text" id="addon-wrapping" style="border: 10px">
+            <img src="/Imagenes/Iconos/Lupa.png" height="20">
+        </span>
+    </div>
     <br />
     <div class="container" align="center">
         <div class="row" id="TablaProductos">
@@ -60,14 +68,12 @@
             ¿Esta seguro que dese eliminar el producto " <span id="Nombreproducto"></span>" ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
           </div>
         </div>
       </div>
     </div>
 
-
-    <%-- -------------------------- --%>
     <script type="text/javascript">
         $(document).ready(function () {
             cargarProductos()
@@ -77,7 +83,7 @@
             $('.btnEliminar').on('click', function () {
                 var cardBody = $(this).parent().parent();
 
-                var name = cardBody.find('.card-title').text()
+                var name = cardBody.find('.nameProducto').text()
                 idProdDelete = cardBody.find('.idprod').text()
 
                 $('#Nombreproducto').text(name);
@@ -91,7 +97,7 @@
                     contentType: 'application/json; charset=utf-8',
                     async: false,
                     dataType: 'json',
-                    data: JSON.stringify({ 'id': idProdDelete }),
+                    data: JSON.stringify({ 'id_producto': idProdDelete }),
                     success: function (data) {
                         if (data.d) {
                             cargarProductos()
@@ -100,6 +106,16 @@
                     error: function (data) {
                         alert("Algo ha salido mal!!!");
                     }
+                });
+            });
+
+            $("#search").keyup(function () {
+                _this = this;
+                $.each($("#TablaProductos .tarjProducto"), function () {
+                    if ($(this).find('.nameProducto').text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
                 });
             });
         });
@@ -119,14 +135,15 @@
                     if (data.d != null) {
 
                         $.each(data.d, function (i, val) {
-                            html += '<div class="col-lg-3">' +
+                            html += '<div class="col-lg-3 tarjProducto">' +
+                                        '<br/>' +
                                         '<div class="card" style="width: 90%;">' +
                                             '<div>' +
                                                 '<img src="' + val.URL_img + '" class="card-img-top">' +
                                             '</div>' +
                                             '<div align="center">' +
                                                 '<div class="card-body">' +
-                                                    '<h5 class="card-title">' + val.nombre_producto + '</h5>' +
+                                                    '<span class="titulo nameProducto">' + val.nombre_producto + '</span>' +
                                                     '<span class="idprod visually-hidden">' + val.id_producto + '</span>' +
                                                     '<div class="btn-group" role="group" >' +
                                                         '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +

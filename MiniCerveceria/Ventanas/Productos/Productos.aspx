@@ -50,11 +50,20 @@
         #MantenedorNav {
             display: none;
         }
+
+        #TablaProductos {
+	        height: 1250px;
+	        width: 100%;
+	        overflow-y: scroll;
+            overflow-x: hidden
+        }
     </style>
     <br />
     <br />
     <br />
     <asp:Label runat="server" ClientIDMode="Static" ID="NameCategoria" CssClass="visually-hidden"> </asp:Label>
+    <asp:Label runat="server" ClientIDMode="Static" ID="idCategoria" CssClass="visually-hidden"> </asp:Label>
+    <asp:Label runat="server" ClientIDMode="Static" ID="idSubCategoria" CssClass="visually-hidden"> </asp:Label>
     <div class="row">
         <div class="col-lg-3">
             <br />
@@ -156,359 +165,16 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-9">
             <div class="input-group" style="justify-content: center">
-                <input type="text" class="form-control" placeholder="Buscador..." aria-label="Buscador...">
+                <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
                 <span class="input-group-text" id="addon-wrapping" style="border: 10px">
-                    <img class="imgDefault" src="/Imagenes/Iconos/Lupa.png" height="20">
+                    <img src="/Imagenes/Iconos/Lupa.png" height="20">
                 </span>
             </div>
-            <div class="row">
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="~/Ventanas/Productos/DetalleProducto?cate=Ingredientes&&prod=Producto name">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
+            <br />
+            <div class="row" id="TablaProductos">
 
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-4 mb-sm-0">
-                    <br />
-                    <div class="card" style="width: 100%;">
-                        <div>
-                            <a runat="server" href="DetalleProducto.aspx">
-                                <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top animationImg">
-                            </a>
-                        </div>
-                        <div align="center">
-                            <div class="card-body">
-                                <div align="center">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir a favoritos">
-                                                <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a data-title="Añadir al carrito">
-                                                <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Producto name</h5>
-                                    <h5>$000.000</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <br />
-                <div class="card navegacionItems">
-                    <div class="card-body">
-                        <a href="#" class="pageSelector"><strong>1</strong></a><span> | </span><a href="#" class="pageSelector"><strong>2</strong></a><span> | </span><a href="#" class="pageSelector"><strong>3</strong></a>
-                        <a href="#" class="pageSelector"><strong>Siguiente >></strong></a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -520,6 +186,8 @@
     <br />
     <script>
         $(document).ready(function () {
+            cargarProductos();
+
             var NameCateHead = $("#NameCategoria").text();
 
             if (NameCateHead != "") {
@@ -531,6 +199,79 @@
             else {
                 $("#nombreCategoridaHeader").text("Productos");
             }
+
+            $("#search").keyup(function () {
+                _this = this;
+                $.each($("#TablaProductos .tarjProducto"), function () {
+                    if ($(this).find('.nameProducto').text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                        $(this).hide();
+                    else
+                        $(this).show();
+                });
+            });
         });
+
+        function cargarProductos() {
+
+            var idCate = $("#idCategoria").text();
+            var idSubCate = $("#idSubCategoria").text();
+            var novedad = $("#NameCategoria").text();
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Productos/Productos.aspx/ListarProductos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                data: JSON.stringify({ 'idCate': idCate, 'idSubCate': idSubCate, 'novedad': novedad }),
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        $.each(data.d, function (i, val) {
+                            html += '<div class="col-lg-4 tarjProducto">' +
+                                        '<div class="card" style="width: 100%;">' +
+                                            '<div>' +
+                                                    '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                                    '<img src="' + val.URL_img + '" class="card-img-top animationImg">' +
+                                                '</a>' +
+                                            '</div>' +
+                                            '<div align="center">' +
+                                                '<div class="card-body">' +
+                                                    '<div align="center">' +
+                                                        '<div class="row">' +
+                                                            '<div class="col-lg-6">' +
+                                                                '<a data-title="Añadir a favoritos">' +
+                                                                    '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
+                                                            '</div>' +
+                                                            '<div class="col-lg-6">' +
+                                                                '<a data-title="Añadir al carrito">' +
+                                                                    '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
+                                                            '</div>' +
+                                                        '</div>' +
+                                                        '<h5 class="card-title  nameProducto">' + val.nombre_producto + '</h5>' +
+                                                        '<h5>$' + val.precio + '</h5>' +
+                                                    '</div>'+
+                                                '</div>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '</br>' +
+                                    '</div>' 
+
+                        });
+
+                        $('#TablaProductos').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+
+        }
     </script>
 </asp:Content>

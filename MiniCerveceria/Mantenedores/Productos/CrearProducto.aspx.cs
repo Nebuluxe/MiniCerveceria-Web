@@ -67,12 +67,11 @@ namespace MiniCerveceria.Mantenedores.Productos
             {
                 Producto oProducto = new Producto();
 
-                oProducto.id_producto = productoApp.ObtenerIDProducto();
 				oProducto.nombre_producto = txtNombreProducto.Text;
                 oProducto.descripcion = txtDescripcion.Text;
-                oProducto.precio = Convert.ToInt32(txtPrecioProucto.Text);
+                oProducto.precio = Convert.ToInt64(txtPrecioProucto.Text);
                 oProducto.categoria = Convert.ToInt32(cboCategoria.SelectedValue);
-				oProducto.estado = 1;
+				oProducto.estado = true;
                 oProducto.fecha_creacion = DateTime.Now;
 				oProducto.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
                 oProducto.URL_img = "/Imagenes/Iconos/NoImage.png";
@@ -99,7 +98,7 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.descripcion = txtDescripcion.Text;
 				oProducto.precio = Convert.ToInt32(txtPrecioProucto.Text);
 				oProducto.categoria = Convert.ToInt32(cboCategoria.SelectedValue);
-				oProducto.estado = Convert.ToInt32(hdnEstado.Value);
+				oProducto.estado = Convert.ToBoolean(hdnEstado.Value);
 				oProducto.fecha_modificacion = DateTime.Now;
 				oProducto.URL_img = "/Imagenes/Iconos/NoImage.png";
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);

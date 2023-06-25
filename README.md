@@ -1,1 +1,2 @@
 # MiniCerveceria
+# Un proyecto desarrollado en C#, nuestro objetivo con este proyecto es poder realizar una página web para una empresa llamada MiniCervecería, la cuál actualmente tiene una web desactualizada, por este motivo en cuestión, quisieron darle un vuelco a la página y actualizarla.

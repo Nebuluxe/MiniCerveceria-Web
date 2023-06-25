@@ -73,7 +73,7 @@
 					  <div class="row mb-3">
 						<div class="col-lg-12">
 						  <div class="form-outline">
-							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtNombreProducto" placeholder="Nombre producto" class="form-control" />
+							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtNombreProducto" maxlength="499" placeholder="Nombre producto" class="form-control" />
 							<label class="form-label">Nombre producto</label>
 						  </div>
 						</div>
@@ -81,7 +81,7 @@
 					  <div class="row mb-3">
 						<div class="col-lg-4">
 						  <div class="form-outline">
-							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtPrecioProucto" class="form-control" placeholder="999.999"/>
+							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtPrecioProucto" maxlength="15" class="form-control isNumero" placeholder="999.999"/>
 							<label class="form-label">Precio</label>
 						  </div>
 						</div>
@@ -121,7 +121,7 @@
 						</div>
 					  </div>
 					  <div class="row mb-1">
-						  <asp:textbox runat="server" ClientIDMode="Static" TextMode="MultiLine" class="form-control" id="txtDescripcion" rows="3"/>
+						  <asp:textbox runat="server" ClientIDMode="Static" TextMode="MultiLine" class="form-control" maxlength="2999" id="txtDescripcion" rows="3"/>
 						  <label class="form-label">Descripcion</label>
 					  </div>
 				  </div>
@@ -130,7 +130,7 @@
 			<div class="col-lg-4">
 				<br />
 				<div class="card FormCursoExterno" style="width: 100%;">
-					<asp:image runat="server" ClientIDMode="Static" class="CardItem anodizado" id="ItemImagen" />
+					<asp:image runat="server" ClientIDMode="Static" class="CardItem hoverImg" id="ItemImagen" />
 				</div>
 				<div class="input-group visually-hidden">
 					<asp:FileUpload runat="server" ClientIDMode="Static" type="file" class="form-control" id="imputFotoItem" />
