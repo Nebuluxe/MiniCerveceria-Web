@@ -12,8 +12,9 @@ namespace MiniCerveceria
 {
     public partial class SiteMaster : MasterPage
     {
-		public string EstadoSesion = "";
-		public string PermisoAdmin = "";
+		public string EstadoSesion = "false";
+		public string UsuarioMaestro = "false";
+		public string UserPermisoAcceso = "false";
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -27,19 +28,21 @@ namespace MiniCerveceria
 				{
 					EstadoSesion = "true";
 
-					PermisoAdmin = "false";
-				}
-				else
-				{
-					EstadoSesion = "false";
-
-					PermisoAdmin = "false";
+					if (oUsuario.id_permiso != 0)
+					{
+						UserPermisoAcceso = "true";
+					}
+					else
+					{
+						UserPermisoAcceso = "false";
+					}
+					
 				}
 			}
 			else
 			{
 				EstadoSesion = "true";
-				PermisoAdmin = "true";
+				UsuarioMaestro = "true";
 			}
 
 		}

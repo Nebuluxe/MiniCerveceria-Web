@@ -18,25 +18,55 @@ namespace MiniCerveceria.Mantenedores.Productos
     {
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
-		
+		static IUsuarioAplicacionServicios usuarioApp = new UsuarioServicio(conn);
+
+		public string PermisoEliminar = "false";
+
 		protected void Page_Load(object sender, EventArgs e)
         {
-			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
-			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
-
-			if (MasterAdmin == null)
+			try
 			{
-				if (oUsuario == null)
+				if (!IsPostBack)
 				{
-					Response.Redirect("~/Default.aspx", false);
-					return;
-				}
+					MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+					Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
 
-				if (oUsuario.email == null)
-				{
-					Response.Redirect("~/Default.aspx", false);
-					return;
+					if (MasterAdmin == null)
+					{
+						if (oUsuario == null)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						if (oUsuario.email == null)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						if (oUsuario.id_permiso == 0)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						PermisosUsusario permisosUsusario = new PermisosUsusario();
+						permisosUsusario = usuarioApp.ObtenerPermiso(oUsuario.id_permiso);
+
+						PermisoEliminar = permisosUsusario.eliminar? "true":"false";
+					}
+					else
+					{
+						PermisoEliminar = "true";
+					}
+					
 				}
+			}
+			catch (Exception)
+			{
+
+				throw;
 			}
 		}
 

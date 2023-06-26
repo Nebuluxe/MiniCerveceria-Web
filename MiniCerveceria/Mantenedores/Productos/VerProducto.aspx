@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="row mb-1">
-                                <asp:textbox runat="server" ClientIDMode="Static" TextMode="MultiLine" class="form-control" id="txtDescripcion" rows="3" readonly="true"/>
+                                <asp:textbox style="min-width: 100%; height:170px;" runat="server" ClientIDMode="Static" TextMode="MultiLine" class="form-control" id="txtDescripcion" rows="3" readonly="true"/>
                                 <label class="form-label">Descripcion</label>
                             </div>
                         </div>

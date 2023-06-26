@@ -6,21 +6,23 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Services;
 
 namespace MiniCerveceria.Mantenedores.Usuarios
 {
-    public partial class DefaultUsuarios : System.Web.UI.Page
+	public partial class Permisos : System.Web.UI.Page
 	{
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IUsuarioAplicacionServicios usuarioApp = new UsuarioServicio(conn);
 
 		public string PermisoEditar = "false";
+		public string PermisoEliminar = "false";
+		public string PermisoCrear = "false";
 
 		protected void Page_Load(object sender, EventArgs e)
-        {
+		{
 			try
 			{
 				MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
@@ -45,33 +47,34 @@ namespace MiniCerveceria.Mantenedores.Usuarios
 						Response.Redirect("~/Default.aspx", false);
 						return;
 					}
-
 					PermisosUsusario permisosUsusario = new PermisosUsusario();
 					permisosUsusario = usuarioApp.ObtenerPermiso(oUsuario.id_permiso);
 
 					PermisoEditar = permisosUsusario.editar ? "true" : "false";
+					PermisoEliminar = permisosUsusario.eliminar ? "true" : "false";
+					PermisoCrear = permisosUsusario.crear ? "true" : "false";
 				}
 				else
 				{
 					PermisoEditar = "true";
+					PermisoEliminar = "true";
+					PermisoCrear = "true";
 				}
 			}
 			catch (Exception)
 			{
-
 				throw;
 			}
-
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Usuario> ListarUsuarios()
+		public static IList<PermisosUsusario> ListarPermisos()
 		{
 			try
 			{
-				IList<Usuario> ListProductos = new List<Usuario>();
+				IList<PermisosUsusario> ListProductos = new List<PermisosUsusario>();
 
-				ListProductos = usuarioApp.ListarUsuarios();
+				ListProductos = usuarioApp.ListarPermisos();
 
 				return ListProductos;
 			}
@@ -82,19 +85,12 @@ namespace MiniCerveceria.Mantenedores.Usuarios
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static bool AsignarQuitarPerfil(string id_usuario, string id_permiso)
+		public static bool EliminarPermiso(string id_permiso)
 		{
 			try
 			{
-				if (id_permiso != "")
-				{
-					usuarioApp.AsignarPermiso(Convert.ToInt32(id_usuario),Convert.ToInt32(id_permiso));
-				}
-				else
-				{
-					usuarioApp.QuitarPermiso(Convert.ToInt32(id_usuario));
-				}
-				
+				usuarioApp.EliminarPermiso(Convert.ToInt32(id_permiso));
+
 				return true;
 			}
 			catch (Exception)
@@ -104,17 +100,25 @@ namespace MiniCerveceria.Mantenedores.Usuarios
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static bool HabilitarInhabilitarPerfil(string id_usuario, bool accion)
+		public static bool CrearEditarPermiso(string id_permiso, string nombre, string editar, string eliminar, string ver, string crear)
 		{
 			try
 			{
-				if (accion)
+				PermisosUsusario permiso = new PermisosUsusario();
+				permiso.nombre = nombre;
+				permiso.editar = Convert.ToBoolean(editar);
+				permiso.eliminar = Convert.ToBoolean(eliminar);
+				permiso.ver = Convert.ToBoolean(ver);
+				permiso.crear = Convert.ToBoolean(crear);
+
+				if (id_permiso == "")
 				{
-					usuarioApp.HabiliatarCuentaUsuario(Convert.ToInt32(id_usuario));
+					usuarioApp.CrearPermiso(permiso);
 				}
 				else
 				{
-					usuarioApp.InHabiliatarCuentaUsuario(Convert.ToInt32(id_usuario));
+					permiso.id_permiso = Convert.ToInt32(id_permiso);
+					usuarioApp.ModificarPermiso(permiso);
 				}
 
 				return true;

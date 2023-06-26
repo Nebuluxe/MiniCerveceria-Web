@@ -50,7 +50,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                                          "VALUES (v_id_carrito, " + obj.id_usuario + ", " + obj.id_producto + ", " + obj.precio_producto + ", v_nro_linea, " + obj.cantidad + ", " + obj.total_detalle + ", CURRENT_DATE, CURRENT_DATE); " +
                                      "END IF; " +
                                  "ELSE" +
-                                     "SELECT COUNT(id_carrito) + 1 INTO v_id_carrito FROM CarritoCompra WHERE id_usuario = " + obj.id_usuario + "; " +
+									 "SELECT  MAX(id_carrito) + 1 INTO v_id_carrito FROM CarritoCompra WHERE id_usuario = " + obj.id_usuario + "; " +
                                      "v_nro_linea := 1; " +
                                      "INSERT INTO CarritoCompra (id_carrito, " +
                                                                  "id_usuario, " +

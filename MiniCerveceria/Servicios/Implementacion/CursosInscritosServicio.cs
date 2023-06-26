@@ -26,7 +26,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                                                                "total = " + obj.total + "" +
                                     "WHERE id_cursos_inscritos = v_id_cursos_inscritos AND id_usuario = " + obj.id_usuario + " AND id_curso = " + obj.id_curso + ";" +
                                 "ELSE " +
-                                    "SELECT COUNT(id_cursos_inscritos) + 1 INTO v_id_cursos_inscritos FROM cursosinscritos;" +
+									"SELECT MAX(id_cursos_inscritos) + 1 INTO v_id_cursos_inscritos FROM cursosinscritos;" +
                                     "INSERT INTO cursosinscritos (id_cursos_inscritos," +
                                                                  "id_usuario," +
                                                                  "id_curso," +

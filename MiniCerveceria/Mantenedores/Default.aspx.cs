@@ -28,6 +28,12 @@ namespace MiniCerveceria.Mantenedores
 					Response.Redirect("~/Default.aspx", false);
 					return;
 				}
+
+				if (oUsuario.id_permiso == 0)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
 			}
 		}
     }

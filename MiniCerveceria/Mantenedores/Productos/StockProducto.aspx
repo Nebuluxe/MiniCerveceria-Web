@@ -112,6 +112,8 @@
     </div>
 
     <script type="text/javascript">
+        var PermiosEditar = <%= PermiosEditar %>;
+
         $(document).ready(function () {
             cargarStockProductos()
 
@@ -126,72 +128,85 @@
             });
 
             $('#confirmAumenta').on('click', function (e) {
+                if (PermiosEditar) {
+                    var cantidad = $('#txtCantidadAumentar').val();
+                    var idProdAumenta = $('#idProdAumenta').text();
 
-                var cantidad = $('#txtCantidadAumentar').val();
-                var idProdAumenta = $('#idProdAumenta').text();
-
-                $.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/AumentarStock") %>',
-                    contentType: 'application/json; charset=utf-8',
-                    async: false,
-                    dataType: 'json',
-                    data: JSON.stringify({ 'id_producto': idProdAumenta, 'cantidad': cantidad }),
-                    success: function (data) {
-                        if (data.d) {
-                            cargarStockProductos()
-
-                            $('#txtCantidadAumentar').val('');
-                        }
-                    },
-                    error: function (data) {
-                        alert("Algo ha salido mal!!!");
-                    }
-                });
-            });
-
-            $('#confirmRebaja').on('click', function () {
-
-                var cantidad = $('#txtCantidadRebajar').val();
-                var idProdRebaja = $('#idProdRebaja').text();
-
-                var cantidadActual = $('#StockActualdRebaja').text();
-
-                if (cantidad < cantidadActual) {
                     $.ajax({
                         type: 'POST',
                         cache: false,
-                        url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/RebajarStock") %>',
+                        url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/AumentarStock") %>',
                         contentType: 'application/json; charset=utf-8',
                         async: false,
                         dataType: 'json',
-                        data: JSON.stringify({ 'id_producto': idProdRebaja, 'cantidad': cantidad }),
+                        data: JSON.stringify({ 'id_producto': idProdAumenta, 'cantidad': cantidad }),
                         success: function (data) {
                             if (data.d) {
                                 cargarStockProductos()
 
-                                $('#txtCantidadRebajar').val('');
+                                $('#txtCantidadAumentar').val('');
                             }
                         },
                         error: function (data) {
                             alert("Algo ha salido mal!!!");
                         }
                     });
-                } else {
-                    alert("El stock a rebajar no puede ser mayor al actual!!");
+                }
+            });
+
+            $('#confirmRebaja').on('click', function () {
+                if (PermiosEditar) {
+                    var cantidad = $('#txtCantidadRebajar').val();
+                    var idProdRebaja = $('#idProdRebaja').text();
+
+                    var cantidadActual = $('#StockActualdRebaja').text();
+
+                    if (cantidad < cantidadActual) {
+                        $.ajax({
+                            type: 'POST',
+                            cache: false,
+                            url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/RebajarStock") %>',
+                            contentType: 'application/json; charset=utf-8',
+                            async: false,
+                            dataType: 'json',
+                            data: JSON.stringify({ 'id_producto': idProdRebaja, 'cantidad': cantidad }),
+                            success: function (data) {
+                                if (data.d) {
+                                    cargarStockProductos()
+
+                                    $('#txtCantidadRebajar').val('');
+                                }
+                            },
+                            error: function (data) {
+                                alert("Algo ha salido mal!!!");
+                            }
+                        });
+                    } else {
+                        alert("El stock a rebajar no puede ser mayor al actual!!");
+                    }
                 }
             });
         });
 
         function aumenta(id) {
-            $('#idProdAumenta').text(id);
-            console.log(cantidad)
+            if (PermiosEditar) {
+                var tr = $('#Contenido').find('tr[id=' + id + ']');
+
+                tr.find('.aumenta').trigger('click');
+
+                $('#idProdAumenta').text(id);
+            }
         }
 
         function rebaja(id, cantidad) {
-            $('#idProdRebaja').text(id);
-            $('#StockActualdRebaja').text(cantidad);
+            if (PermiosEditar) {
+                var tr = $('#Contenido').find('tr[id=' + id + ']');
+
+                tr.find('.rebajar').trigger('click');
+
+                $('#idProdRebaja').text(id);
+                $('#StockActualdRebaja').text(cantidad);
+            }
         }
 
         function cargarStockProductos() {
@@ -209,11 +224,19 @@
                     if (data.d != null) {
 
                         $.each(data.d, function (i, val) {
+                            var buttons = "";
+
+                            buttons += '<a  onclick="aumenta(' + val.id_producto + ')" data-title="Aumentar stock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25" /></a><span> </span>';
+                            buttons += '<button type="button" class="visually-hidden aumenta" data-bs-toggle="modal" data-bs-target="#modalAumentaStock"></button>';
+
+                            buttons += '<a  onclick="rebaja(' + val.id_producto + ', ' + val.stock + ')" data-title="Rebajar stock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25" /></a>';
+                            buttons += '<button type="button" class="visually-hidden rebajar" data-bs-toggle="modal" data-bs-target="#modalRebajaStock"></button>';
+
                             html += '<tr id="' + val.id_producto + '">' +
                                         '<td colspan="2">' + val.nombre_producto + '</td>' +
                                         '<td scope="row">$' + val.precio + '</td>' +
                                         '<td scope="row" >' + val.stock + '</td>' +
-                                        '<td scope="row"><a  onclick="aumenta(' + val.id_producto + ')" class="aumenta" data-title="Aumentar stock" data-bs-toggle="modal" data-bs-target="#modalAumentaStock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="20" width="20" /></a><span> </span> <a  onclick="rebaja(' + val.id_producto + ', ' + val.stock + ')" class="rebajar" data-title="Rebajar stock" data-bs-toggle="modal" data-bs-target="#modalRebajaStock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="20" width="20" /></a></td>' +
+                                        '<td scope="row">' + buttons + '</td>' +
                                     '</tr>';
                         });
 

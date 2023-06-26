@@ -22,5 +22,6 @@ namespace MiniCerveceria.Modelos
         public int activo { get; set; }
         public int en_linea { get; set; }
         public DateTime fecha_creacion { get; set; }
-    }
+        public string nombre_permiso { get; set; }
+	}
 }

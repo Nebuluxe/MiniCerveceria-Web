@@ -48,7 +48,8 @@
                     <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Novedades</asp:Label>
                 </div>
             </div>
-            <a id="btnAgregar" data-title="Agregar novedad" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <button type="button" id="btnAgregarHide" class="visually-hidden" data-bs-toggle="modal" data-bs-target="#modalAgregarNovedad"></button>
+            <a id="btnAgregar" data-title="Agregar novedad">
                 <img src="/Imagenes/Iconos/btnAgregar.png" class="d-flex" height="40" width="40">
             </a>
         </div>
@@ -67,11 +68,11 @@
         </div>
     </div>
     <%-- Modal agregar novedad --%>
-    <div class="fade modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="fade modal" id="modalAgregarNovedad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarNovedadLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Lista productos</h1>
+            <h1 class="modal-title fs-5" id="modalAgregarNovedadLabel">Lista productos</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -87,9 +88,15 @@
       </div>
     </div>
     <script>
+        var PermisoEliminar = <%= PermisoEliminar %>;
+        var PermisoCrear = <%= PermisoCrear %>;
+
         $(document).ready(function () {
             cargarNovedades()
-            cargarProductos()
+
+            if (PermisoCrear) {
+                cargarProductos()
+            }
 
             $("#search").keyup(function () {
                 _this = this;
@@ -100,48 +107,61 @@
                         $(this).show();
                 });
             });
+
+            $('#btnAgregar').on('click', function () {
+                if (PermisoCrear) {
+                    $('#btnAgregarHide').trigger('click');
+                }
+            })
         });
 
         function añadir(idprod) {
-            $.ajax({
-                type: 'POST',
-                cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Novedades/Novedades.aspx/AñadirNovedad") %>',
-                contentType: 'application/json; charset=utf-8',
-                async: true,
-                dataType: 'json',
-                data: JSON.stringify({ 'id_producto': idprod }),
-                success: function (data) {
-                    if (data.d) {
-                        cargarNovedades()
-                        cargarProductos()
+            if (PermisoCrear) {
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Novedades/Novedades.aspx/AñadirNovedad") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: true,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': idprod }),
+                    success: function (data) {
+                        if (data.d) {
+                            cargarNovedades()
+                            cargarProductos()
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
                     }
-                },
-                error: function (data) {
-                    alert("Algo ha salido mal!!!");
-                }
-            });
+                });
+            }
         }
 
         function quitar(idprod) {
-            $.ajax({
-                type: 'POST',
-                cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Novedades/Novedades.aspx/QuitarNovedad") %>',
-                contentType: 'application/json; charset=utf-8',
-                async: true,
-                dataType: 'json',
-                data: JSON.stringify({ 'id_producto': idprod }),
-                success: function (data) {
-                    if (data.d) {
-                        cargarNovedades()
-                        cargarProductos()
+            if (PermisoEliminar) {
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Novedades/Novedades.aspx/QuitarNovedad") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: true,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': idprod }),
+                    success: function (data) {
+                        if (data.d) {
+                            cargarNovedades()
+
+                            if (PermisoCrear) {
+                                cargarProductos()
+                            }
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
                     }
-                },
-                error: function (data) {
-                    alert("Algo ha salido mal!!!");
-                }
-            });
+                });
+            }
         }
 
         function cargarNovedades() {

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 
 namespace MiniCerveceria.Mantenedores.Productos
 {
@@ -15,33 +16,48 @@ namespace MiniCerveceria.Mantenedores.Productos
     {
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
+		static IUsuarioAplicacionServicios usuarioApp = new UsuarioServicio(conn);
 
 		protected void Page_Load(object sender, EventArgs e)
         {
-			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
-			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
-
-			if (MasterAdmin == null)
-			{
-				if (oUsuario == null)
-				{
-					Response.Redirect("~/Default.aspx", false);
-					return;
-				}
-
-				if (oUsuario.email == null)
-				{
-					Response.Redirect("~/Default.aspx", false);
-					return;
-				}
-			}
-
 			try
 			{
-				string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
-
 				if (!IsPostBack)
 				{
+					MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+					Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
+					string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
+
+					if (MasterAdmin == null)
+					{
+						if (oUsuario == null)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						if (oUsuario.email == null)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						if (oUsuario.id_permiso == 0)
+						{
+							Response.Redirect("~/Default.aspx", false);
+							return;
+						}
+
+						PermisosUsusario permisosUsusario = new PermisosUsusario();
+						permisosUsusario = usuarioApp.ObtenerPermiso(oUsuario.id_permiso);
+
+						if (!permisosUsusario.ver)
+						{
+							Response.Redirect("~/Mantenedores/Productos/DefaultProductos.aspx", false);
+							return;
+						}
+					}
+
 					if (uid != "")
 					{
 						Producto oProducto = productoApp.ObtenerProducto(Convert.ToInt32(uid));

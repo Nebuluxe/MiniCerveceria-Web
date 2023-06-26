@@ -244,7 +244,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
         private int ObtenerIDProducto()
         {
-            string query = @"SELECT COUNT(*) AS idProducto FROM productos";
+            string query = @"SELECT MAX(id_producto) AS idProducto FROM productos";
             DataTable dt = db.Execute(query);
             int idUsuario = Convert.ToInt32(dt.Rows[0]["idProducto"]);
             return idUsuario + 1;

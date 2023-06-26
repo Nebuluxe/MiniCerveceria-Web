@@ -75,15 +75,15 @@
     </div>
 
     <%-- Modal eliminacion --%>
-    <div class="fade modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="fade modal" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalEliminarLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar producto</h1>
+            <h1 class="modal-title fs-5" id="ModalEliminarLabelLabel">Eliminar producto</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ¿Esta seguro que dese eliminar el producto " <span id="Nombreproducto"></span>" ?
+            ¿Esta seguro que desea eliminar el producto " <span id="Nombreproducto"></span>" ?
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
@@ -93,38 +93,48 @@
     </div>
 
     <script type="text/javascript">
+        var PermisoEliminar = <%= PermisoEliminar %>;
+
         $(document).ready(function () {
             cargarProductos()
 
             var idProdDelete = "";
 
             $('.btnEliminar').on('click', function () {
-                var cardBody = $(this).parent().parent();
+                if (PermisoEliminar) {
+                    var buttons = $(this).parent().parent();
 
-                var name = cardBody.find('.nameProducto').text()
-                idProdDelete = cardBody.find('.idprod').text()
+                    var cardBody = $(this).parent().parent().parent();
 
-                $('#Nombreproducto').text(name);
+                    var name = cardBody.find('.nameProducto').text()
+                    idProdDelete = cardBody.find('.idprod').text()
+
+                    $('#Nombreproducto').text(name);
+
+                    buttons.find('.btnEliminarHide').trigger('click');
+                }
             });
 
             $('#confirmDelete').on('click', function () {
-                $.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/EliminarProducto") %>',
-                    contentType: 'application/json; charset=utf-8',
-                    async: false,
-                    dataType: 'json',
-                    data: JSON.stringify({ 'id_producto': idProdDelete }),
-                    success: function (data) {
-                        if (data.d) {
-                            cargarProductos()
+                if (PermisoEliminar) {
+                    $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/EliminarProducto") %>',
+                        contentType: 'application/json; charset=utf-8',
+                        async: false,
+                        dataType: 'json',
+                        data: JSON.stringify({ 'id_producto': idProdDelete }),
+                        success: function (data) {
+                            if (data.d) {
+                                cargarProductos()
+                            }
+                        },
+                        error: function (data) {
+                            alert("Algo ha salido mal!!!");
                         }
-                    },
-                    error: function (data) {
-                        alert("Algo ha salido mal!!!");
-                    }
-                });
+                    });
+                }
             });
 
             $("#search").keyup(function () {
@@ -167,10 +177,11 @@
                                                             '<span class="idprod visually-hidden">' + val.id_producto + '</span>' +
                                                         '</div>' +
                                                         '<div class="col-lg-12">' +
+                                                            '<button type="button" class="btn btn-outline-danger visually-hidden btnEliminarHide" data-bs-toggle="modal" data-bs-target="#ModalEliminar"></button>' +
                                                             '<div class="btn-group" role="group" >' +
                                                                 '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +
                                                                 '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>' +
-                                                                '<button type="button" class="btn btn-outline-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button>' +
+                                                                '<button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>' +
                                                             '</div>' +
                                                         '</div>' +
                                                     '</div>' +

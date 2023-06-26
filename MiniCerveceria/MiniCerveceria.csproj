@@ -287,7 +287,11 @@
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
     <Content Include="Imagenes\Iconos\Bag.png" />
+    <Content Include="Imagenes\Iconos\btnAsignarPermiso.png" />
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
+    <Content Include="Imagenes\Iconos\btnHabilitarUser.png" />
+    <Content Include="Imagenes\Iconos\btnInhabilitarUser.png" />
+    <Content Include="Imagenes\Iconos\btnQuitarPermiso.png" />
     <Content Include="Imagenes\Iconos\carousel-control-prev-icon.png" />
     <Content Include="Imagenes\Iconos\carousel-control-next-icon.png" />
     <Content Include="Imagenes\Iconos\CloseButtonBlack.png" />
@@ -296,12 +300,16 @@
     <Content Include="Imagenes\Iconos\CursosInscritosWithe.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
+    <Content Include="Imagenes\Iconos\EditBlack.png" />
+    <Content Include="Imagenes\Iconos\EditWithe.png" />
     <Content Include="Imagenes\Iconos\Favorito.png" />
     <Content Include="Imagenes\Iconos\Lupa.png" />
     <Content Include="Imagenes\Iconos\MantenedoresLogoBlack.png" />
     <Content Include="Imagenes\Iconos\MantenedoresLogoWithe.png" />
     <Content Include="Imagenes\Iconos\PedidosBlack.png" />
     <Content Include="Imagenes\Iconos\PedidosWithe.png" />
+    <Content Include="Imagenes\Iconos\PermisosBlack.png" />
+    <Content Include="Imagenes\Iconos\PermisosWithe.png" />
     <Content Include="Imagenes\Iconos\StarBlack.png" />
     <Content Include="Imagenes\Iconos\StarWithe.png" />
     <Content Include="Imagenes\Iconos\StockBlack.png" />
@@ -317,6 +325,7 @@
     <Content Include="Mantenedores\Pedidos\DefaultPedidos.aspx" />
     <Content Include="Mantenedores\Pedidos\DetallePedido.aspx" />
     <Content Include="Mantenedores\Productos\StockProducto.aspx" />
+    <Content Include="Mantenedores\Usuarios\Permisos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
@@ -385,9 +394,7 @@
     <Content Include="Mantenedores\Productos\CrearProducto.aspx" />
     <Content Include="Mantenedores\Productos\DefaultProductos.aspx" />
     <Content Include="Mantenedores\Productos\VerProducto.aspx" />
-    <Content Include="Mantenedores\Usuarios\CrearUsuario.aspx" />
     <Content Include="Mantenedores\Usuarios\DefaultUsuarios.aspx" />
-    <Content Include="Mantenedores\Usuarios\VerUsuario.aspx" />
     <Content Include="Ventanas\Cursos\DetalleCurso.aspx" />
     <Content Include="Ventanas\Nosotros\Nosotros.aspx" />
     <Content Include="Ventanas\Productos\DetalleProducto.aspx" />
@@ -502,10 +509,18 @@
     <Compile Include="Mantenedores\Productos\StockProducto.aspx.designer.cs">
       <DependentUpon>StockProducto.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Mantenedores\Usuarios\Permisos.aspx.cs">
+      <DependentUpon>Permisos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\Permisos.aspx.designer.cs">
+      <DependentUpon>Permisos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\CarritoCompra.cs" />
     <Compile Include="Modelos\Curso.cs" />
     <Compile Include="Modelos\Favorito.cs" />
     <Compile Include="Modelos\MasterAdmin.cs" />
+    <Compile Include="Modelos\PermisosUsusario.cs" />
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Servicios\ICarritoCompraAplicacionServicios.cs" />
@@ -601,26 +616,12 @@
     <Compile Include="Mantenedores\Productos\VerProducto.aspx.designer.cs">
       <DependentUpon>VerProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Mantenedores\Usuarios\CrearUsuario.aspx.cs">
-      <DependentUpon>CrearUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Usuarios\CrearUsuario.aspx.designer.cs">
-      <DependentUpon>CrearUsuario.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.cs">
       <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Mantenedores\Usuarios\DefaultUsuarios.aspx.designer.cs">
       <DependentUpon>DefaultUsuarios.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.cs">
-      <DependentUpon>VerUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Usuarios\VerUsuario.aspx.designer.cs">
-      <DependentUpon>VerUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Cursos\DetalleCurso.aspx.cs">
       <DependentUpon>DetalleCurso.aspx</DependentUpon>

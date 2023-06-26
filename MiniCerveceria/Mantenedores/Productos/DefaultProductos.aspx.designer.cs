@@ -11,7 +11,7 @@ namespace MiniCerveceria.Mantenedores.Productos
 {
 
 
-    public partial class DefaultProductos
-    {
-    }
+	public partial class DefaultProductos
+	{
+	}
 }

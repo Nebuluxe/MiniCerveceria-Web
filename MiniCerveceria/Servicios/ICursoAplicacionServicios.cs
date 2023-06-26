@@ -11,8 +11,8 @@ namespace MiniCerveceria.Servicios
     internal interface ICursoAplicacionServicios
     {
         void CrearCurso(Curso curso);
-        IList<Curso> ObtenerCursos(Curso curso);
+        IList<Curso> ObtenerCursos();
         void EliminarCurso(int id_curso);
-        Curso ObtenerCurso(int id_curso, int estado);
+        Curso ObtenerCurso(int id_curso);
     }
 }

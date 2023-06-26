@@ -23,8 +23,7 @@ namespace MiniCerveceria.Login
             try
             {
                 Usuario oUsuario = new Usuario();
-                oUsuario.id_usuario = UsuarioService.ObtenerIDUsuario();
-                oUsuario.id_permiso = 1;
+                oUsuario.id_permiso = 0;
                 oUsuario.id_comuna = 1;
                 oUsuario.nombre = txtNombre.Text.Trim();
                 oUsuario.apellido = txtApellido.Text.Trim();
