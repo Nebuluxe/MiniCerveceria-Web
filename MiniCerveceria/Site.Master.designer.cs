@@ -15,6 +15,33 @@ namespace MiniCerveceria
 	{
 
 		/// <summary>
+		/// Control hdnEstadoSesion.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HiddenField hdnEstadoSesion;
+
+		/// <summary>
+		/// Control btnCerrarhide.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnCerrarhide;
+
+		/// <summary>
+		/// Control btnAdministracin.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.HtmlControls.HtmlAnchor btnAdministracin;
+
+		/// <summary>
 		/// Control itemBreadbrum1.
 		/// </summary>
 		/// <remarks>

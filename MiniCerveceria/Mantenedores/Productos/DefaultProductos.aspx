@@ -1,4 +1,4 @@
-﻿<%@  Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultProductos.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Productos.DefaultProductos" %>
+﻿<%@ Page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultProductos.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Productos.DefaultProductos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -22,6 +22,24 @@
     		display: none;
     	}
 
+        #TablaProductos {
+	        height: 1000px;
+	        width: 100%;
+	        overflow-y: scroll;
+            overflow-x: hidden
+        }
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
@@ -142,13 +160,19 @@
                                                 '<img src="' + val.URL_img + '" class="card-img-top">' +
                                             '</div>' +
                                             '<div align="center">' +
-                                                '<div class="card-body">' +
-                                                    '<span class="titulo nameProducto">' + val.nombre_producto + '</span>' +
-                                                    '<span class="idprod visually-hidden">' + val.id_producto + '</span>' +
-                                                    '<div class="btn-group" role="group" >' +
-                                                        '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +
-                                                        '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>' +
-                                                        '<button type="button" class="btn btn-outline-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button>' +
+                                            '<div class="card-body">' +
+                                                    '<div class="row">' +
+                                                        '<div class="col-lg-12">' +
+                                                            '<span class="titulo nameProducto">' + val.nombre_producto + '</span>' +
+                                                            '<span class="idprod visually-hidden">' + val.id_producto + '</span>' +
+                                                        '</div>' +
+                                                        '<div class="col-lg-12">' +
+                                                            '<div class="btn-group" role="group" >' +
+                                                                '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +
+                                                                '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>' +
+                                                                '<button type="button" class="btn btn-outline-danger btnEliminar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Eliminar</button>' +
+                                                            '</div>' +
+                                                        '</div>' +
                                                     '</div>' +
                                                 '</div>' +
                                             '</div>' +

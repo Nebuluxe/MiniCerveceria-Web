@@ -32,6 +32,12 @@
         #footerDefault {
             display: none;
         }
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">

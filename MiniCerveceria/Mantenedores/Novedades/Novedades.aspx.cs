@@ -21,7 +21,23 @@ namespace MiniCerveceria.Mantenedores.Novedades
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
 
+			if (MasterAdmin == null)
+			{
+				if (oUsuario == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+
+				if (oUsuario.email == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+			}
 		}
 
 		[WebMethod(EnableSession = true)]

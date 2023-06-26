@@ -39,7 +39,8 @@ namespace MiniCerveceria.Login
                 oUsuario.fecha_creacion = DateTime.Now;
 
                 UsuarioService.CrearUsuario(oUsuario);
-                MessageBox.Show("Te haz registrado correctamente " + oUsuario.nombre.Trim() + "!");
+
+				Response.Redirect("/Login/Login.aspx", false);
             }
             catch (Exception ex)
             {

@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace MiniCerveceria.Ventanas.Usuario
+namespace MiniCerveceria.Ventanas.Cuenta
 {
 
 
-	public partial class Compras
+	public partial class Cuenta
 	{
 	}
 }

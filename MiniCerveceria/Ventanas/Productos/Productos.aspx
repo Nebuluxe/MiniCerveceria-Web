@@ -163,6 +163,12 @@
                         <strong>Equipamiento</strong>
                     </div>
                 </div>
+                <div class="col-lg-12">
+                    <br />
+                    <div class="card optionItem">
+                        <strong>Libros y recetas</strong>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-9">

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultCursos.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Cursos.DefaultCursos" %>
+﻿<%@ Page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DefaultPedidos.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Pedidos.DefaultPedidos" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -34,15 +34,15 @@
             </a>
             <div class="row">
                 <div class="col-2">
-                    <img src="/Imagenes/Iconos/CursosWithe.png" height="40" width="40">
+                    <img src="/Imagenes/Iconos/PedidosWithe.png" height="40" width="40">
                 </div>
                 <div class="col-10">
-                    <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Cursos</asp:Label>
+                    <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Pedidos clientes</asp:Label>
                 </div>
             </div>
-            <a runat="server" href="~/Mantenedores/Cursos/CrearCurso.aspx" data-title="Crear producto">
-                <img src="/Imagenes/Iconos/btnAgregar.png" class="d-flex" height="40" width="40">
-            </a>
+            <span>
+
+            </span>
         </div>
     </nav>
     <br />

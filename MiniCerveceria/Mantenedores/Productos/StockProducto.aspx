@@ -15,6 +15,12 @@
     	#footerDefault {
     		display: none;
     	}
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
@@ -85,6 +91,7 @@
           </div>
           <div class="modal-body">
             <span id="idProdRebaja" class="visually-hidden"></span>
+            <span id="StockActualdRebaja" class="visually-hidden"></span>
             <input runat="server" ClientIDMode="Static" type="text" id="txtCantidadRebajar" class="form-control" />
             <label class="form-label">Cantidad</label>
           </div>
@@ -140,34 +147,42 @@
                 var cantidad = $('#txtCantidadRebajar').val();
                 var idProdRebaja = $('#idProdRebaja').text();
 
-                $.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/RebajarStock") %>',
-                    contentType: 'application/json; charset=utf-8',
-                    async: false,
-                    dataType: 'json',
-                    data: JSON.stringify({ 'id_producto': idProdRebaja, 'cantidad': cantidad }),
-                    success: function (data) {
-                        if (data.d) {
-                            cargarStockProductos()
+                var cantidadActual = $('#StockActualdRebaja').text();
 
-                            $('#txtCantidadRebajar').val('');
+                if (cantidad < cantidadActual) {
+                    $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '<%= ResolveUrl("/Mantenedores/Productos/StockProducto.aspx/RebajarStock") %>',
+                        contentType: 'application/json; charset=utf-8',
+                        async: false,
+                        dataType: 'json',
+                        data: JSON.stringify({ 'id_producto': idProdRebaja, 'cantidad': cantidad }),
+                        success: function (data) {
+                            if (data.d) {
+                                cargarStockProductos()
+
+                                $('#txtCantidadRebajar').val('');
+                            }
+                        },
+                        error: function (data) {
+                            alert("Algo ha salido mal!!!");
                         }
-                    },
-                    error: function (data) {
-                        alert("Algo ha salido mal!!!");
-                    }
-                });
+                    });
+                } else {
+                    alert("El stock a rebajar no puede ser mayor al actual!!");
+                }
             });
         });
 
         function aumenta(id) {
             $('#idProdAumenta').text(id);
+            console.log(cantidad)
         }
 
-        function rebaja(id) {
+        function rebaja(id, cantidad) {
             $('#idProdRebaja').text(id);
+            $('#StockActualdRebaja').text(cantidad);
         }
 
         function cargarStockProductos() {
@@ -189,7 +204,7 @@
                                         '<td colspan="2">' + val.nombre_producto + '</td>' +
                                         '<td scope="row">$' + val.precio + '</td>' +
                                         '<td scope="row" >' + val.stock + '</td>' +
-                                        '<td scope="row"><a  onclick="aumenta(' + val.id_producto + ')" class="aumenta" data-title="Aumentar stock" data-bs-toggle="modal" data-bs-target="#modalAumentaStock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="20" width="20" /></a><span> </span> <a  onclick="rebaja(' + val.id_producto + ')" class="rebajar" data-title="Rebajar stock" data-bs-toggle="modal" data-bs-target="#modalRebajaStock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="20" width="20" /></a></td>' +
+                                        '<td scope="row"><a  onclick="aumenta(' + val.id_producto + ')" class="aumenta" data-title="Aumentar stock" data-bs-toggle="modal" data-bs-target="#modalAumentaStock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="20" width="20" /></a><span> </span> <a  onclick="rebaja(' + val.id_producto + ', ' + val.stock + ')" class="rebajar" data-title="Rebajar stock" data-bs-toggle="modal" data-bs-target="#modalRebajaStock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="20" width="20" /></a></td>' +
                                     '</tr>';
                         });
 

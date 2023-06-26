@@ -147,7 +147,7 @@
     </div>
     <br /><br />
     <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
-        <a class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
+        <a id="tituloRelacionados"  class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
     </div>
     <div class="container text-center my-3" id="carrouselRelacionados">
         <div class="row mx-auto my-auto justify-content-center">
@@ -180,6 +180,7 @@
             cargarProductosRelacionados(idCate, idProd);
 
             if (NameProdHead != "") {
+                $("#nombreCategoridaHeader").text(NameCateHead);
                 $("#TextBread1").text(NameCateHead);
                 $("#itemBreadbrum1").removeClass("OcultarElemento");
                 $("#itemBreadbrum1").attr("href", "/Ventanas/Productos/Productos?cate=" + idCate);
@@ -285,6 +286,10 @@
 
                             $('#listRelacionados').html(html);
                             $('#carrouselRelacionados').hide();
+
+                            if (data.d.length == 1) {
+                                $('#tituloRelacionados').hide();
+                            }
                         }
                     }
                 },

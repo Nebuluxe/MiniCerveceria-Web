@@ -14,19 +14,48 @@ namespace MiniCerveceria.Login
 {
     public partial class Login : System.Web.UI.Page
     {
-        static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-        static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
-        protected void Page_Load(object sender, EventArgs e)
+		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+		static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
+
+		protected void Page_Load(object sender, EventArgs e)
         {
             
         }
 
-        [WebMethod(EnableSession = true)]
-        public static Usuario IniciarSesion(string email, string password)
+        protected void IniciarSesion(object sender, EventArgs e)
         {
-            Usuario oUsuario = new Usuario();
-            oUsuario = UsuarioService.UsuarioEmail(email, password);
-            return oUsuario;
-        }
+			try
+			{
+				string Email = txtEmail.Text;
+				string pass = txtContrasena.Text;
+
+				if (Email == "MasterAdmin" && pass == "masteradmin")
+				{
+					MasterAdmin admin = new MasterAdmin();
+					admin.User = Email;
+					admin.Pass = pass;
+
+					Session["MasterAdminSesion"] = admin;
+
+					Response.Redirect("~/Default.aspx", false);
+				}
+
+				Usuario oUsuario = new Usuario();
+				oUsuario = UsuarioService.UsuarioEmail(Email, pass);
+
+				if (oUsuario.email == null)
+				{
+					return;
+				}
+
+				Session["UsuarioSesion"] = oUsuario;
+
+				Response.Redirect("~/Default.aspx", false);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
     }
 }

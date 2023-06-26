@@ -1,4 +1,4 @@
-﻿<%@ Page enableEventValidation="false" Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearProducto.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Productos.CrearProducto" %>
+﻿<%@ Page Title="Mantenedores" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrearProducto.aspx.cs" Inherits="MiniCerveceria.Mantenedores.Productos.CrearProducto" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -33,7 +33,11 @@
             display: none;
         }
 
-		#chkEstado {width:50px; height:50px;}
+		#barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
 	</style>
 
 	<nav id="barraNav" class="navbar bg-body-tertiary">
@@ -93,6 +97,7 @@
 								<asp:ListItem value="2">Accesorios</asp:ListItem>
 								<asp:ListItem value="3">Cristaleria</asp:ListItem>
 								<asp:ListItem value="4">Equipamiento</asp:ListItem>
+								<asp:ListItem value="5">Libros y recetas</asp:ListItem>
 							</asp:DropDownList>
 							<label class="form-label">Categoria</label>
 						  </div>

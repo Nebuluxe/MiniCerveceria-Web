@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MiniCerveceria.Login.Login" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="MiniCerveceria.Login.Login" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,6 @@
     <link href="~/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -19,6 +18,9 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        .hide {
+            display: none !important;
+        }
         body {
             display: flex;
             justify-content: center;
@@ -32,8 +34,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 420px;
-            height: 520px;
+            width: 50vh;
+            height: 80vh;
             background: transparent;
             border: 5px solid #333;
             border-radius: 10px;
@@ -41,8 +43,8 @@
         }
 
         .wrapper:hover {
-            border: 5px solid rgb(255, 216, 0);
-            box-shadow: 0 0 20px rgb(255, 216, 0), inset 0 0 20px rgb(255, 216, 0);
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px #fff, inset 0 0 20px #fff
         }
 
         h2 {
@@ -53,12 +55,12 @@
         }
 
         .wrapper:hover h2 {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .input-box {
             position: relative;
-            width: 320px;
+            width: 40vh;
             margin: 30px 0;
         }
 
@@ -77,12 +79,12 @@
         }
 
         .wrapper:hover .input-box input {
-            border: 2px solid rgb(255, 216, 0);
-            box-shadow: 0 0 10px rgb(255, 216, 0), inset 0 0 10px rgb(255, 216, 0);
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px #fff, inset 0 0 10px #fff;
         }
 
         .input-box input::placeholder {
-            color: rgba(255, 255, 255, .3);
+            color: #fff;
         }
 
         .input-box .icon {
@@ -95,7 +97,7 @@
         }
 
         .wrapper:hover .input-box .icon {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .forgot-pass {
@@ -128,9 +130,9 @@
         }
 
         .wrapper:hover button {
-            background: rgb(255, 216, 0);
-            color: #000;
-            box-shadow: 0 0 10px rgb(255, 216, 0);
+            background: #fff;
+            color: #000000;
+            box-shadow: 0 0 10px #fff;
         }
 
         .register-link {
@@ -144,25 +146,31 @@
         }
 
         .register-link p a {
-            color: #333;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
             transition: .5s;
         }
 
         .wrapper:hover .register-link p a {
-            color: rgb(255, 216, 0);
+            color: #fff;
         }
 
         .register-link p a:hover {
             text-decoration: underline;
         }
 
+
         #btnBackButton{
             position: absolute;
             left: 20px;
             top: 20px;
         }
+
+        .hide {
+            display: none !important;
+        }
+
     </style>
 </head>
 <body>
@@ -170,7 +178,7 @@
         <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="45"> 
     </a>
     <div class="wrapper">
-        <form id="inicioSesion" runat="server">
+        <form runat="server" id="inicioSesion">
             <h2>Iniciar Sesión</h2>
             <div class="input-box">
                 <span class="icon"><ion-icon name="person"></ion-icon></span>
@@ -178,12 +186,13 @@
             </div>
             <div class="input-box">
                 <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                <asp:TextBox id="txtContrasena" ClientIDMode="Static" placeholder="Contraseña" required="required" runat="server" />
+                <asp:TextBox id="txtContrasena" ClientIDMode="Static" placeholder="Contraseña"  type="password" required="required" runat="server"/>
             </div>
             <div class="forgot-pass">
                 <a href="#">¿Olvidaste tu contraseña?</a>
             </div>
             <button id="btnIniciarSesion" type="button">Iniciar Sesión</button>
+            <asp:Button id="btnLoginHide" CssClass="hide" ClientIDMode="Static" Text="Registrarse" runat="server" OnClick="IniciarSesion"/>
             <div class="register-link">
                 <p>No tienes una cuenta registrada?<a href="/Login/Registrarse.aspx">Registrate Ahora!</a></p>
             </div>
@@ -192,7 +201,7 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.6.0.js"></script>
     <script type="text/javascript">
         //toastr.options = {
         //    "closeButton": true,
@@ -214,32 +223,10 @@
             $("#btnIniciarSesion").click(function () {
                 var email = $('#txtEmail').val().trim();
                 var contrasena = $("#txtContrasena").val().trim();
-                console.log(email + " | " + contrasena);
-                $.ajax({
-                    type: 'POST',
-                    cache: false,
-                    url: '<%= ResolveUrl("/Login/Login.aspx/IniciarSesion") %>',
-                    contentType: 'application/json; charset=utf-8',
-                    data: JSON.stringify({ 'email': email, 'password': contrasena }),
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data.d.en_linea == true) {
-                             
-                            window.location.href = "/Default.aspx";
 
-                        } else {
-                            $('#txtEmail').val("");
-                            $("#txtContrasena").val("");
-                            
-                        }
-                    },
-                    fail: function () {
-                        $('#txtEmail').val("");
-                        $("#txtContrasena").val("");
-                        /*toastr.warning("mi pana no pudiste iniciar sesión");*/
-                    }
-                    
-                });
+                if (email != "" && contrasena != "") {
+                    $("#btnLoginHide").trigger("click");
+                }
             });
         });
     </script>

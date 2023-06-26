@@ -16,8 +16,11 @@ namespace MiniCerveceria.Controladores
 
         public Conexion()
         {
-            OracleConfiguration.TnsAdmin = ConfigurationManager.ConnectionStrings["Wallet"].ConnectionString;
-            OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
+            if (String.IsNullOrEmpty(OracleConfiguration.TnsAdmin))
+            {
+				OracleConfiguration.TnsAdmin = ConfigurationManager.ConnectionStrings["Wallet"].ConnectionString;
+				OracleConfiguration.WalletLocation = OracleConfiguration.TnsAdmin;
+			}
         }
 
         public Conexion(string conn)

@@ -51,6 +51,9 @@ namespace MiniCerveceria.Ventanas.Productos
 							case 4:
 								categoria = "Equipamiento";
 								break;
+							case 5:
+								categoria = "Libros y recetas";
+								break;
 						}
 
 						idCate.Text = oProducto.categoria.ToString();

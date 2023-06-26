@@ -45,6 +45,12 @@
             margin: 20px
         }
 
+        .btn-dark{
+            color: #ffffff;
+            background-color: rgba(0,0,0);
+            margin: 20px
+        }
+
         .titulo{
             margin: 15px
         }
@@ -77,10 +83,6 @@
 
           .clickMenuManteedor{
               display: block !important
-          }
-
-          #goHome{
-              display: none !important
           }
         }
 
@@ -154,7 +156,7 @@
             transition: all 0.6s ease;
             filter: brightness(30%);
             background: rgba(0, 0, 0, 0.5);  
-         }
+        }
     </style>
 </head>
 <body>
@@ -179,6 +181,8 @@
         </asp:ScriptManager>
         <a class="visually-hidden" id="pagetitle"><%: Page.Title %></a>
 		<!-- Navigation-->
+        <asp:HiddenField runat="server" ClientIDMode="Static" Value="" ID="hdnEstadoSesion"/>
+        <asp:Button runat="server" ClientIDMode="Static" class="btn btn-outline-light visually-hidden" id="btnCerrarhide"/>
         <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" style="height: 6%">
             <div class="container">
                 <div class="clickMenu menu-toggle second" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
@@ -191,7 +195,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 btn-group-vertical">
                         <li class="nav-item cursosNav"><a class="nav-link" runat="server" href="Ventanas/Cursos/Cursos.aspx">Cursos</a></li>
-                        <li class="nav-item recetasNav"><a class="nav-link" runat="server" href="Ventanas/Recetas/Recetas.aspx">Recetas</a></li>
+                        <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=5">Libros</a></li>
                         <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=nov">Novedades</a></li>
                         <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=1">Ingredientes</a></li>
                         <li class="nav-item ProductosNav"><a class="nav-link" runat="server" href="Ventanas/Productos/Productos.aspx?cate=2">Accesorios</a></li>
@@ -209,9 +213,6 @@
             <div class="container cursor-scale">
                 <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                     <div class="navbar-brand">
-                        <label class="flex_column" role="button" id="goHome">
-                            <a runat="server" href="~/Default" data-title="Volver a la Web"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="40"></a> 
-		                </label>
                         <div class="clickMenuManteedor menu-toggle second" data-bs-toggle="offcanvas" style="display: none" data-bs-target="#sideMantenedor" aria-controls="sideMantenedor">
                             <i></i>
                             <i></i>
@@ -249,7 +250,7 @@
 
                 <div class="btn-group-vertical list-group" role="group" >
                     <a runat="server" href="Ventanas/Cursos/Cursos" class="btn btn-outline-light optionNav">Cursos</a>
-                    <a runat="server" href="Ventanas/Recetas/Recetas" class="btn btn-outline-light optionNav">Recetas</a>
+                    <a runat="server" href="Ventanas/Productos/Productos?cate=5" class="btn btn-outline-light optionNav">Libros y recetas</a>
                     <a runat="server" href="Ventanas/Productos/Productos?cate=nov" class="btn btn-outline-light optionNav">Novedades</a>
                     <a runat="server" href="Ventanas/Productos/Productos?cate=1" class="btn btn-outline-light optionNav">Ingredientes</a>
                     <a runat="server" href="Ventanas/Productos/Productos?cate=2" class="btn btn-outline-light optionNav">Accesorios</a>
@@ -261,10 +262,10 @@
             <br />
 
             <div class="btn-group-vertical list-group" role="group" id="OpcionesSideDefault">
-                <a runat="server" href="~/Ventanas/Usuario/Compras" class="btn btn-outline-light optionNav">Historial de compras</a>
-                <a runat="server" href="~/Ventanas/Usuario/Favoritos" class="btn btn-outline-light optionNav">Favoritos</a>
-                <a runat="server" href="~/Ventanas/Usuario/Pedidos" class="btn btn-outline-light optionNav">Pedidos</a>
-                <a runat="server" href="~/Ventanas/Usuario/Cuenta" class="btn btn-outline-light optionNav">Cuenta</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=hist" class="btn btn-outline-light optionNav">Historial de compras</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=Favs" class="btn btn-outline-light optionNav">Favoritos</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uis=Peds" class="btn btn-outline-light optionNav">Pedidos</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta" class="btn btn-outline-light optionNav">Cuenta</a>
             </div>
 
             <br /><br /><br />
@@ -281,20 +282,21 @@
             <br /><br /><br />
 
             <div class="list-group" style="text-align: center">
-              <a href="/Login/Login.aspx" class="btn btn-outline-light">Cerrar sesion</a>
+                <a  href="/Login/LoginSingOut.aspx" class="btn btn-outline-light" id="btnCerrar">Cerrar sesion</a>
+              <a href="/Login/Login.aspx" class="btn btn-outline-light" id="btnIniciar">Iniciar sesion</a>
             </div>
 
             <br />
 
             <div class="list-group" style="text-align: center">
-                <a runat="server" href="~/Mantenedores/Default.aspx" class="btn btn-outline-light">Administracion de la Web</a>
+                <a runat="server" href="~/Mantenedores/Default.aspx" id="btnAdministracin" class="btn btn-outline-light">Administracion de la Web</a>
             </div>
 		  </div>
         </div>
         <header class="masthead" id="headMaster" style="padding-top: 10.5rem;padding-bottom: 6rem; text-align: center;color: #fff; background-image: url('/Imagenes/background.jpg');background-repeat: no-repeat;background-attachment: scroll;background-position: center center;background-size: cover;">
             <div class="container" >
                 <div id="HeadProductos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/ProductosWithe.png" height="80" /> <span id="nombreCategoridaHeader"></span> </div>
-                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/RecetasWithe.png" height="80" /> Recetas</div>
+                <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/RecetasWithe.png" height="80" /> Libros y recetas</div>
                 <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/CursosWithe.png" height="80" /> Cursos</div>
                 <div id="HeadCarrito" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/carrito-de-compras.png" height="80"/> Carrito</div>
 
@@ -324,68 +326,90 @@
                 <div class="col-lg-4">
                     <span> </span><a runat="server" href="~/Default" data-title="Volver a la Web"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="35"></a> 
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <h3>Menu</h3>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                     <a class="closeSideMantenedor">
                         <img src="/Imagenes/Iconos/CloseButtonWithe.png" height="35"> 
                     </a>
                 </div>
             </div>
+            <br />
 			<div class="offcanvas-body">
-                <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/MantenedoresLogoWithe.png" height="50" width="50"> Mantenedores</strong>
+                <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Mantenedores</strong>
                 <br />
                 <br />
 		        <div>
-				    <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Cursos</a><span> </span>
+				    <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 250px" class="btn btn-dark" >Cursos</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="45" width="45">
 			    </div>
 			    <br />
 			    <div>
-				    <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Productos</a><span> </span>
+				    <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 250px" class="btn btn-dark" >Productos</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
 			    </div>
 			    <br />
 			    <div>
-				    <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
+				    <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 250px" class="btn btn-dark" >Novedades</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
 			    </div>
-			    <br />
-			    <div>
-				    <a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 250px;" class="btn btn-dark optionSideMantenedor" >Recetas</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasWithe.png" height="45" width="45">
-			    </div>
                 <br />
 			    <br />
                 <br />
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/logoCerveza7.png" height="50" width="50"> Stock</strong>
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
                 <br />
                 <br />
                 <div>
-				    <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
+				    <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 250px" class="btn btn-dark" >Stock Productos</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
+			    </div>
+                <br />
+			    <br />
+                <br />
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
+                <br />
+                <br />
+			    <div>
+					<a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 250px" class="btn btn-dark" >Pedidos clientes</a><span> </span>
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
+			    </div>
+                <br />
+			    <br />
+                <br />
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
+                <br />
+                <br />
+			    <div>
+					<a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 250px" class="btn btn-dark" >Cursos inscitos</a><span> </span>
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
 			    </div>
 			    <br />
 			    <br />
                 <br />
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/UserIconWithe.png" height="50" width="50"> Usuarios</strong>
+			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
                 <br />
                 <br />
 			    <div>
-				    <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 250px" class="btn btn-dark optionSideMantenedor" >Usuarios</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">
+				    <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 250px" class="btn btn-dark" >Usuarios</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UserIconWithe.png" height="45" width="45">
 			    </div>
 			</div>
         </div>
         <div class="container-fluid" >
             <div class="row flex-nowrap">
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: rgb(0, 0, 0, .6) !important" id="SideMenuMantenedor">
-                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                        <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Menu</strong>
-                        </a>
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/MantenedoresLogoWithe.png" height="50" width="50"> Mantenedores</strong>
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" >
+                        <div class="row offcanvas-header">
+                            <div class="col-lg-8">
+                                <span> </span><a runat="server" href="~/Default" data-title="Volver a la Web"><img src="/Imagenes/Iconos/DoorIconWithe.png" height="35"></a> 
+                            </div>
+                            <div class="col-lg-4">
+                                <h3>Menu</h3>
+                            </div>
+                        </div>
+                        <br />
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Mantenedores</strong>
                         <br />
                         <br />
 		                <div>
@@ -402,30 +426,45 @@
 				            <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
 			            </div>
-			            <br />
-			            <div>
-					        <a runat="server" href="~/Mantenedores/Recetas/DefaultRecetas.aspx" style="width: 300px;" class="btn btn-dark optionSideMantenedor" >Recetas</a><span> </span>
-					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/RecetasWithe.png" height="45" width="45">
-			            </div>
                         <br />
 			            <br />
                         <br />
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/logoCerveza7.png" height="50" width="50"> Stock</strong>
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
                         <br />
                         <br />
                         <div>
 				            <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
 			            </div>
+                        <br />
+			            <br />
+                        <br />
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
+                        <br />
+                        <br />
+			            <div>
+					        <a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Pedidos clientes</a><span> </span>
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
+			            </div>
+                        <br />
+			            <br />
+                        <br />
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
+                        <br />
+                        <br />
+			            <div>
+					        <a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Cursos inscitos</a><span> </span>
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
+			            </div>
 			            <br />
 			            <br />
                         <br />
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/UserIconWithe.png" height="50" width="50"> Usuarios</strong>
+			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
                         <br />
                         <br />
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Usuarios</a><span> </span>
-					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UserIconWithe.png" height="45" width="45">
 			            </div>
                     </div>
                 </div>
@@ -572,15 +611,30 @@
     $(document).ready(function () {
         var page = $('#pagetitle').text();
 
+        var sesionEstado = <%= EstadoSesion %>;
+        var admin = <%= PermisoAdmin %>;
+
+        console.log(sesionEstado)
+
+        if (sesionEstado == true) {
+            $('#btnIniciar').hide();
+
+            if (admin == false) {
+                $('#btnAdministracin').hide(); 
+            } else {
+                $('#OpcionesSideDefault').hide()
+            }
+        } else {
+            $('#btnCerrar').hide();
+            $('#OpcionesSideDefault').hide()
+            $('#btnAdministracin').hide();
+        }
+
         if (page == "Productos") {
             $('#HeadProductos').removeClass('OcultarElemento');
             $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
-        if (page == "Recetas") {
-            $('#HeadRcetas').removeClass('OcultarElemento');
-            $('#Breadcrum').removeClass('OcultarElemento'); 
-        }
 
         if (page == "Cursos") {
             $('#HeadCursos').removeClass('OcultarElemento');

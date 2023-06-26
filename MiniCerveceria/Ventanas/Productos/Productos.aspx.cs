@@ -41,6 +41,9 @@ namespace MiniCerveceria
 					case 4:
 						categoria = "Equipamiento";
 						break;
+					case 5:
+						categoria = "Libros y recetas";
+						break;
 				}
 
 				categoria_id = idCate;

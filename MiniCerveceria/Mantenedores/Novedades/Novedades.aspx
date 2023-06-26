@@ -21,6 +21,18 @@
     		display: none;
     	}
 
+        #TablaNovedades {
+	        height: 1000px;
+	        width: 100%;
+	        overflow-y: scroll;
+            overflow-x: hidden
+        }
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
@@ -156,10 +168,10 @@
                                             '<div align="center">' +
                                                 '<div class="card-body">' +
                                                     '<div class="row">' +
-                                                        '<div class="col-lg-10">' +
+                                                        '<div class="col-lg-12">' +
                                                             '<span class="titulo name">' + val.nombre_producto + '</span>' +
                                                         '</div>' +
-                                                        '<div class="col-lg-2">' +
+                                                        '<div class="col-lg-12">' +
                                                             '<span><a data-title="Quitar novedad" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
                                                         '</div>' +
                                                     '</div>' +

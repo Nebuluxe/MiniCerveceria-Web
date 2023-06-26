@@ -18,6 +18,24 @@ namespace MiniCerveceria.Mantenedores.Productos
 
 		protected void Page_Load(object sender, EventArgs e)
         {
+			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
+
+			if (MasterAdmin == null)
+			{
+				if (oUsuario == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+
+				if (oUsuario.email == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+			}
+
 			try
 			{
 				string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
@@ -50,6 +68,9 @@ namespace MiniCerveceria.Mantenedores.Productos
 								break;
 							case 4:
 								categoria = "Equipamiento";
+								break;
+							case 5:
+								categoria = "Libros y recetas";
 								break;
 							default:
 								categoria = "--";

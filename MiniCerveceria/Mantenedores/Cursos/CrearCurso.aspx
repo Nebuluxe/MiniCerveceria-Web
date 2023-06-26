@@ -32,19 +32,32 @@
         #footerDefault{
             display: none;
         }
+
+		#barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
 	</style>
 
-	<nav id="barraNav" class="navbar bg-body-tertiary">
-	  <div class="container-fluid">
-			<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx"> 
-				<img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40"> 
-			</a>
-			<strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/CursosWithe.png" height="40" width="40"><span> </span><asp:Label runat="server" ClientIDMode="Static" id="CambioNomVentana"></asp:Label> Curso</strong>
-		  	<a href="#"> 
-				<img src="/Imagenes/Iconos/BotonGuardarWithe.png" class="d-flex" height="40" width="40">
-			</a>
-	  </div>
-	</nav>
+    <nav id="barraNav" class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" data-title="Volver">
+                <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40">
+            </a>
+            <div class="row">
+                <div class="col-2">
+                    <img src="/Imagenes/Iconos/CursosWithe.png" height="40" width="40">
+                </div>
+                <div class="col-10">
+                    <asp:Label CssClass="titulo" style="font-size:1.9em; color: #ffffff;" runat="server" ClientIDMode="Static" id="CambioNomVentana"></asp:Label>
+                </div>
+            </div>
+			<span>
+
+			</span>
+        </div>
+    </nav>
 	<br />
 	<div>
 		<div class="container">

@@ -22,6 +22,24 @@ namespace MiniCerveceria.Mantenedores.Productos
         {
             try
             {
+				MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+				Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
+
+				if (MasterAdmin == null)
+				{
+					if (oUsuario == null)
+					{
+						Response.Redirect("~/Default.aspx", false);
+						return;
+					}
+
+					if (oUsuario.email == null)
+					{
+						Response.Redirect("~/Default.aspx", false);
+						return;
+					}
+				}
+
 				string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
 
                 if (!IsPostBack)

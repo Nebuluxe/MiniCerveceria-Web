@@ -6,12 +6,12 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace MiniCerveceria.Mantenedores.Usuarios
+namespace MiniCerveceria.Mantenedores.Pedidos
 {
-    public partial class DefaultUsuarios : System.Web.UI.Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class DefaultPedidos : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
 			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
 
@@ -29,7 +29,6 @@ namespace MiniCerveceria.Mantenedores.Usuarios
 					return;
 				}
 			}
-
 		}
-    }
+	}
 }

@@ -32,17 +32,29 @@
         #footerDefault{
             display: none;
         }
+
+        #barraNav {
+            background: #000000 !important;
+            color: #ffffff;
+            border-radius: 15px;
+        }
 	</style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
-	  <div class="container-fluid">
-			<a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx"> 
-				<img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40"> 
-			</a>
-			<strong class="titulo" style="font-size:1.9em; color: #ffffff;"><img src="/Imagenes/Iconos/CursosWithe.png" height="40" width="40"><span> </span> Ver Curso</strong>
-			<span> </span>
-	  </div>
-	</nav>
+        <div class="container-fluid">
+            <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" data-title="Volver">
+                <img id="imgButtonBack" src="/Imagenes/Iconos/BackButtonWithe.png" height="40">
+            </a>
+            <div class="row">
+                <div class="col-2">
+                    <img src="/Imagenes/Iconos/CursosWithe.png" height="40" width="40">
+                </div>
+                <div class="col-10">
+                    <asp:Label CssClass="titulo" Style="font-size: 1.9em; color: #ffffff;" runat="server" ClientIDMode="Static">Cursos</asp:Label>
+                </div>
+            </div>
+        </div>
+    </nav>
 	<br />
 	<div>
 		<div class="container">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MiniCerveceria.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -12,7 +13,25 @@ namespace MiniCerveceria.Mantenedores.Cursos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
+			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
+			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
+
+			if (MasterAdmin == null)
+			{
+				if (oUsuario == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+
+				if (oUsuario.email == null)
+				{
+					Response.Redirect("~/Default.aspx", false);
+					return;
+				}
+			}
+
+			string uid = Request.QueryString["uid"] != null ? Request.QueryString["uid"] : "";
 
             lblNombreItem.Text = uid == "" ? "Curso xxxxxx" : uid;
         }
