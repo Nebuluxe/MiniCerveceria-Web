@@ -216,7 +216,8 @@
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-3.6.0.js"></script>
+    <script type="text/javascript"></script>
     <%--<script src="/Scripts/toastr.min.js"></script>--%>
 </body>
 </html>
