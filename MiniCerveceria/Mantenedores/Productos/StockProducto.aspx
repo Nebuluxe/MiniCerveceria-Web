@@ -21,6 +21,13 @@
             color: #ffffff;
             border-radius: 15px;
         }
+
+        #ContenedorTablaStock {
+	        height: 800px;
+	        width: 100%;
+	        overflow-y: scroll;
+            overflow-x: hidden
+        }
     </style>
 
     <nav id="barraNav" class="navbar bg-body-tertiary">
@@ -47,19 +54,21 @@
         </span>
     </div>
     <br />
-    <table class="table CompraDetalle" id="TablaStockProductos">
-		<thead>
-		    <tr>
-			    <th scope="row" colspan="2">Productos</th>
-			    <th scope="row">Precio Unitario</th>
-			    <th scope="row">Cantidad stock</th>
-			    <th scope="row">Acciones</th>
-		    </tr>
-		</thead>
-		<tbody id="Contenido">
+    <div id="ContenedorTablaStock">
+        <table class="table CompraDetalle" id="TablaStockProductos">
+		    <thead>
+		        <tr>
+			        <th scope="row" colspan="2">Productos</th>
+			        <th scope="row">Precio Unitario</th>
+			        <th scope="row">Cantidad stock</th>
+			        <th scope="row">Acciones</th>
+		        </tr>
+		    </thead>
+		    <tbody id="Contenido">
 
-		</tbody>
-	</table>
+		    </tbody>
+	    </table>
+    </div>
     
     <%-- Modal aumentar stock --%>
     <div class="fade modal" id="modalAumentaStock" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAumentaStockLabel" aria-hidden="true">

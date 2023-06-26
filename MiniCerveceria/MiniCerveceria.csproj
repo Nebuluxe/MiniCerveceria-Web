@@ -503,11 +503,14 @@
       <DependentUpon>StockProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\CarritoCompra.cs" />
+    <Compile Include="Modelos\Curso.cs" />
+    <Compile Include="Modelos\Favorito.cs" />
     <Compile Include="Modelos\MasterAdmin.cs" />
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Servicios\ICarritoCompraAplicacionServicios.cs" />
     <Compile Include="Servicios\ICursoAplicacionServicios.cs" />
+    <Compile Include="Servicios\ICursosInscritosAplicacionServicios.cs" />
     <Compile Include="Servicios\IFavoritoAplicacionServicios.cs" />
     <Compile Include="Servicios\Implementacion\CarritoCompraServicio.cs" />
     <Compile Include="Modelos\CursosInscritos.cs" />
