@@ -461,7 +461,6 @@
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controladores\Conexion.cs" />
-    <Compile Include="Database.cs" />
     <Compile Include="Mantenedores\Novedades\Novedades.aspx.cs">
       <DependentUpon>Novedades.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -477,10 +476,18 @@
       <DependentUpon>StockProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\CarritoCompra.cs" />
+    <Compile Include="Modelos\Curso.cs" />
+    <Compile Include="Modelos\Favorito.cs" />
     <Compile Include="Modelos\Producto.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Servicios\ICarritoCompraAplicacionServicios.cs" />
+    <Compile Include="Servicios\ICursoAplicacionServicios.cs" />
+    <Compile Include="Servicios\IFavoritoAplicacionServicios.cs" />
     <Compile Include="Servicios\Implementacion\CarritoCompraServicio.cs" />
+    <Compile Include="Modelos\CursosInscritos.cs" />
+    <Compile Include="Servicios\Implementacion\CursoServicio.cs" />
+    <Compile Include="Servicios\Implementacion\CursosInscritosServicio.cs" />
+    <Compile Include="Servicios\Implementacion\FavoritoServicio.cs" />
     <Compile Include="Servicios\Implementacion\ProductoServicio.cs" />
     <Compile Include="Servicios\Implementacion\UsuarioServicio.cs" />
     <Compile Include="Servicios\IProductoAplicacionServicios.cs" />
