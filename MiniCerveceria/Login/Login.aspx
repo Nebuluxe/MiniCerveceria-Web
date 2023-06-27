@@ -35,8 +35,8 @@
             justify-content: center;
             align-items: center;
             width: 50vh;
-            height: 80vh;
-            background: transparent;
+            height: 60vh;
+            background: rgba(0, 0, 0, 0.53);
             border: 5px solid #333;
             border-radius: 10px;
             transition: .5s;
@@ -171,6 +171,12 @@
             display: none !important;
         }
 
+        body{
+            background-image: url(https://somoscerveza.com/wp-content/uploads/2020/07/beer-concept-1024x682.jpg)  !important;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
@@ -189,7 +195,7 @@
                 <asp:TextBox id="txtContrasena" ClientIDMode="Static" placeholder="Contraseña"  type="password" required="required" runat="server"/>
             </div>
             <div class="forgot-pass">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="/Login/RecuperarContraseña.aspx">¿Olvidaste tu contraseña?</a>
             </div>
             <button id="btnIniciarSesion" type="button">Iniciar Sesión</button>
             <asp:Button id="btnLoginHide" CssClass="hide" ClientIDMode="Static" Text="Registrarse" runat="server" OnClick="IniciarSesion"/>

@@ -19,6 +19,8 @@ namespace MiniCerveceria.Servicios
         void EliminarPermiso(int id_permiso);
         IList<PermisosUsusario> ListarPermisos();
         PermisosUsusario ObtenerPermiso(int id_permiso);
+        bool ValidaCorreoExistente(string email);
+        bool CambiarContraseña(string email, string contraseña);
 
 	}
 }

@@ -5,6 +5,7 @@ using MiniCerveceria.Servicios;
 using MiniCerveceria.Servicios.Implementacion;
 using System;
 using System.Configuration;
+using System.Web.Services;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -42,9 +43,23 @@ namespace MiniCerveceria.Login
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ha sucedido un error :c .   Error =>   " + ex);
-                throw ex;
+                throw;
             }
         }
-    }
+
+		[WebMethod(EnableSession = true)]
+		public bool ValidarCorreoIngresado(string email)
+		{
+			try
+			{
+                bool existe = UsuarioService.ValidaCorreoExistente(email);
+
+				return existe;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+	}
 } 

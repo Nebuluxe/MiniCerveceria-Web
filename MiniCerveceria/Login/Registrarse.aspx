@@ -35,8 +35,8 @@
             justify-content: center;
             align-items: center;
             width: 50vh;
-            height: 80vh;
-            background: transparent;
+            height: 85vh;
+            background: rgba(0, 0, 0, 0.53);
             border: 5px solid #333;
             border-radius: 10px;
             transition: .5s;
@@ -165,6 +165,13 @@
             left: 20px;
             top: 20px;
         }
+
+        body{
+            background-image: url(https://somoscerveza.com/wp-content/uploads/2020/07/beer-concept-1024x682.jpg)  !important;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
     </style>
 </head>
 <body>
@@ -243,15 +250,44 @@
         $("#btnRegistrar").click(function () {
             var confirmarContrasena = $('#txtConfirmarContrasena').val().trim();
             var contrasena = $("#txtContrasena").val().trim();
+            var email = $("#txtEmail").val().trim();
 
-            if (contrasena == confirmarContrasena) {
-                $("#hdnBtnRegistrar").trigger("click");
+            if (validarCorreo(email)) {
+                if (contrasena == confirmarContrasena) {
+                    $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '<%= ResolveUrl("/Login/RecuperarContraseña.aspx/ValidarCorreoIngresado") %>',
+                        contentType: 'application/json; charset=utf-8',
+                        async: false,
+                        dataType: 'json',
+                        data: JSON.stringify({ 'email': email }),
+                        success: function (data) {
+                            if (!data.d) {
+                                $("#hdnBtnRegistrar").trigger("click");
+                            }
+                            else {
+                                console.log("el correo ingresado ya existe en los registros")
+                            }
+                        },
+                        error: function (data) {
+                            alert("Algo ha salido mal!!!");
+                        }
+                    });
+                }
+                else {
+                    $('#txtConfirmarContrasena').val("");
+                    $("#txtContrasena").val("");
+                };
             }
             else {
-                $('#txtConfirmarContrasena').val("");
-                $("#txtContrasena").val("");
-                console.log("ingresa una wea que coincida po perkin");
-            };
+                console.log("formato de correo invalido")
+            }
         });
     });
+
+    function validarCorreo(correo) {
+        var expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return expresion.test(correo);
+    }
 </script>

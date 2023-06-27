@@ -240,9 +240,9 @@
                         $.each(data.d, function (i, val) {
                             html += '<div class="col-lg-4 tarjProducto">' +
                                         '<div class="card" style="width: 100%;">' +
-                                            '<div>' +
+                                            '<div class="contenedor">' +
                                                     '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                                    '<img src="' + val.URL_img + '" class="card-img-top animationImg">' +
+                                                    '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
                                                 '</a>' +
                                             '</div>' +
                                             '<div align="center">' +

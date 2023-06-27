@@ -90,6 +90,12 @@
         #Contador{
             font-size: 20px
         }
+
+        .imagen:hover {
+        -webkit-transform: rotateY(180deg);
+        -webkit-transform-style: preserve-3d;
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;}
     </style>
     <br />
     <asp:Label runat="server" ClientIDMode="Static" ID="NameCategoria" CssClass="visually-hidden"> </asp:Label>
@@ -97,8 +103,8 @@
     <asp:Label runat="server" ClientIDMode="Static" ID="idProd" CssClass="visually-hidden"> </asp:Label>
     <div class="row">
         <div class="col-lg-6">
-            <div>
-                <asp:image runat="server" ClientIDMode="Static" class="animationImg" id="ItemImagen" />
+            <div class="contenedor">
+                <asp:image runat="server" ClientIDMode="Static" class="imagen" id="ItemImagen" />
             </div>
         </div>
         <div class="col-lg-6">
