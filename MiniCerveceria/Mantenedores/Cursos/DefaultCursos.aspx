@@ -101,8 +101,6 @@
                     var name = cardBody.find('.fw-normal').text()
                     idCursoDelete = cardBody.find('.idCurso').text()
 
-                    console.log(name)
-
                     $('#Nombrecurso').text(name);
 
                     buttons.find('.btnEliminarHide').trigger('click');

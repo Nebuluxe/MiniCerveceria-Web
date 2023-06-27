@@ -49,6 +49,30 @@ namespace MiniCerveceria.Servicios.Implementacion
 			DataTable dt = db.Execute(query);
 		}
 
+        public bool ValidaCorreoExistente(string email)
+        {
+			string query = @"SELECT email FROM usuario WHERE email = '" + email + "'";
+			DataTable dt = db.Execute(query);
+
+			Usuario obj = new Usuario();
+			if (dt.Rows.Count > 0)
+			{
+				return true;
+			}
+            else
+            {
+				return false;
+			}
+		}
+
+        public bool CambiarContraseña(string email, string contraseña)
+        {
+			string query = string.Format(@"UPDATE usuario SET password = '{1}' WHERE email = '{0}'", email, contraseña);
+			DataTable dt = db.Execute(query);
+
+            return true;
+		}
+
 		public IList<Usuario> ListarUsuarios()
         {
             string query = @"SELECT tbl1.id_usuario, tbl1.id_permiso, tbl1.id_comuna, tbl1.nombre, tbl1.apellido, tbl1.direccion, tbl1.telefono, tbl1.fecha_nacimiento, tbl1.email, tbl1.password, tbl1.activo, tbl1.en_linea, tbl1.fecha_creacion, tbl2.nombre as nombre_permiso FROM usuario tbl1 LEFT JOIN permisosusuario tbl2 on tbl1.id_permiso = tbl2.id_permiso";
