@@ -27,18 +27,22 @@ namespace MiniCerveceria.CarritoCompras
             try
             {
                 Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
-                IList<CarritoCompra> ListCarrito = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);
+				IList<CarritoCompra> ListCarritoCompra = new List<CarritoCompra>();
 
-                IList<CarritoCompra> ListCarritoCompra = new List<CarritoCompra>();
-
-                foreach (var lineaCarrito in ListCarrito)
+				if (oUsuario != null)
                 {
-                    Producto oProducto = productoApp.ObtenerProducto(lineaCarrito.id_producto);
-                    lineaCarrito.nombre_producto = oProducto.nombre_producto;
-                    ListCarritoCompra.Add(lineaCarrito);
-                }
-                return ListCarritoCompra;
-            }
+					IList<CarritoCompra> ListCarrito = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);
+
+					foreach (var lineaCarrito in ListCarrito)
+					{
+						Producto oProducto = productoApp.ObtenerProducto(lineaCarrito.id_producto);
+						lineaCarrito.nombre_producto = oProducto.nombre_producto;
+						ListCarritoCompra.Add(lineaCarrito);
+					}
+				}
+
+				return ListCarritoCompra;
+			}
             catch (Exception)
             {
                 return null;
