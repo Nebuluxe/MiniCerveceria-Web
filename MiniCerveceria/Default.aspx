@@ -203,10 +203,17 @@
     <script type="text/javascript">
         $(document).ready(() => {
             cargarProductos()
-
-            $(".favorito").on("click", function () {
-                Command: toastr["success"]("mi pana haz agregado a favoritos de pana", "mi loco agregaste a favoritos")
+            $(".AnadirProductoCarrito").on("click", function () {
+                var id_producto = $(this).data("id-producto");
+                AnadirProductoCarrito(id_producto);
             });
+            //$(".AnadirProductoFavorito").on("click", function () {
+            //    var id_producto = $(this).data("id-producto");
+            //    console.log(id_producto);
+            //});
+            //$(".favorito").on("click", function () {
+            //    Command: toastr["success"]("mi pana haz agregado a favoritos de pana", "mi loco agregaste a favoritos")
+            //});
             let items = document.querySelectorAll('.carousel .carousel-item')
 
             items.forEach((el) => {
@@ -223,6 +230,29 @@
                 }
             })
         });
+        function AnadirProductoCarrito(id_producto) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AnadirProductoCarrito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': id_producto }),
+                async: false,
+                success: function (data) {
+                    if (data.d == true) {
+                        console.log('se insertó o actualizó de pana');
+                    } else {
+                        console.log('no insertó o actualizó de pana');
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+
+        }
 
         function cargarProductos() {
             $.ajax({
@@ -243,9 +273,9 @@
                                         '<br />' +
                                         '<div class="container">' +
                                             '<figure class="containerz">' +
-                                                '<img src="' + val.URL_img + '" />' +
+                                                '<img src="' + val.URL_img.trim() + '" />' +
                                                 '<figcaption>' +
-                                                    '<h3>Ver</h3>' +
+                                                    '<h3>' + val.nombre_producto.trim() + '</h3>' +
                                                 '</figcaption>' +
                                                 '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"></a>' +
                                             '</figure>' +
@@ -255,11 +285,11 @@
                                                         '<div align="center">'  +
                                                             '<div class="row">' +
                                                                 '<div class="col-lg-6">' +
-                                                                    '<a class="favorito" data-title="Añadir a favoritos">' +
-                                                                        '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
+                                                                    '<a class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
+                                                                    '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
                                                                 '</div>' +
                                                                 '<div class="col-lg-6">' +
-                                                                    '<a data-title="Añadir al carrito">' +
+                                                                    '<a class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '" data-title="Añadir al carrito">' +
                                                                         '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
                                                                 '</div>' +
                                                             '</div>' +
@@ -278,8 +308,6 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
-
-
-                }
+        }
     </script>
 </asp:Content>

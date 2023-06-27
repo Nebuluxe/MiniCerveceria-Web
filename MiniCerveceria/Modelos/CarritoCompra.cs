@@ -10,6 +10,7 @@ namespace MiniCerveceria.Modelos
         public int id_carrito { get; set; }
         public int id_usuario { get; set; }
         public int id_producto { get; set; }
+        public string nombre_producto { get; set; }
         public int precio_producto { get; set; }
         public int nro_linea { get; set; }
         public int cantidad { get; set; }

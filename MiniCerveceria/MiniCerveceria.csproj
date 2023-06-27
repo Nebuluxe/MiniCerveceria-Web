@@ -287,6 +287,8 @@
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
     <Content Include="Imagenes\Iconos\Bag.png" />
+    <Content Include="Imagenes\Iconos\BasureroBlack.png" />
+    <Content Include="Imagenes\Iconos\BasureroWhite.png" />
     <Content Include="Imagenes\Iconos\btnAsignarPermiso.png" />
     <Content Include="Imagenes\Iconos\btnDeleteitem.png" />
     <Content Include="Imagenes\Iconos\btnHabilitarUser.png" />
@@ -714,6 +716,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties content_4bootstrap_1css_1map__JsonSchema="" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

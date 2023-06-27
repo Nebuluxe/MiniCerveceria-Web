@@ -10,7 +10,7 @@ namespace MiniCerveceria.Modelos
         public int id_producto { get; set; }
         public string nombre_producto { get; set; }
         public string descripcion { get; set; }
-        public decimal precio { get; set; }
+        public int precio { get; set; }
         public bool estado { get; set; }
         public DateTime fecha_creacion { get; set; }
         public DateTime fecha_modificacion { get; set; }
