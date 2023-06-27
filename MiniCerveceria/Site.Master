@@ -266,9 +266,9 @@
             <br />
 
             <div class="btn-group-vertical list-group" role="group" id="OpcionesSideDefault">
-                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=hist" class="btn btn-outline-light optionNav">Historial de compras</a>
-                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=Favs" class="btn btn-outline-light optionNav">Favoritos</a>
-                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uis=Peds" class="btn btn-outline-light optionNav">Pedidos</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=h" class="btn btn-outline-light optionNav">Historial de compras</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=f" class="btn btn-outline-light optionNav">Favoritos</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=p" class="btn btn-outline-light optionNav">Pedidos</a>
                 <a runat="server" href="~/Ventanas/Cuenta/Cuenta" class="btn btn-outline-light optionNav">Cuenta</a>
             </div>
 
@@ -355,25 +355,21 @@
 				    <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 250px" class="btn btn-dark" >Novedades</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
 			    </div>
-                <br />
 			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
                 <div>
 				    <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 250px" class="btn btn-dark" >Stock Productos</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
 			    </div>
-                <br />
 			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
 			    <div>
 					<a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 250px" class="btn btn-dark" >Pedidos clientes</a><span> </span>
 					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
 			    </div>
-                <br />
 			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
 			    <div>
 					<a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 250px" class="btn btn-dark" >Cursos inscitos</a><span> </span>
 					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
 			    </div>
-			    <br />
 			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
 			    <div>
 				    <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 250px" class="btn btn-dark" >Usuarios</a><span> </span>
@@ -399,8 +395,6 @@
                         </div>
                         <br />
 			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Mantenedores</strong>
-                        <br />
-                        <br />
 		                <div>
 				            <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Cursos</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="45" width="45">
@@ -413,42 +407,22 @@
 				            <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
 			            </div>
-                        <br />
-			            <br />
-                        <br />
 			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
-                        <br />
-                        <br />
                         <div>
 				            <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
 			            </div>
-                        <br />
-			            <br />
-                        <br />
 			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
-                        <br />
-                        <br />
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Pedidos clientes</a><span> </span>
 					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
 			            </div>
-                        <br />
-			            <br />
-                        <br />
 			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
-                        <br />
-                        <br />
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Cursos inscitos</a><span> </span>
 					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
 			            </div>
-			            <br />
-			            <br />
-                        <br />
 			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
-                        <br />
-                        <br />
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Usuarios</a><span> </span>
 					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">

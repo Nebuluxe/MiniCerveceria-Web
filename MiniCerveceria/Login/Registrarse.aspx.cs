@@ -32,7 +32,6 @@ namespace MiniCerveceria.Login
                 oUsuario.fecha_nacimiento = Convert.ToDateTime(txtFechaNacimiento.Text.Trim());
                 oUsuario.email = txtEmail.Text.Trim();
                 oUsuario.password = txtContrasena.Text.Trim();
-                oUsuario.tipo_usuario = 1;
                 oUsuario.activo = 1;
                 oUsuario.en_linea = 1;
                 oUsuario.fecha_creacion = DateTime.Now;

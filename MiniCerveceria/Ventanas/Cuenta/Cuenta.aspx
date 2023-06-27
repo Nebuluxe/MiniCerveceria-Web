@@ -125,7 +125,7 @@
                     <label class="form-label" id="verEmail"></label>
                 </div>
                 <div class="col-lg-4">
-                    <label for="Numero" class="form-label"><strong>Numero: </strong></label>
+                    <label for="telefono" class="form-label"><strong>telefono: </strong></label>
                     <label class="form-label" id="verNumero"></label>
                 </div>
             </div>
@@ -539,7 +539,7 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="FechaNac" class="form-label">Fecha nacimiento</label>
-                    <input class="form-control" id="EditarFechaNacimiento" placeholder="01/01/1999">
+                    <input type="date" class="form-control" id="EditarFechaNacimiento" required="required"  placeholder="01/01/1999" >
                 </div>
             </div>
             <div class="row">
@@ -552,26 +552,92 @@
                     <input type="email" class="form-control" id="EditarEmail" placeholder="EmailExample@gmail.com">
                 </div>
                 <div class="col-lg-4">
-                    <label for="Numero" class="form-label">Numero</label>
-                    <input class="form-control" id="EditarNumero" placeholder="+56 9 999 999">
+                    <label for="telefono" class="form-label">telefono</label>
+                    <input class="form-control isNumero" id="EditarNumero" maxlength="9" placeholder="9 9999 9999">
                 </div>
             </div>
             <br />
             <div class="col-12">
-                <button type="submit" class="btn btn-outline-warning">Guardar Cambios</button>
+                <button class="btn btn-outline-warning" id="ConfirmCambios">Guardar Cambios</button>
             </div>
             <br />
         </div>
     </div>
+
     <br />
     <br />
     <br />
     <script type="text/javascript">
         var id_user = '<%= id_user %>';
         var fechaNacimiento = '<%= fechaNacimiento %>'; 
+        var OptionSelectedSide = '<%= OptionSelectedSide %>'; 
 
         $(document).ready(function () {
             CargarInformacion()
+
+            if (OptionSelectedSide != "") {
+                if (OptionSelectedSide == "h") {
+                    $('#Compras').removeClass("visually-hidden");
+
+                    if (!$('#ModificarDatos').hasClass("visually-hidden")) {
+                        $('#ModificarDatos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Favoritos').hasClass("visually-hidden")) {
+                        $('#Favoritos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Pedidos').hasClass("visually-hidden")) {
+                        $('#Pedidos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#VerDatos').hasClass("visually-hidden")) {
+                        $('#VerDatos').addClass('visually-hidden');
+                    }
+                }
+
+                if (OptionSelectedSide == "f") {
+
+                    $('#Favoritos').removeClass("visually-hidden");
+
+                    if (!$('#ModificarDatos').hasClass("visually-hidden")) {
+                        $('#ModificarDatos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Compras').hasClass("visually-hidden")) {
+                        $('#Compras').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Pedidos').hasClass("visually-hidden")) {
+                        $('#Pedidos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#VerDatos').hasClass("visually-hidden")) {
+                        $('#VerDatos').addClass('visually-hidden');
+                    }
+                }
+
+                if (OptionSelectedSide == "p") {
+                   
+                    $('#Pedidos').removeClass("visually-hidden");
+
+                    if (!$('#ModificarDatos').hasClass("visually-hidden")) {
+                        $('#ModificarDatos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Compras').hasClass("visually-hidden")) {
+                        $('#Compras').addClass('visually-hidden');
+                    }
+
+                    if (!$('#Favoritos').hasClass("visually-hidden")) {
+                        $('#Favoritos').addClass('visually-hidden');
+                    }
+
+                    if (!$('#VerDatos').hasClass("visually-hidden")) {
+                        $('#VerDatos').addClass('visually-hidden');
+                    }
+                }
+            }
 
             $('#btnModificar').on('click', function () {
                 $('#ModificarDatos').removeClass('visually-hidden');
@@ -662,6 +728,33 @@
                     $('#Favoritos').addClass('visually-hidden');
                 }
             })
+
+            $('#ConfirmCambios').on('click', function () {
+
+                var fecnac = $('#EditarFechaNacimiento').val();
+                var nombre = $('#EditarNombre').val();
+                var apellido = $('#EditarApellido').val();
+                var direccion = $('#EditarDireccion').val();
+                var email = $('#EditarEmail').val();
+                var numero = $('#EditarNumero').val(); 
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ActualizarDatos") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'fechanacimiento': fecnac, 'direccion': direccion, 'email': email, 'telefono': numero }),
+                    success: function (data) {
+
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
+                    }
+                });
+            })
+
         });
 
         function CargarInformacion() {
@@ -682,9 +775,9 @@
                         $('#verEmail').text(data.d.email);
                         $('#verNumero').text(data.d.telefono); 
 
+                        $('#EditarFechaNacimiento').val(fechaNacimiento);
                         $('#EditarNombre').val(data.d.nombre);
                         $('#EditarApellido').val(data.d.apellido);
-                        $('#EditarFechaNacimiento').val(fechaNacimiento);
                         $('#EditarDireccion').val(data.d.direccion);
                         $('#EditarEmail').val(data.d.email);
                         $('#EditarNumero').val(data.d.telefono); 

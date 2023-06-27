@@ -15,12 +15,48 @@ namespace MiniCerveceria.Ventanas.Cursos
 	{
 
 		/// <summary>
-		/// Control NameCurso.
+		/// Control lblNombreCurso.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label NameCurso;
+		protected global::System.Web.UI.WebControls.Label lblNombreCurso;
+
+		/// <summary>
+		/// Control lblFechaPublicacion.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblFechaPublicacion;
+
+		/// <summary>
+		/// Control ImagenCurso.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Image ImagenCurso;
+
+		/// <summary>
+		/// Control lblDescripcionCurso.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblDescripcionCurso;
+
+		/// <summary>
+		/// Control lblPrecioCurso.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblPrecioCurso;
 	}
 }

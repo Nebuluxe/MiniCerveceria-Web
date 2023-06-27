@@ -18,7 +18,6 @@ namespace MiniCerveceria.Modelos
         public DateTime fecha_nacimiento { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public int tipo_usuario { get; set; }
         public int activo { get; set; }
         public int en_linea { get; set; }
         public DateTime fecha_creacion { get; set; }

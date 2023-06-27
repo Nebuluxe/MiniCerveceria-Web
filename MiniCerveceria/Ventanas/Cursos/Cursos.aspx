@@ -22,66 +22,74 @@
     
     <br /><br /><br />
 
-    <hr class="featurette-divider">
+    <div id="TablaCursos">
 
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
-            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-        </div>
-        <div class="col-md-5">
-            <figure class="containerz">
-                <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                <figcaption>
-                    <h3>Buy Now</h3>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-        </div>
     </div>
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
-            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
-        </div>
-        <div class="col-md-5">
-            <figure class="containerz">
-                <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                <figcaption>
-                    <h3>Buy Now</h3>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
-            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-        </div>
-        <div class="col-md-5">
-            <figure class="containerz">
-                <img src="/Imagenes/Iconos/NoImage.png" alt="sample89" />
-                <figcaption>
-                    <h3>Buy Now</h3>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
-        </div>
-    </div>
-
-    <br /><br /><br />
+    <br /><br /><br /><br /><br>
     <script type="text/javascript">
         $(document).ready(() => {
+            cargarCursos()
+
             $("#TextBread1").text("Cursos");
             $("#itemBreadbrum1").removeClass("OcultarElemento");
             $("#itemBreadbrum1").removeAttr("href");
         });
+
+
+        function cargarCursos() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/ListarCursosDefualt") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        var contador = 1;
+
+                        $.each(data.d, function (i, val) {
+
+                            var clase = ""
+
+                            if (contador %2 == 0) {
+                                clase = "order-md-2";
+                            }
+
+                            html += '<hr class="featurette-divider">'+
+                                        '<div class="row featurette">'+
+                                            '<div class="col-md-7 ' + clase + '">'+
+                                                '<h2 class="featurette-heading fw-normal lh-1">' + val.nombre_curso + '.</h2>'+
+                                                '<p>' + val.descripcion.substring(0, 1000) + '...</p>'+
+                                            '</div>'+
+                                            '<div class="col-md-5">'+
+                                                '<figure class="containerz">'+
+                                                    '<img src="' + val.URL_img + '" alt="sample89" />'+
+                                                    '<figcaption>'+
+                                                        '<h3>Ver mas sobre el curso</h3>'+
+                                                    '</figcaption>'+
+                                                    '<a href="/Ventanas/Cursos/DetalleCurso.aspx?uid=' + val.id_curso + '"></a>'+
+                                                '</figure>'+
+                                            '</div>'+
+                                        '</div>'
+
+                            contador++;
+                        });
+
+                        $('#TablaCursos').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+
+        }
     </script>
 </asp:Content>
