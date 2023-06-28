@@ -71,42 +71,42 @@
             <div class="row">
                 <div class="col-lg-12">
                     <br />
-                    <div class="card optionItem" style="font-size: 20px">
+                    <div class="card optionItem" style="font-size: 20px; cursor: pointer" id="btnNovedades">
                         <strong>Novedades</strong>
                     </div>
                     <br />
-                    <div class="card optionItem">
+                    <div class="card optionItem" style="cursor: pointer" id="btnIngredientes">
                         <strong>Ingredientes</strong>
                     </div>
                     <div id="IngredientesItems">
                         <ul>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnAzucares">
                                     Azúcares & Extractos
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnClarificantes">
                                     Clarificantes
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnSalesAditivos">
                                     Sales & aditivos
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnMaltas">
                                     Maltas
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnLevaduras">
                                     Levaduras
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnLupulos">
                                     Lupulos
                                 </div>
                             </li>
@@ -114,38 +114,38 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="card optionItem">
+                    <div class="card optionItem" style="cursor: pointer" id="btnAccesorios">
                         <strong>Accesorios</strong>
                     </div>
                     <div id="AccesosriosItem">
                         <ul>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnEmbotellado"> 
                                     Embotellado
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnFermentacion">
                                     Fermentacion
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnFiltros">
                                     Filtros
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnMedicion">
                                     Medicion
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnFogones">
                                     Fogones
                                 </div>
                             </li>
                             <li style="padding: 6px">
-                                <div class="card optionItem">
+                                <div class="card optionItem" style="cursor: pointer" id="btnEnfriamiento">
                                     Enfriamiento
                                 </div>
                             </li>
@@ -153,19 +153,19 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="card optionItem">
+                    <div class="card optionItem" style="cursor: pointer" id="btnClistaleria">
                         <strong>Cristaleria</strong>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <br />
-                    <div class="card optionItem">
+                    <div class="card optionItem" style="cursor: pointer" id="btnEquipaamiento">
                         <strong>Equipamiento</strong>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <br />
-                    <div class="card optionItem">
+                    <div class="card optionItem" style="cursor: pointer" id="btnLibros">
                         <strong>Libros y recetas</strong>
                     </div>
                 </div>
@@ -192,7 +192,12 @@
     <br />
     <script>
         $(document).ready(function () {
-            cargarProductos();
+
+            var idCate = $("#idCategoria").text();
+            var idSubCate = $("#idSubCategoria").text();
+            var novedad = $("#NameCategoria").text();
+
+            cargarProductos(idCate, idSubCate, novedad);
 
             var NameCateHead = $("#NameCategoria").text();
 
@@ -215,14 +220,172 @@
                         $(this).show();
                 });
             });
+
+            $('#btnLibros').on('click', function () {
+                $("#nombreCategoridaHeader").text('Libros y recetas');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(5,0,'')
+            })
+
+            $('#btnEquipaamiento').on('click', function () {
+                $("#nombreCategoridaHeader").text('Equipamiento');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(4,0,'')
+            })
+
+
+            $('#btnClistaleria').on('click', function () {
+                $("#nombreCategoridaHeader").text('Cristaleria');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(3, 0, '')
+            })
+
+            $('#btnEnfriamiento').on('click', function () {
+                $("#nombreCategoridaHeader").text('Enfriamiento');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 12, '')
+            })
+
+            $('#btnFogones').on('click', function () {
+                $("#nombreCategoridaHeader").text('Fogones');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 11, '')
+            })
+
+            $('#btnMedicion').on('click', function () {
+                $("#nombreCategoridaHeader").text('Medicion');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 10, '')
+            })
+
+            $('#btnFiltros').on('click', function () {
+                $("#nombreCategoridaHeader").text('Filtros');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 9, '')
+            })
+
+            $('#btnFermentacion').on('click', function () {
+                $("#nombreCategoridaHeader").text('Fermentacion');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 8, '')
+            })
+
+            $('#btnEmbotellado').on('click', function () {
+                $("#nombreCategoridaHeader").text('Embotellado');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 7, '')
+            })
+
+            $('#btnAccesorios').on('click', function () {
+                $("#nombreCategoridaHeader").text('Accesorios');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(2, 0, '')
+            })
+
+            $('#btnLupulos').on('click', function () {
+                $("#nombreCategoridaHeader").text('Lupulos');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 6, '')
+            })
+
+            $('#btnLevaduras').on('click', function () {
+                $("#nombreCategoridaHeader").text('Levaduras');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 5, '')
+            })
+
+            $('#btnMaltas').on('click', function () {
+                $("#nombreCategoridaHeader").text('Maltas');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 4, '')
+            })
+
+            $('#btnSalesAditivos').on('click', function () {
+                $("#nombreCategoridaHeader").text('Sales & aditivos');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 3, '')
+            })
+
+            $('#btnClarificantes').on('click', function () {
+                $("#nombreCategoridaHeader").text('Clarificantes');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 2, '')
+            })
+
+            $('#btnAzucares').on('click', function () {
+                $("#nombreCategoridaHeader").text('Azúcares & Extractos');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 1, '')
+            })
+
+            $('#btnIngredientes').on('click', function () {
+                $("#nombreCategoridaHeader").text('Ingredientes');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(1, 0, '')
+            })
+
+            $('#btnNovedades').on('click', function () {
+                $("#nombreCategoridaHeader").text('Novedades');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(0, 0, 'Novedades')
+            })
         });
 
-        function cargarProductos() {
-
-            var idCate = $("#idCategoria").text();
-            var idSubCate = $("#idSubCategoria").text();
-            var novedad = $("#NameCategoria").text();
-
+        function cargarProductos(idCate, idSubCate, novedad) {
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -241,7 +404,7 @@
                             html += '<div class="col-lg-4 tarjProducto">' +
                                         '<div class="card" style="width: 100%;">' +
                                             '<div class="contenedor">' +
-                                                    '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                                    '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"/>' +
                                                     '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
                                                 '</a>' +
                                             '</div>' +
@@ -250,12 +413,12 @@
                                                     '<div align="center">' +
                                                         '<div class="row">' +
                                                             '<div class="col-lg-6">' +
-                                                                '<a data-title="Añadir a favoritos">' +
-                                                                    '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
+                                                                '<a class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
+                                                                '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
                                                             '</div>' +
                                                             '<div class="col-lg-6">' +
-                                                                '<a data-title="Añadir al carrito">' +
-                                                                    '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
+                                                                '<a class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '"  data-title="Añadir al carrito">' +
+                                                                '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
                                                             '</div>' +
                                                         '</div>' +
                                                         '<h5 class="card-title  nameProducto">' + val.nombre_producto + '</h5>' +
@@ -278,6 +441,64 @@
             });
 
 
+            $(".AnadirProductoCarrito").on("click", function () {
+                var id_producto = $(this).data("id-producto");
+                AnadirProductoCarrito(id_producto);
+            });
+
+            $(".AnadirProductoFavorito").on("click", function () {
+                var id_producto = $(this).data("id-producto");
+                AnadirFavorito(id_producto);
+            });
+        }
+
+
+        function AnadirProductoCarrito(id_producto) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AnadirProductoCarrito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': id_producto }),
+                async: false,
+                success: function (data) {
+                    if (data.d == true) {
+                        console.log('se insertó o actualizó de pana');
+                    } else {
+                        console.log('no insertó o actualizó de pana');
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function AnadirFavorito(id_producto) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AñadirFavorito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': id_producto }),
+                async: false,
+                success: function (data) {
+                    if (data.d == 1) {
+                        console.log("Añadido")
+                    }
+                    if (data.d == 2) {
+                        console.log("Ya existe como añadido")
+                    }
+                    if (data.d == 0) {
+                        console.log("Debe inicar sesion")
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
         }
     </script>
 </asp:Content>

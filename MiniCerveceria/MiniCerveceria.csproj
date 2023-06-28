@@ -551,7 +551,7 @@
     <Compile Include="Servicios\ICursosInscritosAplicacionServicios.cs" />
     <Compile Include="Servicios\IFavoritoAplicacionServicios.cs" />
     <Compile Include="Servicios\Implementacion\CarritoCompraServicio.cs" />
-    <Compile Include="Modelos\CursosInscritos.cs" />
+    <Compile Include="Modelos\InscripcionCurso.cs" />
     <Compile Include="Servicios\Implementacion\CursoServicio.cs" />
     <Compile Include="Servicios\Implementacion\CursosInscritosServicio.cs" />
     <Compile Include="Servicios\Implementacion\FavoritoServicio.cs" />

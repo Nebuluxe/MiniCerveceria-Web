@@ -6,9 +6,10 @@ namespace MiniCerveceria.Servicios
 {
     internal interface ICursosInscritosAplicacionServicios
     {
-        void CrearCursoInscrito(CursosInscritos cursosinscritos);
-        IList<CursosInscritos> ObtenerCursosInscritosUsuario(int id_usuario);
-        IList<CursosInscritos> ObtenerCursosInscritos();
-        void EliminarCursosInscritos(int id_usuario);
-    }
+        bool CrearCursoInscrito(InscripcionCurso cursosinscritos);
+        IList<InscripcionCurso> ObtenerCursosInscritosUsuario(int id_usuario);
+        IList<InscripcionCurso> ObtenerCursosInscritos();
+        void EliminarCursoInscrito(int id_usuario, int id_inscripcion);
+
+	}
 }

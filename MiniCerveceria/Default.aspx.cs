@@ -22,6 +22,7 @@ namespace MiniCerveceria
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
         static ICarritoCompraAplicacionServicios carritoApp = new CarritoCompraServicio(conn);
+		static IFavoritoAplicacionServicios favoritoApp = new FavoritoServicio(conn);
 
         protected void Page_Load(object sender, EventArgs e)
         { 
@@ -33,6 +34,12 @@ namespace MiniCerveceria
 			try
 			{
                 Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				if (oUsuario == null)
+				{
+					return false;
+				}
+
                 Producto oProducto = new Producto();
                 oProducto = productoApp.ObtenerProducto(id_producto);
 				if (oProducto != null)
@@ -118,6 +125,37 @@ namespace MiniCerveceria
 			catch (Exception)
 			{
 				return null;
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static int AñadirFavorito(string id_producto)
+		{
+			try
+			{
+				Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				if (oUsuario == null)
+				{
+					return 0;
+				}
+
+				Favorito oFavorito = new Favorito();
+				oFavorito.id_usuario = oUsuario.id_usuario;
+				oFavorito.id_producto = Convert.ToInt32(id_producto);
+
+				bool valid = favoritoApp.AñdirFavorito(oFavorito);
+
+				if (!valid)
+				{
+					return 2;
+				}
+
+				return 1;
+			}
+			catch (Exception)
+			{
 				throw;
 			}
 		}
