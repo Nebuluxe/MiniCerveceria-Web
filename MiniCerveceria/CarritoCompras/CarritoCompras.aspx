@@ -119,21 +119,25 @@
 									<input type="text" id="txtNombre" class="form-control" placeholder="Nombre"/>
 								</div>
 								<div class="col-lg-6">
-									<input type="text" id="Apellido" class="form-control" placeholder="Apellido"/>
+									<input type="text" id="txtApellido" class="form-control" placeholder="Apellido"/>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-4">
 									<br />
-									<input type="text" id="Direccion" class="form-control" placeholder="Direccion"/>
+									<input type="text" id="txtDireccion" class="form-control" placeholder="Direccion"/>
 								</div>
 								<div class="col-lg-4">
 									<br />
-									<input type="text" id="NumeroDomicilio" class="form-control" placeholder="Numero de casa/depto"/>
+									<input type="text" id="txtNumeroDomicilio" class="form-control" placeholder="Numero de casa/depto"/>
 								</div>
 								<div class="col-lg-4">
 									<br />
-									<input type="text" id="Region" class="form-control" placeholder="Region"/>
+									<input type="text" id="txtRegion" class="form-control" placeholder="Region"/>
+								</div>
+								<div class="col-lg-4">
+									<br />
+									<input type="text" id="txtComuna" class="form-control" placeholder="Comuna"/>
 								</div>
 							</div>
 						</div>
@@ -147,7 +151,7 @@
 								<img src="/Imagenes/Banner-WebPay.png" height="80">
 							</center>
 							<div class="d-grid gap-2" style="margin-top: 10px;margin-bottom: 10px;">
-								<button class="btn btn-warning" type="button">Pagar</button>
+								<button class="btn btn-warning" type="button" onclick="CrearPedido()">Pagar</button>
 							</div>
 						</div>
 					</div>
@@ -194,10 +198,9 @@
                 async: false,
                 dataType: 'json',
 				success: function (data) {
-					var id_carrito = 0; 
-                    var html = "";
-					var SubTotal = 0;
-                    if (data.d.length > 0) {
+					if (data.d.length > 0) {
+						var html = "";
+						var SubTotal = 0;
 						$.each(data.d, function (i, val) {
 							id_carrito = val.id_carrito;
                             html += "<tr>" +
@@ -326,6 +329,55 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
-        } 
+		} 
+
+		function CrearPedido() {
+			
+            var direccion_envio = "" + $("#txtDireccion").val().trim() + ", " + $("#txtNumeroDomicilio").val().trim() + ", " + $("#txtComuna").val().trim() + ", " + $("#txtRegion").val().trim() + "";
+			var costo_envio = 10000;
+            var subtotal = $("#lblSubTotal").text();
+			var total = $("#lblTotal").text();
+			var nombre_receptor = "" + $("#txtNombre").val().trim() + " " + $("#txtApellido").val().trim() + "";
+            console.log(direccion_envio); console.log(costo_envio); console.log(subtotal); console.log(total); console.log(nombre_receptor);
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/CarritoCompras/CarritoCompras.aspx/CrearPedido") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({
+                    'direccion_envio': direccion_envio.trim(), 'costo_envio': costo_envio, 'subtotal': subtotal, 'total': total, 'nombre_receptor': nombre_receptor.trim(), 'estado':1
+					}),
+                async: false,
+                success: function (data) {
+                    if (data.d != 0) {
+                        console.log("Se creó pedido");
+                        CrearDetallePedido(data.d);
+                    } else {
+                        console.log("No se eliminó el carrito");
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+		} 
+        function CrearDetallePedido(id_pedido) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/CarritoCompras/CarritoCompras.aspx/CrearDetallePedido") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_pedido': id_pedido }),
+                async: false,
+                success: function (data) {
+                    console.log("Se generaron de pana las lineas de detalledelpedido y se eliminó el carrito");
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
     </script>
 </asp:Content>

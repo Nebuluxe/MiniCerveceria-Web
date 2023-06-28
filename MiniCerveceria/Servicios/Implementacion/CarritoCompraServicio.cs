@@ -63,6 +63,12 @@ namespace MiniCerveceria.Servicios.Implementacion
                                                                "fecha_modificacion) " +
                                     "VALUES (v_id_carrito, " + obj.id_usuario + ", " + obj.id_producto + ", " + obj.precio_producto + ", v_nro_linea, " + obj.cantidad + ", " + obj.total_detalle + ", CURRENT_DATE, CURRENT_DATE); " +
                                 "END IF; " +
+                            "EXCEPTION "+
+                                "WHEN no_data_found THEN " +
+                                    "v_id_carrito := 1; " +
+                                    "v_nro_linea := 1; " +
+                                    "INSERT INTO CarritoCompra (id_carrito, id_usuario, id_producto,  precio_producto,  nro_linea,  cantidad,  total_detalle, fecha_creacion, fecha_modificacion) " +
+                                    "VALUES (v_id_carrito, " + obj.id_usuario + ", " + obj.id_producto + ", " + obj.precio_producto + ", v_nro_linea, " + obj.cantidad + ", " + obj.total_detalle + ", CURRENT_DATE, CURRENT_DATE); " +
                             "END;";
             db.Execute(query);
         }
