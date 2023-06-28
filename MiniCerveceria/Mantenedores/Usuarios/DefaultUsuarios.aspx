@@ -294,17 +294,17 @@
                             var buttons = "";
 
                             if (val.activo) {
-                                buttons += '<a onclick="Deshabilitar(' + val.id_usuario + ',\'' + val.nombre + " " + val.apellido + '\')" data-title="Deshabilitar usuario"><img src="/Imagenes/Iconos/btnInhabilitarUser.png" height="25" width="25" /></a><span> </span>';
+                                buttons += '<a style="cursor: pointer"onclick="Deshabilitar(' + val.id_usuario + ',\'' + val.nombre + " " + val.apellido + '\')" data-title="Deshabilitar usuario"><img src="/Imagenes/Iconos/btnInhabilitarUser.png" height="25" width="25" /></a><span> </span>';
                                 buttons += '<button type="button" class="visually-hidden deshabilitar" data-bs-toggle="modal" data-bs-target="#modalDeshabilitar"></button>';
                             } else {
-                                buttons += '<a onclick="Habilitar(' + val.id_usuario + ')" data-title="Habilitar usuario"><img src="/Imagenes/Iconos/btnHabilitarUser.png" height="25" width="25" /></a><span> </span>';
+                                buttons += '<a style="cursor: pointer" onclick="Habilitar(' + val.id_usuario + ')" data-title="Habilitar usuario"><img src="/Imagenes/Iconos/btnHabilitarUser.png" height="25" width="25" /></a><span> </span>';
                             }
 
                             if (val.id_permiso == 0) {
-                                buttons += '<a onclick="Asignar(' + val.id_usuario + ')" data-title="Asignar perfil"><img src="/Imagenes/Iconos/btnAsignarPermiso.png" height="25" width="25" /></a>';
+                                buttons += '<a style="cursor: pointer" onclick="Asignar(' + val.id_usuario + ')" data-title="Asignar perfil"><img src="/Imagenes/Iconos/btnAsignarPermiso.png" height="25" width="25" /></a>';
                                 buttons += '<button type="button" class="visually-hidden asignarPerfil" data-bs-toggle="modal" data-bs-target="#modalAsignar"></button>';
                             } else {
-                                buttons += '<a onclick="Quitar(' + val.id_usuario + ')" data-title="Quitar perfil"><img src="/Imagenes/Iconos/btnQuitarPermiso.png" height="25" width="25" /></a>';
+                                buttons += '<a style="cursor: pointer" onclick="Quitar(' + val.id_usuario + ')" data-title="Quitar perfil"><img src="/Imagenes/Iconos/btnQuitarPermiso.png" height="25" width="25" /></a>';
                             }
 
                             html += '<tr id="' + val.id_usuario + '">' +

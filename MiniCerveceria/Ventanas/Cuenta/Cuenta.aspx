@@ -788,7 +788,7 @@
 
                                 var buttons = "";
 
-                                buttons += '<a  onclick="Eliminar(' + val.id_Inscripcion + ')" data-title="Anular inscripcio"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" data-bs-toggle="modal" data-bs-target="#modalEliminar" /></a><span> </span>';
+                                buttons += '<a style="cursor: pointer" onclick="Eliminar(' + val.id_Inscripcion + ')" data-title="Anular inscripcio"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" data-bs-toggle="modal" data-bs-target="#modalEliminar" /></a><span> </span>';
 
                                 buttons += '<a href="/Ventanas/Cursos/DetalleCurso.aspx?uid=' + val.id_curso + '" data-title="Ver curso"><img src="/Imagenes/Iconos/CursosBlack.png" height="25" width="25" /></a>';
 
@@ -876,7 +876,7 @@
                                         '<span class="titulo name">' + val.nombre_producto + '</span>' +
                                         '</div>' +
                                         '<div class="col-lg-12">' +
-                                        '<span><a data-title="Eliminar de favoritos" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
+                                        '<span><a style="cursor: pointer" data-title="Eliminar de favoritos" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
                                         '</div>' +
                                         '</div>' +
                                         '</div>' +

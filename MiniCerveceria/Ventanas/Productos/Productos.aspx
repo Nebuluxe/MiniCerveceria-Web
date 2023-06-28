@@ -413,11 +413,11 @@
                                                     '<div align="center">' +
                                                         '<div class="row">' +
                                                             '<div class="col-lg-6">' +
-                                                                '<a class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
+                                                                '<a style="cursor: pointer"  class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
                                                                 '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
                                                             '</div>' +
                                                             '<div class="col-lg-6">' +
-                                                                '<a class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '"  data-title="Añadir al carrito">' +
+                                                                '<a style="cursor: pointer"  class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '"  data-title="Añadir al carrito">' +
                                                                 '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
                                                             '</div>' +
                                                         '</div>' +

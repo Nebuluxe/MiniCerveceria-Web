@@ -206,17 +206,17 @@
                             html += "<tr>" +
 										"<td colspan='2'>" + val.nombre_producto + "</td>" +
 										"<td scope='row'>" +
-											"<a class='ReducirCantidad' onclick='ReducirCantidadProducto(" + val.id_producto + ")'>" +
+												"<a class='ReducirCantidad' onclick='ReducirCantidadProducto(" + val.id_producto + ")'  style='cursor: pointer'>" +
 												"<img src='/Imagenes/Iconos/btnRestWithe.png' height='20' width='20' />" +
 											"</a>" +
 											"<label class='CantidadProducto' style='font-size: 17px;margin-left:5px;margin-right:5px;'>" + val.cantidad + "</label>" +
-											"<a class='AumentarCantidad' onclick='AgregarCantidadProducto(" + val.id_producto + ")'>" +
+												"<a class='AumentarCantidad' onclick='AgregarCantidadProducto(" + val.id_producto + ")'  style='cursor: pointer'>" +
 												"<img src='/Imagenes/Iconos/btnSumWithe.png' height='20' width='20' />" +
 											"</a>" +
 										"</td>" +
 										"<td scope='row'>$" + val.precio_producto + "</td>" +
 										"<td>$" + val.total_detalle + "</td>" +
-										"<td scope='row'><a class='EliminarProducto' onclick='EliminarLineaCarrito(" + val.id_producto + ")'><img src='/Imagenes/Iconos/btnDeleteitem.png' height='20' width='20' /></a></td>" +
+										"<td scope='row'><a style='cursor: pointer' class='EliminarProducto' onclick='EliminarLineaCarrito(" + val.id_producto + ")'><img src='/Imagenes/Iconos/btnDeleteitem.png' height='20' width='20' /></a></td>" +
 									"</tr>";
                             SubTotal += val.total_detalle;
 							$("#CompraDetalle").html(html);
