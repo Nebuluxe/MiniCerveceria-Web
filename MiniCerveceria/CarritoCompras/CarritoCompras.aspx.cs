@@ -17,6 +17,8 @@ namespace MiniCerveceria.CarritoCompras
         static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
         static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
         static ICarritoCompraAplicacionServicios carritoApp = new CarritoCompraServicio(conn);
+        static IPedidoAplicacionServicios pedidoApp = new PedidoServicio(conn);
+        static IDetallePedidoAplicacionServicios detPedidoApp = new DetallePedidoServicio(conn);
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -116,6 +118,57 @@ namespace MiniCerveceria.CarritoCompras
             catch (Exception)
             {
                 return false;
+                throw;
+            }
+        }
+        [WebMethod(EnableSession = true)]
+        public static int CrearPedido(string direccion_envio, int costo_envio, int subtotal, int total, string nombre_receptor, int estado)
+        {
+            int id_pedido = 0;
+            try
+            {
+                Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+                Pedido oPedido = new Pedido();
+                oPedido.id_usuario = oUsuario.id_usuario;
+                oPedido.direccion_envio = direccion_envio;
+                oPedido.costo_envio = costo_envio;
+                oPedido.subtotal = subtotal;
+                oPedido.total = total;
+                oPedido.estado = estado;
+                oPedido.nombre_receptor = nombre_receptor;
+                pedidoApp.CrearPedido(oPedido);
+                return id_pedido = pedidoApp.ObtenerIdUltimoPedidoUsuario(oUsuario.id_usuario);
+            }
+            catch (Exception)
+            {
+                return id_pedido;
+                throw;
+            }
+        }
+        [WebMethod(EnableSession = true)]
+        public static void CrearDetallePedido(int id_pedido)
+        {
+            try
+            {
+                Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+                IList<CarritoCompra> listCarritoCompra = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);
+                int id_carrito = 0;
+                foreach (var item in listCarritoCompra)
+                {
+                    DetallePedido oDetPedido = new DetallePedido();
+                    oDetPedido.id_pedido = id_pedido;
+                    oDetPedido.id_producto = item.id_producto;
+                    oDetPedido.nro_linea = item.nro_linea;
+                    oDetPedido.cantidad = item.cantidad;
+                    oDetPedido.total_detalle = item.total_detalle;
+                    oDetPedido.precio_producto = item.precio_producto;
+                    id_carrito = item.id_carrito;
+                    detPedidoApp.CrearDetallePedido(oDetPedido);
+                }
+                carritoApp.EliminarCarrito(oUsuario.id_usuario, id_carrito);
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }
