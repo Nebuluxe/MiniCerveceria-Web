@@ -21,6 +21,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		static IUsuarioAplicacionServicios UsuarioApp = new UsuarioServicio(conn);
 		static ICursosInscritosAplicacionServicios InscripcionesApp = new CursosInscritosServicio(conn);
 		static IFavoritoAplicacionServicios favortiosApp = new FavoritoServicio(conn);
+		static IPedidoAplicacionServicios pedidosApp = new PedidoServicio(conn);
 
 		public int id_user = 0;
 		public string fechaNacimiento = "";
@@ -156,6 +157,44 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				favortiosApp.EliminarFavorito(Convert.ToInt32(id_producto), SesionUser.id_usuario);
 
 				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Pedido> ObtenerPedidos()
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				IList<Pedido> ListPedidos = new List<Pedido>();
+
+				ListPedidos = pedidosApp.ObtenerPedidosUsuario(SesionUser.id_usuario);
+
+				return ListPedidos;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static Pedido ObtenerPedido(string id_pedido)
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				Pedido Pedido = new Pedido();
+
+				Pedido = pedidosApp.ObtenerPedido(Convert.ToInt32(id_pedido), SesionUser.id_usuario);
+
+				return Pedido;
 			}
 			catch (Exception)
 			{

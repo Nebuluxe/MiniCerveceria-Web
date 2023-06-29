@@ -297,6 +297,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="GlobalCss\SiteMaster.css" />
     <Content Include="Imagenes\ChileBannerRecetas.png" />
+    <Content Include="Imagenes\DefaultPedidos.png" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
     <Content Include="Imagenes\Iconos\Bag.png" />
@@ -334,6 +335,14 @@
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
     <Content Include="Imagenes\background.jpg" />
+    <Content Include="Imagenes\Traking\EnCaminoFalse.png" />
+    <Content Include="Imagenes\Traking\EnCaminoTrue.png" />
+    <Content Include="Imagenes\Traking\EntregadoFalse.png" />
+    <Content Include="Imagenes\Traking\EntregadoTrue.png" />
+    <Content Include="Imagenes\Traking\EntregaFalse.png" />
+    <Content Include="Imagenes\Traking\EntregaTrue.png" />
+    <Content Include="Imagenes\Traking\PreparacionFalse.png" />
+    <Content Include="Imagenes\Traking\PreparacionTrue.png" />
     <Content Include="Login\LoginSingOut.aspx" />
     <Content Include="Login\RecuperarContraseña.aspx" />
     <Content Include="Mantenedores\Cursos\CursosInscritos.aspx" />

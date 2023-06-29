@@ -403,11 +403,11 @@
                         $.each(data.d, function (i, val) {
                             html += '<div class="col-lg-4 tarjProducto">' +
                                         '<div class="card" style="width: 100%;">' +
-                                            '<div class="contenedor">' +
-                                                    '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"/>' +
+                                            '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"/>' +
+                                                '<div class="contenedor">' +
                                                     '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
-                                                '</a>' +
-                                            '</div>' +
+                                                '</div>' +
+                                            '</a>' +
                                             '<div align="center">' +
                                                 '<div class="card-body">' +
                                                     '<div align="center">' +

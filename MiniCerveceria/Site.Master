@@ -156,6 +156,10 @@
 
         .contenedor:hover .imagen {-webkit-transform:scale(1.2);transform:scale(1.2);}
         .contenedor {overflow:hidden;}
+
+        img {
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>

@@ -42,10 +42,10 @@
             transition: .5s;
         }
 
-        .wrapper:hover {
+/*        .wrapper:hover {
             border: 5px solid #fff;
             box-shadow: 0 0 20px #fff, inset 0 0 20px #fff
-        }
+        }*/
 
         h2 {
             font-size: 2em;

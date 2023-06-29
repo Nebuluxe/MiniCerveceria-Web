@@ -42,9 +42,10 @@
         }
 
         #pedidoDetalle {
-	        height: 500px;
+	        height: 600px;
 	        width: 100%;
 	        overflow-y: scroll;
+            overflow-x:hidden;
         }
 
         #compraDetalle{
@@ -55,6 +56,11 @@
 
         .sizeOptionsCard{
             height: 600px
+        }
+
+        .itemList{
+            padding: 5px;
+            cursor: pointer;
         }
     </style>
     <div class="card">
@@ -177,83 +183,6 @@
                           </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
                 </div>
                 <br />
             </div>
@@ -272,111 +201,153 @@
       </div>
     </div>
     <div class="card visually-hidden" id="Pedidos">
-      <div class="card-body">
-        <br />
-        <div class="row">
-            <div class="col-lg-4" id="PedidosList">
-                <br />
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Pedido Example.
-                          </div>
-                        </div>
-                    </div>
+      <div class="card-body" align="center">
+        <div class="row"  id="TablaPedidos">
+            <div class="col-lg-4" >
+                <div class="row" id="ListaPedidos">
+                    
                 </div>
-                <br />
             </div>
             <div class="col-lg-8">
-                <br />
                 <div class="card" id="pedidoDetalle">
                   <div class="card-body">
-                    <div class="row">
+                    <div id="defaultPedidos">
+                        <br /><br /><br /><br /><br /><br />
+                        <img src="/Imagenes/DefaultPedidos.png" width="300"> 
+                        <br /><br /><br /><br /><br /><br />
+                    </div>
+                    <div id="DetallePedido" class="visually-hidden">
+                        <img src="/Imagenes/DefaultPedidos.png" width="150"> 
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Detalle del pedido</h5>
+                                <h6>Pedido N° <span id="nroPedido"> </span></h6>
+                                 <div class="row" style="text-align: left !important">
+                                     <div class="col-lg-4">
+                                         <strong>Nombre: </strong><br /><span id="nombreReceptor"> </span>
+                                     </div>
+                                     <div class="col-lg-4">
+                                         <strong>Fecha compra: </strong><br /><span id="fechaCompra"> </span>
+                                     </div>
+                                    <div class="col-lg-4">
+                                         <strong>Total: </strong><br />$ <span id="pagoTotal"> </span>
+                                     </div>
+                                 </div>
+                                 <div class="row" style="text-align: left !important">
+                                    <div class="col-lg-12">
+                                         <strong>Direccion envio: </strong><br /><span id="direccion"> </span>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Estado del pedido</h5>
+                                <div class="row" id="preparacion">
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
+                                        <span> En preparacion </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EnCaminoFalse.png" width="100">  <br />
+                                        <span> En camino </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregaFalse.png" width="100"> <br />
+                                        <span> En entrega </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
+                                         <span> Entregado </span>
+                                    </div>
+                                </div>
+                                <div class="row visually-hidden" id="camino">
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
+                                        <span> En preparacion </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
+                                        <span> En camino </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregaFalse.png" width="100"> <br />
+                                        <span> En entrega </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
+                                         <span> Entregado </span>
+                                    </div>
+                                </div>
+                                <div class="row visually-hidden" id="entrega">
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
+                                        <span> En preparacion </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
+                                        <span> En camino </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregaTrue.png" width="100"> <br />
+                                        <span> En entrega </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
+                                         <span> Entregado </span>
+                                    </div>
+                                </div>
+                                <div class="row visually-hidden" id="entregado">
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
+                                        <span> En preparacion </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
+                                        <span> En camino </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregaTrue.png" width="100"> <br />
+                                        <span> En entrega </span>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <img src="/Imagenes/Traking/EntregadoTrue.png" width="100">  <br />
+                                         <span> Entregado </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="card">
+                            <div class="card-body">
+                                <table class="table CompraDetalle" id="TablaDetallePedido">
+		                            <thead>
+		                                <tr>
+			                                <th scope="row" colspan="2">Nombre producto</th>
+			                                <th scope="row">Cantidad</th>
+			                                <th scope="row">Precio</th>
+			                                <th scope="row">Total</th>
+                                            <th scope="row">Acciones</th>
+		                                </tr>
+		                            </thead>
+		                            <tbody id="ContenidoTablapedidoDetalle">
 
+		                            </tbody>
+	                            </table>
+                            </div>
+                        </div>
                     </div>
                   </div>
                 </div>
-                <br />
             </div>
         </div>
+        <div id="SinPedidos" align="center" class="visually-hidden">
+            <br /><br /><br /><br /><br /><br /><br /><br />
+            <h3>Usted no tiene pedidos pendientes</h3>
+            <a href="/Ventanas/Productos/Productos.aspx" class="btn btn-warning">Ver productos</a>
+            <br /><br /><br /><br /><br /><br /><br /><br />
+        </div>  
       </div>
     </div>
     <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos">
@@ -553,6 +524,8 @@
                     if (!$('#CursosInscritos').hasClass("visually-hidden")) {
                         $('#CursosInscritos').addClass('visually-hidden');
                     }
+
+                    CargarPedidos()
                 }
 
                 if (OptionSelectedSide == "c") {
@@ -639,6 +612,8 @@
                 if (!$('#CursosInscritos').hasClass("visually-hidden")) {
                     $('#CursosInscritos').addClass('visually-hidden');
                 }
+
+                CargarPedidos()
             })
 
             $('#btnFavoritos').on('click', function () {
@@ -865,10 +840,11 @@
                             html += '<div class="col-lg-3 tarjNovedad">' +
                                         '<br/>' +
                                         '<div class="card" style="width: 90%;">' +
+                                        '<a style="cursor: pointer" href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
                                         '<div class="contenedor">' +
-                                        '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"/>' +
                                         '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
                                         '</div>' +
+                                        '</a>' +
                                         '<div align="center">' +
                                         '<div class="card-body">' +
                                         '<div class="row">' +
@@ -910,6 +886,109 @@
                 success: function (data) {
                     if (data.d) {
                         cargarFavoritos()
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function CargarPedidos() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObtenerPedidos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        if (data.d.length > 0) {
+                            $.each(data.d, function (i, val) {
+
+                                html += '<div class="col-lg-12 itemList">' +
+                                            '<div class="card" onclick="ObtenerDetallePedido(' + val.id_pedido + ')">' +
+                                                '<div class="card-body">' +
+                                                    '<span> N° pedido: ' + val.id_pedido + ', ' + val.fecha_creacion + ', $ ' + val.total + ' </span>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'
+                            });
+
+                            $('#ListaPedidos').html(html);
+                        }
+                        else {
+                            $('#SinPedidos').removeClass('visually-hidden');
+                            $('#TablaPedidos').addClass('visually-hidden');
+                        }
+
+
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function ObtenerDetallePedido(idPedido) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObtenerPedido") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                dataType: 'json',
+                data: JSON.stringify({ 'id_pedido': idPedido }),
+                success: function (data) {
+                    if (data.d != null) {
+                        $('#nroPedido').text(data.d.id_pedido);
+                        $('#nombreReceptor').text(data.d.nombre_receptor);
+                        $('#fechaCompra').text(data.d.fecha_creacion);
+                        $('#pagoTotal').text(data.d.total);
+                        $('#direccion').text(data.d.direccion_envio);
+
+                        var html = "";
+
+                        $.each(data.d.DetallePedido, function (i, val) {
+
+                            html += '<tr id="' + val.id_producto + '">' +
+                                    '<td colspan="2">' + val.nombre_producto + '</td>' +
+                                    '<td scope="row">' + val.cantidad + '</td>' +
+                                    '<td scope="row" >$ ' + val.precio_producto + '</td>' +
+                                    '<td scope="row" >$ ' + val.total_detalle + '</td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a></td>' +
+                                    '</tr>';
+                        });
+
+                        $('#ContenidoTablapedidoDetalle').html(html);
+
+                        if (data.d.estado == 2) {
+                            $('#preparacion').addClass('visually-hidden');
+                            $('#entrega').removeClass('visually-hidden');
+                        }
+
+                        if (data.d.estado == 3) {
+                            $('#preparacion').addClass('visually-hidden');
+                            $('#camino').removeClass('visually-hidden');
+                        }
+
+                        if (data.d.estado == 4) {
+                            $('#preparacion').addClass('visually-hidden');
+                            $('#entregado').removeClass('visually-hidden');
+                        }
+
+                        if (!$('#defaultPedidos').hasClass("visually-hidden")) {
+                            $('#defaultPedidos').addClass('visually-hidden');
+                        }
+
+                        if ($('#DetallePedido').hasClass("visually-hidden")) {
+                            $('#DetallePedido').removeClass('visually-hidden');
+                        }
                     }
                 },
                 error: function (data) {
