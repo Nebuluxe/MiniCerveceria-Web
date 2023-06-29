@@ -292,6 +292,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\cropper.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -334,6 +335,7 @@
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
     <Content Include="Imagenes\background.jpg" />
+    <Content Include="Imagenes\user.png" />
     <Content Include="Login\LoginSingOut.aspx" />
     <Content Include="Login\RecuperarContraseña.aspx" />
     <Content Include="Mantenedores\Cursos\CursosInscritos.aspx" />
@@ -347,6 +349,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\cropper.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
