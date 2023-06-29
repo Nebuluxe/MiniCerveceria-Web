@@ -192,7 +192,7 @@
                                                             '<span class="titulo name">' + val.nombre_producto + '</span>' +
                                                         '</div>' +
                                                         '<div class="col-lg-12">' +
-                                                            '<span><a data-title="Quitar novedad" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
+                                                            '<span><a  style="cursor: pointer" data-title="Quitar novedad" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
                                                         '</div>' +
                                                     '</div>' +
                                                 '</div>' +

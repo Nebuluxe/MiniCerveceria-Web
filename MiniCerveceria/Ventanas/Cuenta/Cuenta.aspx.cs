@@ -10,7 +10,8 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using MiniCerveceria.Modelos;
 using System.IO;
-
+using MiniCerveceria.Servicios.Modelos;
+using Microsoft.Ajax.Utilities;
 
 namespace MiniCerveceria.Ventanas.Cuenta
 {
@@ -18,6 +19,9 @@ namespace MiniCerveceria.Ventanas.Cuenta
 	{
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IUsuarioAplicacionServicios UsuarioApp = new UsuarioServicio(conn);
+		static ICursosInscritosAplicacionServicios InscripcionesApp = new CursosInscritosServicio(conn);
+		static IFavoritoAplicacionServicios favortiosApp = new FavoritoServicio(conn);
+		static IPedidoAplicacionServicios pedidosApp = new PedidoServicio(conn);
 
 		public int id_user = 0;
 		public string fechaNacimiento = "";
@@ -81,6 +85,116 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				oUsuario.telefono = Convert.ToInt32(telefono);
 
 				UsuarioApp.ActualizarUsuario(oUsuario);
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+		
+		[WebMethod(EnableSession = true)]
+		public static IList<InscripcionCurso> ObtenerCursosIncritos()
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				IList<InscripcionCurso> inscripciones = new List<InscripcionCurso>();
+
+				inscripciones = InscripcionesApp.ObtenerCursosInscritosUsuario(SesionUser.id_usuario);
+
+				return inscripciones;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool EliminarInscripcion(string id_inscripcion)
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				InscripcionesApp.EliminarCursoInscrito(SesionUser.id_usuario, Convert.ToInt32(id_inscripcion));
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Favorito> obtenerFavoritos()
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				IList<Favorito> favoritos = new List<Favorito>();
+
+				favoritos = favortiosApp.ObtenerFavoritosUsuario(SesionUser.id_usuario);
+
+				return favoritos;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool QuitarFavorito(string id_producto)
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				favortiosApp.EliminarFavorito(Convert.ToInt32(id_producto), SesionUser.id_usuario);
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Pedido> ObtenerPedidos()
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				IList<Pedido> ListPedidos = new List<Pedido>();
+
+				ListPedidos = pedidosApp.ObtenerPedidosUsuario(SesionUser.id_usuario);
+
+				return ListPedidos;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static Pedido ObtenerPedido(string id_pedido)
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				Pedido Pedido = new Pedido();
+
+				Pedido = pedidosApp.ObtenerPedido(Convert.ToInt32(id_pedido), SesionUser.id_usuario);
+
+				return Pedido;
 			}
 			catch (Exception)
 			{

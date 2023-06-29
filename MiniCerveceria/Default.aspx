@@ -207,13 +207,12 @@
                 var id_producto = $(this).data("id-producto");
                 AnadirProductoCarrito(id_producto);
             });
-            //$(".AnadirProductoFavorito").on("click", function () {
-            //    var id_producto = $(this).data("id-producto");
-            //    console.log(id_producto);
-            //});
-            //$(".favorito").on("click", function () {
-            //    Command: toastr["success"]("mi pana haz agregado a favoritos de pana", "mi loco agregaste a favoritos")
-            //});
+
+            $(".AnadirProductoFavorito").on("click", function () {
+                var id_producto = $(this).data("id-producto");
+                AnadirFavorito(id_producto);
+            });
+
             let items = document.querySelectorAll('.carousel .carousel-item')
 
             items.forEach((el) => {
@@ -230,6 +229,7 @@
                 }
             })
         });
+
         function AnadirProductoCarrito(id_producto) {
             $.ajax({
                 type: 'POST',
@@ -250,8 +250,32 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
+        }
 
-
+        function AnadirFavorito(id_producto) {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AñadirFavorito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': id_producto }),
+                async: false,
+                success: function (data) {
+                    if (data.d == 1) {
+                        console.log("Añadido")
+                    }
+                    if (data.d == 2) {
+                        console.log("Ya existe como añadido")
+                    }
+                    if (data.d == 0) {
+                        console.log("Debe inicar sesion")
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
         }
 
         function cargarProductos() {
@@ -285,12 +309,12 @@
                                                         '<div align="center">'  +
                                                             '<div class="row">' +
                                                                 '<div class="col-lg-6">' +
-                                                                    '<a class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
+                                                                    '<a  style="cursor: pointer" class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '"  class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
                                                                     '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
                                                                 '</div>' +
                                                                 '<div class="col-lg-6">' +
-                                                                    '<a class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '" data-title="Añadir al carrito">' +
-                                                                        '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
+                                                                    '<a  style="cursor: pointer" class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '" data-title="Añadir al carrito">' +
+                                                                    '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
                                                                 '</div>' +
                                                             '</div>' +
                                                         '</div>' +
@@ -311,3 +335,5 @@
         }
     </script>
 </asp:Content>
+
+

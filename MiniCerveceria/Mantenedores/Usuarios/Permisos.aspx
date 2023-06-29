@@ -307,10 +307,10 @@
 
                             var buttons = "";
 
-                            buttons += '<a  onclick="Eliminar(' + val.id_permiso + ',\'' + val.nombre + '\')" data-title="Eliminar perfil"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" /></a><span> </span>';
+                            buttons += '<a style="cursor: pointer" onclick="Eliminar(' + val.id_permiso + ',\'' + val.nombre + '\')" data-title="Eliminar perfil"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" /></a><span> </span>';
                             buttons += '<button type="button" class="visually-hidden btnEliminarHide" data-bs-toggle="modal" data-bs-target="#modalEliminar"></button>'
 
-                            buttons += '<a  onclick="Editar(' + val.id_permiso + ',\'' + val.nombre + '\',' + val.editar + ',' + val.eliminar + ',' + val.ver + ',' + val.crear + ')" data-title="Editar perfil"><img src="/Imagenes/Iconos/EditBlack.png" height="25" width="25" /></a>';
+                            buttons += '<a style="cursor: pointer" onclick="Editar(' + val.id_permiso + ',\'' + val.nombre + '\',' + val.editar + ',' + val.eliminar + ',' + val.ver + ',' + val.crear + ')" data-title="Editar perfil"><img src="/Imagenes/Iconos/EditBlack.png" height="25" width="25" /></a>';
 
                             html += '<tr id="' + val.id_permiso + '">' +
                                     '<td colspan="2">' + val.nombre + '</td>' +

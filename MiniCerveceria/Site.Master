@@ -156,6 +156,10 @@
 
         .contenedor:hover .imagen {-webkit-transform:scale(1.2);transform:scale(1.2);}
         .contenedor {overflow:hidden;}
+
+        img {
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -262,6 +266,7 @@
 
             <div class="btn-group-vertical list-group" role="group" id="OpcionesSideDefault">
                 <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=h" class="btn btn-outline-light optionNav">Historial de compras</a>
+                <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=c" class="btn btn-outline-light optionNav">Cursos inscritos</a>
                 <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=f" class="btn btn-outline-light optionNav">Favoritos</a>
                 <a runat="server" href="~/Ventanas/Cuenta/Cuenta?uid=p" class="btn btn-outline-light optionNav">Pedidos</a>
                 <a runat="server" href="~/Ventanas/Cuenta/Cuenta" class="btn btn-outline-light optionNav">Cuenta</a>
@@ -281,7 +286,7 @@
             <br /><br /><br />
 
             <div class="list-group" style="text-align: center">
-                <a  href="/Login/LoginSingOut.aspx" class="btn btn-outline-light" id="btnCerrar">Cerrar sesion</a>
+              <a  href="/Login/LoginSingOut.aspx" class="btn btn-outline-light" id="btnCerrar">Cerrar sesion</a>
               <a href="/Login/Login.aspx" class="btn btn-outline-light" id="btnIniciar">Iniciar sesion</a>
             </div>
 

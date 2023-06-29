@@ -20,6 +20,11 @@ namespace MiniCerveceria.Login
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
 
+		private static string smtp_host = Convert.ToString(ConfigurationManager.AppSettings["smtp_host"]);
+		private static int smtp_port = Convert.ToInt32(ConfigurationManager.AppSettings["smtp_port"]);
+		private static string correo_host = Convert.ToString(ConfigurationManager.AppSettings["correo_host"]);
+		private static string password_host = Convert.ToString(ConfigurationManager.AppSettings["password_host"]);
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 
@@ -33,28 +38,22 @@ namespace MiniCerveceria.Login
 			{
 				string codigo = GenerateCodigo();
 
-				// Configurar las credenciales y el servidor SMTP
-				string email = "Minicerveceriaweb@gmail.com";
-				string password = "oazzalvwemmkrjlb";
-				string smtpServer = "smtp.gmail.com";
-				int smtpPort = 465; // Puerto seguro SSL/TLS para Gmail
-
 				// Crear el mensaje de correo
 				var message = new MimeMessage();
-				message.From.Add(new MailboxAddress("MiniCerveceria-Web", email));
+				message.From.Add(new MailboxAddress("MiniCerveceria-Web", correo_host));
 				message.To.Add(new MailboxAddress(emailReceptor, emailReceptor));
 				message.Subject = "Codigo de recuperacion contraseña";
 				message.Body = new TextPart("plain")
 				{
-					Text = "Hola aqui tienes el codigo de recuperacion de tu cuenta en minicervecerai," +
+					Text = "Hola aqui tienes el codigo de recuperacion de tu cuenta en MiniCerveceria," +
 						   "CODIGO: " + codigo
 				};
 
 				// Enviar el correo
 				using (var client = new SmtpClient())
 				{
-					client.Connect(smtpServer, smtpPort, SecureSocketOptions.SslOnConnect);
-					client.Authenticate(email, password);
+					client.Connect(smtp_host, smtp_port, SecureSocketOptions.SslOnConnect);
+					client.Authenticate(correo_host, password_host);
 					client.Send(message);
 					client.Disconnect(true);
 				}
