@@ -164,7 +164,10 @@ namespace MiniCerveceria.CarritoCompras
                     oDetPedido.precio_producto = item.precio_producto;
                     id_carrito = item.id_carrito;
                     detPedidoApp.CrearDetallePedido(oDetPedido);
-                }
+
+                    productoApp.RebajarStock(item.id_producto, item.cantidad);
+				}
+
                 carritoApp.EliminarCarrito(oUsuario.id_usuario, id_carrito);
             }
             catch (Exception)

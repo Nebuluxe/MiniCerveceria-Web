@@ -51,6 +51,13 @@
     </nav>
     <br />
     <div class="input-group" style="justify-content: center">
+        <asp:DropDownList runat="server" ClientIDMode="Static" id="cboEstado" class="form-select">
+		    <asp:ListItem selected="true" value="0">Todos</asp:ListItem>
+		    <asp:ListItem value="1">En preparacion</asp:ListItem>
+            <asp:ListItem value="2">En envio</asp:ListItem>
+            <asp:ListItem value="3">En entrega</asp:ListItem>
+            <asp:ListItem value="4">Entregado</asp:ListItem>
+	    </asp:DropDownList>
         <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
         <span class="input-group-text" id="addon-wrapping" style="border: 10px">
             <img src="/Imagenes/Iconos/Lupa.png" height="20">
@@ -130,7 +137,7 @@
     </div>
 	<script>
         $(document).ready(function () {
-            cargarPedidos()
+            cargarPedidos(0)
 
             $("#search").keyup(function () {
                 _this = this;
@@ -142,9 +149,33 @@
                 });
             });
 
+            $('#cboEstado').on('change', function () {
+                var estado = $('#cboEstado').val();
+
+                if (estado == 0) {
+                    cargarPedidos(0)
+                }
+
+                if (estado == 1) {
+                    cargarPedidos(1)
+                }
+
+                if (estado == 2) {
+                    cargarPedidos(2)
+                }
+
+                if (estado == 3) {
+                    cargarPedidos(3)
+                }
+
+                if (estado == 4) {
+                    cargarPedidos(4)
+                }
+            })
+
         });
 
-        function cargarPedidos() {
+        function cargarPedidos(estado) {
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -152,6 +183,7 @@
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
+                data: JSON.stringify({ 'estado': estado }),
                 success: function (data) {
 
                     var html = "";
@@ -257,7 +289,7 @@
                 data: JSON.stringify({ 'id_pedido': idPedido, 'id_usuario': idUsaurio, 'estado': estado }),
                 success: function (data) {
                     if (data.d) {
-                        cargarPedidos()
+                        cargarPedidos(estado)
                     }
                 },
                 error: function (data) {

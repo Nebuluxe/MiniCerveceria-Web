@@ -125,24 +125,17 @@
                             <h6>Categoria: <asp:label runat="server" ClientIDMode="Static" ID="lblCategoria"></asp:label></h6>
                             <hr class="featurette-divider">
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-body">
-                                    <tr>
-                                        <td>
-                                            <a data-title="Añadir al carrito"><img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>
-                                        </td>
-                                        <td>
-                                            <a><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25"/></a><span id="Contador"> 0 </span><a><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25"/></a>
-                                        </td>
-                                    </tr>
+                                <div class="card-body" style="cursor:pointer" onclick="AnadirProductoCarrito()">
+                                    <a  data-title="Añadir al carrito"><img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a><span> Añadir al carrito </span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-body">
-                                    <a data-title="Añadir a favoritos"><img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a><span  style="color: #ff0000"> Añadir a favoritos </span>
+                                <div class="card-body" style="cursor:pointer" onclick="AnadirFavorito()">
+                                    <a  data-title="Añadir a favoritos"><img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a><span  style="color: #ff0000"> Añadir a favoritos </span>
                                 </div>
                             </div>
                         </div>
@@ -306,5 +299,55 @@
 
         }
 
+        function AnadirProductoCarrito() {
+            var idProd = $("#idProd").text();
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AnadirProductoCarrito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': idProd }),
+                async: false,
+                success: function (data) {
+                    if (data.d) {
+                        Command: toastr["success"]("Se ha añadido el producto al carrito")
+                    } 
+                    else {
+                        Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function AnadirFavorito(id_producto) {
+            var idProd = $("#idProd").text();
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/AñadirFavorito") %>',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: JSON.stringify({ 'id_producto': idProd }),
+                async: false,
+                success: function (data) {
+                    if (data.d == 1) {
+                        Command: toastr["success"]("El producto se ha añadido a favoritos")
+                    }
+                    if (data.d == 2) {
+                        Command: toastr["warning"]("Este producto ya se encuentra agregado a favoritos")
+                    }
+                    if (data.d == 0) {
+                        Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir a favoritos")
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
     </script>
 </asp:Content>

@@ -41,10 +41,11 @@
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/ListarCursosDefualt") %>',
+                url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/ListarCursos") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
+                data: JSON.stringify({ 'estado': true }),
                 success: function (data) {
 
                     var html = "";

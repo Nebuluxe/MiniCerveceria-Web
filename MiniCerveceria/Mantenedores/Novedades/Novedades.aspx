@@ -129,6 +129,7 @@
                         if (data.d) {
                             cargarNovedades()
                             cargarProductos()
+                            Command: toastr["success"]("Producto agregado como novedad")
                         }
                     },
                     error: function (data) {
@@ -153,7 +154,9 @@
                             cargarNovedades()
 
                             if (PermisoCrear) {
+                                
                                 cargarProductos()
+                                Command: toastr["success"]("Se quitado el producto de novedades")
                             }
                         }
                     },
@@ -227,10 +230,12 @@
                         $.each(data.d, function (i, val) {
                             html += '<div class="col-lg-6 tarjProducto">' +
                                         '<br/>' +
-                                        '<div class="card añadirNovedad" style="width: 90%;">' +
-                                            '<div>' +
-                                                '<a data-bs-dismiss="modal" onclick="añadir(' + val.id_producto + ')"><img src="' + val.URL_img + '" class="card-img-top hoverImg"></a>' +
-                                            '</div>' +
+                                        '<div class="card añadirNovedad" style="width: 90%;cursor: pointer">' +
+                                            '<a data-bs-dismiss="modal" onclick="añadir(' + val.id_producto + ')">' +
+                                                '<div>' +
+                                                    '<img src="' + val.URL_img + '" class="card-img-top hoverImg">' +
+                                                '</div>' +
+                                            '</a>' +
                                             '<div align="center">' +
                                                 '<div class="card-body">' +
                                                     '<span class="titulo nameProducto">' + val.nombre_producto + '</span>' +

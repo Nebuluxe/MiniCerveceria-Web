@@ -298,6 +298,7 @@
     <Content Include="Content\toastr.min.css" />
     <Content Include="GlobalCss\SiteMaster.css" />
     <Content Include="Imagenes\ChileBannerRecetas.png" />
+    <Content Include="Imagenes\DefaultCompras.png" />
     <Content Include="Imagenes\DefaultPedidos.png" />
     <Content Include="Imagenes\favicon.ico" />
     <Content Include="Imagenes\header-bg.jpg" />
@@ -313,6 +314,7 @@
     <Content Include="Imagenes\Iconos\carousel-control-next-icon.png" />
     <Content Include="Imagenes\Iconos\CloseButtonBlack.png" />
     <Content Include="Imagenes\Iconos\CloseButtonWithe.png" />
+    <Content Include="Imagenes\Iconos\Comentario.png" />
     <Content Include="Imagenes\Iconos\CursosInscritosBlack.png" />
     <Content Include="Imagenes\Iconos\CursosInscritosWithe.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
@@ -349,7 +351,6 @@
     <Content Include="Mantenedores\Cursos\CursosInscritos.aspx" />
     <Content Include="Mantenedores\Novedades\Novedades.aspx" />
     <Content Include="Mantenedores\Pedidos\DefaultPedidos.aspx" />
-    <Content Include="Mantenedores\Pedidos\DetallePedido.aspx" />
     <Content Include="Mantenedores\Productos\StockProducto.aspx" />
     <Content Include="Mantenedores\Usuarios\Permisos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -520,13 +521,6 @@
     </Compile>
     <Compile Include="Mantenedores\Pedidos\DefaultPedidos.aspx.designer.cs">
       <DependentUpon>DefaultPedidos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Mantenedores\Pedidos\DetallePedido.aspx.cs">
-      <DependentUpon>DetallePedido.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Mantenedores\Pedidos\DetallePedido.aspx.designer.cs">
-      <DependentUpon>DetallePedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Productos\StockProducto.aspx.cs">
       <DependentUpon>StockProducto.aspx</DependentUpon>

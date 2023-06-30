@@ -62,6 +62,10 @@
     </nav>
     <br />
     <div class="input-group" style="justify-content: center">
+        <asp:DropDownList runat="server" ClientIDMode="Static" id="cboEstado" class="form-select">
+            <asp:ListItem selected="true"  value="1">Habilitados</asp:ListItem>
+		    <asp:ListItem value="0">Deshabilitados</asp:ListItem>
+	    </asp:DropDownList>
         <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
         <span class="input-group-text" id="addon-wrapping" style="border: 10px">
             <img src="/Imagenes/Iconos/Lupa.png" height="20">
@@ -74,19 +78,19 @@
         </div>
     </div>
 
-    <%-- Modal eliminacion --%>
-    <div class="fade modal" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalEliminarLabel" aria-hidden="true">
+    <%-- Modal deshabilitar --%>
+    <div class="fade modal" id="ModalDeshabilitar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalDeshabilitarLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="ModalEliminarLabelLabel">Eliminar producto</h1>
+            <h1 class="modal-title fs-5" id="ModalDeshabilitarLabelLabel">Eliminar producto</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ¿Esta seguro que desea eliminar el producto " <span id="Nombreproducto"></span>" ?
+            ¿Esta seguro que desea deshabilitar el producto " <span id="Nombreproducto"></span>" ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDeshabilitar">Aceptar</button>
           </div>
         </div>
       </div>
@@ -94,40 +98,25 @@
 
     <script type="text/javascript">
         var PermisoEliminar = <%= PermisoEliminar %>;
+        var idProducto = "";
 
         $(document).ready(function () {
-            cargarProductos()
+            cargarProductos(true)
 
-            var idProdDelete = "";
-
-            $('.btnEliminar').on('click', function () {
-                if (PermisoEliminar) {
-                    var buttons = $(this).parent().parent();
-
-                    var cardBody = $(this).parent().parent().parent();
-
-                    var name = cardBody.find('.nameProducto').text()
-                    idProdDelete = cardBody.find('.idprod').text()
-
-                    $('#Nombreproducto').text(name);
-
-                    buttons.find('.btnEliminarHide').trigger('click');
-                }
-            });
-
-            $('#confirmDelete').on('click', function () {
+            $('#confirmDeshabilitar').on('click', function () {
                 if (PermisoEliminar) {
                     $.ajax({
                         type: 'POST',
                         cache: false,
-                        url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/EliminarProducto") %>',
+                        url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/DeshabilitarProducto") %>',
                         contentType: 'application/json; charset=utf-8',
                         async: false,
                         dataType: 'json',
-                        data: JSON.stringify({ 'id_producto': idProdDelete }),
+                        data: JSON.stringify({ 'id_producto': idProducto }),
                         success: function (data) {
                             if (data.d) {
-                                cargarProductos()
+                                cargarProductos(false)
+                                $("#cboEstado option[value=0]").attr("selected", true);
                             }
                         },
                         error: function (data) {
@@ -146,16 +135,28 @@
                         $(this).show();
                 });
             });
+
+            $('#cboEstado').on('change', function () {
+                var estado = $('#cboEstado').val();
+
+                if (estado == 1) {
+                    cargarProductos(true)
+                }
+                else {
+                    cargarProductos(false)
+                }
+            })
         });
 
-        function cargarProductos() {
+        function cargarProductos(estado) {
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/ListarProductosDefualt") %>',
+                url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/ListarProductos") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
+                data: JSON.stringify({ 'estado': estado }),
                 success: function (data) {
 
                     var html = "";
@@ -163,6 +164,22 @@
                     if (data.d != null) {
 
                         $.each(data.d, function (i, val) {
+
+                            var buttons = "";
+                            var DesHabButton = "";
+
+                            if (estado) {
+                                buttons += '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>';
+                                buttons += '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>';
+
+                                DesHabButton = '<div class="btn-group" role="group" >' +
+                                                    '<a onclick="Deshabilitar($(this).parent().parent())" type="button" class="btn btn-outline-danger btnDeshabilitar">Deshabilitar</a>' +
+                                                '</div>';
+                            }
+                            else {
+                                buttons = '<a onclick="Habilitar(' + val.id_producto + ')" class="btn btn-outline-success btnHabilitar">Habilitar</a>';
+                            }
+
                             html += '<div class="col-lg-3 tarjProducto">' +
                                         '<br/>' +
                                         '<div class="card" style="width: 90%;">' +
@@ -177,12 +194,11 @@
                                                             '<span class="idprod visually-hidden">' + val.id_producto + '</span>' +
                                                         '</div>' +
                                                         '<div class="col-lg-12">' +
-                                                            '<button type="button" class="btn btn-outline-danger visually-hidden btnEliminarHide" data-bs-toggle="modal" data-bs-target="#ModalEliminar"></button>' +
+                                                            '<button type="button" class="btn btn-outline-danger visually-hidden btnDeshabilitarHide" data-bs-toggle="modal" data-bs-target="#ModalDeshabilitar"></button>' +
                                                             '<div class="btn-group" role="group" >' +
-                                                                '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/CrearProducto.aspx?uid=' + val.id_producto + '">Editar</a>' +
-                                                                '<a type="button" class="btn btn-outline-light" runat="server" href="~/Mantenedores/Productos/VerProducto.aspx?uid=' + val.id_producto + '">Ver</a>' +
-                                                                '<button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>' +
+                                                                buttons +
                                                             '</div>' +
+                                                                DesHabButton +
                                                         '</div>' +
                                                     '</div>' +
                                                 '</div>' +
@@ -198,8 +214,45 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
-
-
         }
+
+        function Habilitar(idProducto) {
+            if (PermisoEliminar) {
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Productos/DefaultProductos.aspx/HabilitarProducto") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': idProducto }),
+                    success: function (data) {
+                        if (data.d) {
+                            cargarProductos(true)
+                            $("#cboEstado option[value=1]").attr("selected", true);
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
+                    }
+                });
+            }
+        }
+
+        function Deshabilitar(elemento) {
+            if (PermisoEliminar) {
+                var buttons = elemento;
+
+                var cardBody = elemento.parent();
+
+                var name = cardBody.find('.nameProducto').text()
+                idProducto = cardBody.find('.idprod').text()
+
+                $('#Nombreproducto').text(name);
+
+                buttons.find('.btnDeshabilitarHide').trigger('click');
+            }
+        }
+
     </script>
 </asp:Content>

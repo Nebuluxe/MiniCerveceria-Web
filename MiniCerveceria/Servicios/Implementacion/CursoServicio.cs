@@ -43,7 +43,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                             " END;";
             db.Execute(query);
         }
-        public IList<Curso> ObtenerCursos()
+        public IList<Curso> ObtenerCursos(bool estado)
         {
             string query = "SELECT id_curso, " +
                                   "nombre_curso, " +
@@ -53,7 +53,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                                   "fecha_creacion, " +
                                   "fecha_modificacion, " +
 								  "url_img " +
-						   "FROM curso WHERE estado = 1";
+						   "FROM curso WHERE estado = " + (estado?1:0);
             DataTable dt = db.Execute(query);
 
             IList<Curso> lista = new List<Curso>();
@@ -79,13 +79,20 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return lista;
             }
         }
-        public void EliminarCurso(int id_curso)
+        public void DeshabilitarCurso(int id_curso)
         {
             string query = @"UPDATE curso SET estado = 0 " +
                             "WHERE id_curso = " + id_curso;
             db.Execute(query);
         }
-        public Curso ObtenerCurso(int id_curso)
+
+		public void HabilitarCurso(int id_curso)
+		{
+			string query = @"UPDATE curso SET estado = 1 " +
+							"WHERE id_curso = " + id_curso;
+			db.Execute(query);
+		}
+		public Curso ObtenerCurso(int id_curso)
         {
             string query = @"SELECT id_curso, " +
                                    "nombre_curso, " +

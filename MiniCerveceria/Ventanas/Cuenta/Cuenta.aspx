@@ -2,16 +2,16 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        #headMaster{
+        #headMaster {
             height: 350px;
         }
 
-        .headContent{
+        .headContent {
             display: none
         }
 
-        a{
-            text-decoration:none;
+        a {
+            text-decoration: none;
             color: #000000;
         }
 
@@ -19,50 +19,50 @@
             display: none;
         }
 
-        #MantenedorNav{
+        #MantenedorNav {
             display: none;
         }
 
         #Favoritos {
-	        width: 100%;
-	        overflow-y: scroll;
+            width: 100%;
+            overflow-y: scroll;
             overflow-x: hidden;
         }
 
-        #ComprasList{
-	        height: 500px;
-	        overflow-y: scroll;        
-
+        #ComprasList {
+            height: 500px;
+            overflow-y: scroll;
         }
 
-        #PedidosList{
-	        height: 500px;
-	        overflow-y: scroll;        
-
+        #PedidosList {
+            height: 500px;
+            overflow-y: scroll;
         }
 
         #pedidoDetalle {
-	        height: 600px;
-	        width: 100%;
-	        overflow-y: scroll;
-            overflow-x:hidden;
+            height: 600px;
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
-        #compraDetalle{
-            height: 500px;
-	        width: 100%;
-	        overflow-y: scroll;
+        #compraDetalle {
+            height: 600px;
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
         }
 
-        .sizeOptionsCard{
+        .sizeOptionsCard {
             height: 600px
         }
 
-        .itemList{
+        .itemList {
             padding: 5px;
             cursor: pointer;
         }
-        .group{
+
+        .group {
             position: relative;
             width: 33%;
             height: 200px;
@@ -71,34 +71,38 @@
             border-radius: 50%;
             overflow: hidden;
         }
-        .group .crop-image{
-            width: 100%;
-            height: 200px;
-        }
-        .group #input-file{
-            display: none;
-        }
-        .group .label-file{
-            position: absolute;
-            text-align: center;
-            width: 100%;
-            margin: auto;
-            background-color: rgba(0, 0, 0, 0.74);
-            padding: 30px 26px;
-            font-size: 13px;
-            bottom: -101%;
-            left: 0;
-            cursor: pointer;
-            transition: all 150ms ease-in-out;
-            color: var(--primary-color);
-        }
-        .group:hover .label-file{
-            bottom: 0;
-        }
+
+            .group .crop-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .group #input-file {
+                display: none;
+            }
+
+            .group .label-file {
+                position: absolute;
+                text-align: center;
+                width: 100%;
+                margin: auto;
+                background-color: rgba(0, 0, 0, 0.74);
+                padding: 30px 26px;
+                font-size: 13px;
+                bottom: -101%;
+                left: 0;
+                cursor: pointer;
+                transition: all 150ms ease-in-out;
+                color: var(--primary-color);
+            }
+
+            .group:hover .label-file {
+                bottom: 0;
+            }
 
         /* ==== Modal estilos ==== */
 
-        .modalCrop{
+        .modalCrop {
             background-color: rgba(0, 0, 0, 0.247);
             backdrop-filter: blur(0px);
             position: fixed;
@@ -118,7 +122,8 @@
             overflow: auto;
             padding: 20px;
         }
-        .modal-content{
+
+        .modal-content {
             width: 1200px;
             margin: auto;
             background-color: #ffffff;
@@ -128,42 +133,49 @@
             opacity: 0;
             transition: 400ms 300ms all ease;
         }
-        .modal-content .modal-header{
-            width: 100%;
-            padding: 20px 10px;
-            text-align: center;
-            background-color: #ffffff;
-            box-shadow: 0px -2px 7px 1px rgba(0, 0, 0, 0.281);
-            font-size: 18px;
-        }
-        .modal-content .modal-body{
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 18px 10px;
-        }
-        .modal-body .content-imagen-cropper{
+
+            .modal-content .modal-header {
+                width: 100%;
+                padding: 20px 10px;
+                text-align: center;
+                background-color: #ffffff;
+                box-shadow: 0px -2px 7px 1px rgba(0, 0, 0, 0.281);
+                font-size: 18px;
+            }
+
+            .modal-content .modal-body {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                gap: 10px;
+                padding: 18px 10px;
+            }
+
+        .modal-body .content-imagen-cropper {
             width: 80%;
             height: 400px;
             padding: 5px;
             outline: 1px solid var(--thir-color);
         }
-        .content-imagen-cropper .img-cropper{
+
+        .content-imagen-cropper .img-cropper {
             width: 100%;
         }
-        .modal-body .content-imagen-sample{
+
+        .modal-body .content-imagen-sample {
             height: 200px;
             width: 200px;
             outline: 1px solid var(--thir-color);
             border-radius: 100%;
             overflow: hidden;
         }
-        .modal-body .content-imagen-sample .img-sample{
-            height: 100%;
-            width: 100%;
-        }
-        .modal-content .modal-footer{
+
+            .modal-body .content-imagen-sample .img-sample {
+                height: 100%;
+                width: 100%;
+            }
+
+        .modal-content .modal-footer {
             width: 100%;
             padding: 10px 10px;
             text-align: center;
@@ -175,7 +187,8 @@
             justify-content: flex-end;
             gap: 15px;
         }
-        .modal-footer .btn{
+
+        .modal-footer .btn {
             border: none;
             padding: 12px 70px;
             border-radius: 5px;
@@ -184,91 +197,93 @@
             color: #fff;
             transition: background-color 300ms ease;
         }
-        .modal-footer .primary{
+
+        .modal-footer .primary {
             background-color: var(--primary-color);
         }
-        .modal-footer .secundary{
+
+        .modal-footer .secundary {
             background-color: var(--secundary-color);
         }
-        .modal-footer .primary:hover{
+
+        .modal-footer .primary:hover {
             background-color: var(--primary-color-hover);
         }
-        .modal-footer .secundary:hover{
+
+        .modal-footer .secundary:hover {
             background-color: var(--secundary-color-hover);
         }
 
         /* ==== Modal estilos active ==== */
 
-        .modalCrop.active{
+        .modalCrop.active {
             opacity: 1;
             backdrop-filter: blur(3px);
             visibility: visible;
         }
-        .modal-content.active{
+
+        .modal-content.active {
             transform: scale(1);
             opacity: 1;
         }
-        .modalCrop.remove{
+
+        .modalCrop.remove {
             opacity: 0;
             backdrop-filter: blur(0px);
             visibility: hidden;
             transition: 150ms 150ms all ease-in-out;
         }
-        .modal-content.remove{
+
+        .modal-content.remove {
             transform: scale(0.9);
             opacity: 0;
             transition: 150ms all ease;
         }
     </style>
     <br />
-    <div class="card" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
-      <div class="card-body">
-        <div class="row" align="center">
-            <div class="col-lg-2" style="align-content:center; justify-content:center">
-                <a id="btnVerDatos">
-                    <img src="\Imagenes\Iconos\NovedadesBlack.png" style="width:40px;top: 40px !important;cursor: pointer" alt="Alternate Text" />
-                    <span style="cursor: pointer">
-                        Datos personales
-                    </span>
-                </a>
-            </div>
-            <div class="col-lg-3" style="align-content:center; justify-content:center">
-                <a id="btnCompras">
-                    <img src="\Imagenes\Iconos\Bag.png" style="width:40px;top: 40px !important;cursor: pointer" alt="Alternate Text" />
-                    <span style="cursor: pointer">
-                        Historial de compras
-                    </span>
-                </a>
-            </div>
-            <div class="col-lg-2" style="align-content:center; justify-content:center">
-                <a id="btnPedidos">
-                    <img src="\Imagenes\Iconos\PedidosBlack.png" style="width:40px;height: 40px !important;cursor: pointer" alt="Alternate Text" />
-                    <span style="cursor: pointer">
-                        Pedidos
-                    </span>
-                </a>
-            </div>
-            <div class="col-lg-2" style="align-content:center; justify-content:center">
-                <a id="btnCursosInscritos">
-                    <img src="\Imagenes\Iconos\CursosBlack.png" style="width:40px;top: 40px !important;cursor: pointer" alt="Alternate Text" />
-                    <span style="cursor: pointer">
-                        Cursos inscritos
-                    </span>
-                </a>
-            </div>
-            <div class="col-lg-2" style="align-content:center; justify-content:center">
-                <a id="btnFavoritos">
-                    <img src="\Imagenes\Iconos\Favorito.png" style="width:40px;top: 40px !important;cursor: pointer" alt="Alternate Text" />
-                    <span style="cursor: pointer">
-                        Favoritos
-                    </span>
-                </a>
+    <div class="card" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+        <div class="card-body">
+            <div class="row" align="center">
+                <div class="col-lg-2" style="align-content: center; justify-content: center">
+                    <a id="btnVerDatos">
+                        <img src="\Imagenes\Iconos\NovedadesBlack.png" style="width: 40px; top: 40px !important; cursor: pointer" alt="Alternate Text" />
+                        <span style="cursor: pointer">Datos personales
+                        </span>
+                    </a>
+                </div>
+                <div class="col-lg-3" style="align-content: center; justify-content: center">
+                    <a id="btnCompras">
+                        <img src="\Imagenes\Iconos\Bag.png" style="width: 40px; top: 40px !important; cursor: pointer" alt="Alternate Text" />
+                        <span style="cursor: pointer">Historial de compras
+                        </span>
+                    </a>
+                </div>
+                <div class="col-lg-2" style="align-content: center; justify-content: center">
+                    <a id="btnPedidos">
+                        <img src="\Imagenes\Iconos\PedidosBlack.png" style="width: 40px; height: 40px !important; cursor: pointer" alt="Alternate Text" />
+                        <span style="cursor: pointer">Pedidos
+                        </span>
+                    </a>
+                </div>
+                <div class="col-lg-2" style="align-content: center; justify-content: center">
+                    <a id="btnCursosInscritos">
+                        <img src="\Imagenes\Iconos\CursosBlack.png" style="width: 40px; top: 40px !important; cursor: pointer" alt="Alternate Text" />
+                        <span style="cursor: pointer">Cursos inscritos
+                        </span>
+                    </a>
+                </div>
+                <div class="col-lg-2" style="align-content: center; justify-content: center">
+                    <a id="btnFavoritos">
+                        <img src="\Imagenes\Iconos\Favorito.png" style="width: 40px; top: 40px !important; cursor: pointer" alt="Alternate Text" />
+                        <span style="cursor: pointer">Favoritos
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
-      </div>
     </div>
     <br />
-    <div class="card sizeOptionsCard" id="VerDatos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
+    <div class="card sizeOptionsCard" id="VerDatos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <br />
             <div class="row">
@@ -306,231 +321,378 @@
             <br />
         </div>
     </div>
-    <div class="card visually-hidden sizeOptionsCard" id="Favoritos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
-      <div class="card-body" align="center">
-          <br />
-          <div class="row" id="tablaFavoritos">
-
-          </div>
-          <br />
-        <div id="SinFvoritos" class="visually-hidden">
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h3>Usted no tiene productos añadidos a favoritos</h3>
-            <a href="/Ventanas/Productos/Productos.aspx"class="btn btn-warning">Ver productos</a>
-            <br /><br /><br /><br /><br /><br /><br /><br />
-        </div>  
-      </div>
-    </div>
-    <div class="card visually-hidden" id="Compras" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
-      <div class="card-body">
-        <br />
-        <div class="row">
-            <div class="col-lg-4">
-                <br />
-                <div class="row" id="ComprasList">
-                    <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-body">
-                            Compra Example.
-                          </div>
-                        </div>
-                    </div>
-                </div>
-                <br />
+    <div class="card visually-hidden sizeOptionsCard" id="Favoritos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+        <div class="card-body" align="center">
+            <br />
+            <div class="row" id="tablaFavoritos">
             </div>
-            <div class="col-lg-8">
+            <br />
+            <div id="SinFvoritos" class="visually-hidden">
                 <br />
-                <div class="card" id="compraDetalle">
-                  <div class="card-body">
-                    <div class="row">
-
-                    </div>
-                  </div>
-                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h3>Usted no tiene productos añadidos a favoritos</h3>
+                <a href="/Ventanas/Productos/Productos.aspx" class="btn btn-warning">Ver productos</a>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 <br />
             </div>
         </div>
-      </div>
     </div>
-    <div class="card visually-hidden" id="Pedidos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
-      <div class="card-body" align="center">
-        <div class="row"  id="TablaPedidos">
-            <div class="col-lg-4" >
-                <div class="row" id="ListaPedidos">
-                    
+    <div class="card visually-hidden" id="Compras" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+        <div class="card-body" align="center">
+            <div class="row" id="TablaCompreas">
+                <div class="col-lg-4">
+                    <div class="row" id="ListaCompras">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card" id="compraDetalle">
+                        <div class="card-body">
+                            <div id="defaultCompras">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <img src="/Imagenes/DefaultCompras.png" width="250">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                            <div id="DetalleCompra" class="visually-hidden">
+                                <img src="/Imagenes/DefaultCompras.png" width="90">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Detalle del compra</h5>
+                                        <h6>Pedido N° <span id="nroCompra"></span></h6>
+                                        <div class="row" style="text-align: left !important">
+                                            <div class="col-lg-4">
+                                                <strong>Nombre: </strong>
+                                                <br />
+                                                <span id="nombreReceptorCompra"></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <strong>Fecha compra: </strong>
+                                                <br />
+                                                <span id="fechaCompraHistorial"></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <strong>Total: </strong>
+                                                <br />
+                                                $ <span id="pagoTotalCompra"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="text-align: left !important">
+                                            <div class="col-lg-12">
+                                                <strong>Direccion envio: </strong>
+                                                <br />
+                                                <span id="direccionCompra"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table CompraDetalle" id="TablaDetalleCompra">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="row" colspan="2">Nombre producto</th>
+                                                    <th scope="row">Cantidad</th>
+                                                    <th scope="row">Precio</th>
+                                                    <th scope="row">Total</th>
+                                                    <th scope="row">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="ContenidoTablHistorialcompraDetalle">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card" id="pedidoDetalle">
-                  <div class="card-body">
-                    <div id="defaultPedidos">
-                        <br /><br /><br /><br /><br /><br />
-                        <img src="/Imagenes/DefaultPedidos.png" width="300"> 
-                        <br /><br /><br /><br /><br /><br />
-                    </div>
-                    <div id="DetallePedido" class="visually-hidden">
-                        <img src="/Imagenes/DefaultPedidos.png" width="150"> 
-                        <div class="card">
-                            <div class="card-body">
-                                <h5>Detalle del pedido</h5>
-                                <h6>Pedido N° <span id="nroPedido"> </span></h6>
-                                 <div class="row" style="text-align: left !important">
-                                     <div class="col-lg-4">
-                                         <strong>Nombre: </strong><br /><span id="nombreReceptor"> </span>
-                                     </div>
-                                     <div class="col-lg-4">
-                                         <strong>Fecha compra: </strong><br /><span id="fechaCompra"> </span>
-                                     </div>
-                                    <div class="col-lg-4">
-                                         <strong>Total: </strong><br />$ <span id="pagoTotal"> </span>
-                                     </div>
-                                 </div>
-                                 <div class="row" style="text-align: left !important">
-                                    <div class="col-lg-12">
-                                         <strong>Direccion envio: </strong><br /><span id="direccion"> </span>
-                                     </div>
-                                 </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="card">
-                            <div class="card-body">
-                                <h5>Estado del pedido</h5>
-                                <div class="row" id="preparacion">
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
-                                        <span> En preparacion </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EnCaminoFalse.png" width="100">  <br />
-                                        <span> En camino </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregaFalse.png" width="100"> <br />
-                                        <span> En entrega </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
-                                         <span> Entregado </span>
-                                    </div>
-                                </div>
-                                <div class="row visually-hidden" id="camino">
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
-                                        <span> En preparacion </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
-                                        <span> En camino </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregaFalse.png" width="100"> <br />
-                                        <span> En entrega </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
-                                         <span> Entregado </span>
-                                    </div>
-                                </div>
-                                <div class="row visually-hidden" id="entrega">
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
-                                        <span> En preparacion </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
-                                        <span> En camino </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregaTrue.png" width="100"> <br />
-                                        <span> En entrega </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">  <br />
-                                         <span> Entregado </span>
-                                    </div>
-                                </div>
-                                <div class="row visually-hidden" id="entregado">
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">  <br />
-                                        <span> En preparacion </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">  <br />
-                                        <span> En camino </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregaTrue.png" width="100"> <br />
-                                        <span> En entrega </span>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <img src="/Imagenes/Traking/EntregadoTrue.png" width="100">  <br />
-                                         <span> Entregado </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table CompraDetalle" id="TablaDetallePedido">
-		                            <thead>
-		                                <tr>
-			                                <th scope="row" colspan="2">Nombre producto</th>
-			                                <th scope="row">Cantidad</th>
-			                                <th scope="row">Precio</th>
-			                                <th scope="row">Total</th>
-                                            <th scope="row">Acciones</th>
-		                                </tr>
-		                            </thead>
-		                            <tbody id="ContenidoTablapedidoDetalle">
-
-		                            </tbody>
-	                            </table>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
+            <div id="SinCompras" align="center" class="visually-hidden">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h3>No has realizado ninguna compra</h3>
+                <a href="/Ventanas/Productos/Productos.aspx" class="btn btn-warning">Ver productos</a>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </div>
         </div>
-        <div id="SinPedidos" align="center" class="visually-hidden">
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h3>Usted no tiene pedidos pendientes</h3>
-            <a href="/Ventanas/Productos/Productos.aspx" class="btn btn-warning">Ver productos</a>
-            <br /><br /><br /><br /><br /><br /><br /><br />
-        </div>  
-      </div>
     </div>
-    <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
-      <div class="card-body" align="center">
-        <br />
-        <table class="table CompraDetalle" id="TablaInscripciones">
-		    <thead>
-		        <tr>
-			        <th scope="row" colspan="2">Nombre</th>
-                    <th scope="row">Fecha inscripcion</th>
-                    <th scope="row">Acciones</th>
-		        </tr>
-		    </thead>
-		    <tbody id="ContenidoCursosInscritos">
-
-		    </tbody>
-	    </table>
-        <div id="SinCursos" align="center" class="visually-hidden">
-            <br /><br /><br /><br /><br /><br /><br /><br />
-            <h3>Usted no tiene cursos inscritos</h3>
-            <a href="/Ventanas/Cursos/Cursos.aspx"class="btn btn-warning">Ver cursos</a>
-            <br /><br /><br /><br /><br /><br /><br /><br />
-        </div>  
-      </div>
+    <div class="card visually-hidden" id="Pedidos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+        <div class="card-body" align="center">
+            <div class="row" id="TablaPedidos">
+                <div class="col-lg-4">
+                    <div class="row" id="ListaPedidos">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card" id="pedidoDetalle">
+                        <div class="card-body">
+                            <div id="defaultPedidos">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <img src="/Imagenes/DefaultPedidos.png" width="300">
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                            <div id="DetallePedido" class="visually-hidden">
+                                <img src="/Imagenes/DefaultPedidos.png" width="150">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Detalle del pedido</h5>
+                                        <h6>Pedido N° <span id="nroPedido"></span></h6>
+                                        <div class="row" style="text-align: left !important">
+                                            <div class="col-lg-4">
+                                                <strong>Nombre: </strong>
+                                                <br />
+                                                <span id="nombreReceptor"></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <strong>Fecha compra: </strong>
+                                                <br />
+                                                <span id="fechaCompra"></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <strong>Total: </strong>
+                                                <br />
+                                                $ <span id="pagoTotal"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="text-align: left !important">
+                                            <div class="col-lg-12">
+                                                <strong>Direccion envio: </strong>
+                                                <br />
+                                                <span id="direccion"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5>Estado del pedido</h5>
+                                        <div class="row" id="preparacion">
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">
+                                                <br />
+                                                <span>En preparacion </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EnCaminoFalse.png" width="100">
+                                                <br />
+                                                <span>En camino </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregaFalse.png" width="100">
+                                                <br />
+                                                <span>En entrega </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">
+                                                <br />
+                                                <span>Entregado </span>
+                                            </div>
+                                        </div>
+                                        <div class="row visually-hidden" id="camino">
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">
+                                                <br />
+                                                <span>En preparacion </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">
+                                                <br />
+                                                <span>En camino </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregaFalse.png" width="100">
+                                                <br />
+                                                <span>En entrega </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">
+                                                <br />
+                                                <span>Entregado </span>
+                                            </div>
+                                        </div>
+                                        <div class="row visually-hidden" id="entrega">
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">
+                                                <br />
+                                                <span>En preparacion </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">
+                                                <br />
+                                                <span>En camino </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregaTrue.png" width="100">
+                                                <br />
+                                                <span>En entrega </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregadoFalse.png" width="100">
+                                                <br />
+                                                <span>Entregado </span>
+                                            </div>
+                                        </div>
+                                        <div class="row visually-hidden" id="entregado">
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/PreparacionTrue.png" width="100">
+                                                <br />
+                                                <span>En preparacion </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EnCaminoTrue.png" width="100">
+                                                <br />
+                                                <span>En camino </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregaTrue.png" width="100">
+                                                <br />
+                                                <span>En entrega </span>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <img src="/Imagenes/Traking/EntregadoTrue.png" width="100">
+                                                <br />
+                                                <span>Entregado </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table CompraDetalle" id="TablaDetallePedido">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="row" colspan="2">Nombre producto</th>
+                                                    <th scope="row">Cantidad</th>
+                                                    <th scope="row">Precio</th>
+                                                    <th scope="row">Total</th>
+                                                    <th scope="row">Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="ContenidoTablcompraDetalle">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="SinPedidos" align="center" class="visually-hidden">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h3>No tienes pedidos pendientes</h3>
+                <a href="/Ventanas/Productos/Productos.aspx" class="btn btn-warning">Ver productos</a>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
     </div>
-    <div class="card visually-hidden sizeOptionsCard" id="ModificarDatos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
+    <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+        <div class="card-body" align="center">
+            <br />
+            <table class="table CompraDetalle" id="TablaInscripciones">
+                <thead>
+                    <tr>
+                        <th scope="row" colspan="2">Nombre</th>
+                        <th scope="row">Fecha inscripcion</th>
+                        <th scope="row">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="ContenidoCursosInscritos">
+                </tbody>
+            </table>
+            <div id="SinCursos" align="center" class="visually-hidden">
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <h3>Usted no tiene cursos inscritos</h3>
+                <a href="/Ventanas/Cursos/Cursos.aspx" class="btn btn-warning">Ver cursos</a>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+    <div class="card visually-hidden sizeOptionsCard" id="ModificarDatos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
                     <a id="CerrarEditar">
-                       <img src="/Imagenes/Iconos/CloseButtonBlack.png" height="35"> 
+                        <img src="/Imagenes/Iconos/CloseButtonBlack.png" height="35">
                     </a>
                 </div>
             </div>
@@ -546,7 +708,7 @@
                 </div>
                 <div class="col-lg-4">
                     <label for="FechaNac" class="form-label">Fecha nacimiento</label>
-                    <input type="date" class="form-control" id="EditarFechaNacimiento" required="required"  placeholder="01/01/1999" >
+                    <input type="date" class="form-control" id="EditarFechaNacimiento" required="required" placeholder="01/01/1999">
                 </div>
             </div>
             <div class="row">
@@ -573,37 +735,39 @@
 
     <%-- Modal eliminacion --%>
     <div class="fade modal" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modalEliminarLabel">Eliminar inscipcion</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <span id="idInscripcion" class="visually-hidden"></span>
-          <div class="modal-body">
-            ¿Esta seguro que desea anular su inscripcion ?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
-          </div>
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalEliminarLabel">Eliminar inscipcion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <span id="idInscripcion" class="visually-hidden"></span>
+                <div class="modal-body">
+                    ¿Esta seguro que desea anular su inscripcion ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- blob a 64 -->
-    <input type="file" id="fileInput"/>
-    <h1>Blob a B64</h1>
-    <button type="button" id="btnTob64" class="btn primary recortar" >Convertir a Base 64</button>
-    <button>B64 to Blob</button>
-    <button id="btnToBlob" type="button" class="btn primary recortar">Convert to Blob</button>
-    <img id="ImagenB64" src="" class="btn primary recortar" alt="Alternate Text" />
+    <div class="visually-hidden">
+        <input type="file" id="fileInput" />
+        <h1>Blob a B64</h1>
+        <button type="button" id="btnTob64" class="btn primary recortar">Convertir a Base 64</button>
+        <button>B64 to Blob</button>
+        <button id="btnToBlob" type="button" class="btn primary recortar">Convert to Blob</button>
+        <img id="ImagenB64" src="" class="btn primary recortar" alt="Alternate Text" />
+    </div>
     <!-- blob a 64 -->
     <br />
     <br />
     <br />
     <script type="text/javascript">
         var id_user = '<%= id_user %>';
-        var fechaNacimiento = '<%= fechaNacimiento %>'; 
-        var OptionSelectedSide = '<%= OptionSelectedSide %>'; 
+        var fechaNacimiento = '<%= fechaNacimiento %>';
+        var OptionSelectedSide = '<%= OptionSelectedSide %>';
 
         $(document).ready(function () {
             CargarInformacion()
@@ -631,6 +795,8 @@
                     if (!$('#CursosInscritos').hasClass("visually-hidden")) {
                         $('#CursosInscritos').addClass('visually-hidden');
                     }
+
+                    CargarCompras()
                 }
 
                 if (OptionSelectedSide == "f") {
@@ -661,7 +827,7 @@
                 }
 
                 if (OptionSelectedSide == "p") {
-                   
+
                     $('#Pedidos').removeClass("visually-hidden");
 
                     if (!$('#ModificarDatos').hasClass("visually-hidden")) {
@@ -747,6 +913,8 @@
                 if (!$('#CursosInscritos').hasClass("visually-hidden")) {
                     $('#CursosInscritos').addClass('visually-hidden');
                 }
+
+                CargarCompras()
             })
 
             $('#btnPedidos').on('click', function () {
@@ -858,7 +1026,7 @@
                 var apellido = $('#EditarApellido').val();
                 var direccion = $('#EditarDireccion').val();
                 var email = $('#EditarEmail').val();
-                var numero = $('#EditarNumero').val(); 
+                var numero = $('#EditarNumero').val();
 
                 $.ajax({
                     type: 'POST',
@@ -869,7 +1037,7 @@
                     dataType: 'json',
                     data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'fechanacimiento': fecnac, 'direccion': direccion, 'email': email, 'telefono': numero }),
                     success: function (data) {
-
+                        Command: toastr["success"]("Los cambios se han realizado correctamentes")
                     },
                     error: function (data) {
                         alert("Algo ha salido mal!!!");
@@ -889,6 +1057,7 @@
                     data: JSON.stringify({ 'id_inscripcion': id }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("La inscripcion ha sido anulada correctamente")
                             CargarCursosInscritos()
                         }
                     },
@@ -897,7 +1066,7 @@
                     }
                 });
             });
-            
+
             let cropper = null;
             $("#btnTob64").on('submit', function (evt) {
                 evt.preventDefault();
@@ -1021,14 +1190,14 @@
                 console.log(btnTob64.innerText);
                 console.log('Convirtiendo mi blob');
                 const myBlob = fileInput.files[0];
-                const myB64 = await blobToBase64(myBlob); 
+                const myB64 = await blobToBase64(myBlob);
                 console.log("mi blob 2" + myBlob);
                 document.getElementById("ImagenB64").src = "data:image/png; base64," + myB64;
-                
+
             });
 
             btnToBlob.addEventListener('click', async (e) => {//data:image/png; base64,/9j/4AAQSk
-                Console.Log(image.src.Split(",",1))
+                Console.Log(image.src.Split(",", 1))
             });
         });
 
@@ -1054,7 +1223,7 @@
 
                                 var buttons = "";
 
-                                buttons += '<a style="cursor: pointer" onclick="Eliminar(' + val.id_Inscripcion + ')" data-title="Anular inscripcio"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" data-bs-toggle="modal" data-bs-target="#modalEliminar" /></a><span> </span>';
+                                buttons += '<a style="cursor: pointer" onclick="Eliminar(' + val.id_Inscripcion + ')" data-title="Anular inscripcio"  data-bs-toggle="modal" data-bs-target="#modalEliminar"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25"/></a><span> </span>';
 
                                 buttons += '<a href="/Ventanas/Cursos/DetalleCurso.aspx?uid=' + val.id_curso + '" data-title="Ver curso"><img src="/Imagenes/Iconos/CursosBlack.png" height="25" width="25" /></a>';
 
@@ -1096,14 +1265,14 @@
                         $('#verFechaNacimiento').text(fechaNacimiento);
                         $('#verDireccion').text(data.d.direccion);
                         $('#verEmail').text(data.d.email);
-                        $('#verNumero').text(data.d.telefono); 
+                        $('#verNumero').text(data.d.telefono);
 
                         $('#EditarFechaNacimiento').val(fechaNacimiento);
                         $('#EditarNombre').val(data.d.nombre);
                         $('#EditarApellido').val(data.d.apellido);
                         $('#EditarDireccion').val(data.d.direccion);
                         $('#EditarEmail').val(data.d.email);
-                        $('#EditarNumero').val(data.d.telefono); 
+                        $('#EditarNumero').val(data.d.telefono);
                     }
                 },
                 error: function (data) {
@@ -1128,27 +1297,27 @@
 
                         $.each(data.d, function (i, val) {
                             html += '<div class="col-lg-3 tarjNovedad">' +
-                                        '<br/>' +
-                                        '<div class="card" style="width: 90%;">' +
-                                        '<a style="cursor: pointer" href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                        '<div class="contenedor">' +
-                                        '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
-                                        '</div>' +
-                                        '</a>' +
-                                        '<div align="center">' +
-                                        '<div class="card-body">' +
-                                        '<div class="row">' +
-                                        '<div class="col-lg-12">' +
-                                        '<span class="titulo name">' + val.nombre_producto + '</span>' +
-                                        '</div>' +
-                                        '<div class="col-lg-12">' +
-                                        '<span><a style="cursor: pointer" data-title="Eliminar de favoritos" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
-                                        '</div>' +
-                                        '</div>' +
-                                        '</div>' +
-                                        '</div>' +
-                                        '</div>' +
-                                    '</div>';
+                                '<br/>' +
+                                '<div class="card" style="width: 90%;">' +
+                                '<a style="cursor: pointer" href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                '<div class="contenedor">' +
+                                '<img src="' + val.URL_img + '" class="card-img-top imagen">' +
+                                '</div>' +
+                                '</a>' +
+                                '<div align="center">' +
+                                '<div class="card-body">' +
+                                '<div class="row">' +
+                                '<div class="col-lg-12">' +
+                                '<span class="titulo name">' + val.nombre_producto + '</span>' +
+                                '</div>' +
+                                '<div class="col-lg-12">' +
+                                '<span><a style="cursor: pointer" data-title="Eliminar de favoritos" onclick="quitar(' + val.id_producto + ')"><img src="/Imagenes/Iconos/btnDeleteitem.png" width="25"></a></span>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
                         });
 
                         $('#tablaFavoritos').html(html);
@@ -1175,6 +1344,7 @@
                 data: JSON.stringify({ 'id_producto': idprod }),
                 success: function (data) {
                     if (data.d) {
+                        Command: toastr["success"]("El producto se ha eliminado favoritos")
                         cargarFavoritos()
                     }
                 },
@@ -1201,12 +1371,12 @@
                             $.each(data.d, function (i, val) {
 
                                 html += '<div class="col-lg-12 itemList">' +
-                                            '<div class="card" onclick="ObtenerDetallePedido(' + val.id_pedido + ')">' +
-                                                '<div class="card-body">' +
-                                                    '<span> N° pedido: ' + val.id_pedido + ', ' + val.fecha_creacion + ', $ ' + val.total + ' </span>'+
-                                                '</div>'+
-                                            '</div>'+
-                                        '</div>'
+                                    '<div class="card" onclick="ObtenerDetallePedido(' + val.id_pedido + ')">' +
+                                    '<div class="card-body">' +
+                                    '<span> N° pedido: ' + val.id_pedido + ', ' + val.fecha_creacion + ', $ ' + val.total + ' </span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>'
                             });
 
                             $('#ListaPedidos').html(html);
@@ -1214,6 +1384,47 @@
                         else {
                             $('#SinPedidos').removeClass('visually-hidden');
                             $('#TablaPedidos').addClass('visually-hidden');
+                        }
+
+
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function CargarCompras() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObtenerCompras") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        if (data.d.length > 0) {
+                            $.each(data.d, function (i, val) {
+
+                                html += '<div class="col-lg-12 itemList">' +
+                                    '<div class="card" onclick="ObtenerDetalleCompra(' + val.id_pedido + ')">' +
+                                    '<div class="card-body">' +
+                                    '<span> N° pedido: ' + val.id_pedido + ', ' + val.fecha_creacion + ', $ ' + val.total + ' </span>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>'
+                            });
+
+                            $('#ListaCompras').html(html);
+                        }
+                        else {
+                            $('#SinCompras').removeClass('visually-hidden');
+                            $('#TablaCompreas').addClass('visually-hidden');
                         }
 
 
@@ -1247,15 +1458,15 @@
                         $.each(data.d.DetallePedido, function (i, val) {
 
                             html += '<tr id="' + val.id_producto + '">' +
-                                    '<td colspan="2">' + val.nombre_producto + '</td>' +
-                                    '<td scope="row">' + val.cantidad + '</td>' +
-                                    '<td scope="row" >$ ' + val.precio_producto + '</td>' +
-                                    '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a></td>' +
-                                    '</tr>';
+                                '<td colspan="2">' + val.nombre_producto + '</td>' +
+                                '<td scope="row">' + val.cantidad + '</td>' +
+                                '<td scope="row" >$ ' + val.precio_producto + '</td>' +
+                                '<td scope="row" >$ ' + val.total_detalle + '</td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '</tr>';
                         });
 
-                        $('#ContenidoTablapedidoDetalle').html(html);
+                        $('#ContenidoTablcompraDetalle').html(html);
 
                         if (data.d.estado == 2) {
                             $('#preparacion').addClass('visually-hidden');
@@ -1279,6 +1490,56 @@
                         if ($('#DetallePedido').hasClass("visually-hidden")) {
                             $('#DetallePedido').removeClass('visually-hidden');
                         }
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+
+        function ObtenerDetalleCompra(idPedido) {
+            console.log("entreeee")
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObtenerPedido") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                dataType: 'json',
+                data: JSON.stringify({ 'id_pedido': idPedido }),
+                success: function (data) {
+                    if (data.d != null) {
+                        $('#nroCompra').text(data.d.id_pedido);
+                        $('#nombreReceptorCompra').text(data.d.nombre_receptor);
+                        $('#fechaCompra').text(data.d.fecha_creacion);
+                        $('#pagoTotalCompra').text(data.d.total);
+                        $('#direccionCompra').text(data.d.direccion_envio);
+
+                        var html = "";
+
+                        $.each(data.d.DetallePedido, function (i, val) {
+
+                            html += '<tr id="' + val.id_producto + '">' +
+                                '<td colspan="2">' + val.nombre_producto + '</td>' +
+                                '<td scope="row">' + val.cantidad + '</td>' +
+                                '<td scope="row" >$ ' + val.precio_producto + '</td>' +
+                                '<td scope="row" >$ ' + val.total_detalle + '</td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '</tr>';
+                        });
+
+
+                        if (!$('#defaultCompras').hasClass("visually-hidden")) {
+                            $('#defaultCompras').addClass('visually-hidden');
+                        }
+
+                        if ($('#DetalleCompra').hasClass("visually-hidden")) {
+                            $('#DetalleCompra').removeClass('visually-hidden');
+                        }
+
+                        $('#ContenidoTablHistorialcompraDetalle').html(html);
                     }
                 },
                 error: function (data) {

@@ -22,30 +22,30 @@ namespace MiniCerveceria.Servicios.Implementacion
             string query = @"INSERT INTO usuario " +
                 "(id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion, url_img) " +
                 "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre + "', '" + obj.apellido + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), null)";
-            DataTable dt = db.Execute(query);
+            db.Execute(query);
         }
         public void InHabiliatarCuentaUsuario(int UsuarioID)
         {
             string query = string.Format(@"UPDATE usuario set activo = 0 WHERE id_usuario = {0}", UsuarioID);
-            DataTable dt = db.Execute(query);
+            db.Execute(query);
         }
 
 		public void HabiliatarCuentaUsuario(int UsuarioID)
 		{
 			string query = string.Format(@"UPDATE usuario set activo = 1 WHERE id_usuario = {0}", UsuarioID);
-			DataTable dt = db.Execute(query);
+			db.Execute(query);
 		}
 
 		public void AsignarPermiso(int UsuarioID, int id_permiso)
 		{
 			string query = string.Format(@"UPDATE usuario set id_permiso = {1} WHERE id_usuario = {0}", UsuarioID, id_permiso);
-			DataTable dt = db.Execute(query);
+			db.Execute(query);
 		}
 
 		public void QuitarPermiso(int UsuarioID)
 		{
 			string query = string.Format(@"UPDATE usuario set id_permiso = 0 WHERE id_usuario = {0}", UsuarioID);
-			DataTable dt = db.Execute(query);
+		    db.Execute(query);
 		}
 
         public bool ValidaCorreoExistente(string email)
@@ -72,9 +72,21 @@ namespace MiniCerveceria.Servicios.Implementacion
             return true;
 		}
 
-		public IList<Usuario> ListarUsuarios()
+		public IList<Usuario> ListarUsuarios(bool estado)
         {
-            string query = @"SELECT tbl1.id_usuario, tbl1.id_permiso, tbl1.id_comuna, tbl1.nombre, tbl1.apellido, tbl1.direccion, tbl1.telefono, tbl1.fecha_nacimiento, tbl1.email, tbl1.password, tbl1.activo, tbl1.en_linea, tbl1.fecha_creacion, tbl2.nombre as nombre_permiso FROM usuario tbl1 LEFT JOIN permisosusuario tbl2 on tbl1.id_permiso = tbl2.id_permiso";
+            string Validacion = "";
+
+            if (estado)
+            {
+                Validacion = " WHERE tbl1.activo = 1";
+
+			}
+            else
+            {
+				Validacion = " WHERE tbl1.activo = 0";
+			}
+
+            string query = @"SELECT tbl1.id_usuario, tbl1.id_permiso, tbl1.id_comuna, tbl1.nombre, tbl1.apellido, tbl1.direccion, tbl1.telefono, tbl1.fecha_nacimiento, tbl1.email, tbl1.password, tbl1.activo, tbl1.fecha_creacion, tbl2.nombre as nombre_permiso FROM usuario tbl1 LEFT JOIN permisosusuario tbl2 on tbl1.id_permiso = tbl2.id_permiso " + Validacion;
             DataTable dt = db.Execute(query);
 
             IList<Usuario> lista = new List<Usuario>();
@@ -94,7 +106,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                              email = rw["email"].ToString(),
                              password = rw["password"].ToString(),
                              activo = Convert.ToInt32(rw["activo"]),
-                             en_linea = Convert.ToInt32(rw["en_linea"]),
                              fecha_creacion = Convert.ToDateTime(rw["fecha_nacimiento"]),
                              nombre_permiso = String.IsNullOrEmpty(rw["nombre_permiso"].ToString())? "--" : rw["nombre_permiso"].ToString()
 						 }

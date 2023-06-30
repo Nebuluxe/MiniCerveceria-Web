@@ -65,13 +65,13 @@ namespace MiniCerveceria.Mantenedores.Usuarios
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Usuario> ListarUsuarios()
+		public static IList<Usuario> ListarUsuarios( bool estado)
 		{
 			try
 			{
 				IList<Usuario> ListProductos = new List<Usuario>();
 
-				ListProductos = usuarioApp.ListarUsuarios();
+				ListProductos = usuarioApp.ListarUsuarios(estado);
 
 				return ListProductos;
 			}
