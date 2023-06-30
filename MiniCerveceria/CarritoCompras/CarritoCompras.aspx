@@ -213,7 +213,7 @@
                         $("#VaciarCarrito").css('display', 'none');
                         $("#CartaMontos").css('display', 'none');
                         $(".table").css('display', 'none');
-                        html = "<div class='row' style='text-align:center;'><h3>Usted no tiene productos agregados al carrito de compras.</h3></div>";
+                        html = "<div class='row' style='text-align:center;'><h3>Usted no tiene productos agregados al carrito de compras.</h3><center><a href='/Ventanas/Productos/Productos.aspx' class='btn btn-warning col-lg-2'>Ver productos</a></center></div>";
 						$("#CartaCarrito").append(html);
                     }
                 },

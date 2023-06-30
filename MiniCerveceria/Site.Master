@@ -13,7 +13,7 @@
     </asp:PlaceHolder>
 
     <webopt:bundlereference runat="server" path="~/Content/css" />
-
+    <link rel="stylesheet" href="Content/cropper.css">
     <!-- Favicon-->    <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -22,10 +22,19 @@
     
     <link href="Content/Site.css" rel="stylesheet" />
     <link href="GlobalCss/SiteMaster.css" rel="stylesheet" />
+    <link href="Content/cropper.css" rel="stylesheet" />
     
     <link href="/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="Content/toastr.min.css" />
     <style>
+        .recortar, .cancelar{
+            border: 3px solid #000000 !important;
+            color:#000000 !important;
+        }
+        .recortar:hover, .cancelar:hover{
+            background-color: #000000 !important;
+            color: #fff !important;
+        }
         .menu-toggle i{
             background-color: #ffffff !important;
             margin: auto !important;
@@ -160,6 +169,8 @@
         img {
             pointer-events: none;
         }
+        
+
     </style>
 </head>
 <body>
@@ -193,7 +204,7 @@
                     <i></i>
                 </div>
 
-                <a class="link" href="/Default.aspx"><h1 class="TituloNav">MiniCerveceria</h1></a>
+                <a class="link" href="/Default.aspx"><h1 class="TituloNav" style="margin-top: 7px;">MiniCerveceria</h1></a>
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 btn-group-vertical">
@@ -207,7 +218,7 @@
                     </ul>
                 </div>
                 <a runat="server" href="~/CarritoCompras/CarritoCompras.aspx">
-                    <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault carritoImg"> 
+                    <img src="/Imagenes/Iconos/carrito-de-compras.png" height="40" class="imgDefault carritoImg" style="margin-left: 15px;"> 
                 </a>
             </div>
         </nav>
@@ -303,7 +314,42 @@
                 <div id="HeadRcetas" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/RecetasWithe.png" height="80" /> Libros y recetas</div>
                 <div id="HeadCursos" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/CursosWithe.png" height="80" /> Cursos</div>
                 <div id="HeadCarrito" class="OcultarElemento masthead-heading text-uppercase cursor-scale"><img src="/Imagenes/Iconos/carrito-de-compras.png" height="80"/> Carrito</div>
-
+                <div id="HeadCuenta" class="OcultarElemento masthead-heading text-uppercase cursor-scale">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="group" style="bottom:10vh;left:25vh;">
+                                <img src="\Imagenes\Iconos\UserIconBlack.png" alt="" class="crop-image" id="crop-image" style="border: 5px solid #000000;border-radius: 50%;">
+                                <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg">
+                                <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 style="float:left;bottom:50vh;">Mi Cuenta</h1>
+                        </div>
+                    </div>
+                    
+                    <!-- Modal para cortar imagen -->
+                    <div class="modalCrop">
+                        <div class="modal-content">
+                            <div class="modal-header" style="border-bottom: 1px solid #000000;">
+                                <p style="color:#000000;margin-bottom:0px;">Recorta tu foto</p>
+                            </div>
+                            <div class="modal-body">
+                                <div class="content-imagen-cropper">
+                                    <img alt="" class="img-cropper" id="img-cropper" style="border: 1px solid #000000;">
+                                </div>
+                                <div class="content-imagen-sample" style="border: 3px solid #000000;border-radius:50%;">
+                                    <div src="" alt="" class="img-sample" id="img-croppered"></div>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="border-top: 1px solid #000000;">
+                                <a class="btn primary recortar" id="cut">Recortar</a>
+                                <a class="btn secundary cancelar" id="close">Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal para cortar imagen -->
+                </div>
 
                 <div class="masthead-subheading cursor-scale headContent">Bienvenidos a MiniCerveria!</div>
                 <div class="masthead-heading text-uppercase headContent cursor-scale">Si quieres revisar nuestro catálogo</div>
@@ -503,6 +549,7 @@
             </div>
         </footer>
         <%--<script src="/Scripts/toastr.min.js"></script>--%>
+        <script src="/Scripts/cropper.js"></script>
     </form>
     <asp:PlaceHolder runat="server">
         
@@ -619,6 +666,10 @@
 
         if (page == "Carrito") {
             $('.carritoImg').addClass('visually-hidden');
+        }
+        if (page == "Cuenta") {
+            $('#HeadCuenta').removeClass('OcultarElemento');
+            $('#Breadcrum').removeClass('OcultarElemento'); 
         }
 
         if ($(window).width() >= 1000) {

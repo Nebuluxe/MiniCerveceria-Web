@@ -62,14 +62,166 @@
             padding: 5px;
             cursor: pointer;
         }
+        .group{
+            position: relative;
+            width: 33%;
+            height: 200px;
+            padding: 0;
+            outline: 1px solid var(--secundary-color);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .group .crop-image{
+            width: 100%;
+            height: 200px;
+        }
+        .group #input-file{
+            display: none;
+        }
+        .group .label-file{
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            margin: auto;
+            background-color: rgba(0, 0, 0, 0.74);
+            padding: 30px 26px;
+            font-size: 13px;
+            bottom: -101%;
+            left: 0;
+            cursor: pointer;
+            transition: all 150ms ease-in-out;
+            color: var(--primary-color);
+        }
+        .group:hover .label-file{
+            bottom: 0;
+        }
+
+        /* ==== Modal estilos ==== */
+
+        .modalCrop{
+            background-color: rgba(0, 0, 0, 0.247);
+            backdrop-filter: blur(0px);
+            position: fixed;
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 150ms ease-in-out;
+            overflow: auto;
+            padding: 20px;
+        }
+        .modal-content{
+            width: 1200px;
+            margin: auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: 400ms 300ms all ease;
+        }
+        .modal-content .modal-header{
+            width: 100%;
+            padding: 20px 10px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0px -2px 7px 1px rgba(0, 0, 0, 0.281);
+            font-size: 18px;
+        }
+        .modal-content .modal-body{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 18px 10px;
+        }
+        .modal-body .content-imagen-cropper{
+            width: 80%;
+            height: 400px;
+            padding: 5px;
+            outline: 1px solid var(--thir-color);
+        }
+        .content-imagen-cropper .img-cropper{
+            width: 100%;
+        }
+        .modal-body .content-imagen-sample{
+            height: 200px;
+            width: 200px;
+            outline: 1px solid var(--thir-color);
+            border-radius: 100%;
+            overflow: hidden;
+        }
+        .modal-body .content-imagen-sample .img-sample{
+            height: 100%;
+            width: 100%;
+        }
+        .modal-content .modal-footer{
+            width: 100%;
+            padding: 10px 10px;
+            text-align: center;
+            background-color: #ffffff;
+            box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.281);
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+        .modal-footer .btn{
+            border: none;
+            padding: 12px 70px;
+            border-radius: 5px;
+            font-size: 15px;
+            cursor: pointer;
+            color: #fff;
+            transition: background-color 300ms ease;
+        }
+        .modal-footer .primary{
+            background-color: var(--primary-color);
+        }
+        .modal-footer .secundary{
+            background-color: var(--secundary-color);
+        }
+        .modal-footer .primary:hover{
+            background-color: var(--primary-color-hover);
+        }
+        .modal-footer .secundary:hover{
+            background-color: var(--secundary-color-hover);
+        }
+
+        /* ==== Modal estilos active ==== */
+
+        .modalCrop.active{
+            opacity: 1;
+            backdrop-filter: blur(3px);
+            visibility: visible;
+        }
+        .modal-content.active{
+            transform: scale(1);
+            opacity: 1;
+        }
+        .modalCrop.remove{
+            opacity: 0;
+            backdrop-filter: blur(0px);
+            visibility: hidden;
+            transition: 150ms 150ms all ease-in-out;
+        }
+        .modal-content.remove{
+            transform: scale(0.9);
+            opacity: 0;
+            transition: 150ms all ease;
+        }
     </style>
-    <div class="card">
-      <div class="card-body">
-        <img src="\Imagenes\Iconos\UserIconBlack.png" style="width:80px;top: 80px !important;" class="rounded-circle" alt="Alternate Text" /> <span id="Usuario"></span>
-      </div>
-    </div>
     <br />
-    <div class="card">
+    <div class="card" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
       <div class="card-body">
         <div class="row" align="center">
             <div class="col-lg-2" style="align-content:center; justify-content:center">
@@ -116,7 +268,7 @@
       </div>
     </div>
     <br />
-    <div class="card sizeOptionsCard" id="VerDatos">
+    <div class="card sizeOptionsCard" id="VerDatos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <br />
             <div class="row">
@@ -154,7 +306,7 @@
             <br />
         </div>
     </div>
-    <div class="card visually-hidden sizeOptionsCard" id="Favoritos">
+    <div class="card visually-hidden sizeOptionsCard" id="Favoritos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
       <div class="card-body" align="center">
           <br />
           <div class="row" id="tablaFavoritos">
@@ -169,7 +321,7 @@
         </div>  
       </div>
     </div>
-    <div class="card visually-hidden" id="Compras">
+    <div class="card visually-hidden" id="Compras" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
       <div class="card-body">
         <br />
         <div class="row">
@@ -200,7 +352,7 @@
         </div>
       </div>
     </div>
-    <div class="card visually-hidden" id="Pedidos">
+    <div class="card visually-hidden" id="Pedidos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
       <div class="card-body" align="center">
         <div class="row"  id="TablaPedidos">
             <div class="col-lg-4" >
@@ -350,7 +502,7 @@
         </div>  
       </div>
     </div>
-    <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos">
+    <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
       <div class="card-body" align="center">
         <br />
         <table class="table CompraDetalle" id="TablaInscripciones">
@@ -373,7 +525,7 @@
         </div>  
       </div>
     </div>
-    <div class="card visually-hidden sizeOptionsCard" id="ModificarDatos">
+    <div class="card visually-hidden sizeOptionsCard" id="ModificarDatos" style="--bs-card-border-width: 3px;--bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
@@ -437,7 +589,14 @@
         </div>
       </div>
     </div>
-
+    <!-- blob a 64 -->
+    <input type="file" id="fileInput"/>
+    <h1>Blob a B64</h1>
+    <button type="button" id="btnTob64" class="btn primary recortar" >Convertir a Base 64</button>
+    <button>B64 to Blob</button>
+    <button id="btnToBlob" type="button" class="btn primary recortar">Convert to Blob</button>
+    <img id="ImagenB64" src="" class="btn primary recortar" alt="Alternate Text" />
+    <!-- blob a 64 -->
     <br />
     <br />
     <br />
@@ -738,7 +897,139 @@
                     }
                 });
             });
+            
+            let cropper = null;
+            $("#btnTob64").on('submit', function (evt) {
+                evt.preventDefault();
+            });
 
+            $("#cut").on('submit', function (evt) {
+                evt.preventDefault();
+
+                console.log($('#input-file').val())
+            });
+            $("#close").on('submit', function (evt) {
+                evt.preventDefault();
+            });
+            $("#input-file").on('submit', function (evt) {
+                evt.preventDefault();
+            });
+            $('#input-file').on('change', () => {
+                let image = document.getElementById('img-cropper')
+                let input = document.getElementById('input-file')
+
+                let archivos = input.files
+                let extensiones = input.value.substring(input.value.lastIndexOf('.'), input.value.lenght)
+
+
+                if (!archivos || !archivos.length) {
+                    image.src = "";
+                    input.value = "";
+
+                } else if (input.getAttribute('accept').split(',').indexOf(extensiones) < 0) {
+                    alert('Debes seleccionar una imagen')
+                    input.value = "";
+
+                } else {
+                    let imagenUrl = URL.createObjectURL(archivos[0])
+                    image.src = imagenUrl
+
+                    cropper = new Cropper(image, {
+                        aspectRatio: 1, // es la proporción en la que queremos que recorte en este caso 1:1
+                        preview: '.img-sample', // contenedor donde se va a ir viendo en tiempo real la imagen cortada
+                        zoomable: false, //Para que no haga zoom 
+                        viewMode: 1, //Para que no estire la imagen al contenedor
+                        responsive: false, //Para que no reacomode con zoom la imagen al contenedor
+                        dragMode: 'none', //Para que al arrastrar no haga nada
+                        ready() { // metodo cuando cropper ya este activo, le ponemos el alto y el ancho del contenedor de cropper al 100%
+                            document.querySelector('.cropper-container').style.width = '100%'
+                            document.querySelector('.cropper-container').style.height = '100%'
+                            document.querySelector('.cropper-container').style.border = '2px solid #000000'
+                        }
+                    })
+
+                    $('.modalCrop').addClass('active')
+                    $('.modal-content').addClass('active')
+
+                    $('.modalCrop').removeClass('remove')
+                    $('.modal-content').removeClass('remove')
+                }
+            })
+
+            $('#close').on('click', () => {
+                let image = document.getElementById('img-cropper')
+                let input = document.getElementById('input-file')
+
+                image.src = "";
+                input.value = "";
+
+                cropper.destroy()
+
+                $('.modalCrop').addClass('remove')
+                $('.modal-content').addClass('remove')
+
+                $('.modalCrop').removeClass('active')
+                $('.modal-content').removeClass('active')
+            })
+
+            $('#cut').on('click', () => {
+                let crop_image = document.getElementById('#crop-image')
+                let canva = cropper.getCroppedCanvas()
+                let image = document.getElementById('#img-cropper')
+                let input = document.getElementById('#input-file')
+
+                canva.toBlob(function (blob) {
+                    let url_cut = URL.createObjectURL(blob)
+                    console.log("blob lol :" + url_cut)
+                    $('#crop-image').attr("src", url_cut);
+                })
+
+                $('#img-cropper').attr("src", '');
+                $('#input-file').val('')
+
+                cropper.destroy()
+
+                $('.modalCrop').addClass('remove')
+                $('.modal-content').addClass('remove')
+
+                $('.modalCrop').removeClass('active')
+                $('.modal-content').removeClass('active')
+            })
+            const blobToBase64 = (blob) => {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = () => {
+                        resolve(reader.result.split(',')[1]);
+                        // "data:image/jpg;base64,    =sdCXDSAsadsadsa"
+                    };
+                });
+            };
+
+            const b64ToBlob = async (b64, type) => {
+                const blob = await fetch(`data:${type};base64,${b64}`);
+                return blob;
+            };
+
+            const fileInput = document.querySelector('#fileInput');
+            const btnTob64 = document.querySelector('#btnTob64');
+            const btnToBlob = document.querySelector('#btnToBlob');
+
+
+
+            btnTob64.addEventListener('click', async (e) => {
+                console.log(btnTob64.innerText);
+                console.log('Convirtiendo mi blob');
+                const myBlob = fileInput.files[0];
+                const myB64 = await blobToBase64(myBlob); 
+                console.log("mi blob 2" + myBlob);
+                document.getElementById("ImagenB64").src = "data:image/png; base64," + myB64;
+                
+            });
+
+            btnToBlob.addEventListener('click', async (e) => {//data:image/png; base64,/9j/4AAQSk
+                Console.Log(image.src.Split(",",1))
+            });
         });
 
         function Eliminar(id) {
@@ -800,7 +1091,6 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data.d != null) {
-                        $('#Usuario').text(data.d.nombre + " " + data.d.apellido);
                         $('#verNombre').text(data.d.nombre);
                         $('#verApelido').text(data.d.apellido);
                         $('#verFechaNacimiento').text(fechaNacimiento);

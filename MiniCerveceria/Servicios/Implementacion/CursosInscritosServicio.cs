@@ -28,7 +28,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 			string query = "DECLARE " +
                                 "v_id_cursos_inscritos NUMBER(10) := 0;" +
                             " BEGIN " +
-                            " SELECT COUNT(id_cursos_inscritos) + 1 INTO v_id_cursos_inscritos FROM cursosinscritos;" +
+                            " SELECT MAX(id_cursos_inscritos) + 1 INTO v_id_cursos_inscritos FROM cursosinscritos;" +
                                     "INSERT INTO cursosinscritos (id_cursos_inscritos," +
                                                                  "id_usuario," +
                                                                  "id_curso," +
@@ -76,7 +76,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return lista;
             }
         }
-
 		private bool ValidaCursoInscrito(int id_usuario, int id_curso)
 		{
 			string query = @"SELECT id_usuario FROM cursosinscritos WHERE id_usuario = " + id_usuario + " AND id_curso = " + id_curso;
