@@ -24,22 +24,22 @@ namespace MiniCerveceria.Login
 		protected global::System.Web.UI.HtmlControls.HtmlForm inicioSesion;
 
 		/// <summary>
-		/// Control txtEmail.
+		/// Control txtEmailLogin.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtEmail;
+		protected global::System.Web.UI.WebControls.TextBox txtEmailLogin;
 
 		/// <summary>
-		/// Control txtContrasena.
+		/// Control txtContrasenaLogin.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox txtContrasena;
+		protected global::System.Web.UI.WebControls.TextBox txtContrasenaLogin;
 
 		/// <summary>
 		/// Control btnLoginHide.

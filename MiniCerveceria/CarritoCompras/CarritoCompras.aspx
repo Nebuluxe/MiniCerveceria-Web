@@ -172,21 +172,6 @@
 				$('#ContentDireccionyCompra').addClass('visually-hidden');
 				$('#ContinuarCompra').removeClass('visually-hidden');
 			})
-
-   //         $(".AumentarCantidad").on('click', function () {
-			//	var id_producto = $(this).data("id-producto");
-			//	AgregarCantidadProducto(id_producto);
-			//})
-
-   //         $(".ReducirCantidad").on('click', function () {
-			//	var id_producto = $(this).data("id-producto");
-			//	ReducirCantidadProducto(id_producto);
-			//})
-			
-   //         $(".EliminarProducto").on('click', function () {
-   //             var id_producto = $(this).data("id-producto");
-   //             EliminarLineaCarrito(id_producto);
-   //         })
 		});
 
         function cargarCarritoCompra() {
@@ -249,10 +234,7 @@
                 async: false,
                 success: function (data) {
                     if (data.d == true) {
-						console.log("Se aumentó la cantidad del producto");
                         cargarCarritoCompra();
-                    } else {
-						console.log("No se aumentó la cantidad del producto");
                     }
                 },
                 error: function (data) {
@@ -272,10 +254,7 @@
                 async: false,
                 success: function (data) {
                     if (data.d == true) {
-                        console.log("Se redució la cantidad del producto");
                         cargarCarritoCompra();
-                    } else {
-						console.log("No se redució la cantidad del producto");
                     }
                 },
                 error: function (data) {
@@ -295,10 +274,8 @@
                 async: false,
                 success: function (data) {
                     if (data.d == true) {
-                        console.log("Se eliminó el producto del carrito");
+                        Command: toastr["success"]("El producto se ha eliminado del carrito")
                         cargarCarritoCompra();
-                    } else {
-						console.log("No se eliminó el producto del carrito");
                     }
                 },
                 error: function (data) {
@@ -319,10 +296,8 @@
                 async: false,
                 success: function (data) {
                     if (data.d == true) {
-                        console.log("Se eliminó el carrito");
+                        Command: toastr["success"]("Se ha eliminado el carrito de compras")
                         cargarCarritoCompra();
-                    } else {
-						console.log("No se eliminó el carrito");
                     }
                 },
                 error: function (data) {

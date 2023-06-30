@@ -344,7 +344,6 @@
     <Content Include="Imagenes\Traking\PreparacionFalse.png" />
     <Content Include="Imagenes\Traking\PreparacionTrue.png" />
     <Content Include="Login\LoginSingOut.aspx" />
-    <Content Include="Login\RecuperarContraseña.aspx" />
     <Content Include="Mantenedores\Cursos\CursosInscritos.aspx" />
     <Content Include="Mantenedores\Novedades\Novedades.aspx" />
     <Content Include="Mantenedores\Pedidos\DefaultPedidos.aspx" />
@@ -411,7 +410,6 @@
     <Content Include="Imagenes\MiniCerveceriaLogoOrigina.png" />
     <Content Include="Imagenes\MiniCerveceriaLogoOriginaSolo.png" />
     <Content Include="Login\Login.aspx" />
-    <Content Include="Login\Registrarse.aspx" />
     <Content Include="Mantenedores\Cursos\CrearCurso.aspx" />
     <Content Include="Mantenedores\Cursos\DefaultCursos.aspx" />
     <Content Include="Mantenedores\Cursos\VerCurso.aspx" />
@@ -498,13 +496,6 @@
     </Compile>
     <Compile Include="Login\LoginSingOut.aspx.designer.cs">
       <DependentUpon>LoginSingOut.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login\RecuperarContraseña.aspx.cs">
-      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login\RecuperarContraseña.aspx.designer.cs">
-      <DependentUpon>RecuperarContraseña.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Cursos\CursosInscritos.aspx.cs">
       <DependentUpon>CursosInscritos.aspx</DependentUpon>
@@ -597,13 +588,6 @@
     </Compile>
     <Compile Include="Login\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Login\Registrarse.aspx.cs">
-      <DependentUpon>Registrarse.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login\Registrarse.aspx.designer.cs">
-      <DependentUpon>Registrarse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Cursos\CrearCurso.aspx.cs">
       <DependentUpon>CrearCurso.aspx</DependentUpon>

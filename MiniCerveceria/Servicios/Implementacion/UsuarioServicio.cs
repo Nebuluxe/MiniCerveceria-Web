@@ -19,10 +19,9 @@ namespace MiniCerveceria.Servicios.Implementacion
 
         public void CrearUsuario(Usuario obj)
         {
-            string query = string.Format(@"INSERT INTO usuario " +
-                "(id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, en_linea, fecha_creacion) " +
-                "VALUES ({0}, {1}, {2}, '{3}', '{4}', '{5}', {6}, TO_DATE('{7}', 'DD-MM-YYYY HH24:MI:SS'), '{8}', '{9}', {10}, {11}, TO_DATE('{13}', 'DD-MM-YYYY HH24:MI:SS'))",
-                ObtenerIDUsuario(), obj.id_permiso, obj.id_comuna, obj.nombre, obj.apellido, obj.direccion, obj.telefono, obj.fecha_creacion, obj.email, obj.password, obj.activo, obj.en_linea, obj.fecha_creacion);
+            string query = @"INSERT INTO usuario " +
+                "(id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion, url_img) " +
+                "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre + "', '" + obj.apellido + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), null)";
             DataTable dt = db.Execute(query);
         }
         public void InHabiliatarCuentaUsuario(int UsuarioID)
@@ -106,7 +105,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public Usuario Usuario(int UsuarioID)
         {
-            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, en_linea, fecha_creacion FROM usuario WHERE id_usuario = " + UsuarioID;
+            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion FROM usuario WHERE id_usuario = " + UsuarioID;
             DataTable dt = db.Execute(query);
 
             Usuario obj = new Usuario();
@@ -126,7 +125,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                            email = rw["email"].ToString(),
                            password = rw["password"].ToString(),
                            activo = Convert.ToInt32(rw["activo"]),
-                           en_linea = Convert.ToInt32(rw["en_linea"]),
                            fecha_creacion = Convert.ToDateTime(rw["fecha_nacimiento"])
                        }
                          ).FirstOrDefault();
@@ -136,7 +134,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public Usuario UsuarioEmail(string email, string password)
         {
-            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, en_linea, fecha_creacion FROM usuario WHERE email = '" + email + "' AND password = '" + password + "'";
+            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion FROM usuario WHERE email = '" + email + "' AND password = '" + password + "'";
             DataTable dt = db.Execute(query);
             Usuario obj = new Usuario();
             if (dt.Rows.Count > 0)
@@ -155,7 +153,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                            email = rw["email"].ToString(),
                            password = rw["password"].ToString(),
                            activo = Convert.ToInt32(rw["activo"]),
-                           en_linea = Convert.ToInt32(rw["en_linea"]),
                            fecha_creacion = Convert.ToDateTime(rw["fecha_nacimiento"])
                        }
                          ).FirstOrDefault();

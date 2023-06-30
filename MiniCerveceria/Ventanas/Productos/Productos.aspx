@@ -463,10 +463,11 @@
                 data: JSON.stringify({ 'id_producto': id_producto }),
                 async: false,
                 success: function (data) {
-                    if (data.d == true) {
-                        console.log('se insertó o actualizó de pana');
-                    } else {
-                        console.log('no insertó o actualizó de pana');
+                    if (data.d) {
+                        Command: toastr["success"]("Se ha añadido el producto al carrito")
+                    }
+                    else {
+                        Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
                     }
                 },
                 error: function (data) {
@@ -486,13 +487,13 @@
                 async: false,
                 success: function (data) {
                     if (data.d == 1) {
-                        console.log("Añadido")
+                        Command: toastr["success"]("El producto se ha añadido a favoritos")
                     }
                     if (data.d == 2) {
-                        console.log("Ya existe como añadido")
+                        Command: toastr["warning"]("Este producto ya se encuentra agregado a favoritos")
                     }
                     if (data.d == 0) {
-                        console.log("Debe inicar sesion")
+                        Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir a favoritos")
                     }
                 },
                 error: function (data) {
