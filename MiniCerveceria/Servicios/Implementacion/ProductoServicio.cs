@@ -141,13 +141,19 @@ namespace MiniCerveceria.Servicios.Implementacion
             db.Execute(query);
         }
 
-        public void EliminarProducto(string id_producto)
+        public void DeshabilitarProducto(string id_producto)
         {
             string query = string.Format(@"UPDATE productos SET estado = 0 WHERE id_producto = {0}", id_producto);
             db.Execute(query);
         }
 
-        public void ActualizarProducto(Producto obj)
+		public void HabilitarProducto(string id_producto)
+		{
+			string query = string.Format(@"UPDATE productos SET estado = 1 WHERE id_producto = {0}", id_producto);
+			db.Execute(query);
+		}
+
+		public void ActualizarProducto(Producto obj)
         {
             string query = string.Format(@"UPDATE productos SET "+
                                                 "nombre_producto = '{1}', descripcion = '{2}', precio = {3}, " +

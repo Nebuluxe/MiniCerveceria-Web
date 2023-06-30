@@ -8,9 +8,10 @@ namespace MiniCerveceria.Servicios
         void CrearPedido(Pedido pedido);
         int ObtenerIdUltimoPedidoUsuario(int id_usuario);
         IList<Pedido> ObtenerPedidosUsuario(int id_usuario);
+        IList<Pedido> ObtenerComprasUsuario(int id_usuario);
         Pedido ObtenerPedido(int id_pedido, int id_usuario);
-        IList<Pedido> ObtenerPedidos();
-        void CambioEstadoPedido(int id_usuario, int id_pedido, int estado);
+        IList<Pedido> ObtenerPedidos(int estado);
+		void CambioEstadoPedido(int id_usuario, int id_pedido, int estado);
 
 	}
 }

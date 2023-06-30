@@ -201,6 +201,25 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				throw;
 			}
 		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Pedido> ObtenerCompras()
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				IList<Pedido> Compras = new List<Pedido>();
+
+				Compras = pedidosApp.ObtenerComprasUsuario(SesionUser.id_usuario);
+
+				return Compras;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
 	}
 
 

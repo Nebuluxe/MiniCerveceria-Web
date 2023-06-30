@@ -10,6 +10,9 @@ using System.Web.UI.WebControls;
 using System.Web.Services;
 using MiniCerveceria.Modelos;
 using System.IO;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using System.Net;
 
 namespace MiniCerveceria.Mantenedores.Productos
 {
@@ -18,8 +21,9 @@ namespace MiniCerveceria.Mantenedores.Productos
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
 		static IUsuarioAplicacionServicios usuarioApp = new UsuarioServicio(conn);
+		MemoryStream mStream = new MemoryStream();
 
-		protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
@@ -82,7 +86,6 @@ namespace MiniCerveceria.Mantenedores.Productos
 						cboCategoria.SelectedValue = oProducto.categoria.ToString();
 						txtFechaCreacion.Text = oProducto.fecha_creacion.ToString();
 						txtFechaModificacion.Text = oProducto.fecha_modificacion.ToString();
-						ItemImagen.ImageUrl = oProducto.URL_img;
 						hdnEstado.Value = oProducto.estado.ToString();
 
 						CargarCboSubCate(oProducto.categoria);
@@ -97,7 +100,6 @@ namespace MiniCerveceria.Mantenedores.Productos
 					else
 					{
 						CambioNomVentana.Text = "Crear producto";
-						ItemImagen.ImageUrl = "/Imagenes/Iconos/NoImage.png";
 					}
 				}
 			}
@@ -120,11 +122,38 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.estado = true;
                 oProducto.fecha_creacion = DateTime.Now;
 				oProducto.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
-                oProducto.URL_img = "/Imagenes/Iconos/NoImage.png";
+                oProducto.URL_img = imagenRecortada.ImageUrl;
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
 
 				productoApp.CrearProducto(oProducto);
-			}
+
+                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
+
+                MemoryStream ms = new MemoryStream();
+                ms = new MemoryStream(flImagen.FileBytes);
+
+                try
+                {
+                    CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+                    //string ruta = hdnRuta.Value;
+					string ruta = imagenRecortada.ImageUrl;
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(ruta, ms),
+						PublicId = oProducto.id_producto.ToString(),
+                    };
+
+                    var uploadResult = cloud.Upload(uploadParams);
+					
+                    ruta = uploadResult.SecureUrl.ToString();
+                    Response.Redirect(ruta);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
             catch (Exception)
             {
                 throw;
@@ -150,7 +179,36 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
 
 				productoApp.ActualizarProducto(oProducto);
-			}
+
+                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
+				byte[] imageBytes;
+                using (var webClient = new WebClient())
+                {
+					imageBytes = webClient.DownloadData(hdnRuta.Value) ;
+                }
+                MemoryStream ms = new MemoryStream(imageBytes);
+
+                try
+                {
+                    CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(oProducto.id_producto.ToString(), ms),
+                        PublicId = oProducto.id_producto.ToString(),
+                    };
+
+                    var uploadResult = cloud.Upload(uploadParams);
+
+                    string ruta = uploadResult.SecureUrl.ToString();
+                    Response.Redirect(ruta);
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
             catch (Exception)
             {
                 throw;

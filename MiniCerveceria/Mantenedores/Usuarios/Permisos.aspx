@@ -70,10 +70,10 @@
 		    <thead>
 		        <tr>
 			        <th scope="row" colspan="2">Nombre</th>
-			        <th scope="row">Editar</th>
-			        <th scope="row">Eliminar</th>
-			        <th scope="row">Ver</th>
                     <th scope="row">Crear</th>
+			        <th scope="row">Editar</th>
+                    <th scope="row">Ver</th>
+			        <th scope="row">Deshabilitar</th>
                     <th scope="row">Acciones</th>
 		        </tr>
 		    </thead>
@@ -314,10 +314,10 @@
 
                             html += '<tr id="' + val.id_permiso + '">' +
                                     '<td colspan="2">' + val.nombre + '</td>' +
+                                    '<td scope="row" >' + (val.crear ? "Si" : "No") + '</td>' +
+                                    '<td scope="row" >' + (val.ver ? "Si" : "No") + '</td>' +
                                     '<td scope="row">' + (val.editar? "Si":"No") + '</td>' +
                                     '<td scope="row" >' + (val.eliminar ? "Si" : "No") + '</td>' +
-                                    '<td scope="row" >' + (val.ver ? "Si" : "No") + '</td>' +
-                                    '<td scope="row" >' + (val.crear ? "Si" : "No") + '</td>' +
                                     '<td scope="row" >' + buttons + '</td>' +
                                     '</tr>';
                         });

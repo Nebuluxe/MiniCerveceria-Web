@@ -71,13 +71,13 @@ namespace MiniCerveceria.Mantenedores.Productos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Producto> ListarProductosDefualt()
+		public static IList<Producto> ListarProductos(bool estado)
 		{
 			try
 			{
 				IList<Producto> ListProductos = new List<Producto>();
 
-				ListProductos = productoApp.ListarProductos(true);
+				ListProductos = productoApp.ListarProductos(estado);
 
 				return ListProductos;
 			}
@@ -88,11 +88,26 @@ namespace MiniCerveceria.Mantenedores.Productos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static bool EliminarProducto(string id_producto)
+		public static bool DeshabilitarProducto(string id_producto)
 		{
 			try
 			{
-				productoApp.EliminarProducto(id_producto);
+				productoApp.DeshabilitarProducto(id_producto);
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool HabilitarProducto(string id_producto)
+		{
+			try
+			{
+				productoApp.HabilitarProducto(id_producto);
 
 				return true;
 			}

@@ -46,6 +46,10 @@
     </nav>
     <br />
     <div class="input-group" style="justify-content: center">
+        <asp:DropDownList runat="server" ClientIDMode="Static" id="cboEstado" class="form-select">
+            <asp:ListItem selected="true" value="1">Habilitados</asp:ListItem>
+		    <asp:ListItem value="0">Deshabilitados</asp:ListItem>
+	    </asp:DropDownList>
         <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
         <span class="input-group-text" id="addon-wrapping" style="border: 10px">
             <img src="/Imagenes/Iconos/Lupa.png" height="20">
@@ -83,7 +87,7 @@
             ¿Esta seguro que desea deshabilitar al usuario " <span id="NombeUsuario"></span>" ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmHabInhab">Aceptar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDeshabilitacion">Aceptar</button>
           </div>
         </div>
       </div>
@@ -115,7 +119,7 @@
         var PermisoEditar = <%= PermisoEditar %>;
 
         $(document).ready(function () {
-            cargarUsuarios()
+            cargarUsuarios(true)
 
             if (PermisoEditar) {
                 cargarPerfiles()
@@ -146,7 +150,8 @@
                         data: JSON.stringify({ 'id_usuario': idUser, 'id_permiso': idPermiso }),
                         success: function (data) {
                             if (data.d) {
-                                cargarUsuarios()
+                                cargarUsuarios(true)
+                                $("#cboEstado option[value=1]").attr("selected", true);
                             }
                         },
                         error: function (data) {
@@ -156,7 +161,7 @@
                 }
             });
 
-            $('#confirmHabInhab').on('click', function () {
+            $('#confirmDeshabilitacion').on('click', function () {
                 if (PermisoEditar) {
                     var idUser = $('#idUsuarioDeshabilitar').text();
 
@@ -170,7 +175,8 @@
                         data: JSON.stringify({ 'id_usuario': idUser, 'accion': false }),
                         success: function (data) {
                             if (data.d) {
-                                cargarUsuarios()
+                                cargarUsuarios(false)
+                                $("#cboEstado option[value=0]").attr("selected", true);
                             }
                         },
                         error: function (data) {
@@ -180,6 +186,16 @@
                 }
             });
 
+            $('#cboEstado').on('change', function () {
+                var estado = $('#cboEstado').val();
+
+                if (estado == 1) {
+                    cargarUsuarios(true)
+                }
+                else {
+                    cargarUsuarios(false)
+                }
+            })
         });
 
         function Deshabilitar(id, nombre) {
@@ -205,7 +221,8 @@
                     data: JSON.stringify({ 'id_usuario': id, 'accion': true }),
                     success: function (data) {
                         if (data.d) {
-                            cargarUsuarios()
+                            cargarUsuarios(true)
+                            $("#cboEstado option[value=1]").attr("selected", true);
                         }
                     },
                     error: function (data) {
@@ -237,7 +254,8 @@
                     data: JSON.stringify({ 'id_usuario': id, 'id_permiso': "" }),
                     success: function (data) {
                         if (data.d) {
-                            cargarUsuarios()
+                            cargarUsuarios(true)
+                            $("#cboEstado option[value=1]").attr("selected", true);
                         }
                     },
                     error: function (data) {
@@ -275,7 +293,7 @@
             });
         }
 
-        function cargarUsuarios() {
+        function cargarUsuarios(estado) {
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -283,6 +301,7 @@
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
+                data: JSON.stringify({ 'estado': estado }),
                 success: function (data) {
 
                     var html = "";
@@ -300,11 +319,13 @@
                                 buttons += '<a style="cursor: pointer" onclick="Habilitar(' + val.id_usuario + ')" data-title="Habilitar usuario"><img src="/Imagenes/Iconos/btnHabilitarUser.png" height="25" width="25" /></a><span> </span>';
                             }
 
-                            if (val.id_permiso == 0) {
-                                buttons += '<a style="cursor: pointer" onclick="Asignar(' + val.id_usuario + ')" data-title="Asignar perfil"><img src="/Imagenes/Iconos/btnAsignarPermiso.png" height="25" width="25" /></a>';
-                                buttons += '<button type="button" class="visually-hidden asignarPerfil" data-bs-toggle="modal" data-bs-target="#modalAsignar"></button>';
-                            } else {
-                                buttons += '<a style="cursor: pointer" onclick="Quitar(' + val.id_usuario + ')" data-title="Quitar perfil"><img src="/Imagenes/Iconos/btnQuitarPermiso.png" height="25" width="25" /></a>';
+                            if (val.activo) {
+                                if (val.id_permiso == 0) {
+                                    buttons += '<a style="cursor: pointer" onclick="Asignar(' + val.id_usuario + ')" data-title="Asignar perfil"><img src="/Imagenes/Iconos/btnAsignarPermiso.png" height="25" width="25" /></a>';
+                                    buttons += '<button type="button" class="visually-hidden asignarPerfil" data-bs-toggle="modal" data-bs-target="#modalAsignar"></button>';
+                                } else {
+                                    buttons += '<a style="cursor: pointer" onclick="Quitar(' + val.id_usuario + ')" data-title="Quitar perfil"><img src="/Imagenes/Iconos/btnQuitarPermiso.png" height="25" width="25" /></a>';
+                                }
                             }
 
                             html += '<tr id="' + val.id_usuario + '">' +

@@ -142,6 +142,8 @@
                         data: JSON.stringify({ 'id_producto': idProdAumenta, 'cantidad': cantidad }),
                         success: function (data) {
                             if (data.d) {
+
+                                Command: toastr["success"]("Stock aumentado")
                                 cargarStockProductos()
 
                                 $('#txtCantidadAumentar').val('');
@@ -172,6 +174,9 @@
                             data: JSON.stringify({ 'id_producto': idProdRebaja, 'cantidad': cantidad }),
                             success: function (data) {
                                 if (data.d) {
+
+                                    Command: toastr["success"]("Stock rebajado")
+
                                     cargarStockProductos()
 
                                     $('#txtCantidadRebajar').val('');
@@ -226,10 +231,10 @@
                         $.each(data.d, function (i, val) {
                             var buttons = "";
 
-                            buttons += '<a  onclick="aumenta(' + val.id_producto + ')" data-title="Aumentar stock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25" /></a><span> </span>';
+                            buttons += '<a style="cursor:pointer"  onclick="aumenta(' + val.id_producto + ')" data-title="Aumentar stock"><img src="/Imagenes/Iconos/btnSumBlack.png" height="25" width="25" /></a><span> </span>';
                             buttons += '<button type="button" class="visually-hidden aumenta" data-bs-toggle="modal" data-bs-target="#modalAumentaStock"></button>';
 
-                            buttons += '<a  onclick="rebaja(' + val.id_producto + ', ' + val.stock + ')" data-title="Rebajar stock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25" /></a>';
+                            buttons += '<a style="cursor:pointer" onclick="rebaja(' + val.id_producto + ', ' + val.stock + ')" data-title="Rebajar stock"><img src="/Imagenes/Iconos/btnRestBlack.png" height="25" width="25" /></a>';
                             buttons += '<button type="button" class="visually-hidden rebajar" data-bs-toggle="modal" data-bs-target="#modalRebajaStock"></button>';
 
                             html += '<tr id="' + val.id_producto + '">' +

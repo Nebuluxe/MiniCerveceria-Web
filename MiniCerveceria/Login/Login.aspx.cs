@@ -101,7 +101,6 @@ namespace MiniCerveceria.Login
 				oUsuario.email = email.Trim();
 				oUsuario.password = pass.Trim();
 				oUsuario.activo = 1;
-				oUsuario.en_linea = 1;
 				oUsuario.fecha_creacion = DateTime.Now;
 
 				UsuarioService.CrearUsuario(oUsuario);

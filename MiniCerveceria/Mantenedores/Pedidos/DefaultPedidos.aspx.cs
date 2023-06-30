@@ -44,13 +44,13 @@ namespace MiniCerveceria.Mantenedores.Pedidos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Pedido> ObtenerPedidos()
+		public static IList<Pedido> ObtenerPedidos(int estado)
 		{
 			try
 			{
 				IList<Pedido> ListPedidos = new List<Pedido>();
 
-				ListPedidos = pedidosApp.ObtenerPedidos();
+				ListPedidos = pedidosApp.ObtenerPedidos(estado);
 
 				return ListPedidos;
 			}
@@ -82,7 +82,7 @@ namespace MiniCerveceria.Mantenedores.Pedidos
 		{
 			try
 			{
-				pedidosApp.CambioEstadoPedido(Convert.ToInt32(id_pedido), Convert.ToInt32(id_usuario), Convert.ToInt32(estado));
+				pedidosApp.CambioEstadoPedido(Convert.ToInt32(id_usuario), Convert.ToInt32(id_pedido), Convert.ToInt32(estado));
 
 				return true;
 

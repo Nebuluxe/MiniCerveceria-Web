@@ -54,7 +54,7 @@
 								Volver Atrás
 							</a>
 						</div>
-						<div id="VaciarCarrito" class="col-lg-6" style="text-align:right;">
+						<div id="VaciarCarrito" class="col-lg-6" style="text-align:right; cursor:pointer">
 							<a onclick="EliminarCarrito()" style="text-decoration:none;color:#ffffff;" > 
 								Vaciar Carrito 
 								<img src="/Imagenes/Iconos/BasureroWhite.png" height="35">

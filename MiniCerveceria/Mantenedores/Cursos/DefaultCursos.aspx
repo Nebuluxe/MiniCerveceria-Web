@@ -54,6 +54,10 @@
     </nav>
     <br />
     <div class="input-group" style="justify-content: center">
+        <asp:DropDownList runat="server" ClientIDMode="Static" id="cboEstado" class="form-select">
+            <asp:ListItem selected="true" value="1">Habilitados</asp:ListItem>
+		    <asp:ListItem value="0">Deshabilitados</asp:ListItem>
+	    </asp:DropDownList>
         <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
         <span class="input-group-text" id="addon-wrapping" style="border: 10px">
             <img src="/Imagenes/Iconos/Lupa.png" height="20">
@@ -66,19 +70,19 @@
         </div>
     </div>
 
-    <%-- Modal eliminacion --%>
-    <div class="fade modal" id="ModalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalEliminarLabelLabel" aria-hidden="true">
+    <%-- Modal deshabilitar --%>
+    <div class="fade modal" id="ModalDeshabiitar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalDeshabiitarLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="ModalEliminarLabelLabel">Eliminar curso</h1>
+            <h1 class="modal-title fs-5" id="ModalDeshabiitarLabel">Eliminar curso</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             ¿Esta seguro que desea eliminar el curso " <span id="Nombrecurso"></span>" ?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDeshabilitar">Aceptar</button>
           </div>
         </div>
       </div>
@@ -87,39 +91,25 @@
 	<script>
         var PermisoEliminar = <%= PermisoEliminar %>;
 
+        var idCurso = "";
+
         $(document).ready(function () {
-            cargarCursos()
+            cargarCursos(true)
 
-            var idCursoDelete = "";
-
-            $('.btnEliminar').on('click', function () {
-                if (PermisoEliminar) {
-                    var buttons = $(this).parent().parent();
-
-                    var cardBody = $(this).parent().parent().parent();
-
-                    var name = cardBody.find('.fw-normal').text()
-                    idCursoDelete = cardBody.find('.idCurso').text()
-
-                    $('#Nombrecurso').text(name);
-
-                    buttons.find('.btnEliminarHide').trigger('click');
-                }
-            });
-
-            $('#confirmDelete').on('click', function () {
+            $('#confirmDeshabilitar').on('click', function () {
                 if (PermisoEliminar) {
                     $.ajax({
                         type: 'POST',
                         cache: false,
-                        url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/EliminarCurso") %>',
+                        url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/DeshabilitarCurso") %>',
                         contentType: 'application/json; charset=utf-8',
                         async: false,
                         dataType: 'json',
-                        data: JSON.stringify({ 'id_curso': idCursoDelete }),
+                        data: JSON.stringify({ 'id_curso': idCurso }),
                         success: function (data) {
                             if (data.d) {
-                                cargarCursos()
+                                cargarCursos(false)
+                                $("#cboEstado option[value=0]").attr("selected", true);
                             }
                         },
                         error: function (data) {
@@ -138,16 +128,28 @@
                         $(this).show();
                 });
             });
+
+            $('#cboEstado').on('change', function () {
+                var estado = $('#cboEstado').val();
+
+                if (estado == 1) {
+                    cargarCursos(true)
+                }
+                else {
+                    cargarCursos(false)
+                }
+            })
         });
 
-        function cargarCursos() {
+        function cargarCursos(estado) {
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/ListarCursosDefualt") %>',
+                url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/ListarCursos") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
+                data: JSON.stringify({ 'estado': estado }),
                 success: function (data) {
 
                     var html = "";
@@ -155,6 +157,22 @@
                     if (data.d != null) {
 
                         $.each(data.d, function (i, val) {
+
+                            var buttons = "";
+                            var DesHabButton = "";
+
+                            if (estado) {
+                                buttons += '<a type="button" class="btn btn-outline-light" runat="server" href="/Mantenedores/Cursos/CrearCurso.aspx?uid=' + val.id_curso + '">Editar</a>';
+                                buttons += '<a type="button" class="btn btn-outline-light" runat="server" href="/Mantenedores/Cursos/VerCurso.aspx?uid=' + val.id_curso + '">Ver</a>';
+
+                                DesHabButton = '<div class="btn-group" role="group" >' +
+                                                '<a onclick="Deshabilitar($(this).parent().parent())" type="button" class="btn btn-outline-danger btnDeshabilitar">Deshabilitar</a>' +
+                                                '</div>';
+                            }
+                            else {
+                                buttons = '<a onclick="Habilitar(' + val.id_curso + ')" class="btn btn-outline-success btnHabilitar">Habilitar</a>';
+                            }
+
                             html += '<div class="col-lg-6">' +
                                         '<div class="card cadContenedor">' +
                                             '<div class="card-body">' +
@@ -162,16 +180,15 @@
                                                     '<div class="col-md-7">' +
                                                         '<h2 class="featurette-heading fw-normal lh-1">' + val.nombre_curso + '</h2>' +
                                                         '<p class="lead">' + val.descripcion.substring(0, 170) + '...</p>' +
-                                                        '<spam class="visually-hidden nameCurso">' + val.id_curso + '</span>' +
+                                                        '<spam class="visually-hidden idCurso">' + val.id_curso + '</span>' +
                                                     '</div>' +
                                                     '<div class="col-md-5">' +
                                                         '<img src="' + val.URL_img + '" style="height: 225px; width: 225px" />' +
-                                                        '<button type="button" class="btn btn-outline-danger visually-hidden btnEliminarHide" data-bs-toggle="modal" data-bs-target="#ModalEliminar"></button>' +
+                                                        '<button type="button" class="btn btn-outline-danger visually-hidden btnDeshabilitarHide" data-bs-toggle="modal" data-bs-target="#ModalDeshabiitar"></button>' +
                                                         '<div class="btn-group" role="group" >' +
-                                                            '<a type="button" class="btn btn-outline-light" runat="server" href="/Mantenedores/Cursos/CrearCurso.aspx?uid=' + val.id_curso + '">Editar</a>' +
-                                                            '<a type="button" class="btn btn-outline-light" runat="server" href="/Mantenedores/Cursos/VerCurso.aspx?uid=' + val.id_curso + '">Ver</a>' +
-                                                            '<button type="button" class="btn btn-outline-danger btnEliminar">Eliminar</button>' +
+                                                             buttons +
                                                         '</div>' +
+                                                            DesHabButton +
                                                     '</div>' +
                                                 '</div>' +
                                             '</div>' +
@@ -186,8 +203,45 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
-
-
         }
+
+        function Habilitar(idCurso) {
+            if (PermisoEliminar) {
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Cursos/DefaultCursos.aspx/HabilitarCurso") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_curso': idCurso }),
+                    success: function (data) {
+                        if (data.d) {
+                            cargarCursos(true)
+                            $("#cboEstado option[value=1]").attr("selected", true);
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
+                    }
+                });
+            }
+        }
+
+        function Deshabilitar(element) {
+            if (PermisoEliminar) {
+                var buttons = element;
+
+                var cardBody = element.parent();
+
+                var name = cardBody.find('.fw-normal').text()
+                idCurso = cardBody.find('.idCurso').text()
+
+                $('#Nombrecurso').text(name);
+
+                buttons.find('.btnDeshabilitarHide').trigger('click');
+            }
+        }
+
     </script>
 </asp:Content>

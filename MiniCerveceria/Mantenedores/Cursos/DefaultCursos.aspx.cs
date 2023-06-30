@@ -67,13 +67,13 @@ namespace MiniCerveceria.Mantenedores.Cursos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Curso> ListarCursosDefualt()
+		public static IList<Curso> ListarCursos(bool estado)
 		{
 			try
 			{
 				IList<Curso> ListCursos = new List<Curso>();
 
-				ListCursos = cursoApp.ObtenerCursos();
+				ListCursos = cursoApp.ObtenerCursos(estado);
 
 				return ListCursos;
 			}
@@ -84,11 +84,26 @@ namespace MiniCerveceria.Mantenedores.Cursos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static bool EliminarCurso(string id_curso)
+		public static bool DeshabilitarCurso(string id_curso)
 		{
 			try
 			{
-				cursoApp.EliminarCurso(Convert.ToInt32(id_curso));
+				cursoApp.DeshabilitarCurso(Convert.ToInt32(id_curso));
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool HabilitarCurso(string id_curso)
+		{
+			try
+			{
+				cursoApp.HabilitarCurso(Convert.ToInt32(id_curso));
 
 				return true;
 			}

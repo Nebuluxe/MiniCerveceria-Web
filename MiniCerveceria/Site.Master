@@ -22,7 +22,7 @@
     
     <link href="Content/Site.css" rel="stylesheet" />
     <link href="GlobalCss/SiteMaster.css" rel="stylesheet" />
-    <link href="Content/cropper.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" integrity="sha512-cyzxRvewl+FOKTtpBzYjW6x6IAYUCZy3sGP40hn+DQkqeluGRCax7qztK2ImL64SA+C7kVWdLI6wvdlStawhyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link href="/Imagenes/Iconos/CervezaIcono.png" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="Content/toastr.min.css" />
@@ -549,7 +549,7 @@
             </div>
         </footer>
         <%--<script src="/Scripts/toastr.min.js"></script>--%>
-        <script src="/Scripts/cropper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" integrity="sha512-6lplKUSl86rUVprDIjiW8DuOniNX8UDoRATqZSds/7t6zCQZfaCe3e5zcGaQwxa8Kpn5RTM9Fvl3X2lLV4grPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </form>
     <asp:PlaceHolder runat="server">
         

@@ -42,7 +42,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
         public IList<Pedido> ObtenerPedidosUsuario(int id_usuario)
         {
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario;
+			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado != 4";
 			DataTable dt = db.Execute(query);
 
 			IList<Pedido> lista = new List<Pedido>();
@@ -71,9 +71,48 @@ namespace MiniCerveceria.Servicios.Implementacion
 			}
 		}
 
-		public IList<Pedido> ObtenerPedidos()
+		public IList<Pedido> ObtenerComprasUsuario(int id_usuario)
 		{
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido";
+			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado = 4";
+			DataTable dt = db.Execute(query);
+
+			IList<Pedido> lista = new List<Pedido>();
+			if (dt.Rows.Count > 0)
+			{
+				lista = (from DataRow rw in dt.Rows
+						 select new Pedido()
+						 {
+							 id_pedido = Convert.ToInt32(rw["id_pedido"]),
+							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]).ToString("dd-MM-yyyy"),
+							 fecha_entrega = Convert.ToDateTime(rw["fecha_entrega"]).ToString("dd-MM-yyyy"),
+							 direccion_envio = Convert.ToString(rw["direccion_envio"]),
+							 costo_envio = Convert.ToInt32(rw["costo_envio"]),
+							 subtotal = Convert.ToInt32(rw["subtotal"]),
+							 total = Convert.ToInt32(rw["total"]),
+							 estado = Convert.ToInt32(rw["estado"]),
+							 nombre_receptor = Convert.ToString(rw["nombre_receptor"])
+						 }
+						).ToList();
+				return lista;
+			}
+			else
+			{
+				return lista;
+			}
+		}
+
+		public IList<Pedido> ObtenerPedidos(int estado)
+		{
+			string validacion = "";
+
+			if (estado != 0)
+			{
+				validacion = "WHERE estado = " + estado;
+			}
+
+
+			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido " + validacion;
 			DataTable dt = db.Execute(query);
 
 			IList<Pedido> lista = new List<Pedido>();
@@ -104,7 +143,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
 		public Pedido ObtenerPedido(int id_pedido, int id_usuario)
         {
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido + " AND estado != 5";
+			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido;
 			DataTable dt = db.Execute(query);
 
 			Pedido Pedido = new Pedido();
