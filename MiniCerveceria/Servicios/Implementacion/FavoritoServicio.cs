@@ -26,7 +26,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 			string query = "DECLARE " +
 					            "v_id_fav NUMBER(10) := 0;" +
 				            " BEGIN " +
-							" SELECT COUNT(id_fav) + 1 INTO v_id_fav FROM favoritos;" +
+							" SELECT MAX(id_fav) + 1 INTO v_id_fav FROM favoritos;" +
 						            " INSERT INTO favoritos (id_fav, " +
 												               "id_usuario, " +
 												               "id_producto) " +
@@ -73,7 +73,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                               "AND id_usuario = " + id_usuario;
             db.Execute(query);
         }
-
 		private bool ValidaProductoAñadido(int id_usuario, int id_producto)
 		{
 			string query = @"SELECT id_usuario FROM favoritos WHERE id_usuario = " + id_usuario + " AND id_producto = " + id_producto;

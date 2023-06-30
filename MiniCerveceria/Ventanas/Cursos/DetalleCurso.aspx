@@ -34,7 +34,7 @@
         Fecha publicacion: <asp:Label runat="server" ClientIDMode="Static" ID="lblFechaPublicacion"></asp:Label>
     </h6>
     <br />
-    <div class="card">
+    <div class="card" style="--bs-card-border-width: 2px;--bs-card-border-color: rgb(0, 0, 0, .6);">
         <div class="card-body">
             <p> 
                 <asp:Image runat="server" ClientIDMode="Static" ID="ImagenCurso" align="left" width="400"  height="400"/>

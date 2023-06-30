@@ -104,7 +104,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
 		public Pedido ObtenerPedido(int id_pedido, int id_usuario)
         {
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido;
+			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido + " AND estado != 5";
 			DataTable dt = db.Execute(query);
 
 			Pedido Pedido = new Pedido();

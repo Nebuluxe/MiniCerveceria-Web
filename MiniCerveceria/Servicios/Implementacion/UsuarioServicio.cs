@@ -275,5 +275,6 @@ namespace MiniCerveceria.Servicios.Implementacion
 			int idUsuario = Convert.ToInt32(dt.Rows[0]["idPermiso"]);
 			return idUsuario + 1;
 		}
+
 	}
 }
