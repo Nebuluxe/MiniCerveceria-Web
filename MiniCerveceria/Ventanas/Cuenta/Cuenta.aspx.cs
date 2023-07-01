@@ -22,6 +22,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		static ICursosInscritosAplicacionServicios InscripcionesApp = new CursosInscritosServicio(conn);
 		static IFavoritoAplicacionServicios favortiosApp = new FavoritoServicio(conn);
 		static IPedidoAplicacionServicios pedidosApp = new PedidoServicio(conn);
+		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
 
 		public int id_user = 0;
 		public string fechaNacimiento = "";
@@ -214,6 +215,30 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				Compras = pedidosApp.ObtenerComprasUsuario(SesionUser.id_usuario);
 
 				return Compras;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool EnviarComentario(string id_producto, string texto, string puntuacion)
+		{
+			try
+			{
+				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
+
+				ComentarioProducto comentario = new ComentarioProducto();
+
+				comentario.id_usuario = Convert.ToInt32(SesionUser.id_usuario);
+				comentario.id_producto = Convert.ToInt32(id_producto);
+				comentario.texto = texto;
+				comentario.puntuacion = Convert.ToInt32(puntuacion);
+
+				productoApp.EnviarComentario(comentario);
+
+				return true;
 			}
 			catch (Exception)
 			{

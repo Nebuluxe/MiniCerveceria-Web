@@ -241,6 +241,7 @@
         }
     </style>
     <br />
+
     <div class="card" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <div class="row" align="center">
@@ -425,6 +426,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="ComentarioProductoCompra" class="row visually-hidden">
+                                <div class="col-lg-1">
+                                    <a style="cursor:pointer" id="CerrarComentarioCompra"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h5>Danos tu opinion sobre el producto "<span id="nomProdCompra"></span>"</h5>
+                                    <span id="idProdCompra" class="visually-hidden"></span>
+                                    <br />
+                                </div>
+                                <div class="col-lg-12">
+                                    <span id="puntuacionCompra" class="visually-hidden"></span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdCompra(1)"><img id="OneStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdCompra(2)"><img id="TwoStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdCompra(3)"><img id="ThreeStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdCompra(4)"><img id="FourStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdCompra(5)"><img id="FiveStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35"/></a>
+                                </div>
+                                <div class="col-lg-12">
+                                        <br />
+                                        <textarea placeholder="escribe tu comentario..." id="ComentarioProdCompra" name="textarea" rows="10" cols="50" class="form-control"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <br />
+                                        <a id="enviarComentarioProductoCompra" class="btn btn-warning">Enviar comentario</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -452,7 +479,7 @@
         </div>
     </div>
     <div class="card visually-hidden" id="Pedidos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
-        <div class="card-body" align="center">
+            <div class="card-body" align="center">
             <div class="row" id="TablaPedidos">
                 <div class="col-lg-4">
                     <div class="row" id="ListaPedidos">
@@ -625,9 +652,36 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="ComentarioProductoPedido" class="row visually-hidden">
+                                <div class="col-lg-1">
+                                    <a style="cursor:pointer" id="CerrarComentarioPedido"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
+                                </div>
+                                <div class="col-lg-12">
+                                    <h5>Danos tu opinion sobre el producto "<span id="nomProdPedido"></span>"</h5>
+                                    <span id="idProdPedido" class="visually-hidden"></span>
+                                    <br />
+                                </div>
+                                <div class="col-lg-12">
+                                    <span id="puntuacionPedido" class="visually-hidden"></span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdPedido(1)"><img id="OneStarPedido" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdPedido(2)"><img id="TwoStarPedido" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdPedido(3)"><img id="ThreeStarPedido" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdPedido(4)"><img id="FourStarPedido" src="/Imagenes/Iconos/FavOff.png" width="35"/></a><span> </span>
+                                    <a style="cursor:pointer" onclick="PuntuarProdPedido(5)"><img id="FiveStarPedido" src="/Imagenes/Iconos/FavOff.png" width="35"/></a>
+                                </div>
+                                <div class="col-lg-12">
+                                        <br />
+                                        <textarea placeholder="escribe tu comentario..." id="ComentarioProdPedido" name="textarea" rows="10" cols="50" class="form-control"></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <br />
+                                        <a id="enviarComentarioProductoPedido" class="btn btn-warning">Enviar comentario</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             <div id="SinPedidos" align="center" class="visually-hidden">
                 <br />
@@ -650,7 +704,6 @@
                 <br />
             </div>
         </div>
-    </div>
     <div class="card sizeOptionsCard visually-hidden" id="CursosInscritos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body" align="center">
             <br />
@@ -733,24 +786,6 @@
         </div>
     </div>
 
-    <%-- Modal eliminacion --%>
-    <div class="fade modal" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalEliminarLabel">Eliminar inscipcion</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <span id="idInscripcion" class="visually-hidden"></span>
-                <div class="modal-body">
-                    ¿Esta seguro que desea anular su inscripcion ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- blob a 64 -->
     <div class="visually-hidden">
         <input type="file" id="fileInput" />
@@ -1067,6 +1102,90 @@
                 });
             });
 
+            $('#CerrarComentarioPedido').on('click', function () {
+                $('#DetallePedido').removeClass('visually-hidden')
+                $('#ComentarioProductoPedido').addClass('visually-hidden')
+            })
+
+            $('#enviarComentarioProductoPedido').on('click', function () {
+                var id = $('#idProdPedido').text();
+                var texto = $('#ComentarioProdPedido').val();
+                var puntuacion = $('#puntuacionPedido').text()
+
+                if (texto == "") {
+                    Command: toastr["warning"]("Para enviar un comentario debe escribir que es lo que opina del producto")
+                    return;
+                }
+
+                if (puntuacion == "0") {
+                    Command: toastr["warning"]("Debe puntuar el produto en una escala de 1 a 5 estrellas")
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/EnviarComentario") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': id, 'texto': texto, 'puntuacion': puntuacion }),
+                    success: function (data) {
+                        if (data.d) {
+                            Command: toastr["success"]("Su comentario ha sido enviado")
+
+                            $('#DetallePedido').removeClass('visually-hidden')
+                            $('#ComentarioProductoPedido').addClass('visually-hidden')
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
+                    }
+                });
+            })
+
+            $('#CerrarComentarioCompra').on('click', function () {
+                $('#DetalleCompra').removeClass('visually-hidden')
+                $('#ComentarioProductoCompra').addClass('visually-hidden')
+            })
+
+            $('#enviarComentarioProductoCompra').on('click', function () {
+                var id = $('#idProdCompra').text();
+                var texto = $('#ComentarioProdCompra').val();
+                var puntuacion = $('#puntuacionCompra').text()
+
+                if (texto == "") {
+                    Command: toastr["warning"]("Para enviar un comentario debe escribir que es lo que opina del producto")
+                    return;
+                }
+
+                if (puntuacion == "0") {
+                    Command: toastr["warning"]("Debe puntuar el produto en una escala de 1 a 5 estrellas")
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/EnviarComentario") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': id, 'texto': texto, 'puntuacion': puntuacion }),
+                    success: function (data) {
+                        if (data.d) {
+                            Command: toastr["success"]("Su comentario ha sido enviado")
+
+                            $('#DetalleCompra').removeClass('visually-hidden')
+                            $('#ComentarioProductoCompra').addClass('visually-hidden')
+                        }
+                    },
+                    error: function (data) {
+                        alert("Algo ha salido mal!!!");
+                    }
+                });
+            })
+
             let cropper = null;
             $("#btnTob64").on('submit', function (evt) {
                 evt.preventDefault();
@@ -1202,7 +1321,24 @@
         });
 
         function Eliminar(id) {
-            $('#idInscripcion').text(id);
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/EliminarInscripcion") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                dataType: 'json',
+                data: JSON.stringify({ 'id_inscripcion': id }),
+                success: function (data) {
+                    if (data.d) {
+                        Command: toastr["success"]("La inscripcion ha sido anulada correctamente")
+                        CargarCursosInscritos()
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
         }
 
         function CargarCursosInscritos() {
@@ -1457,12 +1593,14 @@
 
                         $.each(data.d.DetallePedido, function (i, val) {
 
+                            var nom = "'" + val.nombre_producto + "'";
+
                             html += '<tr id="' + val.id_producto + '">' +
                                 '<td colspan="2">' + val.nombre_producto + '</td>' +
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a onclick="ComentarProductoPedido(' + val.id_producto + ',  ' + nom + ')" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
                                 '</tr>';
                         });
 
@@ -1521,12 +1659,14 @@
 
                         $.each(data.d.DetallePedido, function (i, val) {
 
+                            var nom = "'" + val.nombre_producto + "'";
+
                             html += '<tr id="' + val.id_producto + '">' +
                                 '<td colspan="2">' + val.nombre_producto + '</td>' +
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a  onclick="ComentarProductoCompra(' + val.id_producto + ',  ' + nom + ')" class="comentario" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
                                 '</tr>';
                         });
 
@@ -1546,6 +1686,122 @@
                     alert("Algo ha salido mal!!!");
                 }
             });
+        }
+
+        function ComentarProductoPedido(id, nom) {
+            $('#puntuacionPedido').text(0)
+            $('#ComentarioProdPedido').val('')
+
+            $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+
+            $('#DetallePedido').addClass('visually-hidden')
+            $('#ComentarioProductoPedido').removeClass('visually-hidden')
+
+            $('#idProdPedido').text(id);
+            $('#nomProdPedido').text(nom);
+        }
+
+        function PuntuarProdPedido(puntuacion) {
+
+            if (puntuacion == 1) {
+                $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 2) {
+                $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 3) {
+                $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 4) {
+                $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 5) {
+                $('#OneStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarPedido').attr('src', '/Imagenes/Iconos/FavOn.png');
+            }
+
+            $('#puntuacionPedido').text(puntuacion);
+        }
+
+        function ComentarProductoCompra(id, nom) {
+            $('#puntuacionCompra').text(0)
+            $('#ComentarioProdCompra').val('')
+
+            $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+
+            $('#DetalleCompra').addClass('visually-hidden')
+            $('#ComentarioProductoCompra').removeClass('visually-hidden')
+
+            $('#idProdCompra').text(id);
+            $('#nomProdCompra').text(nom);
+        }
+
+        function PuntuarProdCompra(puntuacion) {
+
+            if (puntuacion == 1) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 2) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 3) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 4) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 5) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+            }
+
+            $('#puntuacionCompra').text(puntuacion);
         }
     </script>
 </asp:Content>

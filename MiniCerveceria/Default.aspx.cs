@@ -23,6 +23,7 @@ namespace MiniCerveceria
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
         static ICarritoCompraAplicacionServicios carritoApp = new CarritoCompraServicio(conn);
 		static IFavoritoAplicacionServicios favoritoApp = new FavoritoServicio(conn);
+		static ICursoAplicacionServicios cursosApp = new CursoServicio(conn);
 
         protected void Page_Load(object sender, EventArgs e)
         { 
@@ -153,6 +154,55 @@ namespace MiniCerveceria
 				}
 
 				return 1;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<ComentarioProducto> CargarComentarios()
+		{
+			try
+			{
+				IList<ComentarioProducto> comentarios = new List<ComentarioProducto>();
+
+				comentarios = productoApp.ObtenerComentarios();
+
+				return comentarios;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Curso> CargarCursos()
+		{
+			try
+			{
+				IList<Curso> comentarios = new List<Curso>();
+
+				comentarios = cursosApp.ObtenerCursos(true);
+
+				IList<Curso> CursoFilttrado = new List<Curso>();
+
+				int cont = 0;
+
+				foreach (var item in comentarios)
+				{
+					if (cont > 2)
+					{
+						break;
+					}
+
+					CursoFilttrado.Add(item);
+					cont++;
+				}
+
+				return CursoFilttrado;
 			}
 			catch (Exception)
 			{

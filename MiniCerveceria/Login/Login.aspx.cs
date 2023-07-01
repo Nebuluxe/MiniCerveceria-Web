@@ -24,6 +24,7 @@ namespace MiniCerveceria.Login
 
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
+		static IComunaAplicacionServicio ComunaApp = new ComunaServicio(conn);
 
 		protected void Page_Load(object sender, EventArgs e)
         {
@@ -86,13 +87,13 @@ namespace MiniCerveceria.Login
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static bool GuardarUsuario(string nombre,string apellido, string direccion, string telefono, string fehcaNacimineto, string email, string pass)
+		public static bool GuardarUsuario(string nombre,string apellido, string direccion, string comuna, string telefono, string fehcaNacimineto, string email, string pass)
 		{
 			try
 			{
 				Usuario oUsuario = new Usuario();
 				oUsuario.id_permiso = 0;
-				oUsuario.id_comuna = 2;
+				oUsuario.id_comuna = Convert.ToInt32(comuna);
 				oUsuario.nombre = nombre.Trim();
 				oUsuario.apellido = apellido.Trim();
 				oUsuario.direccion = direccion.Trim();
@@ -193,6 +194,24 @@ namespace MiniCerveceria.Login
 				}
 
 				return codigo;
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static IList<Comuna> ObtenerComunas()
+		{
+			try
+			{
+				IList<Comuna> ListComunas = new List<Comuna>();
+
+				ListComunas = ComunaApp.ObtenerComunas();
+
+				return ListComunas;
 			}
 			catch (Exception)
 			{
