@@ -87,15 +87,16 @@
             transform: translateX(0);
         }
 
-        #Contador{
+        #Contador {
             font-size: 20px
         }
 
         .imagen:hover {
-        -webkit-transform: rotateY(180deg);
-        -webkit-transform-style: preserve-3d;
-        transform: rotateY(180deg);
-        transform-style: preserve-3d;}
+            -webkit-transform: rotateY(180deg);
+            -webkit-transform-style: preserve-3d;
+            transform: rotateY(180deg);
+            transform-style: preserve-3d;
+        }
     </style>
     <br />
     <asp:Label runat="server" ClientIDMode="Static" ID="NameCategoria" CssClass="visually-hidden"> </asp:Label>
@@ -104,7 +105,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="contenedor">
-                <asp:image runat="server" ClientIDMode="Static" class="imagen" id="ItemImagen" />
+                <asp:Image runat="server" ClientIDMode="Static" class="imagen" ID="ItemImagen" />
             </div>
         </div>
         <div class="col-lg-6">
@@ -112,30 +113,36 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h2><asp:Label runat="server" ClientIDMode="Static" id="NomProducto"></asp:Label></h2>
+                            <h2>
+                                <asp:Label runat="server" ClientIDMode="Static" ID="NomProducto"></asp:Label></h2>
                         </div>
                         <div class="col-lg-12">
-                            <h4><asp:label runat="server" ClientIDMode="Static" ID="lblPecio"></asp:label></h4>
+                            <h4>
+                                <asp:Label runat="server" ClientIDMode="Static" ID="lblPecio"></asp:Label></h4>
                             <br />
                         </div>
                         <div class="col-lg-12">
-                            <p><asp:label runat="server" ClientIDMode="Static" ID="lblDescripcion"></asp:label></p>
+                            <p>
+                                <asp:Label runat="server" ClientIDMode="Static" ID="lblDescripcion"></asp:Label></p>
                         </div>
                         <div class="col-lg-12">
-                            <h6>Categoria: <asp:label runat="server" ClientIDMode="Static" ID="lblCategoria"></asp:label></h6>
+                            <h6>Categoria:
+                                <asp:Label runat="server" ClientIDMode="Static" ID="lblCategoria"></asp:Label></h6>
                             <hr class="featurette-divider">
                         </div>
                         <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-body" style="cursor:pointer" onclick="AnadirProductoCarrito()">
-                                    <a  data-title="Añadir al carrito"><img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a><span> Añadir al carrito </span>
+                                <div class="card-body" style="cursor: pointer" onclick="AnadirProductoCarrito()">
+                                    <a data-title="Añadir al carrito">
+                                        <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a><span> Añadir al carrito </span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="card">
-                                <div class="card-body" style="cursor:pointer" onclick="AnadirFavorito()">
-                                    <a  data-title="Añadir a favoritos"><img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a><span  style="color: #ff0000"> Añadir a favoritos </span>
+                                <div class="card-body" style="cursor: pointer" onclick="AnadirFavorito()">
+                                    <a data-title="Añadir a favoritos">
+                                        <img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a><span style="color: #ff0000"> Añadir a favoritos </span>
                                 </div>
                             </div>
                         </div>
@@ -144,15 +151,15 @@
             </div>
         </div>
     </div>
-    <br /><br />
+    <br />
+    <br />
     <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
-        <a id="tituloRelacionados"  class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
+        <a id="tituloRelacionados" class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
     </div>
     <div class="container text-center my-3" id="carrouselRelacionados">
         <div class="row mx-auto my-auto justify-content-center">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner" role="listbox" id="TablaRelacionados">
-                    
                 </div>
                 <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
                     <img src="/Imagenes/Iconos/carousel-control-prev-icon.png" style="width: 35px">
@@ -164,7 +171,6 @@
         </div>
     </div>
     <div id="listRelacionados" class="row">
-
     </div>
     <br />
     <br />
@@ -209,7 +215,7 @@
             })
         });
 
-        function cargarProductosRelacionados(idCate,idProd) {
+        function cargarProductosRelacionados(idCate, idProd) {
 
             $.ajax({
                 type: 'POST',
@@ -226,15 +232,17 @@
                     if (data.d != null) {
                         var cont = 1;
 
-                        if (data.d.length  >=  5) {
+                        if (data.d.length >= 5) {
                             $.each(data.d, function (i, val) {
                                 if (val.id_producto != idProd) {
                                     if (cont == 1) {
                                         html += '<div class="carousel-item  active">' +
+                                            '<div class="container">' +
                                             '<div class="card  hoverImg">' +
-                                            '<div>' +
                                             '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                            '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                            '<div>' +
+                                            '<img src="' + val.URL_img + '" class="card-img-top">' +
+                                            '</a>' +
                                             '</div>' +
                                             '<div align="center">' +
                                             '<div class="card-body">' +
@@ -242,18 +250,22 @@
                                             '</div>' +
                                             '</div>' +
                                             '</div>' +
-                                            '</div>'
+                                            '</div>'  +
+                                            '</div>'  
                                         cont++;
                                     } else {
                                         html += '<div class="carousel-item">' +
+                                            '<div class="container">' +
                                             '<div class="card  hoverImg">' +
-                                            '<div>' +
                                             '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                            '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                            '<div>' +
+                                            '<img src="' + val.URL_img + '" class="card-img-top">' +
                                             '</div>' +
+                                            '</a>' +
                                             '<div align="center">' +
                                             '<div class="card-body">' +
                                             '<span >' + val.nombre_producto + '</span>' +
+                                            '</div>' +
                                             '</div>' +
                                             '</div>' +
                                             '</div>' +
@@ -264,19 +276,18 @@
 
                             $('#TablaRelacionados').html(html);
                             $('#listRelacionados').hide();
-                        } else { 
+                        } else {
                             $.each(data.d, function (i, val) {
                                 if (val.id_producto != idProd) {
                                     html += '<div class="col-lg-3 card  hoverImg  carousel-item>' +
-                                                '<div  class="">' +
+                                                '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
                                                     '<div>' +
-                                                        '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                                        '<img src="' + val.URL_img + '" class="card-img-top"></a>' +
+                                                    '<img src="' + val.URL_img + '" class="card-img-top">' +
                                                     '</div>' +
-                                                    '<div align="center">' +
-                                                        '<div class="card-body">' +
-                                                            '<span >' + val.nombre_producto + '</span>' +
-                                                        '</div>' +
+                                                '</a>' +
+                                                '<div align="center">' +
+                                                    '<div class="card-body">' +
+                                                    '<span >' + val.nombre_producto + '</span>' +
                                                     '</div>' +
                                                 '</div>' +
                                             '</div>'
@@ -312,7 +323,7 @@
                 success: function (data) {
                     if (data.d) {
                         Command: toastr["success"]("Se ha añadido el producto al carrito")
-                    } 
+                    }
                     else {
                         Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
                     }

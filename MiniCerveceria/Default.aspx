@@ -55,129 +55,28 @@
                 <img src="/Imagenes/Iconos/CursosBlack.png" height="80" />
                 Cursos</a>
         </div>
+        <div class="row" id="TablaCursos">
 
-
-        <div class="row">
-            <div class="col-lg-6">
-                <hr class="featurette-divider">
-
-                <div class="row featurette">
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
-                        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-                    </div>
-                    <div class="col-md-5">
-                        <figure class="containerz">
-                            <img src="/Imagenes/Iconos/NoImage.png" />
-                            <figcaption>
-                                <h3>Inscribirse</h3>
-                            </figcaption>
-                            <a runat="server" href="/Ventanas/Cursos/DetalleCurso.aspx"></a>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <hr class="featurette-divider">
-
-                <div class="row featurette">
-                    <div class="col-md-7">
-                        <h2 class="featurette-heading fw-normal lh-1">Title Curso Example.</h2>
-                        <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
-                    </div>
-                    <div class="col-md-5">
-                        <figure class="containerz">
-                            <img src="/Imagenes/Iconos/NoImage.png" />
-                            <figcaption>
-                                <h3>Inscribirse</h3>
-                            </figcaption>
-                            <a runat="server" href="/Ventanas/Cursos/DetalleCurso.aspx"></a>
-                        </figure>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-    <section id="ProductosMasVendidosHome">
+    <section id="ProductosHome">
         <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
-            <a class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos Populares</a>
+        <a class="masthead-heading text-uppercase cursor-scale" style="color: #000000" href="Ventanas/Productos/Productos.aspx">
+            <img src="/Imagenes/Iconos/ProductosBlack.png" height="80" />
+            Productos</a>
         </div>
-        <div class="container text-center my-3">
+        <div class="row" align="center" id="TablaProductos">
+        </div>
+    </section>
+    <section id="Comentarios">
+        <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
+                <img src="/Imagenes/Iconos/Comentario.png" height="80" />
+                Comentarios
+        </div>
+        <div class="container my-3" id="carrouselComentarios">
             <div class="row mx-auto my-auto justify-content-center">
                 <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div>
-                                    <img src="/Imagenes/Iconos/NoImage.png" class="card-img-top">
-                                </div>
-                                <div align="center">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="carousel-inner" role="listbox" id="TablaComentarios">
                     </div>
                     <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
                         <img src="/Imagenes/Iconos/carousel-control-prev-icon.png" style="width: 35px">
@@ -188,21 +87,16 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section id="ProductosHome">
-        <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
-            <a class="masthead-heading text-uppercase cursor-scale" style="color: #000000" href="Ventanas/Productos/Productos.aspx">
-                <img src="/Imagenes/Iconos/ProductosBlack.png" height="80" />
-                Productos</a>
-        </div>
-        <div class="row" align="center" id="TablaProductos">
-
+        <div id="listComentarios" class="row">
         </div>
     </section>
 
     <script type="text/javascript">
         $(document).ready(() => {
             cargarProductos()
+            cargarProductosRelacionados()
+            cargarCursos()
+
             $(".AnadirProductoCarrito").on("click", function () {
                 var id_producto = $(this).data("id-producto");
                 AnadirProductoCarrito(id_producto);
@@ -230,6 +124,233 @@
             })
         });
 
+        function cargarProductosRelacionados() {
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/CargarComentarios") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+                        var cont = 1;
+
+                        if (data.d.length >= 5) {
+                            $.each(data.d, function (i, val) {
+                                if (cont == 1) {
+
+                                    var stars = "";
+
+
+                                    if (val.puntuacion == 1) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 2) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 3) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 4) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 5) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" />';
+                                    }
+
+                                    html += '<div class="carousel-item active">' +
+                                        '<div class="container">' +
+                                        '<div class="card">' +
+                                        '<div>' +
+                                        '<img src="' + val.url_img_prod + '" class="card-img-top" />' +
+                                        '<div class="card-body">' +
+                                        '<div class="row">' +
+                                        '<div class="col-lg-12">' +
+                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
+                                        '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
+                                        '<span>' + val.fecha + '</span><br/><br/><br/>' +
+                                        '<p>' + val.texto + '</p>' +
+                                        '</div>' +
+                                        '<div class="col-12" align="center">' +
+                                        stars +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+                                    cont++;
+                                } else {
+
+                                    var stars = "";
+
+                                    if (val.puntuacion == 1) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 2) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 3) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 4) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                    }
+                                    if (val.puntuacion == 5) {
+                                        stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                            '<img src="/Imagenes/Iconos/FavOn.png" width="35" />';
+                                    }
+
+                                    html += '<div class="carousel-item">' +
+                                        '<div class="container">' +
+                                        '<div class="card">' +
+                                        '<div>' +
+                                        '<img src="' + val.url_img_prod + '" class="card-img-top" />' +
+                                        '<div class="card-body">' +
+                                        '<div class="row">' +
+                                        '<div class="col-lg-12">' +
+                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
+                                        '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
+                                        '<span>' + val.fecha + '</span><br/><br/><br/>' +
+                                        '<p>' + val.texto + '</p>' +
+                                        '</div>' +
+                                        '<div class="col-12" align="center">' +
+                                        stars +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
+                                }
+                            });
+
+                            $('#TablaComentarios').html(html);
+                            $('#listComentarios').hide();
+                        } else {
+                            $.each(data.d, function (i, val) {
+
+                                var stars = "";
+
+                                if (val.puntuacion == 1) {
+                                    stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                }
+                                if (val.puntuacion == 2) {
+                                    stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                }
+                                if (val.puntuacion == 3) {
+                                    stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                }
+                                if (val.puntuacion == 4) {
+                                    stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOff.png" width="35" />';
+                                }
+                                if (val.puntuacion == 5) {
+                                    stars = '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" /><span> </span>' +
+                                        '<img src="/Imagenes/Iconos/FavOn.png" width="35" />';
+                                }
+
+                                html += '<div class="col-lg-3">' +
+                                    '<div class="container">' +
+                                    '<div class="card">' +
+                                    '<div>' +
+                                    '<img src="' + val.url_img_prod + '" class="card-img-top" />' +
+                                    '<div class="card-body">' +
+                                    '<div class="row">' +
+                                    '<div class="col-lg-12">' +
+                                    '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
+                                    '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
+                                    '<span>' + val.fecha + '</span><br/><br/><br/>' +
+                                    '<p>' + val.texto + '</p>' +
+                                    '</div>' +
+                                    '<div class="col-12" align="center">' +
+                                    stars +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>'
+                            });
+
+                            $('#listComentarios').html(html);
+                            $('#carrouselComentarios').hide();
+
+                        }
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+
+        }
+
         function AnadirProductoCarrito(id_producto) {
             $.ajax({
                 type: 'POST',
@@ -242,7 +363,7 @@
                 success: function (data) {
                     if (data.d) {
                         Command: toastr["success"]("Se ha añadido el producto al carrito")
-                    } 
+                    }
                     else {
                         Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
                     }
@@ -294,39 +415,83 @@
                     if (data.d != null) {
 
                         $.each(data.d, function (i, val) {
-                            html+= '<div class="col-lg-4" align="center">' +
-                                        '<br />' +
-                                        '<div class="container">' +
-                                            '<figure class="containerz">' +
-                                                '<img src="' + val.URL_img.trim() + '" />' +
-                                                '<figcaption>' +
-                                                    '<h3>' + val.nombre_producto.trim() + '</h3>' +
-                                                '</figcaption>' +
-                                                '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"></a>' +
-                                            '</figure>' +
-                                            '<div class="card">' +
-                                                '<div align="center">' +
-                                                    '<div class="card-body">' +
-                                                        '<div align="center">'  +
-                                                            '<div class="row">' +
-                                                                '<div class="col-lg-6">' +
-                                                                    '<a  style="cursor: pointer" class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '"  class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
-                                                                    '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
-                                                                '</div>' +
-                                                                '<div class="col-lg-6">' +
-                                                                    '<a  style="cursor: pointer" class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '" data-title="Añadir al carrito">' +
-                                                                    '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
-                                                                '</div>' +
-                                                            '</div>' +
-                                                        '</div>' +
-                                                    '</div>' +
-                                                '</div>' +
-                                            '</div>' +
-                                        '</div>' +
-                                    '</div>'
+                            html += '<div class="col-lg-4" align="center">' +
+                                '<br />' +
+                                '<div class="container">' +
+                                '<figure class="containerz">' +
+                                '<img src="' + val.URL_img.trim() + '" />' +
+                                '<figcaption>' +
+                                '<h3>' + val.nombre_producto.trim() + '</h3>' +
+                                '</figcaption>' +
+                                '<a href="/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '"></a>' +
+                                '</figure>' +
+                                '<div class="card">' +
+                                '<div align="center">' +
+                                '<div class="card-body">' +
+                                '<div align="center">' +
+                                '<div class="row">' +
+                                '<div class="col-lg-6">' +
+                                '<a  style="cursor: pointer" class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '"  class="AnadirProductoFavorito" data-id-producto="' + val.id_producto + '" data-title="Añadir a favoritos">' +
+                                '<img src="/Imagenes/Iconos/Favorito.png" height="30" class="animationBtnImg"></a>' +
+                                '</div>' +
+                                '<div class="col-lg-6">' +
+                                '<a  style="cursor: pointer" class="AnadirProductoCarrito" data-id-producto="' + val.id_producto + '" data-title="Añadir al carrito">' +
+                                '<img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
                         });
 
                         $('#TablaProductos').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
+
+        function cargarCursos() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Default.aspx/CargarCursos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+
+                        $.each(data.d, function (i, val) {
+                            html += '<div class="col-lg-6">' +
+                                '<hr class="featurette-divider">' +
+                                '<div class="row featurette">' +
+                                '<div class="col-md-7">' +
+                                '<h2 class="featurette-heading fw-normal lh-1">' + val.nombre_curso + '.</h2>' +
+                                '<p>' + val.descripcion.substring(0, 200) + '...</p>' +
+                                '</div>' +
+                                '<div class="col-md-5">' +
+                                '<figure class="containerz">' +
+                                '<img src="' + val.URL_img + '" alt="sample89" />' +
+                                '<figcaption>' +
+                                '<h3>Ver mas sobre el curso</h3>' +
+                                '</figcaption>' +
+                                '<a href="/Ventanas/Cursos/DetalleCurso.aspx?uid=' + val.id_curso + '"></a>' +
+                                '</figure>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>'
+                        });
+
+                        $('#TablaCursos').html(html);
                     }
                 },
                 error: function (data) {

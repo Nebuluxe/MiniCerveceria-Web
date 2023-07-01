@@ -324,6 +324,8 @@
     <Content Include="Imagenes\Iconos\DoorIconWithe.png" />
     <Content Include="Imagenes\Iconos\EditBlack.png" />
     <Content Include="Imagenes\Iconos\EditWithe.png" />
+    <Content Include="Imagenes\Iconos\FavOff.png" />
+    <Content Include="Imagenes\Iconos\FavOn.png" />
     <Content Include="Imagenes\Iconos\Favorito.png" />
     <Content Include="Imagenes\Iconos\Lupa.png" />
     <Content Include="Imagenes\Iconos\MantenedoresLogoBlack.png" />
@@ -540,6 +542,8 @@
       <DependentUpon>Permisos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\CarritoCompra.cs" />
+    <Compile Include="Modelos\ComentarioProducto.cs" />
+    <Compile Include="Modelos\Comuna.cs" />
     <Compile Include="Modelos\Curso.cs" />
     <Compile Include="Modelos\DetallePedido.cs" />
     <Compile Include="Modelos\Favorito.cs" />
@@ -547,23 +551,28 @@
     <Compile Include="Modelos\Pedido.cs" />
     <Compile Include="Modelos\PermisosUsusario.cs" />
     <Compile Include="Modelos\Producto.cs" />
+    <Compile Include="Modelos\Region.cs" />
     <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Servicios\ICarritoCompraAplicacionServicios.cs" />
+    <Compile Include="Servicios\IComunaAplicacionServicio.cs" />
     <Compile Include="Servicios\ICursoAplicacionServicios.cs" />
     <Compile Include="Servicios\ICursosInscritosAplicacionServicios.cs" />
     <Compile Include="Servicios\IDetallePedidoAplicacionServicios.cs" />
     <Compile Include="Servicios\IFavoritoAplicacionServicios.cs" />
     <Compile Include="Servicios\Implementacion\CarritoCompraServicio.cs" />
     <Compile Include="Modelos\InscripcionCurso.cs" />
+    <Compile Include="Servicios\Implementacion\ComunaServicio.cs" />
     <Compile Include="Servicios\Implementacion\CursoServicio.cs" />
     <Compile Include="Servicios\Implementacion\CursosInscritosServicio.cs" />
     <Compile Include="Servicios\Implementacion\DetallePedidoServicio.cs" />
     <Compile Include="Servicios\Implementacion\FavoritoServicio.cs" />
     <Compile Include="Servicios\Implementacion\PedidoServicio.cs" />
     <Compile Include="Servicios\Implementacion\ProductoServicio.cs" />
+    <Compile Include="Servicios\Implementacion\RegionServicio.cs" />
     <Compile Include="Servicios\Implementacion\UsuarioServicio.cs" />
     <Compile Include="Servicios\IPedidoAplicacionServicios.cs" />
     <Compile Include="Servicios\IProductoAplicacionServicios.cs" />
+    <Compile Include="Servicios\IRegionAplicacionServicio.cs" />
     <Compile Include="Servicios\IUsuarioAplicacionServicios.cs" />
     <Compile Include="Ventanas\Cursos\Cursos.aspx.cs">
       <DependentUpon>Cursos.aspx</DependentUpon>

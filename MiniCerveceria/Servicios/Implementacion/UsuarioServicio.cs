@@ -270,18 +270,35 @@ namespace MiniCerveceria.Servicios.Implementacion
 
 		private int ObtenerIDUsuario()
         {
-            string query = @"SELECT MAX( id_usuario ) AS idUsuario FROM usuario";
-            DataTable dt = db.Execute(query);
-            int idUsuario = Convert.ToInt32(dt.Rows[0]["idUsuario"]);
-            return idUsuario + 1;
+            try
+            {
+				string query = @"SELECT MAX( id_usuario ) AS idUsuario FROM usuario";
+				DataTable dt = db.Execute(query);
+				int idUsuario = Convert.ToInt32(dt.Rows[0]["idUsuario"]);
+				return idUsuario + 1;
+
+			}
+            catch (Exception)
+            {
+                return 1;
+                throw;
+            }
         }
 
 		private int ObtenerIDPermiso()
 		{
-			string query = @"SELECT MAX(id_permiso) AS idPermiso FROM permisosusuario";
-			DataTable dt = db.Execute(query);
-			int idUsuario = Convert.ToInt32(dt.Rows[0]["idPermiso"]);
-			return idUsuario + 1;
+            try
+            {
+				string query = @"SELECT MAX(id_permiso) AS idPermiso FROM permisosusuario";
+				DataTable dt = db.Execute(query);
+				int idUsuario = Convert.ToInt32(dt.Rows[0]["idPermiso"]);
+				return idUsuario + 1;
+			}
+            catch (Exception)
+            {
+                return 1;
+                throw;
+            }
 		}
 
 	}

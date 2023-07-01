@@ -66,19 +66,42 @@
             margin: 30px 0;
         }
 
-            .input-box input {
-                width: 100%;
-                height: 50px;
-                background: transparent;
-                border: 2px solid #333;
-                outline: none;
-                border-radius: 5px;
-                align-content: center;
-                font-size: 1em;
-                color: #fff;
-                padding: 0 10px 0 35px;
-                transition: .5s;
-            }
+        .input-box input {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #333;
+            outline: none;
+            border-radius: 5px;
+            align-content: center;
+            font-size: 1em;
+            color: #fff;
+            padding: 0 10px 0 35px;
+            transition: .5s;
+        }
+
+        .input-box .ComboBox {
+            width: 100%;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #333;
+            outline: none;
+            border-radius: 5px;
+            align-content: center;
+            font-size: 1em;
+            color: #fff;
+            padding: 0 10px 0 35px;
+            transition: .5s;
+        }
+
+        option{
+            color: #000;
+        }
+
+        .wrapper:hover .ComboBox {
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px #fff, inset 0 0 10px #fff;
+        }
 
         .wrapper:hover .input-box input {
             border: 2px solid #fff;
@@ -244,13 +267,21 @@
                 </div>
                 <div class="input-box">
                     <span class="icon">
+                        <ion-icon name="home"></ion-icon>
+                    </span>
+                    <select name="select" class="ComboBox"  id="cboComuna" required="required">
+
+                    </select>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
                         <ion-icon name="call"></ion-icon>
                     </span>
                     <input id="txtTelefono" cssclass="isNumero" maxlength="9" placeholder="Ingrese Número Teléfono (ej:912345678)" required="required" />
                 </div>
                 <div class="input-box">
                     <span class="icon">
-                        <ion-icon name="mail"></ion-icon>
+                        <ion-icon name="calendar-outline"></ion-icon>
                     </span>
                     <input id="txtFechaNacimiento" type="date" placeholder="Ingrese Fecha Nacimiento (ej: 27-05-2001)" required="required" />
                 </div>
@@ -290,7 +321,7 @@
             <div align="center" id="RegistroExitoso" class="hide">
                 <img src="/Imagenes/Iconos/logoCerveza8.png" height="160">
                 <div class="register-link">
-                    <p>Su contraseña ha sido cambiada con exito!!</p>
+                    <p>Su cuenta ha sido creada exitosamente!!</p>
                 </div>
                 <div class="register-link">
                     <p><a class="abrirLogin" style="cursor: pointer">Volver al login</a></p>
@@ -372,6 +403,8 @@
 
         $(document).ready(function () {
 
+            CargarComuna()
+
             $('.AbrirRegistrar').on('click', function () {
 
                 if (!$('#formLogin').hasClass("hide")) {
@@ -388,7 +421,7 @@
                     $('.wrapper').css("height", "40vh");
                 }
                 else {
-                    $('.wrapper').css("height", "85vh");
+                    $('.wrapper').css("height", "90vh");
                 }
 
 
@@ -546,6 +579,7 @@
                 var fehcaNacimineto = $('#txtFechaNacimiento').val()
                 var email = $('#txtEmailRegistro').val()
                 var pass = $('#txtConfirmarContrasena').val()
+                var comuna = $('#cboComuna').val() 
 
                 if (codigo.trim() == CodigoVerificacin.trim()) {
                     $.ajax({
@@ -555,7 +589,7 @@
                         contentType: 'application/json; charset=utf-8',
                         async: false,
                         dataType: 'json',
-                        data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'direccion': direccion, 'telefono': telefono, 'fehcaNacimineto': fehcaNacimineto, 'email': email, 'pass': pass, }),
+                        data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'direccion': direccion, 'comuna': comuna, 'telefono': telefono, 'fehcaNacimineto': fehcaNacimineto, 'email': email, 'pass': pass, }),
                         success: function (data) {
                             if (data.d) {
                                 $('#VerificacionCorreo').addClass('hide');
@@ -706,6 +740,33 @@
             });
 
         });
+
+        function CargarComuna(){
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Login/Login.aspx/ObtenerComunas") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+                        html += "<option value='0'>Seleccione...</option>";
+                        $.each(data.d, function (i, val) {
+                            html += "<option value='" + val.id_comuna + "'>" + val.nombre_comuna + ", " + val.nombre_region + "</option>";
+                        });
+
+                        $('#cboComuna').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+        }
 
         function validarCorreoFormato(correo) {
             var expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

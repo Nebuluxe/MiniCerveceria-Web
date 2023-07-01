@@ -4,7 +4,6 @@ using System.Linq;
 using System.Data;
 using MiniCerveceria.Modelos;
 using System.Web;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MiniCerveceria.Servicios.Implementacion
 {
@@ -235,6 +234,52 @@ namespace MiniCerveceria.Servicios.Implementacion
 				return lista;
 			}
 		}
+
+        public void EnviarComentario(ComentarioProducto obj)
+        {
+            int id = ObtenerIDComentario();
+
+			string query = "INSERT INTO comentarioproducto(id_com_producto, id_usuario, id_producto, texto, fecha, estado, puntuacion)" +
+                         " VALUES (" + id + ", " + obj.id_usuario + "," + obj.id_producto + ",'" + obj.texto + "', CURRENT_DATE , 1, " + obj.puntuacion + ")";
+
+			db.Execute(query);
+		}
+
+        public IList<ComentarioProducto> ObtenerComentarios()
+        {
+            string query = "select tbl1.id_com_producto, tbl1.id_usuario, tbl1.id_producto, tbl1.texto, tbl1.fecha, tbl1.estado, tbl1.puntuacion, tbl2.nombre_producto, tbl2.url_img AS url_img_prod, tbl3.nombre, tbl3.apellido, tbl3.url_img AS url_img_user  from comentarioproducto tbl1 JOIN productos tbl2 ON tbl1.id_producto = tbl2.id_producto JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario";
+
+			DataTable dt = db.Execute(query);
+
+			IList<ComentarioProducto> lista = new List<ComentarioProducto>();
+
+			if (dt.Rows.Count > 0)
+			{
+				lista = (from DataRow rw in dt.Rows
+						 select new ComentarioProducto()
+						 {
+							 id_com_producto = Convert.ToInt32(rw["id_com_producto"]),
+							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_producto = Convert.ToInt32(rw["id_producto"]),
+							 texto = Convert.ToString(rw["texto"]),
+							 fecha = Convert.ToDateTime(rw["fecha"]).ToString("dd-MM-yyy"),
+							 estado = (Convert.ToInt32(rw["estado"]) == 1 ? true : false),
+							 puntuacion = Convert.ToInt32(rw["puntuacion"]),
+							 nombre_producto = Convert.ToString(rw["nombre_producto"]),
+							 url_img_prod = Convert.ToString(rw["url_img_prod"]),
+							 nombre = Convert.ToString(rw["nombre"]),
+							 apelido = Convert.ToString(rw["apellido"]),
+							 url_img_user = Convert.ToString(rw["url_img_user"])
+						 }
+						).ToList();
+				return lista;
+			}
+			else
+			{
+				return lista;
+			}
+		}
+
         private int obtenerStockActual(int id_producto)
         {
 			string query = @"SELECT stock FROM productos WHERE id_producto = " + id_producto;
@@ -249,18 +294,45 @@ namespace MiniCerveceria.Servicios.Implementacion
 						   stock = Convert.ToInt32(rw["stock"])
 					   }
 					  ).FirstOrDefault();
+				return obj.stock;
 			}
-				
-
-			return obj.stock;
+            else
+            {
+                return 0;
+            }	
 		}
 
         private int ObtenerIDProducto()
         {
-            string query = @"SELECT MAX(id_producto) AS idProducto FROM productos";
-            DataTable dt = db.Execute(query);
-            int idUsuario = Convert.ToInt32(dt.Rows[0]["idProducto"]);
-            return idUsuario + 1;
+            try
+            {
+				string query = @"SELECT MAX(id_producto) AS idProducto FROM productos";
+				DataTable dt = db.Execute(query);
+				int idUsuario = Convert.ToInt32(dt.Rows[0]["idProducto"]);
+				return idUsuario + 1;
+
+			}
+            catch (Exception)
+            {
+                return 1;
+                throw;
+            }
         }
-    }
+
+		private int ObtenerIDComentario()
+		{
+            try
+            {
+				string query = @"SELECT MAX(id_com_producto) AS idComentario FROM comentarioproducto";
+				DataTable dt = db.Execute(query);
+				int idUsuario = Convert.ToInt32(dt.Rows[0]["idComentario"]);
+				return idUsuario + 1;
+			}
+            catch (Exception)
+            {
+                return 1;
+                throw;
+            }
+		}
+	}
 }
