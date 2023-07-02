@@ -55,7 +55,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static Usuario ObteneSatosUSuario()
+		public static Usuario ObteneDatosUsuario()
 		{
 			try
 			{
@@ -70,7 +70,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static void ActualizarDatos(string nombre,string apellido, string fechanacimiento, string direccion, string email, string telefono)
+		public static void ActualizarDatos(string nombre,string apellido, string fechanacimiento, string direccion, string email, string telefono, string comuna)
 		{
 			try
 			{
@@ -84,6 +84,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				oUsuario.direccion = direccion;
 				oUsuario.email = email;
 				oUsuario.telefono = Convert.ToInt32(telefono);
+				oUsuario.id_comuna = Convert.ToInt32(comuna);
 
 				UsuarioApp.ActualizarUsuario(oUsuario);
 			}

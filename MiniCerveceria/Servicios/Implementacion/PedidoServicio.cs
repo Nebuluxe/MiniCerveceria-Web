@@ -23,12 +23,12 @@ namespace MiniCerveceria.Servicios.Implementacion
                                 "v_id_usuario NUMBER(10) := " + obj.id_usuario + "; " +
                             "BEGIN " +
                                 "SELECT COUNT(MAX(id_pedido)) + 1 INTO v_id_pedido FROM pedido GROUP BY id_pedido; " +
-                                "INSERT INTO pedido (id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor) " +
-                                "VALUES (v_id_pedido, v_id_usuario, CURRENT_DATE, CURRENT_DATE, '" + obj.direccion_envio + "', " + obj.costo_envio + ", " + obj.subtotal + ", " + obj.total + ", " + obj.estado + ", '" + obj.nombre_receptor + "'); " +
+								"INSERT INTO pedido (id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor, id_comuna) " +
+                                "VALUES (v_id_pedido, v_id_usuario, CURRENT_DATE, CURRENT_DATE, '" + obj.direccion_envio.Replace("'", "''") + "', " + obj.costo_envio + ", " + obj.subtotal + ", " + obj.total + ", " + obj.estado + ", '" + obj.nombre_receptor.Replace("'", "''") + "'," + obj.id_comuna + "); " +
                             "EXCEPTION " +
                                 "WHEN no_data_found THEN  " +
-                                    "INSERT INTO pedido (id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor) " +
-                                    "VALUES (1, v_id_usuario, CURRENT_DATE, CURRENT_DATE, '" + obj.direccion_envio + "', " + obj.costo_envio + ", " + obj.subtotal + ", " + obj.total + ", " + obj.estado + ", '" + obj.nombre_receptor + "'); " +
+									"INSERT INTO pedido (id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor, id_comuna) " +
+                                    "VALUES (1, v_id_usuario, CURRENT_DATE, CURRENT_DATE, '" + obj.direccion_envio.Replace("'","''") + "', " + obj.costo_envio + ", " + obj.subtotal + ", " + obj.total + ", " + obj.estado + ", '" + obj.nombre_receptor.Replace("'", "''") + "', " + obj.id_comuna + "); " +
                             "END;";
             db.Execute(query);
         }
@@ -42,7 +42,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
         public IList<Pedido> ObtenerPedidosUsuario(int id_usuario)
         {
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado != 4";
+			string query = "SELECT id_pedido, id_usuario, id_comuna, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado != 4";
 			DataTable dt = db.Execute(query);
 
 			IList<Pedido> lista = new List<Pedido>();
@@ -53,6 +53,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 						 {
 							 id_pedido = Convert.ToInt32(rw["id_pedido"]),
 							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_comuna = Convert.ToInt32(rw["id_comuna"]),
 							 fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]).ToString("dd-MM-yyyy"),
 							 fecha_entrega = Convert.ToDateTime(rw["fecha_entrega"]).ToString("dd-MM-yyyy"),
 							 direccion_envio = Convert.ToString(rw["direccion_envio"]),
@@ -73,7 +74,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
 		public IList<Pedido> ObtenerComprasUsuario(int id_usuario)
 		{
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado = 4";
+			string query = "SELECT id_pedido, id_usuario, id_comuna, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario + " AND estado = 4";
 			DataTable dt = db.Execute(query);
 
 			IList<Pedido> lista = new List<Pedido>();
@@ -84,6 +85,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 						 {
 							 id_pedido = Convert.ToInt32(rw["id_pedido"]),
 							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_comuna = Convert.ToInt32(rw["id_comuna"]),
 							 fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]).ToString("dd-MM-yyyy"),
 							 fecha_entrega = Convert.ToDateTime(rw["fecha_entrega"]).ToString("dd-MM-yyyy"),
 							 direccion_envio = Convert.ToString(rw["direccion_envio"]),
@@ -112,7 +114,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 			}
 
 
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido " + validacion;
+			string query = "SELECT id_pedido, id_usuario, id_comuna, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido " + validacion;
 			DataTable dt = db.Execute(query);
 
 			IList<Pedido> lista = new List<Pedido>();
@@ -123,6 +125,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 						 {
 							 id_pedido = Convert.ToInt32(rw["id_pedido"]),
 							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_comuna = Convert.ToInt32(rw["id_comuna"]),
 							 fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]).ToString("dd-MM-yyyy"),
 							 fecha_entrega = Convert.ToDateTime(rw["fecha_entrega"]).ToString("dd-MM-yyyy"),
 							 direccion_envio = Convert.ToString(rw["direccion_envio"]),
@@ -143,7 +146,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
 		public Pedido ObtenerPedido(int id_pedido, int id_usuario)
         {
-			string query = "SELECT id_pedido, id_usuario, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido;
+			string query = "SELECT id_pedido, id_usuario, id_comuna, fecha_creacion, fecha_entrega, direccion_envio, costo_envio, subtotal, total, estado, nombre_receptor FROM pedido WHERE id_usuario = " + id_usuario  + " AND id_pedido = " + id_pedido;
 			DataTable dt = db.Execute(query);
 
 			Pedido Pedido = new Pedido();
@@ -153,6 +156,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 						{
 							id_pedido = Convert.ToInt32(rw["id_pedido"]),
 							id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							id_comuna = Convert.ToInt32(rw["id_comuna"]),
 							fecha_creacion = Convert.ToString(rw["fecha_creacion"]),
 							fecha_entrega = Convert.ToString(rw["fecha_entrega"]),
 							direccion_envio = Convert.ToString(rw["direccion_envio"]),

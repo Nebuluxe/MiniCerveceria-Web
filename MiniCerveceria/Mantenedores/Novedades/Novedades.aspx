@@ -49,7 +49,7 @@
                 </div>
             </div>
             <button type="button" id="btnAgregarHide" class="visually-hidden" data-bs-toggle="modal" data-bs-target="#modalAgregarNovedad"></button>
-            <a id="btnAgregar" data-title="Agregar novedad">
+            <a id="btnAgregar" data-title="Agregar novedad" style="cursor:pointer">
                 <img src="/Imagenes/Iconos/btnAgregar.png" class="d-flex" height="40" width="40">
             </a>
         </div>

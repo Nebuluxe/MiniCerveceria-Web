@@ -122,7 +122,7 @@ namespace MiniCerveceria.CarritoCompras
             }
         }
         [WebMethod(EnableSession = true)]
-        public static int CrearPedido(string direccion_envio, int costo_envio, int subtotal, int total, string nombre_receptor, int estado)
+        public static int CrearPedido(string direccion_envio, int costo_envio, int subtotal, int total, string nombre_receptor, int estado, int idComuna)
         {
             int id_pedido = 0;
             try
@@ -136,7 +136,9 @@ namespace MiniCerveceria.CarritoCompras
                 oPedido.total = total;
                 oPedido.estado = estado;
                 oPedido.nombre_receptor = nombre_receptor;
-                pedidoApp.CrearPedido(oPedido);
+                oPedido.id_comuna = idComuna;
+
+				pedidoApp.CrearPedido(oPedido);
                 return id_pedido = pedidoApp.ObtenerIdUltimoPedidoUsuario(oUsuario.id_usuario);
             }
             catch (Exception)

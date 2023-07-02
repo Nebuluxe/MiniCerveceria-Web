@@ -133,11 +133,9 @@
 								</div>
 								<div class="col-lg-4">
 									<br />
-									<input type="text" id="txtRegion" class="form-control" placeholder="Region"/>
-								</div>
-								<div class="col-lg-4">
-									<br />
-									<input type="text" id="txtComuna" class="form-control" placeholder="Comuna"/>
+									<select name="select" class="form-select"  id="cboComuna">
+
+									</select>
 								</div>
 							</div>
 						</div>
@@ -163,6 +161,8 @@
 	<script>
 		$(document).ready(function () {
 			cargarCarritoCompra();
+            CargarComuna()
+
 			$('#ContinuarCompra').on('click', function () {
 				$('#ContentDireccionyCompra').removeClass('visually-hidden');
 				$('#ContinuarCompra').addClass('visually-hidden');
@@ -308,11 +308,12 @@
 
 		function CrearPedido() {
 			
-            var direccion_envio = "" + $("#txtDireccion").val().trim() + ", " + $("#txtNumeroDomicilio").val().trim() + ", " + $("#txtComuna").val().trim() + ", " + $("#txtRegion").val().trim() + "";
+            var direccion_envio = "" + $("#txtDireccion").val().trim() + ", " + $("#txtNumeroDomicilio").val().trim() + ", " + $("#cboComuna").find('option:selected').text().trim();
 			var costo_envio = 10000;
             var subtotal = $("#lblSubTotal").text();
 			var total = $("#lblTotal").text();
 			var nombre_receptor = "" + $("#txtNombre").val().trim() + " " + $("#txtApellido").val().trim() + "";
+            var idComuna = $("#cboComuna").val()
             console.log(direccion_envio); console.log(costo_envio); console.log(subtotal); console.log(total); console.log(nombre_receptor);
             $.ajax({
                 type: 'POST',
@@ -321,13 +322,20 @@
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 data: JSON.stringify({
-                    'direccion_envio': direccion_envio.trim(), 'costo_envio': costo_envio, 'subtotal': subtotal, 'total': total, 'nombre_receptor': nombre_receptor.trim(), 'estado':1
+                    'direccion_envio': direccion_envio.trim(), 'costo_envio': costo_envio, 'subtotal': subtotal, 'total': total, 'nombre_receptor': nombre_receptor.trim(), 'estado': 1, 'idComuna': idComuna
 					}),
                 async: false,
                 success: function (data) {
                     if (data.d != 0) {
-                        console.log("Se creó pedido");
-                        CrearDetallePedido(data.d);
+                        Command: toastr["success"]("Pago exitoso, te enviaremos un correo co el detalle de tu compra, tambien puedes revisar el detalle desde tu cuenta podras revisar el estado de tu pedido")
+						CrearDetallePedido(data.d);
+
+                        $("#VaciarCarrito").css('display', 'none');
+                        $("#CartaMontos").css('display', 'none');
+						$(".table").css('display', 'none');
+                        $('#ContentDireccionyCompra').addClass('visually-hidden');
+                        var html = "<div class='row' style='text-align:center;'><h3>Usted no tiene productos agregados al carrito de compras.</h3><center><a href='/Ventanas/Productos/Productos.aspx' class='btn btn-warning col-lg-2'>Ver productos</a></center></div>";
+                        $("#CartaCarrito").append(html);
                     } else {
                         console.log("No se eliminó el carrito");
                     }
@@ -348,6 +356,33 @@
                 async: false,
                 success: function (data) {
                     console.log("Se generaron de pana las lineas de detalledelpedido y se eliminó el carrito");
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+		}
+
+        function CargarComuna() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Login/Login.aspx/ObtenerComunas") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+                        html += "<option value='0'>Seleccione...</option>";
+                        $.each(data.d, function (i, val) {
+                            html += "<option value='" + val.id_comuna + "'>" + val.nombre_comuna + ", " + val.nombre_region + "</option>";
+                        });
+
+                        $('#cboComuna').html(html);
+                    }
                 },
                 error: function (data) {
                     alert("Algo ha salido mal!!!");

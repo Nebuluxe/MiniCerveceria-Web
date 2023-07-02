@@ -22,6 +22,11 @@ namespace MiniCerveceria.Login
 		private static string correo_host = Convert.ToString(ConfigurationManager.AppSettings["correo_host"]);
 		private static string password_host = Convert.ToString(ConfigurationManager.AppSettings["password_host"]);
 
+		private static string MasterAdmin = Convert.ToString(ConfigurationManager.AppSettings["MasterAdminUser"]);
+		private static string Pass = Convert.ToString(ConfigurationManager.AppSettings["MasterAdminPass"]);
+
+		public string spus = MasterAdmin;
+
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IUsuarioAplicacionServicios UsuarioService = new UsuarioServicio(conn);
 		static IComunaAplicacionServicio ComunaApp = new ComunaServicio(conn);
@@ -61,7 +66,7 @@ namespace MiniCerveceria.Login
 				string Email = txtEmailLogin.Text;
 				string pass = txtContrasenaLogin.Text;
 
-				if (Email == "MasterAdmin" && pass == "masteradmin")
+				if (Email == MasterAdmin && pass == Pass)
 				{
 					
 					admin.User = Email;
@@ -73,7 +78,7 @@ namespace MiniCerveceria.Login
 				
 				oUsuario = UsuarioService.UsuarioEmail(Email, pass);
 
-				if (oUsuario.email == null)
+				if (oUsuario.email == null || oUsuario.activo == 0)
 				{
 					return;
 				}

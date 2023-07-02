@@ -136,7 +136,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 			string query = string.Format(@"INSERT INTO productos " +
 				"(id_producto, nombre_producto, descripcion, precio, estado, fecha_creacion, fecha_modificacion, cbo_categoria, url_img, sub_categoria, stock, novedad) " +
 				"VALUES ({0}, '{1}', '{2}', {3}, {4}, TO_DATE('{5}', 'DD-MM-YYYY HH24:MI:SS'), TO_DATE('{6}', 'DD-MM-YYYY HH24:MI:SS'), {7}, '{8}', {9}, 0, 0)",
-				id, obj.nombre_producto, obj.descripcion, obj.precio,(obj.estado ? 1 : 0 ), obj.fecha_creacion, obj.fecha_modificacion, obj.categoria, obj.URL_img, obj.sub_categoria);
+				id, obj.nombre_producto.Replace("'", "''"), obj.descripcion.Replace("'", "''"), obj.precio,(obj.estado ? 1 : 0 ), obj.fecha_creacion, obj.fecha_modificacion, obj.categoria, obj.URL_img, obj.sub_categoria);
             db.Execute(query);
         }
 

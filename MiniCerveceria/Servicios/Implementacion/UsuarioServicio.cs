@@ -21,7 +21,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         {
             string query = @"INSERT INTO usuario " +
                 "(id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion, url_img) " +
-                "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre + "', '" + obj.apellido + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), null)";
+                "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre.Replace("'", "''") + "', '" + obj.apellido.Replace("'", "''") + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password.Replace("'", "''") + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), null)";
             db.Execute(query);
         }
         public void InHabiliatarCuentaUsuario(int UsuarioID)
@@ -177,8 +177,8 @@ namespace MiniCerveceria.Servicios.Implementacion
         public void ActualizarUsuario(Usuario obj)
         {
             string query = string.Format(@"UPDATE usuario SET " +
-				" nombre = '{1}', apellido = '{2}', direccion = '{3}', telefono = {4}, fecha_nacimiento = TO_DATE('{5}', 'DD/MM/YYYY HH24:MI:SS'), email = '{6}'" +
-				"WHERE id_usuario = {0}", obj.id_usuario, obj.nombre, obj.apellido, obj.direccion, obj.telefono, obj.fecha_creacion, obj.email);
+				" nombre = '{1}', apellido = '{2}', direccion = '{3}', telefono = {4}, fecha_nacimiento = TO_DATE('{5}', 'DD/MM/YYYY HH24:MI:SS'), email = '{6}', id_comuna = {7}" +
+				"WHERE id_usuario = {0}", obj.id_usuario, obj.nombre, obj.apellido, obj.direccion, obj.telefono, obj.fecha_creacion, obj.email, obj.id_comuna);
             DataTable dt = db.Execute(query);
         }
 

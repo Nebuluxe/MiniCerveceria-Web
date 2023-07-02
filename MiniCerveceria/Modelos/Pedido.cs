@@ -9,6 +9,7 @@ namespace MiniCerveceria.Modelos
     {
         public int id_pedido { get; set; }
         public int id_usuario { get; set; }
+        public int id_comuna { get; set; }
         public string fecha_creacion { get; set; }
         public string fecha_entrega { get; set; }
         public string direccion_envio { get; set; }

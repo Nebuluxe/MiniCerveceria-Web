@@ -340,6 +340,8 @@
     <Content Include="Imagenes\Iconos\StockWithe.png" />
     <Content Include="Imagenes\Iconos\UserIconBlack.png" />
     <Content Include="Imagenes\Iconos\UserIconWithe.png" />
+    <Content Include="Imagenes\Iconos\LocationBlack.png" />
+    <Content Include="Imagenes\Iconos\LocationWhite.png" />
     <Content Include="Imagenes\map-image.png" />
     <Content Include="Imagenes\navbar-logo.png" />
     <Content Include="Imagenes\background.jpg" />
@@ -354,6 +356,7 @@
     <Content Include="Imagenes\user.png" />
     <Content Include="Login\LoginSingOut.aspx" />
     <Content Include="Mantenedores\Cursos\CursosInscritos.aspx" />
+    <Content Include="Mantenedores\Locaciones\Locaciones.aspx" />
     <Content Include="Mantenedores\Novedades\Novedades.aspx" />
     <Content Include="Mantenedores\Pedidos\DefaultPedidos.aspx" />
     <Content Include="Mantenedores\Productos\StockProducto.aspx" />
@@ -512,6 +515,13 @@
     </Compile>
     <Compile Include="Mantenedores\Cursos\CursosInscritos.aspx.designer.cs">
       <DependentUpon>CursosInscritos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Locaciones\Locaciones.aspx.cs">
+      <DependentUpon>Locaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Locaciones\Locaciones.aspx.designer.cs">
+      <DependentUpon>Locaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Novedades\Novedades.aspx.cs">
       <DependentUpon>Novedades.aspx</DependentUpon>

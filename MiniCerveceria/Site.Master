@@ -387,49 +387,49 @@
             </div>
             <br />
 			<div class="offcanvas-body">
-                <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Mantenedores</strong>
+                <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Mantenedores</strong>
                 <br />
 		        <div>
 				    <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 250px" class="btn btn-dark" >Cursos</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="35" width="35">
 			    </div>
 			    <div>
 				    <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 250px" class="btn btn-dark" >Productos</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="35" width="35">
 			    </div>
 			    <div>
 				    <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 250px" class="btn btn-dark" >Novedades</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="35" width="35">
 			    </div>
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
+			    <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Stock</strong>
                 <div>
 				    <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 250px" class="btn btn-dark" >Stock Productos</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="35" width="35">
 			    </div>
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
+			    <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Pedidos</strong>
 			    <div>
 					<a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 250px" class="btn btn-dark" >Pedidos clientes</a><span> </span>
-					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="35" width="35">
 			    </div>
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
+			    <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Inscripciones</strong>
 			    <div>
 					<a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 250px" class="btn btn-dark" >Cursos inscitos</a><span> </span>
-					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="40" width="40">
 			    </div>
-			    <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
+			    <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Usuarios</strong>
 			    <div>
 				    <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 250px" class="btn btn-dark" >Usuarios</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="35" width="35">
 			    </div>
                 <div>
 				    <a runat="server" href="~/Mantenedores/Usuarios/Permisos.aspx" style="width: 250px" class="btn btn-dark" >Pefiles</a><span> </span>
-				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="45" width="45">
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="35" width="35">
 			    </div>
 			</div>
         </div>
         <div class="container-fluid" >
             <div class="row flex-nowrap">
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: rgb(0, 0, 0, .6) !important" id="SideMenuMantenedor">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: rgb(0, 0, 0, .6) !important; overflow-y: scroll; height: 100%" id="SideMenuMantenedor">
                     <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100" >
                         <div class="row offcanvas-header">
                             <div class="col-lg-8">
@@ -440,42 +440,47 @@
                             </div>
                         </div>
                         <br />
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Mantenedores</strong>
+			            <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Mantenedores</strong>
 		                <div>
 				            <a runat="server" href="~/Mantenedores/Cursos/DefaultCursos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Cursos</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="45" width="45">
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosWithe.png" height="35" width="35">
 			            </div>
 			            <div>
 				            <a runat="server" href="~/Mantenedores/Productos/DefaultProductos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Productos</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="45" width="45">
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ProductosWithe.png" height="35" width="35">
 			            </div>
 			            <div>
 				            <a runat="server" href="~/Mantenedores/Novedades/Novedades.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Novedades</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="45" width="45">
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StarWithe.png" height="35" width="35">
 			            </div>
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Stock</strong>
+			            <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Stock</strong>
                         <div>
 				            <a runat="server" href="~/Mantenedores/Productos/StockProducto.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Stock Productos</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="45" width="45">
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/StockWithe.png" height="35" width="35">
 			            </div>
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Pedidos</strong>
+			            <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Pedidos</strong>
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Pedidos/DefaultPedidos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Pedidos clientes</a><span> </span>
-					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="45" width="45">
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PedidosWithe.png" height="35" width="35">
 			            </div>
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Inscripciones</strong>
+			            <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Inscripciones</strong>
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Cursos/CursosInscritos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Cursos inscitos</a><span> </span>
-					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="50" width="50">
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/CursosInscritosWithe.png" height="40" width="40">
 			            </div>
-			            <strong class="titulo" style="font-size:1.9em; color: #ffffff;">Usuarios</strong>
+			            <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Usuarios</strong>
 			            <div>
 					        <a runat="server" href="~/Mantenedores/Usuarios/DefaultUsuarios.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Usuarios</a><span> </span>
-					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="45" width="45">
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/UsuariosWithe.png" height="35" width="35">
 			            </div>
                         <div>
 				            <a runat="server" href="~/Mantenedores/Usuarios/Permisos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Pefiles</a><span> </span>
-				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="45" width="45">
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="35" width="35">
+			            </div>
+                        <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Locaciones</strong>
+			            <div>
+					        <a runat="server" href="~/Mantenedores/Locaciones/Locaciones.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Comunas y regiones</a><span> </span>
+					        <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/LocationWhite.png" height="35" width="30">
 			            </div>
                     </div>
                 </div>
@@ -548,7 +553,7 @@
                 </div>
             </div>
         </footer>
-        <%--<script src="/Scripts/toastr.min.js"></script>--%>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js" integrity="sha512-6lplKUSl86rUVprDIjiW8DuOniNX8UDoRATqZSds/7t6zCQZfaCe3e5zcGaQwxa8Kpn5RTM9Fvl3X2lLV4grPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     </form>
     <asp:PlaceHolder runat="server">

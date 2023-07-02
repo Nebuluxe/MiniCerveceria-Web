@@ -38,7 +38,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                                                         "url_img," +
                                                         "fecha_creacion," +
                                                         "fecha_modificacion) " +
-                                     " VALUES(v_id_curso, '" + obj.nombre_curso + "', '" + obj.descripcion + "', " + obj.precio + ", " + obj.estado + ", '" + obj.URL_img + "', CURRENT_DATE, CURRENT_DATE); " +
+                                     " VALUES(v_id_curso, '" + obj.nombre_curso.Replace("'", "''") + "', '" + obj.descripcion.Replace("'", "''") + "', " + obj.precio + ", " + obj.estado + ", '" + obj.URL_img + "', CURRENT_DATE, CURRENT_DATE); " +
                                  " END IF;" +
                             " END;";
             db.Execute(query);

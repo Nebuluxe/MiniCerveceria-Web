@@ -58,8 +58,12 @@
         }
 
         .itemList {
-            padding: 5px;
+            padding: 2px;
             cursor: pointer;
+        }
+
+        .itemList:hover{
+            background:rgba(0,0,0,.2);
         }
 
         .group {
@@ -282,10 +286,6 @@
                 </div>
             </div>
         </div>
-                </a>
-            </div>
-        </div>
-      </div>
     </div>
     <br />
     <div class="card sizeOptionsCard" id="VerDatos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
@@ -350,6 +350,9 @@
                 <br />
                 <br />
                 <br />
+            </div>
+        </div>
+    </div>
     <div class="card visually-hidden" id="Compras" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body" align="center">
             <div class="row" id="TablaCompreas">
@@ -428,7 +431,7 @@
                             </div>
                             <div id="ComentarioProductoCompra" class="row visually-hidden">
                                 <div class="col-lg-1">
-                                    <a style="cursor:pointer" id="CerrarComentarioCompra"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
+                                    <a style="cursor:pointer" onclick="CerrarComentarioCompra()"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
                                 </div>
                                 <div class="col-lg-12">
                                     <h5>Danos tu opinion sobre el producto "<span id="nomProdCompra"></span>"</h5>
@@ -654,7 +657,7 @@
                             </div>
                             <div id="ComentarioProductoPedido" class="row visually-hidden">
                                 <div class="col-lg-1">
-                                    <a style="cursor:pointer" id="CerrarComentarioPedido"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
+                                    <a style="cursor:pointer" onclick="CerrarComentarioPedido()"><img src="/Imagenes/Iconos/CloseButtonBlack.png" width="35" /></a>
                                 </div>
                                 <div class="col-lg-12">
                                     <h5>Danos tu opinion sobre el producto "<span id="nomProdPedido"></span>"</h5>
@@ -739,16 +742,12 @@
                 <br />
             </div>
         </div>
-            <a href="/Ventanas/Cursos/Cursos.aspx"class="btn btn-warning">Ver cursos</a>
-            <br /><br /><br /><br /><br /><br /><br /><br />
-        </div>  
-      </div>
     </div>
     <div class="card visually-hidden sizeOptionsCard" id="ModificarDatos" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-12">
-                    <a id="CerrarEditar">
+                    <a id="CerrarEditar" style="cursor:pointer">
                         <img src="/Imagenes/Iconos/CloseButtonBlack.png" height="35">
                     </a>
                 </div>
@@ -778,17 +777,23 @@
                     <input type="email" class="form-control" id="EditarEmail" placeholder="EmailExample@gmail.com">
                 </div>
                 <div class="col-lg-4">
-                    <label for="telefono" class="form-label">telefono</label>
+                    <label for="telefono" class="form-label">Telefono</label>
                     <input class="form-control isNumero" id="EditarNumero" maxlength="9" placeholder="9 9999 9999">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <label for="telefono" class="form-label">Comuna</label>
+                    <select name="select" class="form-select"  id="cboComuna">
+
+					</select>
                 </div>
             </div>
             <br />
             <div class="col-12">
                 <button class="btn btn-outline-warning" id="ConfirmCambios">Guardar Cambios</button>
             </div>
-          </div>
         </div>
-      </div>
     </div>
     <!-- blob a 64 -->
     <div class="visually-hidden">
@@ -1066,6 +1071,7 @@
                 var direccion = $('#EditarDireccion').val();
                 var email = $('#EditarEmail').val();
                 var numero = $('#EditarNumero').val();
+                var comuna = $('#cboComuna').val();
 
                 $.ajax({
                     type: 'POST',
@@ -1074,7 +1080,7 @@
                     contentType: 'application/json; charset=utf-8',
                     async: false,
                     dataType: 'json',
-                    data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'fechanacimiento': fecnac, 'direccion': direccion, 'email': email, 'telefono': numero }),
+                    data: JSON.stringify({ 'nombre': nombre, 'apellido': apellido, 'fechanacimiento': fecnac, 'direccion': direccion, 'email': email, 'telefono': numero, 'comuna': comuna }),
                     success: function (data) {
                         Command: toastr["success"]("Los cambios se han realizado correctamentes")
                     },
@@ -1102,10 +1108,9 @@
                     },
                     error: function (data) {
 
-            $('#CerrarComentarioPedido').on('click', function () {
-                $('#DetallePedido').removeClass('visually-hidden')
-                $('#ComentarioProductoPedido').addClass('visually-hidden')
-            })
+                    }
+                });
+            });
 
             $('#enviarComentarioProductoPedido').on('click', function () {
                 var id = $('#idProdPedido').text();
@@ -1142,11 +1147,6 @@
                         alert("Algo ha salido mal!!!");
                     }
                 });
-            })
-
-            $('#CerrarComentarioCompra').on('click', function () {
-                $('#DetalleCompra').removeClass('visually-hidden')
-                $('#ComentarioProductoCompra').addClass('visually-hidden')
             })
 
             $('#enviarComentarioProductoCompra').on('click', function () {
@@ -1186,10 +1186,6 @@
                 });
             })
 
-                    }
-                });
-            });
-            
             let cropper = null;
             $("#btnTob64").on('submit', function (evt) {
                 evt.preventDefault();
@@ -1324,6 +1320,16 @@
             });
         });
 
+        function CerrarComentarioPedido() {
+            $('#DetallePedido').removeClass('visually-hidden')
+            $('#ComentarioProductoPedido').addClass('visually-hidden')
+        }
+
+        function CerrarComentarioCompra() {
+            $('#DetalleCompra').removeClass('visually-hidden')
+            $('#ComentarioProductoCompra').addClass('visually-hidden')
+        }
+
         function Eliminar(id) {
             $.ajax({
                 type: 'POST',
@@ -1391,10 +1397,11 @@
         }
 
         function CargarInformacion() {
+            CargarComuna()
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObteneSatosUSuario") %>',
+                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObteneDatosUsuario") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
@@ -1413,6 +1420,8 @@
                         $('#EditarDireccion').val(data.d.direccion);
                         $('#EditarEmail').val(data.d.email);
                         $('#EditarNumero').val(data.d.telefono);
+
+                        $("#cboComuna option[value=" + data.d.id_comuna + "]").attr("selected", true);
                     }
                 },
                 error: function (data) {
@@ -1595,8 +1604,12 @@
 
                         var html = "";
 
+                        
+
                         $.each(data.d.DetallePedido, function (i, val) {
-                                '<td colspan="2">' + val.nombre_producto + '</td>' +
+                            var nom = "'" + val.nombre_producto + "'";
+
+                            html += '<td colspan="2">' + val.nombre_producto + '</td>' +
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
@@ -1609,6 +1622,13 @@
                         });
 
                         $('#ContenidoTablcompraDetalle').html(html);
+
+                        if (data.d.estado == 1) {
+                            $('#preparacion').removeClass('visually-hidden');
+                            $('#entrega').addClass('visually-hidden');
+                            $('#camino').addClass('visually-hidden');
+                            $('#entregado').addClass('visually-hidden');
+                        }
 
                         if (data.d.estado == 2) {
                             $('#preparacion').addClass('visually-hidden');
@@ -1642,7 +1662,6 @@
 
 
         function ObtenerDetalleCompra(idPedido) {
-            console.log("entreeee")
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -1692,7 +1711,6 @@
 
 
         function ObtenerDetalleCompra(idPedido) {
-            console.log("entreeee")
             $.ajax({
                 type: 'POST',
                 cache: false,
@@ -1857,5 +1875,32 @@
 
             $('#puntuacionCompra').text(puntuacion);
         }
+
+        function CargarComuna() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Login/Login.aspx/ObtenerComunas") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+
+                    var html = "";
+
+                    if (data.d != null) {
+                        html += "<option value='0'>Seleccione...</option>";
+                        $.each(data.d, function (i, val) {
+                            html += "<option value='" + val.id_comuna + "'>" + val.nombre_comuna + ", " + val.nombre_region + "</option>";
+                        });
+
+                        $('#cboComuna').html(html);
+                    }
+                },
+                error: function (data) {
+                    alert("Algo ha salido mal!!!");
+                }
+            });
+                }
     </script>
 </asp:Content>
