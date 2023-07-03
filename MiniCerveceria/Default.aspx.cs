@@ -193,13 +193,14 @@ namespace MiniCerveceria
 
 				foreach (var item in comentarios)
 				{
-					if (cont > 2)
+                    cont++;
+                    if (cont > 2)
 					{
 						break;
 					}
 
 					CursoFilttrado.Add(item);
-					cont++;
+					
 				}
 
 				return CursoFilttrado;

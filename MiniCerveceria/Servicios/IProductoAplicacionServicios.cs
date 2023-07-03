@@ -18,6 +18,7 @@ namespace MiniCerveceria.Servicios
 		void QuitarNovedad(int id_producto);
         IList<Producto> ListarNoveddades();
         void EnviarComentario(ComentarioProducto obj);
+        int ObtenerIDProducto();
         IList<ComentarioProducto> ObtenerComentarios();
 	}
 }

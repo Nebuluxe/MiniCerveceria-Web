@@ -245,7 +245,6 @@
         }
     </style>
     <br />
-
     <div class="card" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
         <div class="card-body">
             <div class="row" align="center">

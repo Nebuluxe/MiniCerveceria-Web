@@ -15,5 +15,6 @@ namespace MiniCerveceria.Servicios
 		void DeshabilitarCurso(int id_curso);
         void HabilitarCurso(int id_curso);
 		Curso ObtenerCurso(int id_curso);
+        int ObtenerIDCurso();
     }
 }

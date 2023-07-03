@@ -174,21 +174,23 @@
                             }
 
                             html += '<div class="col-lg-6">' +
-                                        '<div class="card cadContenedor">' +
-                                            '<div class="card-body">' +
+                                        '<div class="card cadContenedor" style="border-radius:2%;">' +
+                                            '<div class="card-body" style="border-radius: 2%;">' +
                                                 '<div class="row">' +
                                                     '<div class="col-md-7">' +
                                                         '<h2 class="featurette-heading fw-normal lh-1">' + val.nombre_curso + '</h2>' +
                                                         '<p class="lead">' + val.descripcion.substring(0, 170) + '...</p>' +
-                                                        '<spam class="visually-hidden idCurso">' + val.id_curso + '</span>' +
-                                                    '</div>' +
-                                                    '<div class="col-md-5">' +
-                                                        '<img src="' + val.URL_img + '" style="height: 225px; width: 225px" />' +
-                                                        '<button type="button" class="btn btn-outline-danger visually-hidden btnDeshabilitarHide" data-bs-toggle="modal" data-bs-target="#ModalDeshabiitar"></button>' +
-                                                        '<div class="btn-group" role="group" >' +
+                                                        '<div class="btn-group col-md-6" role="group">' +
                                                              buttons +
+                                                             DesHabButton +
                                                         '</div>' +
-                                                            DesHabButton +
+                                                             
+                                                        '<span class="visually-hidden idCurso">' + val.id_curso + '</span>' +
+                                                    '</div>' +
+                                                    
+                                                    '<div class="col-md-5">' +
+                                                         '<img src="' + val.URL_img + '" style="height: 225px; width: 225px; border-radius: 10%;" />' +
+                                                         '<button type="button" class="btn btn-outline-danger visually-hidden btnDeshabilitarHide" data-bs-toggle="modal" data-bs-target="#ModalDeshabiitar"></button>' +
                                                     '</div>' +
                                                 '</div>' +
                                             '</div>' +

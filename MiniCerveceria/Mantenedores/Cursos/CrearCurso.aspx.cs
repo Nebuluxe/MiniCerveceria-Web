@@ -10,6 +10,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static System.Data.Entity.Infrastructure.Design.Executor;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
+using System.IO;
 
 namespace MiniCerveceria.Mantenedores.Cursos
 {
@@ -73,25 +76,32 @@ namespace MiniCerveceria.Mantenedores.Cursos
 
 					if (uid != "")
 					{
-						Curso oCuerso = cursoApp.ObtenerCurso(Convert.ToInt32(uid));
+						Curso oCurso = cursoApp.ObtenerCurso(Convert.ToInt32(uid));
 
-						txtNombreProducto.Text = oCuerso.nombre_curso;
-						txtDescripcion.Text = oCuerso.descripcion;
-						txtPrecioProucto.Text = oCuerso.precio.ToString();
-						txtFechaCreacion.Text = oCuerso.fecha_creacion.ToString();
-						txtFechaModificacion.Text = oCuerso.fecha_modificacion.ToString();
-						ItemImagen.ImageUrl = oCuerso.URL_img;
-						hdnEstado.Value = oCuerso.estado.ToString();
+						txtNombreProducto.Text = oCurso.nombre_curso;
+						txtDescripcion.Text = oCurso.descripcion;
+						txtPrecioProucto.Text = oCurso.precio.ToString();
+						txtFechaCreacion.Text = oCurso.fecha_creacion.ToString();
+						txtFechaModificacion.Text = oCurso.fecha_modificacion.ToString();
+						hdnEstado.Value = oCurso.estado.ToString();
+                        if (oCurso.URL_img.Trim() != "")
+                        {
+                            imagenRecortada.ImageUrl = oCurso.URL_img.ToString();
+                        }
+                        else
+                        {
+                            imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
+                        }
 
-						CambioNomVentana.Text = "Editar curso";
-						lblNombreItem.Text = oCuerso.nombre_curso;
+                        CambioNomVentana.Text = "Editar curso";
+						lblNombreItem.Text = oCurso.nombre_curso;
 
-						update.Value = oCuerso.id_curso.ToString();
+						update.Value = oCurso.id_curso.ToString();
 					}
 					else
 					{
 						CambioNomVentana.Text = "Crear curso";
-						ItemImagen.ImageUrl = "/Imagenes/Iconos/NoImage.png";
+                        imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
 					}
 				}
 			}
@@ -114,9 +124,26 @@ namespace MiniCerveceria.Mantenedores.Cursos
 				oCurso.estado = 1;
 				oCurso.fecha_creacion = DateTime.Now;
 				oCurso.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
-				oCurso.URL_img = "/Imagenes/Iconos/NoImage.png";
+                string[] partesURL = hdnRuta.Value.Split(',');
+                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-				cursoApp.CrearCurso(oCurso);
+                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+                MemoryStream ms = new MemoryStream(imageBytes);
+                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+
+                oCurso.id_curso = cursoApp.ObtenerIDCurso();
+				
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(oCurso.id_curso.ToString(), ms),
+                    PublicId = oCurso.id_curso.ToString()
+                };
+
+                var uploadResult = cloud.Upload(uploadParams);
+
+                oCurso.URL_img = uploadResult.SecureUrl.ToString();
+                oCurso.id_curso = 0;
+                cursoApp.CrearCurso(oCurso);
 			}
 			catch (Exception)
 			{
@@ -132,15 +159,30 @@ namespace MiniCerveceria.Mantenedores.Cursos
 			{
 				Curso oCurso = new Curso();
 
-				oCurso.id_curso = Convert.ToInt32(update.Value);
-				oCurso.nombre_curso = txtNombreProducto.Text;
+                oCurso.id_curso = Convert.ToInt32(update.Value);
+                oCurso.nombre_curso = txtNombreProducto.Text;
 				oCurso.descripcion = txtDescripcion.Text;
 				oCurso.precio = Convert.ToInt32(txtPrecioProucto.Text);
 				oCurso.estado = Convert.ToInt32(hdnEstado.Value);
 				oCurso.fecha_modificacion = DateTime.Now;
-				oCurso.URL_img = "/Imagenes/Iconos/NoImage.png";
+                string[] partesURL = hdnRuta.Value.Split(',');
+                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-				cursoApp.CrearCurso(oCurso);
+                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+                MemoryStream ms = new MemoryStream(imageBytes);
+                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(oCurso.nombre_curso.ToString(), ms),
+                    PublicId = oCurso.id_curso.ToString()
+                };
+
+                var uploadResult = cloud.Upload(uploadParams);
+
+                oCurso.URL_img = uploadResult.SecureUrl.ToString();
+
+                cursoApp.CrearCurso(oCurso);
 			}
 			catch (Exception)
 			{

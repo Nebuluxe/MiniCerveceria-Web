@@ -159,10 +159,10 @@
 			</div>
 			<div class="col-lg-4">
                 <div class="container">
-                    <h5>Upload Images</h5>
+                    <h5>Upload Images</h5> 
                     <form method="post">
                         <asp:FileUpload ClientIDMode="Static" runat="server" type="file" name="image" class="image" ID="flImagen" style="width:100%;" />
-                        <asp:image ID="imagenRecortada" ClientIDMode="Static" src="/Imagenes/Iconos/NoImage.png" style="width:100%;border-radius: 5%;border: 5px solid #000;" runat="server" />
+                        <asp:image ID="imagenRecortada" ClientIDMode="Static" style="width:100%;border-radius: 5%;border: 5px solid #000;" runat="server" />
                     </form>
                 </div>
                 <asp:HiddenField  id="hdnRuta" ClientIDMode="Static" runat="server" />
@@ -203,7 +203,6 @@
         var bs_modal = $('#modal');
         var image = document.getElementById('image');
         var cropper, reader, file;
-        var arrayImagen;
 
         $("body").on("change", ".image", function (e) {
             var files = e.target.files;
@@ -248,14 +247,16 @@
             canvas.toBlob(function (blob) {
                 url = URL.createObjectURL(blob);
                 $("#imagenRecortada").attr('src', url);
-                $("#hdnRuta").val(url);
+
                 var reader = new FileReader();
                 reader.readAsDataURL(blob);
                 reader.onloadend = function () {
                     var base64data = reader.result;
                     $("#image").src = base64data;
+                    $("#hdnRuta").val(base64data);
+
+
                     bs_modal.modal('hide');
-                    alert("success upload image");
                 };
             });
             
