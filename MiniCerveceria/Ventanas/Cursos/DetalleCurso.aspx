@@ -148,7 +148,7 @@
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             })

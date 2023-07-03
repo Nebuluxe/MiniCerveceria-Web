@@ -150,19 +150,19 @@
                         data: JSON.stringify({ 'id_usuario': idUser, 'id_permiso': idPermiso }),
                         success: function (data) {
                             if (data.d) {
+                                Command: toastr["success"]("Se ha asignado el perfil correctamente")
                                 cargarUsuarios(true)
                                 $("#cboEstado option[value=1]").attr("selected", true);
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
                 }
                 else {
-                    Command: toastr["error"]("No tines permisos para eliminar")
+                    Command: toastr["error"]("No tines permisos para editar")
                 }
-            }
             });
 
             $('#confirmDeshabilitacion').on('click', function () {
@@ -179,14 +179,18 @@
                         data: JSON.stringify({ 'id_usuario': idUser, 'accion': false }),
                         success: function (data) {
                             if (data.d) {
+                                Command: toastr["success"]("Se ha deshabilitado el perfil correctamente")
                                 cargarUsuarios(false)
                                 $("#cboEstado option[value=0]").attr("selected", true);
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
+                }
+                else {
+                    Command: toastr["error"]("No tines permisos para editar")
                 }
             });
 
@@ -212,7 +216,7 @@
                 $('#NombeUsuario').text(nombre);
             }
             else {
-                Command: toastr["error"]("No tines permisos para eliminar")
+                Command: toastr["error"]("No tines permisos para editar")
             }
         }
 
@@ -228,17 +232,18 @@
                     data: JSON.stringify({ 'id_usuario': id, 'accion': true }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("Se ha habilitado el perfil correctamente")
                             cargarUsuarios(true)
                             $("#cboEstado option[value=1]").attr("selected", true);
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             }
             else {
-                Command: toastr["error"]("No tines permisos para eliminar")
+                Command: toastr["error"]("No tines permisos para editar")
             }
         }
 
@@ -251,7 +256,7 @@
                 $('#idUsuarioAsignar').text(id);
             }
             else {
-                Command: toastr["error"]("No tines permisos para eliminar")
+                Command: toastr["error"]("No tines permisos para editar")
             }
         }
 
@@ -267,12 +272,13 @@
                     data: JSON.stringify({ 'id_usuario': id, 'id_permiso': "" }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("Se ha quitado el perfil correctamente")
                             cargarUsuarios(true)
                             $("#cboEstado option[value=1]").attr("selected", true);
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             }
@@ -304,7 +310,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -358,7 +364,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }

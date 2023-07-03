@@ -152,24 +152,26 @@
                             type: 'POST',
                             cache: false,
                             url: '<%= ResolveUrl("/Mantenedores/Cursos/CursosInscritos.aspx/CambiarEstado") %>',
-                        contentType: 'application/json; charset=utf-8',
-                        async: false,
-                        dataType: 'json',
-                        data: JSON.stringify({ 'id_inscripcion': id_inscripcion, 'estado': estado }),
-                        success: function (data) {
+                            contentType: 'application/json; charset=utf-8',
+                            async: false,
+                            dataType: 'json',
+                            data: JSON.stringify({ 'id_inscripcion': id_inscripcion, 'estado': estado }),
+                            success: function (data) {
 
-                        },
-                        error: function (data) {
-                            Command: toastr["error"]("Algo ha salido mal!!!")
-                        }
+                            },
+                            error: function (data) {
+                                Command: toastr["error"]("Algo ha salido mal!!!")
+                            }
+                        });
                     });
-                                    });
+
+                    Command: toastr["success"]("Se ha cambiado el estado correctamente")
+
+                    cargarCursosInscritos()
                 }
                 else {
                     Command: toastr["error"]("No tines permisos para editar")
                 }
-
-                cargarCursosInscritos()
             })
 
             $('.chkitem').on('click', function () {

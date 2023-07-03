@@ -73,7 +73,7 @@
                     <th scope="row">Crear</th>
 			        <th scope="row">Editar</th>
                     <th scope="row">Ver</th>
-			        <th scope="row">Deshabilitar</th>
+			        <th scope="row">Deshabilitar/Eliminar</th>
                     <th scope="row">Acciones</th>
 		        </tr>
 		    </thead>

@@ -41,7 +41,7 @@ namespace MiniCerveceria.Login
 			try {
 				if (admin != null)
 				{
-					Session["MasterAdmin"] = oUsuario;
+					Session["MasterAdminSesion"] = admin;
 					Response.Redirect("~/Default.aspx", false);
 					return;
 				}

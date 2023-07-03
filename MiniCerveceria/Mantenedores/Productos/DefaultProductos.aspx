@@ -115,12 +115,13 @@
                         data: JSON.stringify({ 'id_producto': idProducto }),
                         success: function (data) {
                             if (data.d) {
+                                Command: toastr["success"]("El producto ha sido deshabilitado exitosamente")
                                 cargarProductos(false)
                                 $("#cboEstado option[value=0]").attr("selected", true);
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
                 }
@@ -211,7 +212,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -228,12 +229,13 @@
                     data: JSON.stringify({ 'id_producto': idProducto }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("El producto ha sido habilitado exitosamente")
                             cargarProductos(true)
                             $("#cboEstado option[value=1]").attr("selected", true);
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             }

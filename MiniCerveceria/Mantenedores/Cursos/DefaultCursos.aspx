@@ -108,6 +108,7 @@
                         data: JSON.stringify({ 'id_curso': idCurso }),
                         success: function (data) {
                             if (data.d) {
+                                Command: toastr["success"]("El curso ha sido deshabilitado exitosamente")
                                 cargarCursos(false)
                                 $("#cboEstado option[value=0]").attr("selected", true);
                             }
@@ -219,6 +220,7 @@
                     data: JSON.stringify({ 'id_curso': idCurso }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("El curso ha sido habilitado exitosamente")
                             cargarCursos(true)
                             $("#cboEstado option[value=1]").attr("selected", true);
                         }

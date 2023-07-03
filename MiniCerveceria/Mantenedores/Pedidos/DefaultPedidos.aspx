@@ -293,6 +293,7 @@
                     data: JSON.stringify({ 'id_pedido': idPedido, 'id_usuario': idUsaurio, 'estado': estado }),
                     success: function (data) {
                         if (data.d) {
+                            Command: toastr["success"]("El estado del pedido ha sido cambiado exitosamente")
                             cargarPedidos(estado)
                         }
                     },

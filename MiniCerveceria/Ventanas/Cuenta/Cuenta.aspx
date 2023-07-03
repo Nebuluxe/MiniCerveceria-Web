@@ -1084,7 +1084,7 @@
                         Command: toastr["success"]("Los cambios se han realizado correctamentes")
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             })
@@ -1143,7 +1143,7 @@
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             })
@@ -1180,7 +1180,7 @@
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
             })
@@ -1345,7 +1345,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1390,7 +1390,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1424,7 +1424,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1476,7 +1476,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1497,7 +1497,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1538,7 +1538,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1579,7 +1579,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1654,7 +1654,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1703,7 +1703,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1754,7 +1754,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -1897,9 +1897,9 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
-                }
+        }
     </script>
 </asp:Content>
