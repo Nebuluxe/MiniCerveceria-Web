@@ -351,7 +351,7 @@ namespace MiniCerveceria.Servicios.Implementacion
             }	
 		}
 
-        private int ObtenerIDProducto()
+        public int ObtenerIDProducto()
         {
             try
             {

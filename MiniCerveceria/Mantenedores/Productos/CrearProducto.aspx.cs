@@ -87,6 +87,15 @@ namespace MiniCerveceria.Mantenedores.Productos
 						txtFechaCreacion.Text = oProducto.fecha_creacion.ToString();
 						txtFechaModificacion.Text = oProducto.fecha_modificacion.ToString();
 						hdnEstado.Value = oProducto.estado.ToString();
+						if (oProducto.URL_img.Trim() != "")
+						{
+                            imagenRecortada.ImageUrl = oProducto.URL_img.ToString();
+                        }
+						else
+						{
+                            imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
+                        }
+						
 
 						CargarCboSubCate(oProducto.categoria);
 
@@ -100,7 +109,8 @@ namespace MiniCerveceria.Mantenedores.Productos
 					else
 					{
 						CambioNomVentana.Text = "Crear producto";
-					}
+                        imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
+                    }
 				}
 			}
             catch (Exception)
@@ -122,40 +132,30 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.estado = true;
                 oProducto.fecha_creacion = DateTime.Now;
 				oProducto.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
-                oProducto.URL_img = imagenRecortada.ImageUrl;
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
 
-				productoApp.CrearProducto(oProducto);
-
+                string[] partesURL = hdnRuta.Value.Split(',');
                 Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
+                
+                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+                MemoryStream ms = new MemoryStream(imageBytes);
+                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                MemoryStream ms = new MemoryStream();
-                ms = new MemoryStream(flImagen.FileBytes);
-
-                try
+                oProducto.id_producto = productoApp.ObtenerIDProducto();
+                var uploadParams = new ImageUploadParams()
                 {
-                    CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
-                    //string ruta = hdnRuta.Value;
-					string ruta = imagenRecortada.ImageUrl;
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(ruta, ms),
-						PublicId = oProducto.id_producto.ToString(),
-                    };
+                    File = new FileDescription(oProducto.id_producto.ToString(), ms),
+                    PublicId = oProducto.id_producto.ToString()
+                };
 
-                    var uploadResult = cloud.Upload(uploadParams);
-					
-                    ruta = uploadResult.SecureUrl.ToString();
-                    Response.Redirect(ruta);
-                }
-                catch (Exception)
-                {
+                var uploadResult = cloud.Upload(uploadParams);
 
-                    throw;
-                }
+                oProducto.URL_img = uploadResult.SecureUrl.ToString();
+                productoApp.CrearProducto(oProducto);
             }
             catch (Exception)
             {
+                imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
                 throw;
             }
 
@@ -175,44 +175,31 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.categoria = Convert.ToInt32(cboCategoria.SelectedValue);
 				oProducto.estado = Convert.ToBoolean(hdnEstado.Value);
 				oProducto.fecha_modificacion = DateTime.Now;
-				oProducto.URL_img = "/Imagenes/Iconos/NoImage.png";
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
-
-				productoApp.ActualizarProducto(oProducto);
-
+                
+				string[] partesURL = hdnRuta.Value.Split(',');
                 Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
-				byte[] imageBytes;
-                using (var webClient = new WebClient())
-                {
-					imageBytes = webClient.DownloadData(hdnRuta.Value) ;
-                }
+
+                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
                 MemoryStream ms = new MemoryStream(imageBytes);
+                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                try
+                var uploadParams = new ImageUploadParams()
                 {
-                    CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+                    File = new FileDescription(oProducto.id_producto.ToString(), ms),
+                    PublicId = oProducto.id_producto.ToString()
+                };
 
-                    var uploadParams = new ImageUploadParams()
-                    {
-                        File = new FileDescription(oProducto.id_producto.ToString(), ms),
-                        PublicId = oProducto.id_producto.ToString(),
-                    };
+                var uploadResult = cloud.Upload(uploadParams);
 
-                    var uploadResult = cloud.Upload(uploadParams);
-
-                    string ruta = uploadResult.SecureUrl.ToString();
-                    Response.Redirect(ruta);
-                }
-                catch (Exception)
-                {
-
-                    throw;
-                }
+                oProducto.URL_img = uploadResult.SecureUrl.ToString();
+                productoApp.ActualizarProducto(oProducto);
             }
             catch (Exception)
             {
+                imagenRecortada.ImageUrl = "/Imagenes/Iconos/NoImage.png";
                 throw;
-            }
+            } 
 
 			Response.Redirect("~/Mantenedores/Productos/DefaultProductos.aspx");
 		}

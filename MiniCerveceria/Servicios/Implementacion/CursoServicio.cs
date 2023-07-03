@@ -122,8 +122,23 @@ namespace MiniCerveceria.Servicios.Implementacion
                             "WHERE id_curso = " + id_curso;
             db.Execute(query);
         }
+        public int ObtenerIDCurso()
+        {
+            try
+            {
+                string query = @"SELECT MAX(id_curso) AS idCurso FROM curso";
+                DataTable dt = db.Execute(query);
+                int id_curso = Convert.ToInt32(dt.Rows[0]["idCurso"]);
+                return id_curso + 1;
 
-		public void HabilitarCurso(int id_curso)
+            }
+            catch (Exception)
+            {
+                return 1;
+                throw;
+            }
+        }
+        public void HabilitarCurso(int id_curso)
 		{
 			string query = @"UPDATE curso SET estado = 1 " +
 							"WHERE id_curso = " + id_curso;

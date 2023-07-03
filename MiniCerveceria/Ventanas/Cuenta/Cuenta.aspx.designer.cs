@@ -11,7 +11,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 {
 
 
-	public partial class Cuenta
-	{
-	}
+    public partial class Cuenta
+    {
+    }
 }

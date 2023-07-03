@@ -112,8 +112,8 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <div class="card FormCursoInterno" style="width: 100%;">
-                                <asp:image runat="server" ClientIDMode="Static" class="CardItem" id="ItemImagen" />
+                            <div class="card FormCursoInterno" style="width: 100%;border-radius:15px;">
+                                <asp:image runat="server" ClientIDMode="Static" class="CardItem" id="ItemImagen"  style="border-radius:15px;" />
                             </div>
                         </div>
                     </div>
