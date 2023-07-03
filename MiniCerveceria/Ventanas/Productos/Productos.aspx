@@ -71,6 +71,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <br />
+                    <div class="card optionItem" style="font-size: 20px; cursor: pointer" id="btnTodos">
+                        <strong>Todos los productos</strong>
+                    </div>
+                    <br />
                     <div class="card optionItem" style="font-size: 20px; cursor: pointer" id="btnNovedades">
                         <strong>Novedades</strong>
                     </div>
@@ -383,6 +387,16 @@
 
                 cargarProductos(0, 0, 'Novedades')
             })
+
+            $('#btnTodos').on('click', function () {
+                $("#nombreCategoridaHeader").text('Productos');
+                $("#TextBread1").text(NameCateHead);
+                $("#itemBreadbrum1").removeClass("OcultarElemento");
+                $("#itemBreadbrum1").removeAttr("href");
+
+                cargarProductos(0, 0, 'Productos')
+            })
+
         });
 
         function cargarProductos(idCate, idSubCate, novedad) {

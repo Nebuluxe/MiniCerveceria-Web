@@ -230,6 +230,11 @@ namespace MiniCerveceria.Ventanas.Cuenta
 			{
 				Usuario SesionUser = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
 
+				if (SesionUser == null)
+				{
+					return false;
+				}
+
 				ComentarioProducto comentario = new ComentarioProducto();
 
 				comentario.id_usuario = Convert.ToInt32(SesionUser.id_usuario);

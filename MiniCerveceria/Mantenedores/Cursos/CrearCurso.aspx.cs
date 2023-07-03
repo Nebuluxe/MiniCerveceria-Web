@@ -71,9 +71,9 @@ namespace MiniCerveceria.Mantenedores.Cursos
 					{
 						Curso oCurso = cursoApp.ObtenerCurso(Convert.ToInt32(uid));
 
-						txtNombreProducto.Text = oCurso.nombre_curso;
+						txtNombreCurso.Text = oCurso.nombre_curso;
 						txtDescripcion.Text = oCurso.descripcion;
-						txtPrecioProucto.Text = oCurso.precio.ToString();
+						txtPrecioCurso.Text = oCurso.precio.ToString();
 						txtFechaCreacion.Text = oCurso.fecha_creacion.ToString();
 						txtFechaModificacion.Text = oCurso.fecha_modificacion.ToString();
 						hdnEstado.Value = oCurso.estado.ToString();
@@ -111,9 +111,9 @@ namespace MiniCerveceria.Mantenedores.Cursos
 			{
 				Curso oCurso = new Curso();
 
-				oCurso.nombre_curso = txtNombreProducto.Text;
+				oCurso.nombre_curso = txtNombreCurso.Text;
 				oCurso.descripcion = txtDescripcion.Text;
-				oCurso.precio = Convert.ToInt32(txtPrecioProucto.Text);
+				oCurso.precio = Convert.ToInt32(txtPrecioCurso.Text);
 				oCurso.estado = 1;
 				oCurso.fecha_creacion = DateTime.Now;
 				oCurso.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
@@ -162,9 +162,9 @@ namespace MiniCerveceria.Mantenedores.Cursos
 				Curso oCurso = new Curso();
 
                 oCurso.id_curso = Convert.ToInt32(update.Value);
-                oCurso.nombre_curso = txtNombreProducto.Text;
+                oCurso.nombre_curso = txtNombreCurso.Text;
 				oCurso.descripcion = txtDescripcion.Text;
-				oCurso.precio = Convert.ToInt32(txtPrecioProucto.Text);
+				oCurso.precio = Convert.ToInt32(txtPrecioCurso.Text);
 				oCurso.estado = Convert.ToInt32(hdnEstado.Value);
 				oCurso.fecha_modificacion = DateTime.Now;
 

@@ -29,7 +29,6 @@ namespace MiniCerveceria.Servicios.Implementacion
                                                      "fecha_modificacion = CURRENT_DATE " +
                                      " WHERE id_curso = v_id_curso; " +
                                  " ELSE " +
-									 " SELECT MAX(id_curso) + 1 INTO v_id_curso FROM curso; " +
                                      " INSERT INTO curso (id_curso," +
                                                         "nombre_curso," +
                                                         "descripcion," +
@@ -38,7 +37,7 @@ namespace MiniCerveceria.Servicios.Implementacion
                                                         "url_img," +
                                                         "fecha_creacion," +
                                                         "fecha_modificacion) " +
-                                     " VALUES(v_id_curso, '" + obj.nombre_curso.Replace("'", "''") + "', '" + obj.descripcion.Replace("'", "''") + "', " + obj.precio + ", " + obj.estado + ", '" + obj.URL_img + "', CURRENT_DATE, CURRENT_DATE); " +
+                                     " VALUES(" + ObtenerIDCurso() + ", '" + obj.nombre_curso.Replace("'", "''") + "', '" + obj.descripcion.Replace("'", "''") + "', " + obj.precio + ", " + obj.estado + ", '" + obj.URL_img + "', CURRENT_DATE, CURRENT_DATE); " +
                                  " END IF;" +
                             " END;";
             db.Execute(query);

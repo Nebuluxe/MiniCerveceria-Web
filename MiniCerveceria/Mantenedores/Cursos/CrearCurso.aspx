@@ -102,15 +102,15 @@
 					  <div class="row mb-3">
 						<div class="col-lg-12">
 						  <div class="form-outline">
-							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtNombreProducto" maxlength="499" placeholder="Nombre producto" class="form-control" />
-							<label class="form-label">Nombre producto</label>
+							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtNombreCurso" maxlength="499" placeholder="Nombre curso" class="form-control" />
+							<label class="form-label">Nombre curso</label>
 						  </div>
 						</div>
 					  </div>
 					  <div class="row mb-3">
 						<div class="col-lg-4">
 						  <div class="form-outline">
-							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtPrecioProucto" maxlength="15" class="form-control isNumero" placeholder="999.999"/>
+							<asp:textbox runat="server" ClientIDMode="Static" type="text" id="txtPrecioCurso" maxlength="15" class="form-control isNumero" placeholder="999.999"/>
 							<label class="form-label">Precio</label>
 						  </div>
 						</div>
@@ -250,6 +250,19 @@
 
             $('#btnGuardar').on('click', function () {
                 var update = $('#update').val()
+
+                var nom = $('#txtNombreCurso').val();
+                var precio = $('#txtPrecioCurso').val(); 
+
+                if (nom == "") {
+                    Command: toastr["warning"]("Debe ingresar el nombre del curso")
+                    return;
+                }
+
+                if (precio == "" || precio == 0 || precio == "0") {
+                    Command: toastr["warning"]("Debe ingresar el precio del curso")
+                    return;
+                }
 
                 if (update != "") {
                     $('#btnActualizarHide').click()

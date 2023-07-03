@@ -103,12 +103,12 @@
     <asp:Label runat="server" ClientIDMode="Static" ID="idCate" CssClass="visually-hidden"> </asp:Label>
     <asp:Label runat="server" ClientIDMode="Static" ID="idProd" CssClass="visually-hidden"> </asp:Label>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="contenedor">
                 <asp:Image runat="server" ClientIDMode="Static" class="imagen" ID="ItemImagen" />
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -123,7 +123,8 @@
                         </div>
                         <div class="col-lg-12">
                             <p>
-                                <asp:Label runat="server" ClientIDMode="Static" ID="lblDescripcion"></asp:Label></p>
+                                <asp:Label runat="server" ClientIDMode="Static" ID="lblDescripcion"></asp:Label>
+                            </p>
                         </div>
                         <div class="col-lg-12">
                             <h6>Categoria:
@@ -149,6 +150,40 @@
                     </div>
                 </div>
             </div>
+            <br />
+            <div class="card">
+                <div class="row">
+                    <div class="card-body" align="center">
+                        <div class="col-lgs-12">
+                            <h5>Danos tu opinion sobre este producto</h5>
+                            <span id="idProdCompra" class="visually-hidden"></span>
+                            <br />
+                        </div>
+                        <div class="col-lg-12">
+                            <span id="puntuacionCompra" class="visually-hidden"></span>
+                            <a style="cursor: pointer" onclick="PuntuarProdCompra(1)">
+                                <img id="OneStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35" /></a><span> </span>
+                            <a style="cursor: pointer" onclick="PuntuarProdCompra(2)">
+                                <img id="TwoStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35" /></a><span> </span>
+                            <a style="cursor: pointer" onclick="PuntuarProdCompra(3)">
+                                <img id="ThreeStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35" /></a><span> </span>
+                            <a style="cursor: pointer" onclick="PuntuarProdCompra(4)">
+                                <img id="FourStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35" /></a><span> </span>
+                            <a style="cursor: pointer" onclick="PuntuarProdCompra(5)">
+                                <img id="FiveStarCompra" src="/Imagenes/Iconos/FavOff.png" width="35" /></a>
+                        </div>
+                        <div class="col-lg-12">
+                            <br />
+                            <textarea placeholder="escribe tu comentario..." id="ComentarioProdCompra" name="textarea" rows="10" cols="50" class="form-control"></textarea>
+                        </div>
+                        <div class="col-lg-12">
+                            <br />
+                            <a id="enviarComentarioProductoCompra" class="btn btn-warning">Enviar comentario</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
     <br />
@@ -213,6 +248,43 @@
                     next = next.nextElementSibling
                 }
             })
+
+            $('#enviarComentarioProductoCompra').on('click', function () {
+                var id = idProd;
+                var texto = $('#ComentarioProdCompra').val();
+                var puntuacion = $('#puntuacionCompra').text()
+
+                if (texto == "") {
+                    Command: toastr["warning"]("Para enviar un comentario debe escribir que es lo que opina del producto")
+                    return;
+                }
+
+                if (puntuacion == "0") {
+                    Command: toastr["warning"]("Debe puntuar el produto en una escala de 1 a 5 estrellas")
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/EnviarComentario") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_producto': id, 'texto': texto, 'puntuacion': puntuacion }),
+                    success: function (data) {
+                        if (data.d) {
+                            Command: toastr["success"]("Su comentario ha sido enviado")
+                        }
+                        else { 
+                            Command: toastr["warning"]("Debe crear una cuenta o estar logueado para enviar un comentario")
+                        }
+                    },
+                    error: function (data) {
+                        Command: toastr["error"]("Algo ha salido mal!!!")
+                    }
+                });
+                        })
         });
 
         function cargarProductosRelacionados(idCate, idProd) {
@@ -240,10 +312,8 @@
                                             '<div class="container">' +
                                             '<div class="card  hoverImg">' +
                                             '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                            '<div>' +
                                             '<img src="' + val.URL_img + '" class="card-img-top">' +
                                             '</a>' +
-                                            '</div>' +
                                             '<div align="center">' +
                                             '<div class="card-body">' +
                                             '<span class="">' + val.nombre_producto + '</span>' +
@@ -258,9 +328,7 @@
                                             '<div class="container">' +
                                             '<div class="card  hoverImg">' +
                                             '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                            '<div>' +
                                             '<img src="' + val.URL_img + '" class="card-img-top">' +
-                                            '</div>' +
                                             '</a>' +
                                             '<div align="center">' +
                                             '<div class="card-body">' +
@@ -359,6 +427,49 @@
                     Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
+        }
+
+        function PuntuarProdCompra(puntuacion) {
+
+            if (puntuacion == 1) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 2) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 3) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 4) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOff.png');
+            }
+            if (puntuacion == 5) {
+                $('#OneStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#TwoStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#ThreeStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FourStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+                $('#FiveStarCompra').attr('src', '/Imagenes/Iconos/FavOn.png');
+            }
+
+            console.log(puntuacion)
+
+            $('#puntuacionCompra').text(puntuacion);
         }
     </script>
 </asp:Content>

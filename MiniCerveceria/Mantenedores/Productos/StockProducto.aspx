@@ -187,7 +187,7 @@
                             }
                         });
                     } else {
-                        alert("El stock a rebajar no puede ser mayor al actual!!");
+                        Command: toastr["warning"]("El stock a rebajar no puede ser mayor al actual!!")
                     }
                 }
             });

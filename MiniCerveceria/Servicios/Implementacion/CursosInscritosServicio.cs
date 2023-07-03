@@ -25,33 +25,38 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return false;
             }
 
-			string query = "DECLARE " +
-                                "v_id_cursos_inscritos NUMBER(10) := 0;" +
-                            " BEGIN " +
-                            " SELECT MAX(id_cursos_inscritos) + 1 INTO v_id_cursos_inscritos FROM cursosinscritos;" +
-                                    "INSERT INTO cursosinscritos (id_cursos_inscritos," +
+            string query = "INSERT INTO cursosinscritos (id_cursos_inscritos," +
                                                                  "id_usuario," +
                                                                  "id_curso," +
                                                                  "fecha_inscripcion," +
                                                                  "cursado," +
                                                                  "total)" +
-                            " VALUES (v_id_cursos_inscritos, " + obj.id_usuario + ", " + obj.id_curso + ", CURRENT_DATE, 0, " + obj.total + ");" +
-                           " EXCEPTION WHEN no_data_found THEN " +
-                                    " INSERT INTO cursosinscritos (id_cursos_inscritos," +
-                                                                 "id_usuario," +
-                                                                 "id_curso," +
-                                                                 "fecha_inscripcion," +
-                                                                 "cursado," +
-                                                                 "total)" +
-                            " VALUES (1, " + obj.id_usuario + ", " + obj.id_curso + ", CURRENT_DATE, 0, " + obj.total + "); " +
-                            " END;";
+                            " VALUES (" + ObtenerIDInscripcion() + ", " + obj.id_usuario + ", " + obj.id_curso + ", CURRENT_DATE, 0, " + obj.total + ")";
 			db.Execute(query);
 
             return true;
         }
-        public IList<InscripcionCurso> ObtenerCursosInscritosUsuario(int id_usuario)
+
+		public int ObtenerIDInscripcion()
+		{
+			try
+			{
+				string query = @"SELECT MAX(id_cursos_inscritos) AS idInscripcion FROM cursosinscritos";
+				DataTable dt = db.Execute(query);
+				int id_curso = Convert.ToInt32(dt.Rows[0]["idInscripcion"]);
+				return id_curso + 1;
+
+			}
+			catch (Exception)
+			{
+				return 1;
+				throw;
+			}
+		}
+
+		public IList<InscripcionCurso> ObtenerCursosInscritosUsuario(int id_usuario)
         {
-            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso, tbl3.nombre, tbl3.apellido, tbl3.email FROM cursosinscritos tbl1 JOIN curso tbl2 ON tbl1.id_curso = tbl2.id_curso JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario WHERE id_usuario = " + id_usuario;
+            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso, tbl3.nombre, tbl3.apellido, tbl3.email FROM cursosinscritos tbl1 JOIN curso tbl2 ON tbl1.id_curso = tbl2.id_curso JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario WHERE  tbl1.id_usuario = " + id_usuario;
             DataTable dt = db.Execute(query);
 
             IList<InscripcionCurso> lista = new List<InscripcionCurso>();

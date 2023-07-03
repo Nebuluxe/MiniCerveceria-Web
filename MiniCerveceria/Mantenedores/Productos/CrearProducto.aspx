@@ -273,6 +273,32 @@
 			$('#btnGuardar').on('click', function () {
                 var update = $('#update').val()
                 console.log("entre a esta wea");
+
+                var nom = $('#txtNombreProducto').val();
+                var precio = $('#txtPrecioProucto').val(); 
+                var cate = $('#cboCategoria').val(); 
+                var subcate = $('#cboSubCategoria').val(); 
+                var descc = $('#txtDescripcion').val(); 
+
+                if (nom == "") {
+                    Command: toastr["warning"]("Debe ingresar el nombre del producto")
+                    return;
+                }
+
+                if (precio == "" || precio == 0 || precio == "0") {
+                    Command: toastr["warning"]("Debe ingresar el precio del producto")
+                    return;
+                }
+
+                if (cate == "0" || cate == 0) {
+                    Command: toastr["warning"]("Debe seleccionar la categoria a la cual pertenece el producto")
+                    return;
+                }
+
+                if (true) {
+
+                }
+
                 if (update != "") {
                     $('#btnActualizarHide').click()
                 } else {

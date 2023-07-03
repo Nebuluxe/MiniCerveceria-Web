@@ -23,25 +23,31 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return false;
             }
 
-			string query = "DECLARE " +
-					            "v_id_fav NUMBER(10) := 0;" +
-				            " BEGIN " +
-							" SELECT MAX(id_fav) + 1 INTO v_id_fav FROM favoritos;" +
-						            " INSERT INTO favoritos (id_fav, " +
-												               "id_usuario, " +
-												               "id_producto) " +
-										" VALUES (v_id_fav, " + obj.id_usuario + ", " + obj.id_producto + ");" +
-			               " EXCEPTION WHEN no_data_found THEN " +
-						            " INSERT INTO favoritos (id_fav, " +
-												               "id_usuario, " +
-												               "id_producto) " +
-							            " VALUES (1, " + obj.id_usuario + ", " + obj.id_producto + ");" +
-				            " END;";
+			string query = " INSERT INTO favoritos (id_fav, " +
+													"id_usuario, " +
+													"id_producto) " +
+							" VALUES (" + ObtenerIDFavorito() + ", " + obj.id_usuario + ", " + obj.id_producto + ")";
 			db.Execute(query);
 
             return true;
         }
-        public IList<Favorito> ObtenerFavoritosUsuario(int id_usuario)
+		public int ObtenerIDFavorito()
+		{
+			try
+			{
+				string query = @"SELECT MAX(id_fav) AS idFav FROM favoritos";
+				DataTable dt = db.Execute(query);
+				int id_curso = Convert.ToInt32(dt.Rows[0]["idFav"]);
+				return id_curso + 1;
+
+			}
+			catch (Exception)
+			{
+				return 1;
+				throw;
+			}
+		}
+		public IList<Favorito> ObtenerFavoritosUsuario(int id_usuario)
         {
             string query = @"SELECT tbl1.id_fav,tbl1.id_usuario, tbl1.id_producto, tbl2.nombre_producto, tbl2.url_img FROM favoritos tbl1 JOIN productos tbl2 ON tbl1.id_producto = tbl2.id_producto WHERE id_usuario = " + id_usuario;
             DataTable dt = db.Execute(query);

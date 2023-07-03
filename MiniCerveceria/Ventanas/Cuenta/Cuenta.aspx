@@ -649,6 +649,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="ContenidoTablcompraDetalle">
+
                                             </tbody>
                                         </table>
                                     </div>
@@ -1603,21 +1604,16 @@
 
                         var html = "";
 
-                        
-
                         $.each(data.d.DetallePedido, function (i, val) {
                             var nom = "'" + val.nombre_producto + "'";
 
-                            html += '<td colspan="2">' + val.nombre_producto + '</td>' +
+                            html += '<tr id="' + val.id_producto + '">' +
+                                '<td colspan="2">' + val.nombre_producto + '</td>' +
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a onclick="ComentarProductoPedido(' + val.id_producto + ',  ' + nom + ')" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a onclick="ComentarProductoPedido(' + val.id_producto + ',  ' + nom + ')" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBlack.png" height="30" /></a></td>' +
                                 '</tr>';
-                                    '<td scope="row" >$ ' + val.precio_producto + '</td>' +
-                                    '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a></td>' +
-                                    '</tr>';
                         });
 
                         $('#ContenidoTablcompraDetalle').html(html);
@@ -1680,56 +1676,6 @@
                         var html = "";
 
                         $.each(data.d.DetallePedido, function (i, val) {
-
-                            html += '<tr id="' + val.id_producto + '">' +
-                                '<td colspan="2">' + val.nombre_producto + '</td>' +
-                                '<td scope="row">' + val.cantidad + '</td>' +
-                                '<td scope="row" >$ ' + val.precio_producto + '</td>' +
-                                '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBLack.png" height="30" /></a></td>' +
-                                '</tr>';
-                        });
-
-
-                        if (!$('#defaultCompras').hasClass("visually-hidden")) {
-                            $('#defaultCompras').addClass('visually-hidden');
-                        }
-
-                        if ($('#DetalleCompra').hasClass("visually-hidden")) {
-                            $('#DetalleCompra').removeClass('visually-hidden');
-                        }
-
-                        $('#ContenidoTablHistorialcompraDetalle').html(html);
-                    }
-                },
-                error: function (data) {
-                    Command: toastr["error"]("Algo ha salido mal!!!")
-                }
-            });
-        }
-
-
-        function ObtenerDetalleCompra(idPedido) {
-            $.ajax({
-                type: 'POST',
-                cache: false,
-                url: '<%= ResolveUrl("/Ventanas/Cuenta/Cuenta.aspx/ObtenerPedido") %>',
-                contentType: 'application/json; charset=utf-8',
-                async: true,
-                dataType: 'json',
-                data: JSON.stringify({ 'id_pedido': idPedido }),
-                success: function (data) {
-                    if (data.d != null) {
-                        $('#nroCompra').text(data.d.id_pedido);
-                        $('#nombreReceptorCompra').text(data.d.nombre_receptor);
-                        $('#fechaCompra').text(data.d.fecha_creacion);
-                        $('#pagoTotalCompra').text(data.d.total);
-                        $('#direccionCompra').text(data.d.direccion_envio);
-
-                        var html = "";
-
-                        $.each(data.d.DetallePedido, function (i, val) {
-
                             var nom = "'" + val.nombre_producto + "'";
 
                             html += '<tr id="' + val.id_producto + '">' +
@@ -1737,7 +1683,7 @@
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a  onclick="ComentarProductoCompra(' + val.id_producto + ',  ' + nom + ')" class="comentario" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBLack.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a onclick="ComentarProductoCompra(' + val.id_producto + ',  ' + nom + ')" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBlack.png" height="30" /></a></td>' +
                                 '</tr>';
                         });
 
