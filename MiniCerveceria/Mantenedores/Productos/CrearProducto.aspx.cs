@@ -134,23 +134,32 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
 
-                string[] partesURL = hdnRuta.Value.Split(',');
-                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
-                
-                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
-                MemoryStream ms = new MemoryStream(imageBytes);
-                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                oProducto.id_producto = productoApp.ObtenerIDProducto();
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(oProducto.id_producto.ToString(), ms),
-                    PublicId = oProducto.id_producto.ToString()
-                };
+				if (hdnRuta.Value != "")
+				{
+					string[] partesURL = hdnRuta.Value.Split(',');
+					Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                var uploadResult = cloud.Upload(uploadParams);
+					byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+					MemoryStream ms = new MemoryStream(imageBytes);
+					CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                oProducto.URL_img = uploadResult.SecureUrl.ToString();
+					oProducto.id_producto = productoApp.ObtenerIDProducto();
+					var uploadParams = new ImageUploadParams()
+					{
+						File = new FileDescription(oProducto.id_producto.ToString(), ms),
+						PublicId = oProducto.id_producto.ToString()
+					};
+
+					var uploadResult = cloud.Upload(uploadParams);
+
+					oProducto.URL_img = uploadResult.SecureUrl.ToString();
+				}
+				else
+				{
+					oProducto.URL_img = "/Imagenes/Iconos/NoImage.png";
+				}
+
                 productoApp.CrearProducto(oProducto);
             }
             catch (Exception)
@@ -176,23 +185,31 @@ namespace MiniCerveceria.Mantenedores.Productos
 				oProducto.estado = Convert.ToBoolean(hdnEstado.Value);
 				oProducto.fecha_modificacion = DateTime.Now;
 				oProducto.sub_categoria = Convert.ToInt32(hdnSubCate.Value == "" ? "0" : hdnSubCate.Value);
-                
-				string[] partesURL = hdnRuta.Value.Split(',');
-                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
-                MemoryStream ms = new MemoryStream(imageBytes);
-                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+				if (hdnRuta.Value != "")
+				{
+					string[] partesURL = hdnRuta.Value.Split(',');
+					Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(oProducto.id_producto.ToString(), ms),
-                    PublicId = oProducto.id_producto.ToString()
-                };
+					byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+					MemoryStream ms = new MemoryStream(imageBytes);
+					CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                var uploadResult = cloud.Upload(uploadParams);
+					var uploadParams = new ImageUploadParams()
+					{
+						File = new FileDescription(oProducto.id_producto.ToString(), ms),
+						PublicId = oProducto.id_producto.ToString()
+					};
 
-                oProducto.URL_img = uploadResult.SecureUrl.ToString();
+					var uploadResult = cloud.Upload(uploadParams);
+
+					oProducto.URL_img = uploadResult.SecureUrl.ToString();
+				}
+				else
+				{
+					oProducto.URL_img = imagenRecortada.ImageUrl;
+				}
+
                 productoApp.ActualizarProducto(oProducto);
             }
             catch (Exception)

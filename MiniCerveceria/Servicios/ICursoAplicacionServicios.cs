@@ -16,6 +16,7 @@ namespace MiniCerveceria.Servicios
         void HabilitarCurso(int id_curso);
 		Curso ObtenerCurso(int id_curso);
         IList<Curso> ObtenerTodoCursos();
+        int ObtenerIDCurso();
 
 	}
 }

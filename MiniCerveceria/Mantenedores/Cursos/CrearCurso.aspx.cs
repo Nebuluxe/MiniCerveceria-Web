@@ -2,14 +2,7 @@
 using MiniCerveceria.Servicios.Implementacion;
 using MiniCerveceria.Servicios;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using static System.Data.Entity.Infrastructure.Design.Executor;
 using CloudinaryDotNet.Actions;
 using CloudinaryDotNet;
 using System.IO;
@@ -124,24 +117,33 @@ namespace MiniCerveceria.Mantenedores.Cursos
 				oCurso.estado = 1;
 				oCurso.fecha_creacion = DateTime.Now;
 				oCurso.fecha_modificacion = Convert.ToDateTime("01/01/1900 00:00:00");
-                string[] partesURL = hdnRuta.Value.Split(',');
-                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
-                MemoryStream ms = new MemoryStream(imageBytes);
-                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+				if (hdnRuta.Value != "")
+				{
+					string[] partesURL = hdnRuta.Value.Split(',');
+					Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                oCurso.id_curso = cursoApp.ObtenerIDCurso();
-				
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(oCurso.id_curso.ToString(), ms),
-                    PublicId = oCurso.id_curso.ToString()
-                };
+					byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+					MemoryStream ms = new MemoryStream(imageBytes);
+					CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                var uploadResult = cloud.Upload(uploadParams);
+					oCurso.id_curso = cursoApp.ObtenerIDCurso();
 
-                oCurso.URL_img = uploadResult.SecureUrl.ToString();
+					var uploadParams = new ImageUploadParams()
+					{
+						File = new FileDescription(oCurso.id_curso.ToString(), ms),
+						PublicId = oCurso.id_curso.ToString()
+					};
+
+					var uploadResult = cloud.Upload(uploadParams);
+
+					oCurso.URL_img = uploadResult.SecureUrl.ToString();
+				}
+				else
+				{
+					oCurso.URL_img = "/Imagenes/Iconos/NoImage.png";
+				}
+
                 oCurso.id_curso = 0;
                 cursoApp.CrearCurso(oCurso);
 			}
@@ -165,22 +167,30 @@ namespace MiniCerveceria.Mantenedores.Cursos
 				oCurso.precio = Convert.ToInt32(txtPrecioProucto.Text);
 				oCurso.estado = Convert.ToInt32(hdnEstado.Value);
 				oCurso.fecha_modificacion = DateTime.Now;
-                string[] partesURL = hdnRuta.Value.Split(',');
-                Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
-                MemoryStream ms = new MemoryStream(imageBytes);
-                CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
+				if (hdnRuta.Value != "")
+				{
+					string[] partesURL = hdnRuta.Value.Split(',');
+					Account account = new Account("dcj06k5kw", "311972677843661", "ddplFZzKPNEaKOeChrzQjOXIFmo");
 
-                var uploadParams = new ImageUploadParams()
-                {
-                    File = new FileDescription(oCurso.nombre_curso.ToString(), ms),
-                    PublicId = oCurso.id_curso.ToString()
-                };
+					byte[] imageBytes = Convert.FromBase64String(partesURL[1]);
+					MemoryStream ms = new MemoryStream(imageBytes);
+					CloudinaryDotNet.Cloudinary cloud = new CloudinaryDotNet.Cloudinary(account);
 
-                var uploadResult = cloud.Upload(uploadParams);
+					var uploadParams = new ImageUploadParams()
+					{
+						File = new FileDescription(oCurso.nombre_curso.ToString(), ms),
+						PublicId = oCurso.id_curso.ToString()
+					};
 
-                oCurso.URL_img = uploadResult.SecureUrl.ToString();
+					var uploadResult = cloud.Upload(uploadParams);
+
+					oCurso.URL_img = uploadResult.SecureUrl.ToString();
+				}
+				else
+				{
+					oCurso.URL_img = imagenRecortada.ImageUrl;
+				}
 
                 cursoApp.CrearCurso(oCurso);
 			}
