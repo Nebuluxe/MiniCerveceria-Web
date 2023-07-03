@@ -51,7 +51,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public IList<InscripcionCurso> ObtenerCursosInscritosUsuario(int id_usuario)
         {
-            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso FROM cursosinscritos tbl1 JOIN curso tbl2 on tbl1.id_curso = tbl2.id_curso WHERE id_usuario = " + id_usuario;
+            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso, tbl3.nombre, tbl3.apellido, tbl3.email FROM cursosinscritos tbl1 JOIN curso tbl2 ON tbl1.id_curso = tbl2.id_curso JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario WHERE id_usuario = " + id_usuario;
             DataTable dt = db.Execute(query);
 
             IList<InscripcionCurso> lista = new List<InscripcionCurso>();
@@ -66,7 +66,10 @@ namespace MiniCerveceria.Servicios.Implementacion
                              fecha_inscripcion = Convert.ToDateTime(rw["fecha_inscripcion"]).ToString("dd-MM-yyyy"),
                              cursado = Convert.ToInt32(rw["cursado"]) == 1 ? true : false,
                              total = Convert.ToInt32(rw["total"]),
-							 nombre_curso = rw["nombre_curso"].ToString()
+							 nombre_curso = rw["nombre_curso"].ToString(),
+							 nombre = rw["nombre"].ToString(),
+							 apellido = rw["apellido"].ToString(),
+                             email = rw["email"].ToString()
 						 }
                         ).ToList();
                 return lista;
@@ -90,9 +93,41 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return false;
             }
 		}
-		public IList<InscripcionCurso> ObtenerCursosInscritos()
+		public IList<InscripcionCurso> ObtenerCursosInscritos(int id_curso, string cursado)
         {
-            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso FROM cursosinscritos tbl1 JOIN curso tbl2 on tbl1.id_curso = tbl2.id_curso";
+            string validacion = "";
+
+            if (cursado != "")
+            {
+                bool est = Convert.ToBoolean(cursado);
+
+                if (est)
+                {
+					validacion += " WHERE tbl1.cursado = 1";
+				}
+                else
+                {
+					validacion += " WHERE tbl1.cursado = 0";
+				}
+
+                
+			}
+
+            if (id_curso != 0)
+            {
+                if (cursado != "")
+                {
+					validacion += " AND tbl1.id_curso = " + id_curso;
+				}
+                else
+                {
+					validacion += " WHERE tbl1.id_curso = " + id_curso;
+				}
+
+				
+			}
+
+            string query = @"SELECT tbl1.id_cursos_inscritos, tbl1.id_usuario,tbl1.id_curso, tbl1.fecha_inscripcion,  tbl1.cursado, tbl1.total, tbl2.nombre_curso, tbl3.nombre, tbl3.apellido, tbl3.email FROM cursosinscritos tbl1 JOIN curso tbl2 ON tbl1.id_curso = tbl2.id_curso JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario " + validacion;
             DataTable dt = db.Execute(query);
 
             IList<InscripcionCurso> lista = new List<InscripcionCurso>();
@@ -107,7 +142,11 @@ namespace MiniCerveceria.Servicios.Implementacion
 							 fecha_inscripcion = Convert.ToDateTime(rw["fecha_inscripcion"]).ToString("dd-MM-yyyy"),
 							 cursado = Convert.ToInt32(rw["cursado"]) == 1? true:false,
                              total = Convert.ToInt32(rw["total"]),
-                         }
+							 nombre_curso = rw["nombre_curso"].ToString(),
+                             nombre = rw["nombre"].ToString(),
+							 apellido = rw["apellido"].ToString(),
+							 email = rw["email"].ToString()
+						 }
                         ).ToList();
                 return lista;
             }
@@ -116,6 +155,21 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return lista;
             }
         }
+
+        public void CambioEstado(int id_inscripcion, bool estago)
+        {
+            int est = 0;
+
+            if (estago)
+            {
+                est = 1;
+
+			}
+
+			string query = @"UPDATE cursosinscritos SET cursado = " + est + " WHERE id_cursos_inscritos = " + id_inscripcion;
+		    db.Execute(query);
+		}
+
         public void EliminarCursoInscrito(int id_usuario, int id_inscripcion)
         {
             string query = @"DELETE FROM cursosinscritos " +

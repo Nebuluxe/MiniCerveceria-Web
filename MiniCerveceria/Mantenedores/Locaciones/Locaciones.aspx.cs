@@ -21,7 +21,7 @@ namespace MiniCerveceria.Mantenedores.Locaciones
 
 		public string PermisoEliminar = "false";
 		public string PermisoCrear = "false";
-
+		public string PermisoEditar = "false"; 
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			MasterAdmin MasterAdmin = (MasterAdmin)(Session["MasterAdminSesion"]);
@@ -52,11 +52,13 @@ namespace MiniCerveceria.Mantenedores.Locaciones
 
 				PermisoEliminar = permisosUsusario.eliminar ? "true" : "false";
 				PermisoCrear = permisosUsusario.crear ? "true" : "false";
+				PermisoEditar = permisosUsusario.editar ? "true" : "false";
 			}
 			else
 			{
 				PermisoEliminar = "true";
 				PermisoCrear = "true";
+				PermisoEditar = "true";
 			}
 		}
 
@@ -93,5 +95,70 @@ namespace MiniCerveceria.Mantenedores.Locaciones
 				throw;
 			}
 		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool CrearModificarRegion(string id_region, string nombre)
+		{
+			try
+			{
+				if (id_region != "")
+				{
+					regionApp.ModificarRegion(Convert.ToInt32(id_region), nombre);
+					return true;
+				}
+
+				regionApp.CrearRegion(nombre);
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool CrearModificarComuna(string id_comuna, string id_region, string nombre)
+		{
+			try
+			{
+				if (id_comuna != "")
+				{
+					comunaApp.ModificarComuna(Convert.ToInt32(id_comuna), Convert.ToInt32(id_region), nombre);
+					return true;
+				}
+
+				comunaApp.CrearComuna(Convert.ToInt32(id_region), nombre);
+
+				return true;
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
+		public static bool EliminarRegCom(string id, string RegCom)
+		{
+			try
+			{
+				if (RegCom == "com")
+				{
+					comunaApp.EliminarComuna(Convert.ToInt32(id));
+					return true;
+				}
+				else
+				{
+					regionApp.EliminarRegion(Convert.ToInt32(id));
+					return true;
+				}
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+		
 	}
 }

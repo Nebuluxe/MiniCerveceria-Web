@@ -210,6 +210,7 @@ namespace MiniCerveceria.Servicios.Implementacion
 
             EliminarPermisosMasivo(id_permiso);
 		}
+
 		public IList<PermisosUsusario> ListarPermisos()
         {
 			string query = @"SELECT id_permiso, nombre, editar, eliminar, ver, crear FROM permisosusuario";

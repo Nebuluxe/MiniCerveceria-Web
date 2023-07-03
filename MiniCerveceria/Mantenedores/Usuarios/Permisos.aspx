@@ -198,6 +198,9 @@
 
                     $('#btnAgregarHide').trigger('click');
                 }
+                else {
+                    Command: toastr["error"]("No tines permisos para crear")
+                }
             });
 
             $('#confirmDelete').on('click', function () {
@@ -207,19 +210,23 @@
                         type: 'POST',
                         cache: false,
                         url: '<%= ResolveUrl("/Mantenedores/Usuarios/Permisos.aspx/EliminarPermiso") %>',
-                    contentType: 'application/json; charset=utf-8',
-                    async: true,
-                    dataType: 'json',
-                    data: JSON.stringify({ 'id_permiso': id }),
-                    success: function (data) {
-                        if (data.d) {
-                            cargarPermisos()
+                        contentType: 'application/json; charset=utf-8',
+                        async: true,
+                        dataType: 'json',
+                        data: JSON.stringify({ 'id_permiso': id }),
+                        success: function (data) {
+                            if (data.d) {
+                                Command: toastr["success"]("Cambios generados exitosamente")
+                                cargarPermisos()
+                            }
+                        },
+                        error: function (data) {
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
-                    },
-                    error: function (data) {
-                        alert("Algo ha salido mal!!!");
-                    }
-                });
+                    });
+                }
+                else {
+                    Command: toastr["error"]("No tines permisos para eliminar")
                 }
             });
 
@@ -233,12 +240,12 @@
                     var crear = $('#chkCrear').prop('checked');
 
                     if (!editar && !eliminar && !ver && !crear) {
-                        alert("Debe seleccionar almenos 1 permiso");
+                        Command: toastr["warning"]("Debe seleccionar almenos 1 permiso")
                         return;
                     }
 
                     if (nombre == "") {
-                        alert("Debe ingresar un nombre");
+                        Command: toastr["warning"]("Debe ingresar un nombre")
                         return;
                     }
 
@@ -252,13 +259,17 @@
                         data: JSON.stringify({ 'id_permiso': idPermiso, 'nombre': nombre, 'editar': editar, 'eliminar': eliminar, 'ver': ver, 'crear': crear }),
                         success: function (data) {
                             if (data.d) {
+                                Command: toastr["success"]("Cambios generados exitosamente")
                                 cargarPermisos()
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
+                } 
+                else {
+                    Command: toastr["error"]("No tines permisos para crear")
                 }
             });
         });
@@ -273,6 +284,9 @@
                 $('#idPermisoDelete').text(id);
                 $('#NombrePermiso').text(nombre); 
             }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
+            }
         }
 
         function Editar(id_permiso, nombre, editar, eliminar, ver, crear) { 
@@ -286,6 +300,9 @@
                 $('#chkCrear').prop('checked', crear);
 
                 $('#btnAgregarHide').trigger('click');
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para editar")
             }
         }
 
@@ -326,7 +343,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }

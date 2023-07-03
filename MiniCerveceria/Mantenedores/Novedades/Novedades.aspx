@@ -112,6 +112,9 @@
                 if (PermisoCrear) {
                     $('#btnAgregarHide').trigger('click');
                 }
+                else {
+                    Command: toastr["error"]("No tines permisos para crear")
+                }
             })
         });
 
@@ -133,9 +136,12 @@
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para crear")
             }
         }
 
@@ -161,9 +167,12 @@
                         }
                     },
                     error: function (data) {
-                        alert("Algo ha salido mal!!!");
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
             }
         }
 
@@ -208,7 +217,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -249,7 +258,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }

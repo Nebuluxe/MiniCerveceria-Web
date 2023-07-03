@@ -140,13 +140,13 @@ namespace MiniCerveceria.Servicios.Implementacion
             db.Execute(query);
         }
 
-        public void DeshabilitarProducto(string id_producto)
+        public void DeshabilitarProducto(int id_producto)
         {
             string query = string.Format(@"UPDATE productos SET estado = 0 WHERE id_producto = {0}", id_producto);
             db.Execute(query);
         }
 
-		public void HabilitarProducto(string id_producto)
+		public void HabilitarProducto(int id_producto)
 		{
 			string query = string.Format(@"UPDATE productos SET estado = 1 WHERE id_producto = {0}", id_producto);
 			db.Execute(query);
@@ -278,6 +278,55 @@ namespace MiniCerveceria.Servicios.Implementacion
 			{
 				return lista;
 			}
+		}
+
+		public ComentarioProducto ObtenerComentario(int id_comentario)
+		{
+			string query = "select tbl1.id_com_producto, tbl1.id_usuario, tbl1.id_producto, tbl1.texto, tbl1.fecha, tbl1.estado, tbl1.puntuacion, tbl2.nombre_producto, tbl2.url_img AS url_img_prod, tbl3.nombre, tbl3.apellido, tbl3.url_img AS url_img_user  from comentarioproducto tbl1 JOIN productos tbl2 ON tbl1.id_producto = tbl2.id_producto JOIN usuario tbl3 ON tbl1.id_usuario = tbl3.id_usuario WHERE tbl1.id_com_producto = " + id_comentario;
+
+			DataTable dt = db.Execute(query);
+
+			ComentarioProducto coment = new ComentarioProducto();
+
+			if (dt.Rows.Count > 0)
+			{
+				coment = (from DataRow rw in dt.Rows
+						 select new ComentarioProducto()
+						 {
+							 id_com_producto = Convert.ToInt32(rw["id_com_producto"]),
+							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_producto = Convert.ToInt32(rw["id_producto"]),
+							 texto = Convert.ToString(rw["texto"]),
+							 fecha = Convert.ToDateTime(rw["fecha"]).ToString("dd-MM-yyy"),
+							 estado = (Convert.ToInt32(rw["estado"]) == 1 ? true : false),
+							 puntuacion = Convert.ToInt32(rw["puntuacion"]),
+							 nombre_producto = Convert.ToString(rw["nombre_producto"]),
+							 url_img_prod = Convert.ToString(rw["url_img_prod"]),
+							 nombre = Convert.ToString(rw["nombre"]),
+							 apelido = Convert.ToString(rw["apellido"]),
+							 url_img_user = Convert.ToString(rw["url_img_user"])
+						 }
+						).FirstOrDefault();
+				return coment;
+			}
+			else
+			{
+				return coment;
+			}
+		}
+
+		public void HabilitarComentario(int id_com_producto)
+        {
+			string query = string.Format(@"UPDATE comentarioproducto SET estado = 1 WHERE id_com_producto = {0}", id_com_producto);
+
+			db.Execute(query);
+		}
+
+        public void InhabilitarComentario(int id_com_producto)
+        {
+			string query = string.Format(@"UPDATE comentarioproducto SET estado = 0 WHERE id_com_producto = {0}", id_com_producto);
+
+			db.Execute(query);
 		}
 
         private int obtenerStockActual(int id_producto)

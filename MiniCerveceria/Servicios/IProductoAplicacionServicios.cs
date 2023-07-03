@@ -10,8 +10,8 @@ namespace MiniCerveceria.Servicios
         IList<Producto> ListarProductosCategoria(int categoria, int sub_categoria);
         void CrearProducto(Producto producto);
         void ActualizarProducto(Producto producto);
-        void DeshabilitarProducto(string id_producto);
-        void HabilitarProducto(string id_producto);
+        void DeshabilitarProducto(int id_producto);
+        void HabilitarProducto(int id_producto);
 		void AumentarStock(int id_producto, int cantidad);
 	    void RebajarStock(int id_producto, int cantidad);
 		void AñadirNovedad(int id_producto);
@@ -19,5 +19,8 @@ namespace MiniCerveceria.Servicios
         IList<Producto> ListarNoveddades();
         void EnviarComentario(ComentarioProducto obj);
         IList<ComentarioProducto> ObtenerComentarios();
+        ComentarioProducto ObtenerComentario(int id_comentario);
+		void HabilitarComentario(int id_com_producto);
+        void InhabilitarComentario(int id_com_producto);
 	}
 }

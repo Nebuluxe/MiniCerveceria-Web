@@ -159,6 +159,10 @@
                         }
                     });
                 }
+                else {
+                    Command: toastr["error"]("No tines permisos para eliminar")
+                }
+            }
             });
 
             $('#confirmDeshabilitacion').on('click', function () {
@@ -207,6 +211,9 @@
                 $('#idUsuarioDeshabilitar').text(id);
                 $('#NombeUsuario').text(nombre);
             }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
+            }
         }
 
         function Habilitar(id) {
@@ -230,6 +237,9 @@
                     }
                 });
             }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
+            }
         }
 
         function Asignar(id) {
@@ -239,6 +249,9 @@
                 tr.find('.asignarPerfil').trigger('click');
 
                 $('#idUsuarioAsignar').text(id);
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
             }
         }
 
@@ -262,6 +275,9 @@
                         alert("Algo ha salido mal!!!");
                     }
                 });
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para eliminar")
             }
         }
 

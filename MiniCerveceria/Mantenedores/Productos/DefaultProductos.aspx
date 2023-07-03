@@ -62,10 +62,10 @@
     </nav>
     <br />
     <div class="input-group" style="justify-content: center">
-        <asp:DropDownList runat="server" ClientIDMode="Static" id="cboEstado" class="form-select">
-            <asp:ListItem selected="true"  value="1">Habilitados</asp:ListItem>
-		    <asp:ListItem value="0">Deshabilitados</asp:ListItem>
-	    </asp:DropDownList>
+        <select name="select" class="form-select"  id="cboEstado">
+            <option value="1">Habilitados</option>
+            <option value="0">Deshabilitados</option>
+		</select>
         <input type="text" class="form-control" id="search" placeholder="Buscador..." aria-label="Buscador...">
         <span class="input-group-text" id="addon-wrapping" style="border: 10px">
             <img src="/Imagenes/Iconos/Lupa.png" height="20">

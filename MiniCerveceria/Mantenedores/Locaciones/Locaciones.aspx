@@ -145,36 +145,70 @@
     <div class="fade modal" id="modalAgregarRegion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarRegionLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
+          <span id="idRegion" class="visually-hidden"></span>
           <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalAgregarRegionLabel">Agregar region</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-
+              <label for="nombreComuna" class="form-label">Nombre region</label>
+                <input type="text" class="form-control" placeholder="Nombre..." id="nombreRegion">
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer"> 
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="ConfirmarAgregarRegion">Aceptar</button>
           </div>
         </div>
       </div>
     </div>
-     <%-- Modal agregar novedad --%>
+     <%-- Modal agregar comuna --%>
     <div class="fade modal" id="modalAgregarComuna" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalAgregarComunaLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
+          <span id="idComuna" class="visually-hidden"></span>
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="modalAgregarComunaLabel">Agregar comuna</h1>
+            <h1 class="modal-title fs-5" id="modalAgregarComunaLabel"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
+            <label for="Region" class="form-label">Region</label>
+            <select name="select" class="form-select"  id="cboRegion">
 
+			</select>
+              <label for="nombreComuna" class="form-label">Nombre comuna</label>
+            <input type="text" class="form-control" placeholder="Nombre..." id="nombreComuna">
           </div>
           <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="ConfirmarAgregarComuna">Aceptar</button>
           </div>
         </div>
       </div>
     </div>
-    <script>
 
+    <%-- Modal eliminacion --%>
+    <div class="fade modal" id="modalEliminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalEliminarLabel">Eliminar <span class="TipoEliminar"> </span></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <span id="idEliminar" class="visually-hidden"></span>
+            <span id="TipoEliminar" class="visually-hidden"></span>
+          <div class="modal-body">
+            ¿Esta seguro que desea eliminar la <span class="TipoEliminar"> </span> " <span id="NombreEliminar"></span>" ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" id="confirmDelete">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        var PermisoEditar = <%= PermisoEditar %>;
+        var PermisoEliminar = <%= PermisoEliminar %>;
+        var PermisoCrear = <%= PermisoCrear %>;
+        
         $(document).ready(function () {
             ObtenerRegiones()
             ObtenerComunas()
@@ -198,6 +232,131 @@
                         $(this).show();
                 });
             });
+
+            $('#btnAgregarRegion').on('click', function () {
+                $('#nombreRegion').val('');
+                $('#idRegion').text('');
+                $('#modalAgregarRegionLabel').text('Agregar region');
+            })
+
+            $('#btnAgregarComuna').on('click', function () {
+                $('#nombreComuna').val('');
+                $('#idComuna').text('');
+                $("#cboRegion option[value=0]").attr("selected", true);
+                $('#modalAgregarComunaLabel').text('Agregar comuna');
+            })
+
+
+            $('#ConfirmarAgregarRegion').on('click', function () {
+                var nombre = $('#nombreRegion').val();
+                var idRegion = $('#idRegion').text();
+
+                if (idRegion != "") {
+                    if (!PermisoEditar) {
+                        Command: toastr["error"]("No tines permisos para editar")
+                        return;
+                    }
+                }
+                else {
+                    if (!PermisoCrear) {
+                        Command: toastr["error"]("No tines permisos para crear")
+                        return;
+                    }
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Locaciones/Locaciones.aspx/CrearModificarRegion") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: true,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_region': idRegion, 'nombre': nombre }),
+                    success: function (data) {
+                        if (data.d) {
+                            Command: toastr["success"]("La region a sido creada exitosamente")
+                            ObtenerRegiones()
+                        }
+                    },
+                    error: function (data) {
+                        Command: toastr["error"]("Algo ha salido mal!!!")
+                    }
+                });
+                
+            });
+
+            $('#ConfirmarAgregarComuna').on('click', function () {
+                var nombre = $('#nombreComuna').val();
+                var idRegion = $('#cboRegion').val() 
+                var idComuna = $('#idComuna').text();
+
+                if (idComuna != "") {
+                    if (!PermisoEditar) {
+                        Command: toastr["error"]("No tines permisos para editar")
+                        return;
+                    }
+                }
+                else {
+                    if (!PermisoCrear) {
+                        Command: toastr["error"]("No tines permisos para crear")
+                        return;
+                    }
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Locaciones/Locaciones.aspx/CrearModificarComuna") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: true,
+                    dataType: 'json',
+                    data: JSON.stringify({'id_comuna':idComuna, 'id_region': idRegion, 'nombre': nombre }),
+                    success: function (data) {
+                        if (data.d) {
+                            Command: toastr["success"]("La comuna a sido creada exitosamente")
+                            ObtenerComunas()
+                        }
+                    },
+                    error: function (data) {
+                        Command: toastr["error"]("Algo ha salido mal!!!")
+                    }
+                });
+            });
+
+            $('#confirmDelete').on('click', function () {
+                if (PermisoEliminar) {
+                    var id = $('#idEliminar').text()
+                    var RegCom = $('#TipoEliminar').text()
+                    $.ajax({
+                        type: 'POST',
+                        cache: false,
+                        url: '<%= ResolveUrl("/Mantenedores/Locaciones/Locaciones.aspx/EliminarRegCom") %>',
+                        contentType: 'application/json; charset=utf-8',
+                        async: true,
+                        dataType: 'json',
+                        data: JSON.stringify({ 'id': id, 'RegCom': RegCom }),
+                        success: function (data) {
+                            if (data.d) {
+                                Command: toastr["success"]("Se ha eliminado exitosamente")
+
+                                if (RegCom == "com") {
+                                    ObtenerComunas()
+                                }
+                                else {
+                                    ObtenerRegiones()
+                                }
+                            }
+                        },
+                        error: function (data) {
+                            Command: toastr["error"]("Algo ha salido mal!!!")
+                        }
+                    });
+                }
+                else {
+                    Command: toastr["error"]("No tines permisos para eliminar")
+                }
+            });
+
         });
 
         function ObtenerRegiones() {
@@ -211,20 +370,33 @@
                 success: function (data) {
                     if (data.d != null) {
                         var html = "";
+                        var cbo = "";
+                        cbo += "<option value='0'>Seleccione...</option>";
 
                         $.each(data.d, function (i, val) {
 
+                            var buttons  = "";
+
+                            var nom = "'" + val.nombre_region + "'";
+
+                            buttons += '<a data-bs-toggle="modal" data-bs-target="#modalEliminar" style="cursor: pointer" onclick="Eliminar(' + val.id_region + ', \'reg\',' + nom + ')" data-title="Eliminar"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" /></a><span> </span>';
+
+                            buttons += '<a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#modalAgregarRegion" onclick="EditarRegion(' + val.id_region + ',' + nom + ')" data-title="Editar"><img src="/Imagenes/Iconos/EditWithe.png" height="25" width="25" /></a>';
+
                             html += '<tr id="' + val.id_region + '">' +
                                     '<td colspan="2">' + val.nombre_region + '</td>' +
-                                    '<td scope="row">' + "" + '</td>' +
-                                    '</tr>';
+                                    '<td scope="row">' + buttons + '</td>' +
+                                '</tr>';
+
+                            cbo += "<option value='" + val.id_region + "'>" + val.nombre_region + "</option>";
                         });
 
+                        $('#cboRegion').html(cbo);
                         $('#ContenidoRegiones').html(html);
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -242,24 +414,57 @@
                         var html = "";
 
                         $.each(data.d, function (i, val) {
+                            var buttons = "";
 
-                            html += '<tr id="' + val.id_region + '">' +
+                            var nom = "'" + val.nombre_comuna + "'";
+
+                            buttons += '<a data-bs-toggle="modal" data-bs-target="#modalEliminar" style="cursor: pointer" onclick="Eliminar(' + val.id_comuna + ', \'com\',' + nom + ')" data-title="Eliminar"><img src="/Imagenes/Iconos/btnDeleteitem.png" height="25" width="25" /></a><span> </span>';
+
+                            buttons += '<a style="cursor: pointer" data-bs-toggle="modal" data-bs-target="#modalAgregarComuna" onclick="EditarComuna(' + val.id_comuna + ',' + val.id_region + ',' + nom + ')" data-title="Editar"><img src="/Imagenes/Iconos/EditWithe.png" height="25" width="25" /></a>';
+
+                            html += '<tr id="' + val.id_comuna + '">' +
                                 '<td colspan="2">' + val.nombre_comuna + '</td>' +
-                                '<td scope="row">' + "" + '</td>' +
+                                '<td scope="row">' + buttons + '</td>' +
                                 '</tr>';
 
-
                         });
-
-                        
 
                         $('#ContenidoComunas').html(html);
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
-                }
+        }
+
+        function EditarRegion(id_region, nombre) {
+            $('#idRegion').text(id_region);
+            $('#nombreRegion').val(nombre);
+            $('#modalAgregarRegionLabel').text('Editar region');
+        }
+
+        function EditarComuna(id_comuna, id_region, nombre) {
+            $('#nombreComuna').val(nombre);
+            $('#idComuna').text(id_comuna);
+            $("#cboRegion option[value=" + id_region + "]").attr("selected", true);
+            $('#modalAgregarComunaLabel').text('Editar comuna');
+        }
+
+        function Eliminar(id,RegCom,nombre) {
+            $('#idEliminar').text(id)
+            $('#TipoEliminar').text(RegCom)
+            $('#NombreEliminar').text(nombre)
+
+            console.log(id + RegCom + nombre)
+
+            if (RegCom == "com") {
+                $('.TipoEliminar').text('Comuna')
+            }
+            else {
+                $('.TipoEliminar').text('Region')
+            }
+        }
+
     </script>
 </asp:Content>

@@ -92,7 +92,7 @@ namespace MiniCerveceria.Mantenedores.Productos
 		{
 			try
 			{
-				productoApp.DeshabilitarProducto(id_producto);
+				productoApp.DeshabilitarProducto(Convert.ToInt32(id_producto));
 
 				return true;
 			}
@@ -107,7 +107,7 @@ namespace MiniCerveceria.Mantenedores.Productos
 		{
 			try
 			{
-				productoApp.HabilitarProducto(id_producto);
+				productoApp.HabilitarProducto(Convert.ToInt32(id_producto));
 
 				return true;
 			}

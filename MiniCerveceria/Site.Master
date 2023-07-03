@@ -425,6 +425,15 @@
 				    <a runat="server" href="~/Mantenedores/Usuarios/Permisos.aspx" style="width: 250px" class="btn btn-dark" >Pefiles</a><span> </span>
 				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="35" width="35">
 			    </div>
+                <div>
+				    <a runat="server" href="~/Mantenedores/Usuarios/Comentarios.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Comentarios</a><span> </span>
+				    <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="35" width="35">
+			    </div>
+                <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Locaciones</strong>
+			    <div>
+					<a runat="server" href="~/Mantenedores/Locaciones/Locaciones.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Comunas y regiones</a><span> </span>
+					<img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/LocationWhite.png" height="35" width="30">
+			    </div>
 			</div>
         </div>
         <div class="container-fluid" >
@@ -476,6 +485,10 @@
                         <div>
 				            <a runat="server" href="~/Mantenedores/Usuarios/Permisos.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Pefiles</a><span> </span>
 				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/PermisosWithe.png" height="35" width="35">
+			            </div>
+                        <div>
+				            <a runat="server" href="~/Mantenedores/Usuarios/Comentarios.aspx" style="width: 300px" class="btn btn-dark optionSideMantenedor" >Comentarios</a><span> </span>
+				            <img class="imgMantenedores OptionResponsive" src="/Imagenes/Iconos/ComentarioWithe.png" height="35" width="35">
 			            </div>
                         <strong class="titulo" style="font-size:1.3em; color: #ffffff;">Locaciones</strong>
 			            <div>

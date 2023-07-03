@@ -1,26 +1,26 @@
 ﻿using MiniCerveceria.Modelos;
-using MiniCerveceria.Servicios;
 using MiniCerveceria.Servicios.Implementacion;
-using MiniCerveceria.Servicios.Modelos;
+using MiniCerveceria.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
-using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 
-namespace MiniCerveceria.Mantenedores.Cursos
+namespace MiniCerveceria.Mantenedores.Usuarios
 {
-	public partial class CursosInscritos : System.Web.UI.Page
+	public partial class Comentarios : System.Web.UI.Page
 	{
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
-		static ICursosInscritosAplicacionServicios cursoInscirtoApp = new CursosInscritosServicio(conn);
 		static IUsuarioAplicacionServicios usuarioApp = new UsuarioServicio(conn);
-		static ICursoAplicacionServicios cursoApp = new CursoServicio(conn);
+		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
 
 		public string PermisoEditar = "false";
+		public string PermisoVer = "false";
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			try
@@ -51,10 +51,12 @@ namespace MiniCerveceria.Mantenedores.Cursos
 					permisosUsusario = usuarioApp.ObtenerPermiso(oUsuario.id_permiso);
 
 					PermisoEditar = permisosUsusario.editar ? "true" : "false";
+					PermisoVer = permisosUsusario.ver ? "true" : "false";
 				}
 				else
 				{
 					PermisoEditar = "true";
+					PermisoVer = "true";
 				}
 			}
 			catch (Exception)
@@ -64,15 +66,20 @@ namespace MiniCerveceria.Mantenedores.Cursos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<InscripcionCurso> CargarCursosInscritos(int id_curso, string cursado)
+		public static bool HabilitarDeshabilitar(string id_comentario, bool estado)
 		{
 			try
 			{
-				IList<InscripcionCurso> inscripciones = new List<InscripcionCurso>();
+				if (estado)
+				{
+					productoApp.InhabilitarComentario(Convert.ToInt32(id_comentario));
+				}
+				else
+				{
+					productoApp.HabilitarComentario(Convert.ToInt32(id_comentario));
+				}
 
-				inscripciones = cursoInscirtoApp.ObtenerCursosInscritos(id_curso, cursado);
-
-				return inscripciones;
+				return true;
 			}
 			catch (Exception)
 			{
@@ -81,33 +88,23 @@ namespace MiniCerveceria.Mantenedores.Cursos
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static IList<Curso> CargarCursos()
+		public static ComentarioProducto ObtenerComentario(string id_comentario)
 		{
 			try
 			{
-				IList<Curso> ListCursos = new List<Curso>();
+				ComentarioProducto coment = new ComentarioProducto();
 
-				ListCursos = cursoApp.ObtenerTodoCursos();
+				coment = productoApp.ObtenerComentario(Convert.ToInt32(id_comentario));
 
-				return ListCursos;
+				return coment;
 			}
 			catch (Exception)
 			{
 				throw;
 			}
 		}
-
-		[WebMethod(EnableSession = true)]
-		public static void CambiarEstado(string id_inscripcion, string estado)
-		{
-			try
-			{
-				cursoInscirtoApp.CambioEstado(Convert.ToInt32(id_inscripcion), Convert.ToBoolean(estado));
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-		}
+		
 	}
+
+
 }

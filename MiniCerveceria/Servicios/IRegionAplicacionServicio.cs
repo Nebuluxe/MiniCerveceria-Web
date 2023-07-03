@@ -10,5 +10,8 @@ namespace MiniCerveceria.Servicios
 	internal interface IRegionAplicacionServicio
 	{
 		IList<Region> ObtenerRegiones();
+		void CrearRegion(string nombreComuna);
+		void ModificarRegion(int id_region, string nombre);
+		void EliminarRegion(int id_region);
 	}
 }

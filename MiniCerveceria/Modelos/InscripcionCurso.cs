@@ -14,5 +14,9 @@ namespace MiniCerveceria.Servicios.Modelos
         public bool cursado { get; set; }
         public int total { get; set; }
         public string nombre_curso { get; set; }
+        public string nombre { get; set; }
+        public string apellido { get; set; }
+        public string email { get; set; }
+
     }
 }

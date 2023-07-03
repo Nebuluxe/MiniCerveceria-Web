@@ -136,6 +136,9 @@
       </div>
     </div>
 	<script>
+
+        var PermisoEditar = <%= PermisoEditar %>;
+
         $(document).ready(function () {
             cargarPedidos(0)
 
@@ -235,7 +238,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
@@ -273,29 +276,34 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }
 
         function CambiarEstado(idPedido, idUsaurio, estado) {
-            $.ajax({
-                type: 'POST',
-                cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Pedidos/DefaultPedidos.aspx/CambioEstadoPedido") %>',
-                contentType: 'application/json; charset=utf-8',
-                async: true,
-                dataType: 'json',
-                data: JSON.stringify({ 'id_pedido': idPedido, 'id_usuario': idUsaurio, 'estado': estado }),
-                success: function (data) {
-                    if (data.d) {
-                        cargarPedidos(estado)
+            if (PermisoEditar) {
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    url: '<%= ResolveUrl("/Mantenedores/Pedidos/DefaultPedidos.aspx/CambioEstadoPedido") %>',
+                    contentType: 'application/json; charset=utf-8',
+                    async: true,
+                    dataType: 'json',
+                    data: JSON.stringify({ 'id_pedido': idPedido, 'id_usuario': idUsaurio, 'estado': estado }),
+                    success: function (data) {
+                        if (data.d) {
+                            cargarPedidos(estado)
+                        }
+                    },
+                    error: function (data) {
+                        Command: toastr["error"]("Algo ha salido mal!!!")
                     }
-                },
-                error: function (data) {
-                    alert("Algo ha salido mal!!!");
-                }
-            });
+                });
+            }
+            else {
+                Command: toastr["error"]("No tines permisos para editar")
+            }
         }
     </script>
 </asp:Content>

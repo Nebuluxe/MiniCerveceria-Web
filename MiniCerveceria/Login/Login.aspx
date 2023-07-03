@@ -492,7 +492,7 @@
                                 }
                             },
                             error: function (data) {
-                                alert("Algo ha salido mal!!!");
+                                Command: toastr["error"]("Algo ha salido mal!!!")
                             }
                         });
                     }
@@ -545,7 +545,7 @@
                                             }
                                         },
                                         error: function (data) {
-                                            alert("Algo ha salido mal!!!");
+                                            Command: toastr["error"]("Algo ha salido mal!!!")
                                         }
                                     });
 
@@ -556,7 +556,7 @@
                                 }
                             },
                             error: function (data) {
-                                alert("Algo ha salido mal!!!");
+                                Command: toastr["error"]("Algo ha salido mal!!!")
                             }
                         });
                     }
@@ -600,7 +600,7 @@
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
                 }
@@ -651,7 +651,7 @@
                                         console.log("Se ha enviado el codigo de verificacion al correo ingresado")
                                     },
                                     error: function (data) {
-                                        alert("Algo ha salido mal!!!");
+                                        Command: toastr["error"]("Algo ha salido mal!!!")
                                     }
                                 });
 
@@ -661,7 +661,7 @@
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
                 } else {
@@ -702,7 +702,7 @@
                             }
                         },
                         error: function (data) {
-                            alert("Algo ha salido mal!!!");
+                            Command: toastr["error"]("Algo ha salido mal!!!")
                         }
                     });
                 }
@@ -763,7 +763,7 @@
                     }
                 },
                 error: function (data) {
-                    alert("Algo ha salido mal!!!");
+                    Command: toastr["error"]("Algo ha salido mal!!!")
                 }
             });
         }

@@ -70,7 +70,7 @@
     </section>
     <section id="Comentarios">
         <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
-                <img src="/Imagenes/Iconos/Comentario.png" height="80" />
+                <img src="/Imagenes/Iconos/ComentarioBLack.png" height="80" />
                 Comentarios
         </div>
         <div class="container my-3" id="carrouselComentarios">
@@ -94,7 +94,7 @@
     <script type="text/javascript">
         $(document).ready(() => {
             cargarProductos()
-            cargarProductosRelacionados()
+            cargarProductosComentarios()
             cargarCursos()
 
             $(".AnadirProductoCarrito").on("click", function () {
@@ -124,7 +124,7 @@
             })
         });
 
-        function cargarProductosRelacionados() {
+        function cargarProductosComentarios() {
 
             $.ajax({
                 type: 'POST',

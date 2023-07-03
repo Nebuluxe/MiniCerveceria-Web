@@ -79,7 +79,44 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return lista;
             }
         }
-        public void DeshabilitarCurso(int id_curso)
+
+		public IList<Curso> ObtenerTodoCursos()
+		{
+			string query = "SELECT id_curso, " +
+								  "nombre_curso, " +
+								  "descripcion, " +
+								  "precio, " +
+								  "estado, " +
+								  "fecha_creacion, " +
+								  "fecha_modificacion, " +
+								  "url_img " +
+						   "FROM curso ";
+			DataTable dt = db.Execute(query);
+
+			IList<Curso> lista = new List<Curso>();
+			if (dt.Rows.Count > 0)
+			{
+				lista = (from DataRow rw in dt.Rows
+						 select new Curso()
+						 {
+							 id_curso = Convert.ToInt32(rw["id_curso"]),
+							 nombre_curso = Convert.ToString(rw["nombre_curso"]),
+							 descripcion = Convert.ToString(rw["descripcion"]),
+							 precio = Convert.ToInt32(rw["precio"]),
+							 estado = Convert.ToInt32(rw["estado"]),
+							 fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]),
+							 fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"]),
+							 URL_img = rw["url_img"].ToString(),
+						 }
+						).ToList();
+				return lista;
+			}
+			else
+			{
+				return lista;
+			}
+		}
+		public void DeshabilitarCurso(int id_curso)
         {
             string query = @"UPDATE curso SET estado = 0 " +
                             "WHERE id_curso = " + id_curso;

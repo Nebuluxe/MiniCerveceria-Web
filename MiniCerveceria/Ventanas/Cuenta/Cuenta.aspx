@@ -783,7 +783,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <label for="telefono" class="form-label">Comuna</label>
+                    <label for="Comuna" class="form-label">Comuna</label>
                     <select name="select" class="form-select"  id="cboComuna">
 
 					</select>
@@ -1687,7 +1687,7 @@
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBLack.png" height="30" /></a></td>' +
                                 '</tr>';
                         });
 
@@ -1738,7 +1738,7 @@
                                 '<td scope="row">' + val.cantidad + '</td>' +
                                 '<td scope="row" >$ ' + val.precio_producto + '</td>' +
                                 '<td scope="row" >$ ' + val.total_detalle + '</td>' +
-                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a  onclick="ComentarProductoCompra(' + val.id_producto + ',  ' + nom + ')" class="comentario" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/Comentario.png" height="30" /></a></td>' +
+                                '<td scope="row" ><a data-title="Ver producto" href="/Ventanas/Productos/DetalleProducto.aspx?prod=' + val.id_producto + '"><img src="/Imagenes/Iconos/ProductosBlack.png" height="40" /></a><span> </span><a  onclick="ComentarProductoCompra(' + val.id_producto + ',  ' + nom + ')" class="comentario" style="cursor:pointer" data-title="Comentar"><img src="/Imagenes/Iconos/ComentarioBLack.png" height="30" /></a></td>' +
                                 '</tr>';
                         });
 

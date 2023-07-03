@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace MiniCerveceria.Mantenedores.Productos
+namespace MiniCerveceria.Mantenedores.Usuarios
 {
 
 
-	public partial class DefaultProductos
+	public partial class Comentarios
 	{
 	}
 }

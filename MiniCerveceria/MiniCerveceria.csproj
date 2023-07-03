@@ -313,11 +313,17 @@
     <Content Include="Imagenes\Iconos\btnHabilitarUser.png" />
     <Content Include="Imagenes\Iconos\btnInhabilitarUser.png" />
     <Content Include="Imagenes\Iconos\btnQuitarPermiso.png" />
+    <Content Include="Imagenes\Iconos\CambioEstadoInscripcionOff.png" />
+    <Content Include="Imagenes\Iconos\CambioEstadoInscripcionOn.png" />
     <Content Include="Imagenes\Iconos\carousel-control-prev-icon.png" />
     <Content Include="Imagenes\Iconos\carousel-control-next-icon.png" />
     <Content Include="Imagenes\Iconos\CloseButtonBlack.png" />
     <Content Include="Imagenes\Iconos\CloseButtonWithe.png" />
-    <Content Include="Imagenes\Iconos\Comentario.png" />
+    <Content Include="Imagenes\Iconos\ComentarioBlack.png" />
+    <Content Include="Imagenes\Iconos\ComentarioDeshabilitar.png" />
+    <Content Include="Imagenes\Iconos\ComentarioHabilitar.png" />
+    <Content Include="Imagenes\Iconos\ComentarioUsuario.png" />
+    <Content Include="Imagenes\Iconos\ComentarioWithe.png" />
     <Content Include="Imagenes\Iconos\CursosInscritosBlack.png" />
     <Content Include="Imagenes\Iconos\CursosInscritosWithe.png" />
     <Content Include="Imagenes\Iconos\DoorIconBlack.png" />
@@ -360,6 +366,7 @@
     <Content Include="Mantenedores\Novedades\Novedades.aspx" />
     <Content Include="Mantenedores\Pedidos\DefaultPedidos.aspx" />
     <Content Include="Mantenedores\Productos\StockProducto.aspx" />
+    <Content Include="Mantenedores\Usuarios\Comentarios.aspx" />
     <Content Include="Mantenedores\Usuarios\Permisos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -543,6 +550,13 @@
     </Compile>
     <Compile Include="Mantenedores\Productos\StockProducto.aspx.designer.cs">
       <DependentUpon>StockProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\Comentarios.aspx.cs">
+      <DependentUpon>Comentarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mantenedores\Usuarios\Comentarios.aspx.designer.cs">
+      <DependentUpon>Comentarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Mantenedores\Usuarios\Permisos.aspx.cs">
       <DependentUpon>Permisos.aspx</DependentUpon>
