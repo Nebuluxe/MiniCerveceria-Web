@@ -81,29 +81,6 @@ namespace MiniCerveceria.Mantenedores
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static int ObtenerIngresosCursos()
-		{
-			try
-			{
-				IList<InscripcionCurso> list = new List<InscripcionCurso>();
-				list = inscripcionesApp.ObtenerCursosInscritos(0,"");
-
-				int IngresosCursos = 0;
-
-				foreach (InscripcionCurso pedido in list)
-				{
-					IngresosCursos = IngresosCursos + pedido.total;
-				}
-
-				return IngresosCursos;
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-		}
-
-		[WebMethod(EnableSession = true)]
 		public static IList<DetallePedido> ObtenerrProductosQueGeneranMasIngresos()
 		{
 			try

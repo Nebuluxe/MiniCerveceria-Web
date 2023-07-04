@@ -83,7 +83,7 @@
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerIngresosCursos") %>',
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerrIngresosProductos") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
@@ -109,7 +109,7 @@
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerrIngresosProductos") %>',
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerrProductosQueGeneranMasIngresos") %>',
                 contentType: 'application/json; charset=utf-8',
                 async: false,
                 dataType: 'json',
