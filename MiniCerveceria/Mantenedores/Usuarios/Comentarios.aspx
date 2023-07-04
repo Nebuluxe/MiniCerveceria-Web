@@ -298,7 +298,7 @@
                                 '<div class="card-body" style="background:#ffffff !important; color:#000000">' +
                                 '<div class="row">' +
                                 '<div class="col-lg-12">' +
-                                '<img src="' + data.d.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
+                                '<img src="' + data.d.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important; margin:5px;" />' +
                                 '<br/><span>' + data.d.nombre + '  ' + data.d.apelido + '</span><br/>' +
                                 '<span>' + data.d.fecha + '</span><br/><br/><br/>' +
                                 '<p>' + data.d.texto + '</p>' +

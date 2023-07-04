@@ -191,8 +191,8 @@
                                         '<div class="card-body">' +
                                         '<div class="row">' +
                                         '<div class="col-lg-12">' +
-                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
-                                        '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
+                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important  margin:5px;" />' +
+                                        '<br/><span  style="margin:5px">' + val.nombre + '  ' + val.apelido + '</span><br/>' +
                                         '<span>' + val.fecha + '</span><br/><br/><br/>' +
                                         '<p>' + val.texto + '</p>' +
                                         '</div>' +
@@ -254,8 +254,8 @@
                                         '<div class="card-body">' +
                                         '<div class="row">' +
                                         '<div class="col-lg-12">' +
-                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
-                                        '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
+                                        '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important  margin:5px;" />' +
+                                        '<br/><span  style="margin:5px">' + val.nombre + '  ' + val.apelido + '</span><br/>' +
                                         '<span>' + val.fecha + '</span><br/><br/><br/>' +
                                         '<p>' + val.texto + '</p>' +
                                         '</div>' +
@@ -322,7 +322,7 @@
                                     '<div class="card-body">' +
                                     '<div class="row">' +
                                     '<div class="col-lg-12">' +
-                                    '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important" />' +
+                                    '<img src="' + val.url_img_user + '" style="border-radius: 50%; width: 100px; float:left !important  margin:5px;"/>' +
                                     '<br/><span>' + val.nombre + '  ' + val.apelido + '</span><br/>' +
                                     '<span>' + val.fecha + '</span><br/><br/><br/>' +
                                     '<p>' + val.texto + '</p>' +

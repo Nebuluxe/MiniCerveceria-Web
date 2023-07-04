@@ -39,7 +39,7 @@
     <br /><br />
     <div>
         <h2>
-            Que Hacemmos
+            Que Hacemos
         </h2>
         <p>
             En el año 2006 fuímos la primera empresa en Chile en vender insumos y equipamiento con una tienda establecida y los primeros en enseñar en forma abierta. Con la apertura de MINICERVECERÍA empezó una revolución de la cerveza artesanal en Chile que no ha parado y sigue creciendo.<br /><br />
