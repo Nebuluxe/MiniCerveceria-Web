@@ -97,6 +97,11 @@
             transform: rotateY(180deg);
             transform-style: preserve-3d;
         }
+
+        #ItemImagen{
+            height:600px;
+            width:600px;
+        }
     </style>
     <br />
     <asp:Label runat="server" ClientIDMode="Static" ID="NameCategoria" CssClass="visually-hidden"> </asp:Label>
@@ -105,7 +110,7 @@
     <div class="row">
         <div class="col-lg-7">
             <div class="contenedor">
-                <asp:Image runat="server" ClientIDMode="Static" class="imagen" ID="ItemImagen" />
+                <asp:Image runat="server" ClientIDMode="Static" class="" ID="ItemImagen" />
             </div>
         </div>
         <div class="col-lg-5">
@@ -191,6 +196,7 @@
     <div class="TitlePage" style="justify-content: center; align-items: center; text-align: center;">
         <a id="tituloRelacionados" class="masthead-heading text-uppercase cursor-scale" style="color: #000000">Productos relacionados</a>
     </div>
+    <hr class="featurette-divider">
     <div class="container text-center my-3" id="carrouselRelacionados">
         <div class="row mx-auto my-auto justify-content-center">
             <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -207,6 +213,32 @@
     </div>
     <div id="listRelacionados" class="row">
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+     <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
     <br />
     <br />
 
@@ -276,7 +308,7 @@
                         if (data.d) {
                             Command: toastr["success"]("Su comentario ha sido enviado")
                         }
-                        else { 
+                        else {
                             Command: toastr["warning"]("Debe crear una cuenta o estar logueado para enviar un comentario")
                         }
                     },
@@ -284,7 +316,7 @@
                         Command: toastr["error"]("Algo ha salido mal!!!")
                     }
                 });
-                        })
+            })
         });
 
         function cargarProductosRelacionados(idCate, idProd) {
@@ -320,8 +352,8 @@
                                             '</div>' +
                                             '</div>' +
                                             '</div>' +
-                                            '</div>'  +
-                                            '</div>'  
+                                            '</div>' +
+                                            '</div>'
                                         cont++;
                                     } else {
                                         html += '<div class="carousel-item">' +
@@ -348,17 +380,17 @@
                             $.each(data.d, function (i, val) {
                                 if (val.id_producto != idProd) {
                                     html += '<div class="col-lg-3 card  hoverImg  carousel-item>' +
-                                                '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
-                                                    '<div>' +
-                                                    '<img src="' + val.URL_img + '" class="card-img-top">' +
-                                                    '</div>' +
-                                                '</a>' +
-                                                '<div align="center">' +
-                                                    '<div class="card-body">' +
-                                                    '<span >' + val.nombre_producto + '</span>' +
-                                                    '</div>' +
-                                                '</div>' +
-                                            '</div>'
+                                        '<a runat="server" href="~/Ventanas/Productos/DetalleProducto?prod=' + val.id_producto + '">' +
+                                        '<div>' +
+                                        '<img src="' + val.URL_img + '" class="card-img-top">' +
+                                        '</div>' +
+                                        '</a>' +
+                                        '<div align="center">' +
+                                        '<div class="card-body">' +
+                                        '<span >' + val.nombre_producto + '</span>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>'
                                 }
                             });
 

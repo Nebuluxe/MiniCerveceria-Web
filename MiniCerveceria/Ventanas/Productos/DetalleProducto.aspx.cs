@@ -103,6 +103,10 @@ namespace MiniCerveceria.Ventanas.Productos
 						lblCategoria.Text = categoria + (subcategoria != "" ? ", " + subcategoria : "");
 						NameCategoria.Text = categoria;
 					}
+					else
+					{
+						Response.Redirect("/Ventanas/Productos/Productos.aspx", false);
+					}
 				}
 
 
