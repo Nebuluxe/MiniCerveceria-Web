@@ -318,7 +318,11 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="group" style="bottom:10vh;left:25vh;">
-                                <img src="\Imagenes\Iconos\UserIconBlack.png" alt="" class="crop-image" id="crop-image" style="border: 5px solid #000000;border-radius: 50%;">
+                                <center><div id="loader" class="spinner-border visually-hidden" style="--bs-spinner-border-width: 0.12em;width: 5rem; height: 5rem; z-index:3; position:absolute; top: 30%; right:31%; background-color:rgba(#000, .3);" role="status"></div></center>
+                                <asp:Image ID="cropimage" class="cropimage" ClientIDMode="Static" style="width:100%;border-radius: 50%;border: 5px solid #000;" runat="server" />
+                                <asp:HiddenField  id="hdnImgBase64" ClientIDMode="Static" runat="server" />
+                                <asp:HiddenField  id="hdnImagenSubidaBool" ClientIDMode="Static" runat="server" />
+                                <asp:Button ID="btnActualizarImagen" class="visually-hidden" ClientIDMode="Static" OnClick="btnActualizarImagen_Click" runat="server" ></asp:Button>
                                 <input type="file" name="input-file" id="input-file" accept=".png,.jpg,.jpeg">
                                 <label for="input-file" class="label-file">Haz click aquí para subir una imagen</label>
                             </div>
@@ -651,6 +655,14 @@
         var UsuarioMaestro = <%= UsuarioMaestro %>;
         var AccesoAdministracion = <%= UserPermisoAcceso %>;
 
+        $("#hdnImagenSubidaBool").change(function () {
+            if ($(this).val() == "true") {
+                Command: toastr["success"]("Su imagen a sido actualizada correctamente!")
+            } else {
+                Command: toastr["warning"]("Su imagen no ha sido actualizada, intente nuevamente")
+            };
+        })
+
         if (sesionEstado == true) {
             $('#btnIniciar').hide();
 
@@ -727,6 +739,10 @@
 
         $('.closeSideMantenedor').on('click', function () {
             $('.clickMenuManteedor').trigger('click');
+        });
+
+        $('#btnActualizarImagen').on('submit', function (ev) {
+            ev.preventDefault();
         });
         
 

@@ -21,7 +21,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         {
             string query = @"INSERT INTO usuario " +
                 "(id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion, url_img) " +
-                "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre.Replace("'", "''") + "', '" + obj.apellido.Replace("'", "''") + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password.Replace("'", "''") + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), null)";
+                "VALUES (" + ObtenerIDUsuario().ToString() + ", " + obj.id_permiso + ", " + obj.id_comuna + ", '" + obj.nombre.Replace("'", "''") + "', '" + obj.apellido.Replace("'", "''") + "', '" + obj.direccion + "', " + obj.telefono + ", TO_DATE('" + obj.fecha_nacimiento + "', 'DD-MM-YYYY HH24:MI:SS'), '" + obj.email + "', '" + obj.password.Replace("'", "''") + "', " + obj.activo + ", TO_DATE('" + obj.fecha_creacion + "', 'DD-MM-YYYY HH24:MI:SS'), " + obj.URL_img + ")";
             db.Execute(query);
         }
         public void InHabiliatarCuentaUsuario(int UsuarioID)
@@ -145,7 +145,7 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public Usuario UsuarioEmail(string email, string password)
         {
-            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion FROM usuario WHERE email = '" + email + "' AND password = '" + password + "'";
+            string query = @"SELECT id_usuario, id_permiso, id_comuna, nombre, apellido, direccion, telefono, fecha_nacimiento, email, password, activo, fecha_creacion, url_img FROM usuario WHERE email = '" + email + "' AND password = '" + password + "'";
             DataTable dt = db.Execute(query);
             Usuario obj = new Usuario();
             if (dt.Rows.Count > 0)
@@ -164,7 +164,8 @@ namespace MiniCerveceria.Servicios.Implementacion
                            email = rw["email"].ToString(),
                            password = rw["password"].ToString(),
                            activo = Convert.ToInt32(rw["activo"]),
-                           fecha_creacion = Convert.ToDateTime(rw["fecha_nacimiento"])
+                           fecha_creacion = Convert.ToDateTime(rw["fecha_nacimiento"]),
+                           URL_img = rw["url_img"].ToString()
                        }
                          ).FirstOrDefault();
                 return obj;
@@ -177,9 +178,16 @@ namespace MiniCerveceria.Servicios.Implementacion
         public void ActualizarUsuario(Usuario obj)
         {
             string query = string.Format(@"UPDATE usuario SET " +
-				" nombre = '{1}', apellido = '{2}', direccion = '{3}', telefono = {4}, fecha_nacimiento = TO_DATE('{5}', 'DD/MM/YYYY HH24:MI:SS'), email = '{6}', id_comuna = {7}" +
+				" nombre = '{1}', apellido = '{2}', direccion = '{3}', telefono = {4}, fecha_nacimiento = TO_DATE('{5}', 'DD/MM/YYYY HH24:MI:SS'), email = '{6}', id_comuna = {7}, url_img = ''" +
 				"WHERE id_usuario = {0}", obj.id_usuario, obj.nombre, obj.apellido, obj.direccion, obj.telefono, obj.fecha_creacion, obj.email, obj.id_comuna);
             DataTable dt = db.Execute(query);
+        }
+        public void ActualizarImagenUsuario(string imgUrl, int id_usuario)
+        {
+            string query = string.Format(@"UPDATE usuario SET " +
+                " url_img = '{0}' " +
+                "WHERE id_usuario = {1}", imgUrl, id_usuario);
+            db.Execute(query);
         }
 
         public void CrearPermiso(PermisosUsusario obj)
@@ -301,6 +309,5 @@ namespace MiniCerveceria.Servicios.Implementacion
                 throw;
             }
 		}
-
-	}
+    }
 }

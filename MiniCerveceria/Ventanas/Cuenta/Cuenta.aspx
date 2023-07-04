@@ -76,7 +76,7 @@
             overflow: hidden;
         }
 
-            .group .crop-image {
+            .group .cropimage {
                 width: 100%;
                 height: 200px;
             }
@@ -815,7 +815,14 @@
 
         $(document).ready(function () {
             CargarInformacion()
-
+            $("#hdnImagenSubidaBool").change(function () {
+                if ($(this).val() == "true") {
+                    Command: toastr["success"]("Su imagen a sido actualizada correctamente!")
+                } else {
+                    Command: toastr["warning"]("Su imagen no ha sido actualizada, intente nuevamente")
+                };
+            })
+                
             if (OptionSelectedSide != "") {
                 if (OptionSelectedSide == "h") {
                     $('#Compras').removeClass("visually-hidden");
@@ -1261,17 +1268,28 @@
             })
 
             $('#cut').on('click', () => {
-                let crop_image = document.getElementById('#crop-image')
+                let crop_image = document.getElementById('#cropimage')
                 let canva = cropper.getCroppedCanvas()
                 let image = document.getElementById('#img-cropper')
                 let input = document.getElementById('#input-file')
 
                 canva.toBlob(function (blob) {
                     let url_cut = URL.createObjectURL(blob)
-                    console.log("blob lol :" + url_cut)
-                    $('#crop-image').attr("src", url_cut);
-                })
+                    $('#cropimage').attr("src", url_cut);
+                    var reader = new FileReader();
+                    reader.readAsDataURL(blob);
+                    reader.onloadend = function () {
+                        var base64data = reader.result;
 
+                        $("#hdnImgBase64").val(base64data);
+                        $("#cropimage").css("filter", "brightness(0.5)");
+                        $("#loader").removeClass("visually-hidden");
+                        $(".label-file").addClass("visually-hidden");
+                        $("#btnActualizarImagen").click();
+
+                    };
+                })
+                
                 $('#img-cropper').attr("src", '');
                 $('#input-file').val('')
 
@@ -1289,7 +1307,7 @@
                     reader.readAsDataURL(blob);
                     reader.onloadend = () => {
                         resolve(reader.result.split(',')[1]);
-                        // "data:image/jpg;base64,    =sdCXDSAsadsadsa"
+                        
                     };
                 });
             };
@@ -1317,6 +1335,18 @@
 
             btnToBlob.addEventListener('click', async (e) => {//data:image/png; base64,/9j/4AAQSk
                 Console.Log(image.src.Split(",", 1))
+            });
+
+            $('form').keypress(function (e) {
+                if (e == 13) {
+                    return false;
+                }
+            });
+
+            $('input').keypress(function (e) {
+                if (e.which == 13) {
+                    return false;
+                }
             });
         });
 
@@ -1559,7 +1589,6 @@
 
                         if (data.d.length > 0) {
                             $.each(data.d, function (i, val) {
-
                                 html += '<div class="col-lg-12 itemList">' +
                                     '<div class="card" onclick="ObtenerDetalleCompra(' + val.id_pedido + ')">' +
                                     '<div class="card-body">' +
@@ -1596,6 +1625,7 @@
                 data: JSON.stringify({ 'id_pedido': idPedido }),
                 success: function (data) {
                     if (data.d != null) {
+                        $("#ComentarioProductoPedido").addClass("visually-hidden");
                         $('#nroPedido').text(data.d.id_pedido);
                         $('#nombreReceptor').text(data.d.nombre_receptor);
                         $('#fechaCompra').text(data.d.fecha_creacion);
@@ -1667,6 +1697,7 @@
                 data: JSON.stringify({ 'id_pedido': idPedido }),
                 success: function (data) {
                     if (data.d != null) {
+                        $("#ComentarioProductoCompra").addClass("visually-hidden");
                         $('#nroCompra').text(data.d.id_pedido);
                         $('#nombreReceptorCompra').text(data.d.nombre_receptor);
                         $('#fechaCompra').text(data.d.fecha_creacion);

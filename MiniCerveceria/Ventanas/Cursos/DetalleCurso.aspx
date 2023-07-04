@@ -34,10 +34,10 @@
         Fecha publicacion: <asp:Label runat="server" ClientIDMode="Static" ID="lblFechaPublicacion"></asp:Label>
     </h6>
     <br />
-    <div class="card" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);">
+    <div class="card" style="--bs-card-border-width: 3px; --bs-card-border-color: rgb(0, 0, 0, .2);--bs-card-border-radius: 0.8rem;">
         <div class="card-body">
             <p> 
-                <asp:Image runat="server" ClientIDMode="Static" ID="ImagenCurso" align="left" width="400"  height="400"/>
+                <asp:Image runat="server" ClientIDMode="Static" ID="ImagenCurso" align="left" width="400"  height="400" style="border-radius:5%;margin-right:2%;"/>
                 <asp:Label runat="server" ClientIDMode="Static" ID="lblDescripcionCurso"></asp:Label>
             </p>
         </div>
@@ -49,7 +49,7 @@
             <span>
 
             </span>
-			<a id="btnInscribete" class="btn btn-warning" style="color: #000000"> Insscribete ahora!! </a>
+			<a id="btnInscribete" class="btn btn-warning" style="color: #000000"> Inscribete ahora! </a>
         </div>
     </nav>
     <br />

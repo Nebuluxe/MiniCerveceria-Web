@@ -12,6 +12,8 @@ using MiniCerveceria.Modelos;
 using System.IO;
 using MiniCerveceria.Servicios.Modelos;
 using Microsoft.Ajax.Utilities;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
 
 namespace MiniCerveceria.Ventanas.Cuenta
 {
@@ -24,7 +26,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		static IPedidoAplicacionServicios pedidosApp = new PedidoServicio(conn);
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
 
-		public int id_user = 0;
+        public int id_user = 0;
 		public string fechaNacimiento = "";
 		public string OptionSelectedSide = "";
 		protected void Page_Load(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 		}
 
 		[WebMethod(EnableSession = true)]
-		public static void ActualizarDatos(string nombre,string apellido, string fechanacimiento, string direccion, string email, string telefono, string comuna)
+		public static void ActualizarDatos(string nombre,string apellido, string fechanacimiento, string direccion, string email, string telefono, string comuna, string imgbase64)
 		{
 			try
 			{
@@ -85,8 +87,7 @@ namespace MiniCerveceria.Ventanas.Cuenta
 				oUsuario.email = email;
 				oUsuario.telefono = Convert.ToInt32(telefono);
 				oUsuario.id_comuna = Convert.ToInt32(comuna);
-
-				UsuarioApp.ActualizarUsuario(oUsuario);
+                UsuarioApp.ActualizarUsuario(oUsuario);
 			}
 			catch (Exception)
 			{

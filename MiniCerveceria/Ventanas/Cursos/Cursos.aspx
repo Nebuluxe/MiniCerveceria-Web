@@ -70,7 +70,7 @@
                                             '</div>'+
                                             '<div class="col-md-5">'+
                                                 '<figure class="containerz">'+
-                                                    '<img src="' + val.URL_img + '" alt="sample89" />'+
+                                                    '<img src="' + val.URL_img + '" alt="sample89"  />'+
                                                     '<figcaption>'+
                                                         '<h3>Ver mas sobre el curso</h3>'+
                                                     '</figcaption>'+

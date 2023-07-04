@@ -187,9 +187,9 @@ namespace MiniCerveceria.Servicios.Implementacion
 			db.Execute(query);
 		}
 
-        public void AñadirImagen(int id_producto)
+        public void AñadirImagen(string url_img, int id_producto)
         {
-            string query = string.Format(@"UPDATE productos SET url_img = 1 WHERE id_producto = {0}", id_producto);
+            string query = string.Format(@"UPDATE productos SET url_img = '" + url_img + "' WHERE id_producto = {0}", id_producto);
 
             db.Execute(query);
         }

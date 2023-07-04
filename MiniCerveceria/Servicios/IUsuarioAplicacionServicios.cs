@@ -21,6 +21,6 @@ namespace MiniCerveceria.Servicios
         PermisosUsusario ObtenerPermiso(int id_permiso);
         bool ValidaCorreoExistente(string email);
         bool CambiarContraseña(string email, string contraseña);
-
-	}
+        void ActualizarImagenUsuario(string imgUrl, int id_usuario);
+    }
 }
