@@ -17,6 +17,8 @@ namespace MiniCerveceria.Ventanas.Productos
 		static string conn = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
 		static IProductoAplicacionServicios productoApp = new ProductoServicio(conn);
 
+		public int stock = 0;
+
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			try
@@ -100,6 +102,7 @@ namespace MiniCerveceria.Ventanas.Productos
 								break;
 						}
 
+						stock = oProducto.stock;
 						lblCategoria.Text = categoria + (subcategoria != "" ? ", " + subcategoria : "");
 						NameCategoria.Text = categoria;
 					}

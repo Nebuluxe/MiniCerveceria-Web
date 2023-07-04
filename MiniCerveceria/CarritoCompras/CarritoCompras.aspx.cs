@@ -21,27 +21,21 @@ namespace MiniCerveceria.CarritoCompras
         static IDetallePedidoAplicacionServicios detPedidoApp = new DetallePedidoServicio(conn);
         protected void Page_Load(object sender, EventArgs e)
         {
+			Usuario oUsuario = (Usuario)(Session["UsuarioSesion"]);
 
-        }
+			if (oUsuario == null)
+			{
+				Response.Redirect("~/Default.aspx", false);
+				return;
+			}
+		}
         [WebMethod(EnableSession = true)]
         public static IList<CarritoCompra> ObtenerCarritoCompra()
         {
             try
             {
                 Usuario oUsuario = (Usuario)(HttpContext.Current.Session["UsuarioSesion"]);
-				IList<CarritoCompra> ListCarritoCompra = new List<CarritoCompra>();
-
-				if (oUsuario != null)
-                {
-					IList<CarritoCompra> ListCarrito = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);
-
-					foreach (var lineaCarrito in ListCarrito)
-					{
-						Producto oProducto = productoApp.ObtenerProducto(lineaCarrito.id_producto);
-						lineaCarrito.nombre_producto = oProducto.nombre_producto;
-						ListCarritoCompra.Add(lineaCarrito);
-					}
-				}
+				IList<CarritoCompra> ListCarritoCompra = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);
 
 				return ListCarritoCompra;
 			}

@@ -32,7 +32,18 @@
             <br />
 			<br />
 			<br />
-			<canvas id="grafico1"> </canvas>
+			<div class="card" style="background-color: rgba( 20, 143, 119 , 0.5); border-color: rgba( 20, 143, 119)">
+                
+			</div>
+            <hr class="featurette-divider">
+            <div>
+                <strong>Cantidad de productos vendidos este mes: </strong> <span id="CantidadProductosVendidos"></span>
+            </div>
+            <hr class="featurette-divider">
+            <div>
+                <strong>Ingresos totales de este mes: </strong>$ <span id="IngresosMes"></span>
+            </div>
+            <hr class="featurette-divider">
 		</div>
 		<div class="col-lg-6">
 			<br />
@@ -40,149 +51,220 @@
 			<br />
 			<canvas id="grafico2"> </canvas>
 		</div>
+        <div class="col-lg-6">
+			<br />
+			<br />
+			<br />
+			<canvas id="grafico4"> </canvas>
+		</div>
 		<div class="col-lg-6">
             <br />
 			<br />
 			<br />
 			<canvas id="grafico3"> </canvas>
 		</div>
-		<div class="col-lg-6">
-			<br />
-			<br />
-			<br />
-			<canvas id="grafico4"> </canvas>
-		</div>
+
 	</div>
 
 	<script src="/Scripts/chart.js"></script>
 	<script>
+
         $(document).ready(function () {
+            armarGrafico5ProductosMasVendidos()
 
-            // Datos para los graficos
-            var datos1 = {
-                labels: ['Cursos', 'Productos'],
-                datasets: [{
-                    label: 'Ventas Totales ',
-                    data: [1500000, 2000000],
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color de fondo de las barras
-                    borderColor: 'rgba(75, 192, 192, 1)', // Color del borde de las barras
-                    borderWidth: 1 // Ancho del borde de las barras
-                }]
-            };
+            armarGraficoProductosMasPopulares()
 
-            /*const labels = Utils.months({ count: 7 });*/
+            armarGraficoLineaTiempoVentas()
+
+            CargarValores()
+        });
+
+        function CargarValores() {
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerIngresosCursos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    
+                    $('#CantidadProductosVendidos').text(data.d.cantidad)
+                    $('#IngresosMes').text(data.d.total_detalle)
+
+                    console.log($('#CantidadProductosVendidos').text())
+                },
+                error: function (data) {
+                    Command: toastr["error"]("Algo ha salido mal!!!")
+                }
+            });
+        }
+
+        //grafico 2
+
+        function armarGrafico5ProductosMasVendidos() {
+            var labels = [];
+            var values = [];
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerrIngresosProductos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var cont = 1;
+                    $.each(data.d, function (i, val) {
+                        labels.push(val.nombre_producto)
+                        values.push(val.total_detalle)
+                        cont++;
+                    });
+                },
+                error: function (data) {
+                    Command: toastr["error"]("Algo ha salido mal!!!")
+                }
+            });
+
             const datos2 = {
-                labels: "Enero",
+                labels: labels,
                 datasets: [{
-                    label: 'My First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    label: '5 productos que han generado mas ingresos este mes',
+                    data: values,
                     fill: false,
-                    borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: [
+                        'rgba( 118, 215, 196, 0.5)',
+                        'rgba( 72, 201, 176 , 0.5)',
+                        'rgba( 26, 188, 156 , 0.5)',
+                        'rgba( 23, 165, 137 , 0.5)',
+                        'rgba( 20, 143, 119 , 0.5)',
+                    ],
+                    borderColor: [
+                        'rgb(118, 215, 196)',
+                        'rgb(72, 201, 176)',
+                        'rgb(26, 188, 156)',
+                        'rgb(23, 165, 137)',
+                        'rgb(20, 143, 119)',
+                    ],
+                    borderWidth: 1,
                     tension: 0.1
                 }]
             };
-
-            const datos3 = {
-                labels: [
-                    'Red',
-                    'Green',
-                    'Yellow',
-                    'Grey',
-                    'Blue'
-                ],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [11, 16, 7, 3, 14],
-                    backgroundColor: [
-                        'rgb(255, 99, 132, 0.2)',
-                        'rgb(75, 192, 192, 0.2)',
-                        'rgb(255, 205, 86, 0.2)',
-                        'rgb(201, 203, 207, 0.2)',
-                        'rgb(54, 162, 235, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132, 1)',
-                        'rgb(75, 192, 192, 1)',
-                        'rgb(255, 205, 86, 1)',
-                        'rgb(201, 203, 207, 1)',
-                        'rgb(54, 162, 235, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            };
-
-            const datos4 = {
-                labels: [
-                    'Red',
-                    'Blue',
-                    'Yellow'
-                ],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [300, 50, 100],
-                    backgroundColor: [
-                        'rgb(255, 99, 132, 0.2)',
-                        'rgb(54, 162, 235, 0.2)',
-                        'rgb(255, 205, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgb(255, 99, 132, 1)',
-                        'rgb(54, 162, 235, 1)',
-                        'rgb(255, 205, 86, 1)'
-                    ],
-                    borderWidth: 1,
-                    hoverOffset: 4
-                }]
-            };
-
-            //configuracion de los graficos
-
-            var configuracion1 = {
-                type: 'bar', 
-                data: datos1,
+            const configuracion2 = {
+                type: 'bar',
+                data: datos2,
                 options: {
                     scales: {
                         y: {
-                            beginAtZero: true 
+                            beginAtZero: true
                         }
                     }
-                }
+                },
             };
+            var ctx2 = document.getElementById('grafico2').getContext('2d');
+            grafico2 = new Chart(ctx2, configuracion2);
+        }
 
+        function armarGraficoProductosMasPopulares() {
+            var labels = [];
+            var values = [];
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerProductosPopulares") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var cont = 1;
+                    $.each(data.d, function (i, val) {
+                        labels.push(val.nombre_producto)
+                        values.push(val.cantidad)
+                        cont++;
+                    });
+                },
+                error: function (data) {
+                    Command: toastr["error"]("Algo ha salido mal!!!")
+                }
+            });
+
+            const datos2 = {
+                labels: labels,
+                datasets: [{
+                    label: '10 productos mas populares',
+                    data: values,
+                    fill: false,
+                    backgroundColor: 'rgba( 20, 143, 119 , 0.5)',
+                    borderColor: 'rgb(20, 143, 119)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }]
+            };
+            const configuracion2 = {
+                type: 'bar',
+                data: datos2,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
+            var ctx2 = document.getElementById('grafico4').getContext('2d');
+            grafico2 = new Chart(ctx2, configuracion2);
+        }
+
+        function armarGraficoLineaTiempoVentas() {
+            var labels = [];
+            var values = [];
+
+            $.ajax({
+                type: 'POST',
+                cache: false,
+                url: '<%= ResolveUrl("/Mantenedores/Default.aspx/ObtenerrLineaTiempoIngresos") %>',
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                    var cont = 1;
+                    $.each(data.d, function (i, val) {
+                        labels.push(val.fecha_creacion)
+                        values.push(val.total_detalle)
+                        cont++;
+                    });
+                },
+                error: function (data) {
+                    Command: toastr["error"]("Algo ha salido mal!!!")
+                }
+            });
+
+            const datos2 = {
+                labels: labels,
+                datasets: [{
+                    label: 'Ingresos en meses anteriores',
+                    data: values,
+                    fill: false,
+                    backgroundColor: 'rgba( 20, 143, 119 , 0.5)',
+                    borderColor: 'rgb(20, 143, 119)',
+                    borderWidth: 1,
+                    tension: 0.1
+                }]
+            };
             const configuracion2 = {
                 type: 'line',
                 data: datos2,
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                },
             };
-
-            const configuracion3 = {
-                type: 'polarArea',
-                data: datos3,
-                options: {}
-            };
-
-            const configuracion4 = {
-                type: 'doughnut',
-                data: datos4,
-            };
-
-            // Crear el gráfico con jQuery
-            var ctx1 = document.getElementById('grafico1').getContext('2d');
-            var ctx2 = document.getElementById('grafico2').getContext('2d');
-            var ctx3 = document.getElementById('grafico3').getContext('2d');
-            var ctx4 = document.getElementById('grafico4').getContext('2d');
-
-            var grafico1 = new Chart(ctx1, configuracion1);
-            var grafico2 = new Chart(ctx2, configuracion2);
-            var grafico3 = new Chart(ctx3, configuracion3);
-            var grafico2 = new Chart(ctx4, configuracion4);
-
-            function cambio() {
-                if ($(window).width() >= 450) {
-                    $('.OptionResponsive').removeClass('visually-hidden');
-                } else {
-                    $('.OptionResponsive').addClass('visually-hidden');
-                }
-            }
-        });
+            var ctx2 = document.getElementById('grafico3').getContext('2d');
+            grafico2 = new Chart(ctx2, configuracion2);
+        }
     </script>
 </asp:Content>

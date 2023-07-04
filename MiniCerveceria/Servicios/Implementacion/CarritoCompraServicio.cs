@@ -90,18 +90,9 @@ namespace MiniCerveceria.Servicios.Implementacion
         }
         public IList<CarritoCompra> ObtenerCarritoCompra(int id_usuario)
         {
-            string query = "SELECT id_carrito, " +
-                                  "id_usuario, " +
-                                  "id_producto, " +
-                                  "precio_producto, " +
-                                  "nro_linea, " +
-                                  "cantidad, " +
-                                  "total_detalle, " +
-                                  "fecha_creacion, " +
-                                  "fecha_modificacion " +
-                           "FROM carritocompra " +
-                           "WHERE id_usuario = " + id_usuario + " " +
-                           "ORDER BY nro_linea";
+            string query = "SELECT tbl1.id_carrito, tbl1.id_usuario, tbl1.id_producto,tbl1.precio_producto,tbl1.nro_linea,tbl1.cantidad,tbl1.total_detalle,tbl1.fecha_creacion,tbl1.fecha_modificacion, tbl2.nombre_producto FROM carritocompra tbl1 JOIN productos tbl2 ON tbl1.id_producto = tbl2.id_producto " +
+                           " WHERE id_usuario = " + id_usuario + " " +
+                           " ORDER BY nro_linea";
             DataTable dt = db.Execute(query);
 
             IList<CarritoCompra> lista = new List<CarritoCompra>();
@@ -118,7 +109,8 @@ namespace MiniCerveceria.Servicios.Implementacion
                              cantidad = Convert.ToInt32(rw["cantidad"]),
                              total_detalle = Convert.ToInt32(rw["total_detalle"]),
                              fecha_creacion = Convert.ToDateTime(rw["fecha_creacion"]),
-                             fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"])
+                             fecha_modificacion = Convert.ToDateTime(rw["fecha_modificacion"]),
+                             nombre_producto = Convert.ToString(rw["nombre_producto"])
                          }
                         ).ToList();
                 return lista;

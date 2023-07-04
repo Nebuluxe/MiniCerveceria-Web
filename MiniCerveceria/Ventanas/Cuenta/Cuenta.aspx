@@ -53,6 +53,18 @@
             overflow-x: hidden;
         }
 
+        #ListaPedidos{
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        #ListaCompras{
+            width: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
         .sizeOptionsCard {
             height: 600px
         }

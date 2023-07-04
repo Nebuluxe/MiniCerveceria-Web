@@ -137,10 +137,15 @@
                             <hr class="featurette-divider">
                         </div>
                         <div class="col-lg-6">
-                            <div class="card">
+                            <div class="card" id="agregarCarrito">
                                 <div class="card-body" style="cursor: pointer" onclick="AnadirProductoCarrito()">
                                     <a data-title="Añadir al carrito">
                                         <img src="/Imagenes/Iconos/Bag.png" height="30" class="animationBtnImg"></a><span> Añadir al carrito </span>
+                                </div>
+                            </div>
+                            <div class="card visually-hidden" id="SinStock">
+                                <div class="card-body">
+                                     <img src="/Imagenes/Iconos/btnDeleteitem.png" height="30" class="animationBtnImg"><span style="color:#ff0000"> Sin stock </span>
                                 </div>
                             </div>
                         </div>
@@ -243,11 +248,20 @@
     <br />
 
     <script type="text/javascript">
+        var stock = <%= stock %>
+
         $(document).ready(() => {
             var NameProdHead = $("#NomProducto").text();
             var NameCateHead = $("#NameCategoria").text();
             var idCate = $("#idCate").text();
             var idProd = $("#idProd").text();
+
+            console.log(stock)
+
+            if (stock == 0) {
+                $('#SinStock').removeClass('visually-hidden');
+                $('#agregarCarrito').addClass('visually-hidden');
+            }
 
             cargarProductosRelacionados(idCate, idProd);
 

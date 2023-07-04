@@ -72,7 +72,33 @@ namespace MiniCerveceria.Servicios.Implementacion
                 return lista;
             }
         }
-        public void EliminarFavorito(int id_producto, int id_usuario)
+		public IList<Favorito> ObtenerFavoritos()
+		{
+			string query = @"SELECT tbl1.id_fav,tbl1.id_usuario, tbl1.id_producto, tbl2.nombre_producto, tbl2.url_img FROM favoritos tbl1 JOIN productos tbl2 ON tbl1.id_producto = tbl2.id_producto";
+			DataTable dt = db.Execute(query);
+
+			IList<Favorito> lista = new List<Favorito>();
+			if (dt.Rows.Count > 0)
+			{
+				lista = (from DataRow rw in dt.Rows
+						 select new Favorito()
+						 {
+							 id_fav = Convert.ToInt32(rw["id_fav"]),
+							 id_usuario = Convert.ToInt32(rw["id_usuario"]),
+							 id_producto = Convert.ToInt32(rw["id_producto"]),
+							 nombre_producto = Convert.ToString(rw["nombre_producto"]),
+							 URL_img = Convert.ToString(rw["url_img"])
+						 }
+						).ToList();
+				return lista;
+			}
+			else
+			{
+				return lista;
+			}
+		}
+
+		public void EliminarFavorito(int id_producto, int id_usuario)
         {
             string query = @"DELETE FROM favoritos " +
 							"WHERE id_producto = " + id_producto + " " +

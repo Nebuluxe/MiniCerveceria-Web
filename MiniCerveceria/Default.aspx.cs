@@ -30,6 +30,31 @@ namespace MiniCerveceria
 
         }
 		[WebMethod(EnableSession = true)]
+		public static bool ValidarStock(string id_producto)
+		{
+			try
+			{
+				Producto comentarios = new Producto();
+
+				comentarios = productoApp.ObtenerProducto(Convert.ToInt32(id_producto));
+
+				if (comentarios.stock == 0)
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+
+			}
+			catch (Exception)
+			{
+				throw;
+			}
+		}
+
+		[WebMethod(EnableSession = true)]
 		public static bool AnadirProductoCarrito(int id_producto)
 		{
 			try
@@ -43,6 +68,8 @@ namespace MiniCerveceria
 
                 Producto oProducto = new Producto();
                 oProducto = productoApp.ObtenerProducto(id_producto);
+
+
 				if (oProducto != null)
 				{
 					IList<CarritoCompra> listCarritoCompra = carritoApp.ObtenerCarritoCompra(oUsuario.id_usuario);

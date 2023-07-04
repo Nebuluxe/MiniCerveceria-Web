@@ -355,23 +355,43 @@
             $.ajax({
                 type: 'POST',
                 cache: false,
-                url: '<%= ResolveUrl("/Default.aspx/AnadirProductoCarrito") %>',
+                url: '<%= ResolveUrl("/Default.aspx/ValidarStock") %>',
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
                 data: JSON.stringify({ 'id_producto': id_producto }),
                 async: false,
                 success: function (data) {
-                    if (data.d) {
-                        Command: toastr["success"]("Se ha añadido el producto al carrito")
+                    if (data.d) { 
+                        $.ajax({
+                            type: 'POST',
+                            cache: false,
+                            url: '<%= ResolveUrl("/Default.aspx/AnadirProductoCarrito") %>',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: 'json',
+                            data: JSON.stringify({ 'id_producto': id_producto }),
+                            async: false,
+                            success: function (data) {
+                                if (data.d) {
+                                    Command: toastr["success"]("Se ha añadido el producto al carrito")
+                                }
+                                else {
+                                    Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
+                                }
+                            },
+                            error: function (data) {
+                                alert("Algo ha salido mal!!!");
+                            }
+                        });
                     }
-                    else {
-                        Command: toastr["warning"]("Debe registrarse o inicar sesion para añadir al carrito")
+                    else { 
+                        Command: toastr["warning"]("Lo sentimos el poducto no tiene stock")
                     }
                 },
                 error: function (data) {
                     alert("Algo ha salido mal!!!");
                 }
             });
+
         }
 
         function AnadirFavorito(id_producto) {
